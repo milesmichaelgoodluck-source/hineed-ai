@@ -1,0 +1,1396 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hineed.AI — Everything you need, in one place</title>
+<link rel="icon" href="/mark.png" type="image/png">
+<meta name="description" content="Hineed.AI — homes, services, products, food, jobs and payments, all in one place. Port Harcourt.">
+<meta property="og:title" content="Hineed.AI — Everything you need, in one place">
+<meta property="og:description" content="Homes, services, products, food, jobs and payments, all in one place.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/lockup.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Dark premium green — default (finance/crypto-wallet inspired) */
+    --brand:#2FD98A; --brand-2:#3DE89B; --action:#2FD98A; --soft:#15291F; --on-brand:#05140D;
+    --bg:#07140F; --surface:#0F1E18; --ink:#EAF6EF; --muted:#8DA89A; --line:#1E3228;
+    --star:#F0B23D; --pos:#2FD98A; --neg:#FF6B6B;
+    --a1:#0E8F7E; --a2:#E0902A; --a3:#6D4AE0; --a4:#D7466B; --a5:#2D74E0; --a6:#1AA3C4; --a7:#C23AA6;
+    --shadow:0 30px 60px -26px rgba(0,0,0,.75); --shadow-sm:0 12px 28px -16px rgba(0,0,0,.65);
+    --r:16px; --r-lg:22px; --r-xl:28px;
+    --font:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    --grad-brand:linear-gradient(150deg,#12553B 0%,#0B2C1F 55%,#07150F 100%);
+    --g-food:linear-gradient(135deg,#1c1410,#3a2318); --g-a:linear-gradient(135deg,#123528,#0b6b43);
+    --g-b:linear-gradient(135deg,#143a2b,#0d5a3a); --g-c:linear-gradient(135deg,#102e22,#0a7a48);
+    --wall:radial-gradient(900px 540px at 50% 122%, rgba(47,217,138,.20), transparent 60%), radial-gradient(1100px 650px at 112% -10%, rgba(18,120,72,.24), transparent 55%), radial-gradient(820px 560px at -12% -8%, rgba(10,80,52,.22), transparent 55%), #06120D;
+  }
+  :root[data-theme="light"]{
+    --brand:#087A3E; --brand-2:#0a9e4e; --action:#22C55E; --soft:#EAF7EE; --on-brand:#fff;
+    --bg:#F1F5F2; --surface:#FFFFFF; --ink:#0F2419; --muted:#5E6B64; --line:#E6ECE7;
+    --star:#E8A33D; --pos:#087A3E; --neg:#C0432F;
+    --a1:#0E8F7E; --a2:#E0902A; --a3:#6D4AE0; --a4:#D7466B; --a5:#2D74E0; --a6:#1AA3C4; --a7:#C23AA6;
+    --shadow:0 24px 50px -28px rgba(6,45,32,.5); --shadow-sm:0 8px 20px -12px rgba(6,45,32,.35);
+    --grad-brand:linear-gradient(135deg,var(--brand-2),var(--brand) 52%,#062D20);
+    --g-food:linear-gradient(135deg,#1c1410,#3a2318); --g-a:linear-gradient(135deg,#cfe6d6,#6bb389);
+    --g-b:linear-gradient(135deg,#d7e9dd,#8fc6a4); --g-c:linear-gradient(135deg,#bfe0cc,#5aa37c);
+    --wall:radial-gradient(1200px 620px at 100% -8%, rgba(10,158,78,.12), transparent 58%), radial-gradient(1000px 560px at -12% 112%, rgba(8,122,62,.10), transparent 55%), var(--bg);
+  }
+  :root[data-theme="bw"]{
+    --brand:#111; --brand-2:#111; --action:#111; --soft:#F2F2F2; --on-brand:#fff;
+    --bg:#FAFAFA; --surface:#FFFFFF; --ink:#0B0B0B; --muted:#6B6B6B; --line:#E6E6E6;
+    --star:#111; --pos:#111; --neg:#111; --wall:var(--bg);
+    --a1:#2b2b2b; --a2:#444; --a3:#1f1f1f; --a4:#3a3a3a; --a5:#2b2b2b; --a6:#404040; --a7:#262626;
+    --shadow:0 24px 50px -28px rgba(0,0,0,.42); --shadow-sm:0 8px 20px -12px rgba(0,0,0,.3);
+    --g-food:linear-gradient(135deg,#1a1a1a,#000); --g-a:linear-gradient(135deg,#ededed,#c9c9c9);
+    --g-b:linear-gradient(135deg,#e2e2e2,#bcbcbc); --g-c:linear-gradient(135deg,#d8d8d8,#a8a8a8);
+  }
+  :root[data-theme="bw"].dark{
+    --bg:#0A0A0A; --surface:#161616; --ink:#F5F5F5; --muted:#A3A3A3; --line:#2A2A2A;
+    --brand:#fff; --brand-2:#fff; --action:#fff; --on-brand:#0A0A0A; --soft:#1E1E1E; --star:#fff; --pos:#fff; --neg:#fff;
+    --wall:radial-gradient(1100px 600px at 100% -8%, rgba(255,255,255,.045), transparent 60%), var(--bg);
+    --g-food:linear-gradient(135deg,#2a2a2a,#000); --g-a:linear-gradient(135deg,#333,#111);
+    --g-b:linear-gradient(135deg,#3a3a3a,#141414); --g-c:linear-gradient(135deg,#2e2e2e,#0d0d0d);
+  }
+  *{box-sizing:border-box} html,body{margin:0;padding:0}
+  body{background:var(--wall);background-color:var(--bg);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased;line-height:1.5}
+  a{text-decoration:none;color:inherit} button{font-family:inherit;cursor:pointer}
+  .ic{stroke:currentColor;stroke-width:1.85;fill:none;stroke-linecap:round;stroke-linejoin:round} img{max-width:100%}
+
+  .app{display:grid;grid-template-columns:250px minmax(0,1fr);min-height:100vh}
+  .side{position:sticky;top:0;height:100vh;border-right:1px solid var(--line);background:var(--surface);display:flex;flex-direction:column;padding:20px 16px}
+  .brand{display:flex;align-items:center;gap:10px;padding:6px 8px 18px}
+  .mk{width:34px;height:34px;border-radius:10px;background:var(--brand);color:var(--on-brand);display:grid;place-items:center;flex:0 0 auto}
+  .wd{font-weight:900;font-size:1.18rem;letter-spacing:-.03em} .wd i{color:var(--brand);font-style:normal}
+  :root[data-theme="bw"].dark .wd i{color:var(--ink)}
+  .nav{display:flex;flex-direction:column;gap:3px}
+  .nav button{display:flex;align-items:center;gap:12px;width:100%;border:0;background:transparent;color:var(--muted);font-size:.92rem;font-weight:600;padding:11px 12px;border-radius:12px;text-align:left}
+  .nav button:hover{background:var(--soft);color:var(--ink)}
+  .nav button.on{background:var(--brand);color:var(--on-brand)} .nav button.on .ic{stroke:var(--on-brand)}
+  .side .sp{flex:1}
+  .side .me{display:flex;align-items:center;gap:11px;padding:10px;border-radius:14px;border:1px solid var(--line)}
+  .av{border-radius:50%;background:linear-gradient(135deg,#9ecfb0,#0a8a46);color:#fff;display:grid;place-items:center;font-weight:800;flex:0 0 auto}
+  :root[data-theme="bw"] .av{background:#111}
+
+  .main{min-width:0;display:flex;flex-direction:column}
+  .top{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:14px;padding:13px 28px;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .mkm{display:none}
+  .srch{flex:1;max-width:540px;display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:10px 13px;color:var(--muted);font-size:.9rem}
+  .srch input{border:0;outline:0;background:transparent;color:var(--ink);font:inherit;flex:1;min-width:0}
+  .top .sp{flex:1}
+  .theme{display:flex;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px}
+  .theme button{border:0;background:transparent;color:var(--muted);font-size:.74rem;font-weight:800;padding:7px 13px;border-radius:999px}
+  .theme button.on{background:var(--brand);color:var(--on-brand)}
+  .iconbtn{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);display:grid;place-items:center;position:relative;box-shadow:var(--shadow-sm)}
+  .dot{position:absolute;top:8px;right:9px;width:7px;height:7px;border-radius:50%;background:var(--neg)}
+
+  .content{padding:26px 28px 40px;width:100%;max-width:1280px;margin:0 auto}
+  .page{display:none;animation:fade .25s ease} .page.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .h1{font-size:1.9rem;font-weight:900;letter-spacing:-.03em;margin:0 0 4px} .sub{color:var(--muted);margin:0 0 20px}
+  .grid2{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:26px;align-items:start}
+  .sect-t{display:flex;align-items:center;justify-content:space-between;margin:26px 2px 14px}
+  .sect-t h3{font-size:1.08rem;font-weight:800;margin:0;letter-spacing:-.01em} .sect-t a{color:var(--brand);font-weight:700;font-size:.85rem}
+  :root[data-theme="bw"].dark .sect-t a{color:var(--ink)}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-sm)}
+
+  .hero{border-radius:var(--r-xl);padding:32px;color:#fff;position:relative;overflow:hidden;background:var(--grad-brand);border:1px solid rgba(255,255,255,.06)}
+  .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 30%;z-index:0}
+  .hero-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(105deg, rgba(5,20,13,.93) 0%, rgba(6,26,17,.78) 45%, rgba(6,26,17,.40) 100%)}
+  .hero .k,.hero .q,.hero .bar,.hero .chips{position:relative;z-index:2}
+  :root[data-theme="bw"] .hero-bg{filter:grayscale(1)}
+  @media (min-width:901px){ .hero .k,.hero .q,.hero .bar,.hero .chips{max-width:min(620px,calc(100% - 300px))} }
+  @media (max-width:900px){ .hero-ov{background:linear-gradient(118deg, rgba(5,20,13,.93) 0%, rgba(6,26,17,.74) 52%, rgba(6,26,17,.5) 100%)} }
+  :root[data-theme="bw"] .hero,:root[data-theme="bw"] .gbrand,:root[data-theme="bw"] .wallet{background:linear-gradient(135deg,#2a2a2a,#000)}
+  .hero::after{content:"";position:absolute;right:-50px;top:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.08)}
+  .hero .k{font-size:.78rem;font-weight:800;letter-spacing:.14em;opacity:.85;position:relative}
+  .hero .q{font-size:2.1rem;font-weight:900;letter-spacing:-.03em;margin:10px 0 20px;position:relative;line-height:1.08}
+  .hero .bar{position:relative;display:flex;align-items:center;gap:12px;background:#fff;border-radius:15px;padding:14px 16px;max-width:640px}
+  .hero .bar input{border:0;outline:0;flex:1;font:inherit;font-size:1rem;color:#0F2419;background:transparent}
+  .hero .bar .go{width:44px;height:44px;border-radius:12px;background:var(--action);color:var(--on-brand);display:grid;place-items:center;flex:0 0 auto;border:0}
+  :root[data-theme="bw"] .hero .bar .go{background:#111;color:#fff}
+  .hero .chips{display:flex;gap:9px;margin-top:14px;flex-wrap:wrap;position:relative}
+  .hero .chips span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:7px 13px;font-size:.8rem;font-weight:600}
+
+  .svc{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .svc a{display:flex;flex-direction:column;align-items:center;gap:9px;padding:16px 8px;border-radius:16px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:.82rem;font-weight:600}
+  .svc a:hover{box-shadow:var(--shadow-sm);transform:translateY(-2px);transition:.15s}
+  .svc .i{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;color:#fff}
+  :root[data-theme="bw"] .svc .i{background:#111 !important}
+
+  .vcards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .vcard{border-radius:var(--r-lg);overflow:hidden;position:relative;color:#fff;min-height:230px;display:flex;flex-direction:column;justify-content:flex-end;box-shadow:var(--shadow-sm)}
+  .vcard .ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.72),rgba(0,0,0,.12) 55%,rgba(0,0,0,.25))}
+  .vcard .price{position:absolute;top:12px;left:12px;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.18);font-weight:800;font-size:.92rem;padding:6px 11px;border-radius:999px;z-index:2}
+  .vcard .fav{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.45);display:grid;place-items:center;z-index:2}
+  .vcard .b{position:relative;z-index:2;padding:16px}
+  .vcard .nm{font-weight:800;font-size:1.05rem} .vcard .ds{font-size:.78rem;opacity:.85;margin-top:2px}
+  .vcard .rt{display:inline-flex;align-items:center;gap:4px;font-size:.74rem;font-weight:700;margin-top:8px;background:rgba(255,255,255,.16);padding:4px 9px;border-radius:999px}
+  .vcard .arrow{position:absolute;bottom:14px;right:14px;width:40px;height:40px;border-radius:50%;background:#fff;color:#0F2419;display:grid;place-items:center;z-index:3}
+  :root[data-theme="bw"] .vcard .arrow{color:#000}
+
+  .prods{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .prod{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;position:relative}
+  .prod .img{height:150px} .prod .add{position:absolute;top:120px;right:12px;width:34px;height:34px;border-radius:50%;background:var(--surface);color:var(--brand);border:1px solid var(--line);display:grid;place-items:center;box-shadow:var(--shadow-sm)}
+  :root[data-theme="bw"].dark .prod .add{color:var(--ink)}
+  .prod .bd{padding:13px} .prod .nm{font-weight:700;font-size:.9rem} .prod .pr{color:var(--pos);font-weight:800;margin-top:4px}
+
+  .pills{display:flex;gap:9px;overflow-x:auto;padding-bottom:4px}
+  .pill{flex:0 0 auto;background:var(--surface);border:1px solid var(--line);color:var(--ink);font-size:.82rem;font-weight:600;padding:8px 15px;border-radius:999px}
+  .pill.on{background:var(--brand);color:var(--on-brand);border-color:var(--brand)}
+  .catrow{display:flex;gap:14px;overflow-x:auto;padding:2px 2px 8px;margin-bottom:18px}
+  .catcard{flex:0 0 auto;width:100px;border:0;background:transparent;cursor:pointer;text-align:center;padding:0}
+  .catcard .thumb{height:74px;border-radius:16px;overflow:hidden;position:relative;border:2.5px solid transparent;background:var(--g-a);display:grid;place-items:center;color:#fff}
+  .catcard.on .thumb{border-color:var(--brand);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 25%,transparent)}
+  .catcard span{display:block;font-size:.76rem;margin-top:7px;font-weight:600;color:var(--muted);white-space:nowrap}
+  .catcard.on span{color:var(--ink)}
+  .catcard .thumb .ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.35),rgba(0,0,0,.05));z-index:1}
+  .seg{display:inline-flex;background:var(--soft);border-radius:13px;padding:4px}
+  .seg button{border:0;background:transparent;color:var(--muted);font-weight:700;font-size:.86rem;padding:9px 20px;border-radius:10px}
+  .seg button.on{background:var(--brand);color:var(--on-brand)}
+  .sub-v{display:none} .sub-v.on{display:block}
+
+  .detail-hero{height:360px;border-radius:var(--r-xl);position:relative;overflow:hidden}
+  .detail-hero .ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55),transparent 55%)}
+  .fcard{position:absolute;left:18px;right:18px;bottom:18px;background:rgba(10,10,10,.6);border:1px solid rgba(255,255,255,.14);border-radius:var(--r-lg);padding:16px;color:#fff;display:flex;align-items:center;gap:14px}
+  .fcard .th{width:64px;height:64px;border-radius:14px;flex:0 0 auto}
+  .chips2{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0}
+  .chips2 span{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:8px 13px;font-size:.8rem;font-weight:600;color:var(--muted)}
+  .buyrow{display:flex;gap:12px;margin-top:20px;max-width:520px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:15px 24px;font-weight:800;font-size:.98rem;transition:transform .12s ease,box-shadow .12s ease}
+  .btn:active{transform:translateY(1px)}
+  .btn-dark{background:var(--ink);color:var(--bg)} :root[data-theme="bw"].dark .btn-dark{background:#fff;color:#0A0A0A}
+  .btn-brand{background:linear-gradient(135deg,var(--brand-2),var(--brand));color:var(--on-brand);box-shadow:0 12px 24px -12px rgba(8,122,62,.75)}
+  :root[data-theme="bw"] .btn-brand{box-shadow:0 12px 24px -14px rgba(0,0,0,.5)}
+  .btn-ghost{background:var(--surface);color:var(--ink);border:1.5px solid var(--line)}
+
+  .list .row{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)} .list .row:last-child{border-bottom:0}
+  .rail .row{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)} .rail .row:last-child{border-bottom:0}
+  .ic-b{width:42px;height:42px;border-radius:12px;background:var(--soft);color:var(--brand);display:grid;place-items:center;flex:0 0 auto}
+  :root[data-theme="bw"].dark .ic-b{color:var(--ink)}
+  .badge{font-size:.66rem;font-weight:800;padding:3px 9px;border-radius:999px;background:var(--soft);color:var(--brand)} :root[data-theme="bw"].dark .badge{color:var(--ink)}
+
+  .wallet{border-radius:var(--r-xl);padding:28px;color:#fff;position:relative;overflow:hidden;background:linear-gradient(140deg,var(--brand-2),#062D20);max-width:560px}
+  .wallet .amt{font-size:2.4rem;font-weight:900;margin-top:6px}
+  .quick{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:560px;margin-top:18px}
+  .quick a{display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--ink);font-size:.78rem;font-weight:600}
+  .quick .c{width:56px;height:56px;border-radius:50%;background:var(--surface);border:1px solid var(--line);color:var(--brand);display:grid;place-items:center}
+  :root[data-theme="bw"].dark .quick .c{color:var(--ink)}
+
+  /* social app */
+  .s-top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .s-nav{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-bottom:18px;overflow-x:auto}
+  .s-tab{border:0;background:transparent;color:var(--muted);font-weight:700;font-size:.9rem;padding:11px 10px;border-bottom:2px solid transparent;white-space:nowrap}
+  .s-tab.on{color:var(--brand);border-bottom-color:var(--brand)} :root[data-theme="bw"].dark .s-tab.on{color:var(--ink);border-bottom-color:var(--ink)}
+  .sview{display:none} .sview.on{display:block;animation:fade .2s ease}
+  .feed{max-width:640px}
+  .stories{display:flex;gap:14px;overflow-x:auto;padding-bottom:6px}
+  .stories .s{width:66px;height:66px;border-radius:50%;flex:0 0 auto;border:2.5px solid var(--brand);padding:2px} .stories .s .in{width:100%;height:100%;border-radius:50%;background:var(--g-a)}
+  .post{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:18px;margin-top:16px}
+  .post .ph{height:300px;border-radius:16px;margin-top:12px}
+  .post .acts{display:flex;gap:22px;margin-top:14px;color:var(--muted);font-weight:700;font-size:.88rem} .post .acts button{border:0;background:transparent;color:inherit;display:inline-flex;align-items:center;gap:6px;font:inherit;font-weight:700}
+  .people{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px;max-width:760px}
+  .pcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;text-align:center}
+  .pcard .cov{height:72px;background:var(--g-a)} .pcard .pa{width:60px;height:60px;border-radius:50%;margin:-30px auto 0;border:3px solid var(--surface)}
+  .cover{height:150px;border-radius:var(--r-lg);background:var(--g-a);position:relative}
+  .pg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:640px}
+  .pg div{aspect-ratio:1/1;border-radius:12px;position:relative;overflow:hidden}
+  .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit}
+  .vcard .ov,.detail-hero .ov{z-index:1}
+  :root[data-theme="bw"] .photo{filter:grayscale(1) contrast(1.03)}
+  .chatwrap{max-width:720px}
+  .chatscroll{max-height:54vh;min-height:220px;overflow-y:auto;display:flex;flex-direction:column;gap:12px;padding:6px 2px 10px}
+  .aibub{align-self:flex-start;background:var(--soft);border-radius:6px 16px 16px 16px;padding:13px 15px;font-size:.92rem;max-width:88%;line-height:1.5}
+  .ubub{align-self:flex-end;background:var(--brand);color:var(--on-brand);border-radius:16px 16px 6px 16px;padding:13px 15px;font-size:.92rem;max-width:88%;line-height:1.5}
+  .chatbar{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:8px;margin-top:12px}
+  .chatbar input{border:0;outline:0;flex:1;font:inherit;background:transparent;color:var(--ink);padding:0 4px}
+  .mic{width:46px;height:46px;border-radius:50%;border:0;background:var(--soft);color:var(--brand);display:grid;place-items:center;flex:0 0 auto;cursor:pointer}
+  .mic.on{background:var(--brand);color:var(--on-brand);animation:micpulse 1.1s infinite}
+  @keyframes micpulse{0%{box-shadow:0 0 0 0 rgba(8,122,62,.5)}100%{box-shadow:0 0 0 15px rgba(8,122,62,0)}}
+  .send{width:46px;height:46px;border-radius:50%;border:0;background:var(--brand);color:var(--on-brand);display:grid;place-items:center;flex:0 0 auto;cursor:pointer}
+  :root[data-theme="bw"].dark .mic{color:var(--ink)}
+  /* dashboards & admin */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:14px;max-width:1120px}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:18px;box-shadow:var(--shadow-sm)}
+  .stat .l{font-size:.76rem;color:var(--muted);font-weight:600;display:flex;align-items:center;gap:8px}
+  .stat .n{font-size:1.65rem;font-weight:900;letter-spacing:-.02em;margin-top:9px}
+  .stat .d{font-size:.74rem;font-weight:700;margin-top:4px} .stat .d.up{color:var(--pos)} .stat .d.dn{color:var(--neg)}
+  .bars{display:flex;align-items:flex-end;gap:10px;height:150px;padding:8px 0 24px}
+  .bars .b{flex:1;background:linear-gradient(to top,var(--brand),var(--brand-2));border-radius:7px 7px 0 0;min-height:6px;position:relative}
+  .bars .b span{position:absolute;bottom:-22px;left:0;right:0;text-align:center;font-size:.68rem;color:var(--muted)}
+  .tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surface);box-shadow:var(--shadow-sm)}
+  .tbl{width:100%;border-collapse:collapse;font-size:.88rem;min-width:620px}
+  .tbl th{text-align:left;color:var(--muted);font-weight:700;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;padding:12px 14px;border-bottom:1px solid var(--line)}
+  .tbl td{padding:13px 14px;border-bottom:1px solid var(--line)} .tbl tr:last-child td{border-bottom:0}
+  .st-on{color:var(--pos);font-weight:700} .st-off{color:var(--neg);font-weight:700}
+  .tbl .mini{border:0;background:var(--soft);color:var(--ink);font-weight:700;font-size:.74rem;padding:6px 12px;border-radius:999px;cursor:pointer} .tbl .mini.danger{color:var(--neg)}
+  .room{max-width:720px;display:flex;flex-direction:column;height:calc(100vh - 190px);min-height:460px;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;background:var(--surface)}
+  .room-top{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line)}
+  .room-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:var(--bg)}
+  .bub{max-width:76%;padding:11px 14px;border-radius:16px 16px 16px 6px;background:var(--surface);border:1px solid var(--line);font-size:.9rem} .bub.me{align-self:flex-end;background:var(--brand);color:var(--on-brand);border:0;border-radius:16px 16px 6px 16px}
+  .room-acts{display:flex;gap:8px;overflow-x:auto;padding:10px 12px;border-top:1px solid var(--line)}
+  .racts{flex:0 0 auto;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 13px;font-size:.78rem;font-weight:700;color:var(--ink);display:inline-flex;align-items:center;gap:6px}
+  .room-in{display:flex;gap:9px;padding:10px 12px;border-top:1px solid var(--line)}
+  .room-in input{flex:1;border:1px solid var(--line);border-radius:12px;padding:11px 13px;font:inherit;background:var(--bg);color:var(--ink)}
+
+  /* scan */
+  .scanframe{max-width:420px;aspect-ratio:3/4;border-radius:var(--r-xl);background:var(--g-food);position:relative;overflow:hidden;display:grid;place-items:center}
+  .reticle{width:62%;aspect-ratio:1;border-radius:22px;border:2px solid rgba(255,255,255,.9);position:relative}
+  .reticle::before,.reticle::after{content:"";position:absolute;left:-2px;right:-2px;height:28px}
+  .scanline{position:absolute;left:19%;right:19%;height:3px;background:var(--action);box-shadow:0 0 14px var(--action);animation:scan 2.2s ease-in-out infinite}
+  :root[data-theme="bw"] .scanline{background:#fff;box-shadow:0 0 14px #fff}
+  @keyframes scan{0%{top:20%}50%{top:76%}100%{top:20%}}
+
+  .bottom{display:none}
+  @media (max-width:1080px){ .grid2{grid-template-columns:minmax(0,1fr)} .rail{display:none} .vcards{grid-template-columns:repeat(2,1fr)} .prods{grid-template-columns:repeat(3,1fr)} }
+  @media (max-width:899px){
+    .app{grid-template-columns:1fr} .side{display:none}
+    .top{padding:12px 16px} .mkm{display:flex;align-items:center;gap:9px}
+    .mkm .mk{width:30px;height:30px;border-radius:9px} .mkm .wd{font-size:1.05rem}
+    .srch{display:none} .content{padding:18px 16px 94px}
+    .h1{font-size:1.5rem} .hero{padding:24px} .hero .q{font-size:1.55rem}
+    .svc{grid-template-columns:repeat(4,1fr);gap:12px} .svc a{padding:12px 4px;font-size:.72rem} .svc .i{width:44px;height:44px}
+    .vcards{grid-template-columns:1fr} .prods{grid-template-columns:repeat(2,1fr)} .detail-hero{height:300px}
+    .room{height:calc(100vh - 150px)}
+    .bottom{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;height:66px;background:var(--surface);border-top:1px solid var(--line);align-items:center;justify-content:space-around;padding:0 10px}
+    .bottom button{display:flex;flex-direction:column;align-items:center;gap:3px;border:0;background:transparent;color:var(--muted);font-size:.6rem;font-weight:700} .bottom button.on{color:var(--brand)}
+    :root[data-theme="bw"].dark .bottom button.on{color:var(--ink)}
+    .bottom .ctr{margin-top:-24px;width:54px;height:54px;border-radius:50%;background:var(--brand);color:var(--on-brand);display:grid;place-items:center;border:4px solid var(--surface);box-shadow:var(--shadow)}
+  }
+
+  /* auth overlay */
+  #auth{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center}
+  .authcard{position:relative;width:100%;max-width:440px;height:100vh;background:var(--surface);overflow:hidden}
+  @media(min-width:600px){ #auth{padding:24px} .authcard{height:min(880px,94vh);border-radius:34px;box-shadow:var(--shadow);border:1px solid var(--line)} }
+  .astep{position:absolute;inset:0;display:none;flex-direction:column;overflow-y:auto} .astep.on{display:flex}
+  .gbrand{background:linear-gradient(160deg,#0a9e4e,#087A3E 44%,#062D20)}
+  .ain{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:13px;padding:13px 14px} .ain input{border:0;outline:0;flex:1;font:inherit;background:transparent;color:var(--ink)}
+  .rolecard{display:flex;align-items:center;gap:13px;border:1.5px solid var(--line);background:var(--surface);border-radius:18px;padding:15px;text-align:left;color:var(--ink);width:100%} .rolecard.on{border-color:var(--brand);background:var(--soft)}
+</style>
+</head>
+<body>
+
+<!-- ENTRY FLOW -->
+<div id="auth">
+  <div class="authcard">
+    <div class="astep on" id="a-splash">
+      <div class="gbrand" style="flex:1;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:30px;position:relative">
+        <span style="width:100px;height:100px;border-radius:28px;background:#fff;display:grid;place-items:center;padding:16px;box-sizing:border-box;box-shadow:0 12px 30px -10px rgba(0,0,0,.35)"><img src="mark.png" alt="Hineed" style="width:100%;height:100%;object-fit:contain"></span>
+        <div style="font-size:2rem;font-weight:900;letter-spacing:-.03em">Hineed<span style="color:#bff0cf">.AI</span></div>
+        <div style="opacity:.9">Everything you need, in one place.</div>
+        <button class="btn" style="position:absolute;bottom:34px;left:28px;right:28px;background:#fff;color:#087A3E" onclick="authStep('onboarding')">Get started</button>
+      </div>
+    </div>
+    <div class="astep" id="a-onboarding">
+      <div class="gbrand" style="height:50%;flex:0 0 auto;position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:center"><span style="position:absolute;top:16px;left:16px;width:44px;height:44px;border-radius:12px;background:#fff;display:grid;place-items:center;padding:8px;box-sizing:border-box;z-index:2"><img src="mark.png" alt="Hineed" style="width:100%;height:100%;object-fit:contain"></span><img src="img/lady_cut.png" alt="" style="height:99%;max-width:92%;object-fit:contain;object-position:bottom;filter:drop-shadow(0 14px 26px rgba(0,0,0,.45))"></div>
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:14px;padding:28px;text-align:center">
+        <h1 style="font-size:1.7rem;font-weight:900;letter-spacing:-.02em;margin:0;line-height:1.1">One platform.<br>Many solutions.</h1>
+        <p style="color:var(--muted);margin:0;line-height:1.55">Services, products, jobs, real estate, travel, money and more — just tell Hineed what you need.</p>
+        <div style="display:flex;gap:6px;justify-content:center"><span style="width:20px;height:7px;border-radius:4px;background:var(--brand)"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--line)"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--line)"></span></div>
+        <button class="btn btn-brand" onclick="authStep('signup')">Get started</button>
+        <div style="font-size:.84rem;color:var(--muted)">Already have an account? <b style="color:var(--brand);cursor:pointer" onclick="authStep('signup')">Log in</b></div>
+      </div>
+    </div>
+    <div class="astep" id="a-signup">
+      <div style="padding:30px 24px;display:flex;flex-direction:column;gap:12px;min-height:100%">
+        <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px">
+          <img src="mark.png" alt="Hineed" width="56" height="56">
+          <h2 style="font-size:1.3rem;font-weight:900;margin:6px 0 0;letter-spacing:-.02em">Welcome to Hineed</h2>
+          <p style="font-size:.84rem;color:var(--muted);margin:0">Create your account or log in to get started</p>
+        </div>
+        <div class="seg" style="margin:6px 0"><button class="on" style="flex:1">Sign Up</button><button style="flex:1">Log In</button></div>
+        <label class="ain"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4.5 20.5c0-3.6 3.4-5.8 7.5-5.8s7.5 2.2 7.5 5.8"/></svg><input id="su-name" placeholder="Full name"></label>
+        <label class="ain"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M3.5 7h17v10h-17V7ZM3.5 7.5l8.5 6 8.5-6"/></svg><input id="su-email" type="email" placeholder="Email address"></label>
+        <label class="ain"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M7 3.5h10v17H7v-17ZM10.5 17.8h3"/></svg><input id="su-phone" type="tel" placeholder="Phone number"></label>
+        <label class="ain"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M6 11h12v9H6v-9ZM8.5 11V8a3.5 3.5 0 0 1 7 0v3"/></svg><input id="su-pass" type="password" placeholder="Create password"></label>
+        <div id="su-err" style="display:none;color:var(--neg,#e5484d);font-size:.8rem;margin:-4px 2px 0"></div>
+        <button class="btn btn-brand" onclick="authStep('role')">Create account</button>
+        <div style="display:flex;align-items:center;gap:10px;color:var(--muted);font-size:.78rem;margin:2px 0"><span style="flex:1;height:1px;background:var(--line)"></span>Or continue with<span style="flex:1;height:1px;background:var(--line)"></span></div>
+        <div style="display:flex;gap:11px"><button class="btn btn-ghost" style="flex:1" onclick="authStep('role')">Google</button><button class="btn btn-ghost" style="flex:1" onclick="authStep('role')">Apple</button></div>
+      </div>
+    </div>
+    <div class="astep" id="a-role">
+      <div style="padding:30px 24px;display:flex;flex-direction:column;gap:12px;min-height:100%">
+        <h2 style="font-size:1.4rem;font-weight:900;margin:6px 0 2px;letter-spacing:-.02em">How will you use Hineed?</h2>
+        <p style="font-size:.86rem;color:var(--muted);margin:0 0 6px">You can switch or add a role anytime.</p>
+        <button class="rolecard on" onclick="enterApp('customer')"><span class="ic-b" style="background:var(--brand);color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4.5 20.5c0-3.6 3.4-5.8 7.5-5.8s7.5 2.2 7.5 5.8"/></svg></span><span style="flex:1"><span style="font-weight:800;display:block">I need things done</span><span style="font-size:.78rem;color:var(--muted)">Homes, services, products, food & more</span></span></button>
+        <button class="rolecard" onclick="enterApp('provider')"><span class="ic-b" style="background:var(--a1);color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M14.5 5.5a3.8 3.8 0 0 0 5 5L15 15l-2 5.5-3-3 5.5-2 4.5-4.5"/></svg></span><span style="flex:1"><span style="font-weight:800;display:block">I offer a service or sell</span><span style="font-size:.78rem;color:var(--muted)">Get matched to real requests</span></span></button>
+        <button class="rolecard" onclick="enterApp('business')"><span class="ic-b" style="background:var(--a5);color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M4 21V6l7-3 7 3v15M4 21h16M9 21v-4h6v4"/></svg></span><span style="flex:1"><span style="font-weight:800;display:block">I run a business</span><span style="font-size:.78rem;color:var(--muted)">Source, hire and operate</span></span></button>
+        <span style="flex:1"></span>
+        <button class="btn btn-brand" onclick="enterApp()">Continue</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="app">
+  <aside class="side">
+    <div class="brand"><img src="mark.png" alt="Hineed" width="34" height="34" style="flex:0 0 auto"><span class="wd">Hineed<i>.AI</i></span></div>
+    <nav class="nav" id="nav">
+      <button data-p="home" class="on"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M4 10.5 12 4l8 6.5V20h-5.5v-5.5h-5V20H4v-9.5Z"/></svg>Home</button>
+      <button id="nav-dash" onclick="openDash()" style="display:none"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M4 4h7v7H4zM13 4h7v4h-7zM13 11h7v9h-7zM4 14h7v6H4z"/></svg>Dashboard</button>
+      <button data-p="explore"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Explore</button>
+      <button data-p="market"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M5 8h14l-1 12H6L5 8ZM9 8V6a3 3 0 0 1 6 0v2"/></svg>Marketplace</button>
+      <button data-p="ineed"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M12 3.5 13.6 8 18 9.5 13.6 11 12 15.5 10.4 11 6 9.5 10.4 8 12 3.5Z"/></svg>Ask I Need</button>
+      <button data-p="pay"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M4 7.5h13a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H4v-12ZM16.5 13.5h1.5"/></svg>Hineed Pay</button>
+      <button data-p="social"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M12 20s-7.5-4.6-7.5-9.4A4.1 4.1 0 0 1 12 8a4.1 4.1 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20Z"/></svg>Hineed You</button>
+      <button onclick="socialOpen('chats')"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M4 5.5h16v10H9l-4 3.5v-3.5H4v-10Z"/></svg>Chats</button>
+    </nav>
+    <div class="sp"></div>
+    <button onclick="go('profile')" style="border:0;background:transparent;padding:0;text-align:left"><div class="me"><span class="av" style="width:38px;height:38px">M</span><div style="min-width:0"><div style="font-weight:700;font-size:.86rem">Miles Goodluck</div><div style="font-size:.74rem;color:var(--muted)" id="side-role">Port Harcourt · Customer</div></div></div></button>
+  </aside>
+
+  <div class="main">
+    <header class="top">
+      <button class="iconbtn" id="backBtn" onclick="goBack()" aria-label="Go back" title="Back" style="display:none"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <div class="mkm"><img src="mark.png" alt="Hineed" width="30" height="30"><span class="wd">Hineed<i>.AI</i></span></div>
+      <div class="srch"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input placeholder="Search Hineed, or ask I Need…"></div>
+      <div class="sp"></div>
+      <div class="theme"><button id="t-dark" class="on" onclick="setTheme('dark')">Dark</button><button id="t-light" onclick="setTheme('light')">Light</button><button id="t-bw" onclick="setTheme('bw')">B·W</button></div>
+      <button class="iconbtn" aria-label="All services" title="All services" onclick="go('explore')"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M4 4h7v7H4zM13 4h7v7h-7zM13 13h7v7h-7zM4 13h7v7H4z"/></svg></button>
+      <button class="iconbtn" aria-label="Scan a product" title="Scan a product" onclick="scanJump()"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M4 8V5.5a1.5 1.5 0 0 1 1.5-1.5H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16M4 12h16"/></svg></button>
+      <button class="iconbtn" aria-label="Notifications" onclick="socialOpen('notifs')"><span class="dot"></span><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M18 16V11a6 6 0 1 0-12 0v5l-1.5 2.5h15L18 16ZM10 20.5a2.2 2.2 0 0 0 4 0"/></svg></button>
+    </header>
+
+    <div class="content">
+
+      <!-- HOME -->
+      <section class="page on" id="p-home">
+        <div class="grid2">
+          <div>
+            <div class="hero"><img src="img/hero_scooter.jpg" alt="" class="hero-bg"><div class="hero-ov"></div><div class="k">HINEED AI · YOUR CONCIERGE</div><div class="q">What do you need<br>today, Miles?</div>
+              <div class="bar"><svg width="19" height="19" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input placeholder="A home, a plumber, lunch, a ride…"><button class="go" onclick="talk()" aria-label="Talk to Hineed AI" title="Talk to Hineed AI"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3"/></svg></button></div>
+              <div class="chips"><span>2-bed in GRA under ₦1.5m</span><span>Plumber in D-Line today</span><span>Jollof for 6 tonight</span></div>
+            </div>
+            <div class="sect-t"><h3>Explore the ecosystem</h3><a href="#" onclick="go('explore');return false">All</a></div>
+            <div class="svc">
+              <a href="#" onclick="go('realestate');return false"><span class="i" style="background:var(--a1)"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M3.5 10.5 12 4l8.5 6.5V20h-6v-5h-5v5h-6v-9.5Z"/></svg></span>Real Estate</a>
+              <a href="#" onclick="go('services');return false"><span class="i" style="background:var(--brand)"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M14.5 5.5a3.8 3.8 0 0 0 5 5L15 15l-2 5.5-3-3 5.5-2 4.5-4.5"/></svg></span>Services</a>
+              <a href="#" onclick="go('market');return false"><span class="i" style="background:var(--a2)"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M3 4h2l2.2 11h10l2-7H6"/><circle cx="9" cy="19" r="1.4"/><circle cx="17" cy="19" r="1.4"/></svg></span>Market</a>
+              <a href="#" onclick="go('food');return false"><span class="i" style="background:var(--a4)"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M4 11h16a8 8 0 0 1-16 0ZM12 11V6"/></svg></span>Food</a>
+              <a href="#" onclick="go('move');return false"><span class="i" style="background:var(--a6)"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M3 7h11v9H3zM14 10.5h4l3 3.2V16h-7Z"/></svg></span>Move</a>
+              <a href="#" onclick="go('jobs');return false"><span class="i" style="background:var(--a3)"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M3.5 8.5h17v11h-17zM9 8.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2.5"/></svg></span>Jobs</a>
+              <a href="#" onclick="go('pay');return false"><span class="i" style="background:#062D20"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M4 7.5h13a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H4v-12ZM16.5 13.5h1.5"/></svg></span>Pay</a>
+              <a href="#" onclick="go('social');return false"><span class="i" style="background:var(--a7)"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M12 20s-7.5-4.6-7.5-9.4A4.1 4.1 0 0 1 12 8a4.1 4.1 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20Z"/></svg></span>Hineed You</a>
+            </div>
+            <div class="sect-t"><h3>Trending near you</h3><a href="#" onclick="go('market');return false">See all</a></div>
+            <div class="vcards">
+              <a href="#" onclick="go('product');return false" class="vcard" style="background:var(--g-food)"><div class="ov"></div><span class="price">₦1.45m/yr</span><div class="b"><div class="nm">2-bed serviced flat</div><div class="ds">GRA Phase 2 · verified agent</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.9</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+              <a href="#" onclick="go('product');return false" class="vcard" style="background:var(--g-c)"><div class="ov"></div><span class="price">₦2,900</span><div class="b"><div class="nm">Jollof platter</div><div class="ds">Mama Nkem&rsquo;s · 25 min</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.8</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+              <a href="#" onclick="go('product');return false" class="vcard" style="background:var(--g-b)"><div class="ov"></div><span class="price">₦42,000</span><div class="b"><div class="nm">Rechargeable fan</div><div class="ds">KanoTech · pay on delivery</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.7</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+            </div>
+          </div>
+          <aside class="rail">
+            <div class="card" style="padding:18px"><div style="font-weight:800;margin-bottom:6px">Your requests</div>
+              <div class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M3.5 10.5 12 4l8.5 6.5V20h-6v-5h-5v5h-6v-9.5Z"/></svg></span><div style="flex:1;min-width:0"><div style="font-weight:600;font-size:.86rem">2-bed in GRA</div><div style="font-size:.76rem;color:var(--muted)">HN-4X2K9</div></div><span class="badge">Matched</span></div>
+              <div class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M3 4h2l2.2 11h10l2-7H6"/></svg></span><div style="flex:1;min-width:0"><div style="font-weight:600;font-size:.86rem">Marketplace order</div><div style="font-size:.76rem;color:var(--muted)">2 items</div></div><span class="badge">Paid</span></div>
+            </div>
+            <div class="card" style="padding:0;margin-top:18px;overflow:hidden"><div style="height:120px;background:var(--g-food)"></div><div style="padding:16px"><div style="font-weight:800">Launch offer · 0% fees</div><div style="font-size:.82rem;color:var(--muted);margin-top:3px">On your first booking in Port Harcourt.</div></div></div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- EXPLORE -->
+      <section class="page" id="p-explore">
+        <h1 class="h1">Explore Hineed</h1><p class="sub">One app for your whole life in the city. Tap a lane, or ask the concierge.</p>
+        <div class="list card" style="padding:4px 18px">
+          <a href="#" onclick="go('realestate');return false" class="row"><span class="ic-b" style="background:var(--a1);color:#fff"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M3.5 10.5 12 4l8.5 6.5V20h-6v-5h-5v5h-6v-9.5Z"/></svg></span><div style="flex:1"><div style="font-weight:700">Homes & Real Estate</div><div style="font-size:.8rem;color:var(--muted)">Sale · rent · land lease · hotels · event centres</div></div><span class="badge">Live</span></a>
+          <a href="#" onclick="go('ineed');return false" class="row"><span class="ic-b" style="background:var(--brand);color:#fff"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M14.5 5.5a3.8 3.8 0 0 0 5 5L15 15l-2 5.5-3-3 5.5-2 4.5-4.5"/></svg></span><div style="flex:1"><div style="font-weight:700">Services</div><div style="font-size:.8rem;color:var(--muted)">Cleaning · repairs · trades</div></div><span class="badge">Live</span></a>
+          <a href="#" onclick="go('market');return false" class="row"><span class="ic-b" style="background:var(--a2);color:#fff"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M3 4h2l2.2 11h10l2-7H6"/></svg></span><div style="flex:1"><div style="font-weight:700">Marketplace</div><div style="font-size:.8rem;color:var(--muted)">Groceries · pharmacy · vendors</div></div><span class="badge">Live</span></a>
+          <a href="#" onclick="go('social');return false" class="row"><span class="ic-b" style="background:var(--a7);color:#fff"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M12 20s-7.5-4.6-7.5-9.4A4.1 4.1 0 0 1 12 8a4.1 4.1 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20Z"/></svg></span><div style="flex:1"><div style="font-weight:700">Hineed You · Social</div><div style="font-size:.8rem;color:var(--muted)">Friends · networking · dating</div></div><span class="badge">Live</span></a>
+        </div>
+      </section>
+
+      <!-- MARKET -->
+      <section class="page" id="p-market">
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:16px">
+          <h1 class="h1" style="margin:0">Marketplace</h1><span style="flex:1"></span>
+          <div class="seg"><button class="on" id="seg-p" onclick="mkTab('products')">Products</button><button id="seg-s" onclick="mkTab('shops')">Shops</button></div>
+        </div>
+        <div class="sect-t" style="margin-top:0"><h3>Popular categories</h3></div>
+        <div class="pills" id="cats" style="margin-bottom:18px">
+          <button class="pill on" onclick="catSelect(this)">All</button><button class="pill" onclick="catSelect(this)">Meals & dishes</button><button class="pill" onclick="catSelect(this)">Hair & beauty</button><button class="pill" onclick="catSelect(this)">Groceries</button><button class="pill" onclick="catSelect(this)">Electronics</button><button class="pill" onclick="catSelect(this)">Pharmacy</button>
+        </div>
+        <div class="sub-v on" id="mk-products">
+          <div class="prods">
+            <div class="prod"><div class="img" style="background:var(--g-a)"></div><button class="add" aria-label="Add"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke-width:2.1"><path d="M12 5v14M5 12h14"/></svg></button><div class="bd"><div class="nm">Rechargeable fan</div><div class="pr">₦42,000</div></div></div>
+            <div class="prod"><div class="img" style="background:var(--g-c)"></div><button class="add" aria-label="Add"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke-width:2.1"><path d="M12 5v14M5 12h14"/></svg></button><div class="bd"><div class="nm">Jollof + plantain</div><div class="pr">₦2,900</div></div></div>
+            <div class="prod"><div class="img" style="background:var(--g-b)"></div><button class="add" aria-label="Add"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke-width:2.1"><path d="M12 5v14M5 12h14"/></svg></button><div class="bd"><div class="nm">Lace wig 24&quot;</div><div class="pr">₦35,000</div></div></div>
+            <div class="prod"><div class="img" style="background:var(--g-a)"></div><button class="add" aria-label="Add"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke-width:2.1"><path d="M12 5v14M5 12h14"/></svg></button><div class="bd"><div class="nm">Gas cooker</div><div class="pr">₦78,500</div></div></div>
+            <div class="prod"><div class="img" style="background:var(--g-c)"></div><button class="add" aria-label="Add"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke-width:2.1"><path d="M12 5v14M5 12h14"/></svg></button><div class="bd"><div class="nm">Paracetamol pack</div><div class="pr">₦1,200</div></div></div>
+            <div class="prod"><div class="img" style="background:var(--g-b)"></div><button class="add" aria-label="Add"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke-width:2.1"><path d="M12 5v14M5 12h14"/></svg></button><div class="bd"><div class="nm">Office chair</div><div class="pr">₦55,000</div></div></div>
+            <div class="prod"><div class="img" style="background:var(--g-a)"></div><button class="add" aria-label="Add"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke-width:2.1"><path d="M12 5v14M5 12h14"/></svg></button><div class="bd"><div class="nm">Blender set</div><div class="pr">₦24,900</div></div></div>
+            <div class="prod"><div class="img" style="background:var(--g-c)"></div><button class="add" aria-label="Add"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke-width:2.1"><path d="M12 5v14M5 12h14"/></svg></button><div class="bd"><div class="nm">Rice 50kg bag</div><div class="pr">₦82,000</div></div></div>
+          </div>
+          <div style="margin-top:24px"><button class="btn btn-brand" onclick="go('cart')"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:var(--on-brand)"><path d="M3 4h2l2.2 11h10l2-7H6"/><circle cx="9" cy="19" r="1.4"/><circle cx="17" cy="19" r="1.4"/></svg> View cart (2)</button></div>
+        </div>
+        <div class="sub-v" id="mk-shops">
+          <div class="list card" style="padding:4px 18px;max-width:760px">
+            <a href="#" onclick="go('product');return false" class="row"><span class="av" style="width:46px;height:46px;background:var(--a2)">K</span><div style="flex:1"><div style="font-weight:700">KanoTech Store</div><div style="font-size:.8rem;color:var(--muted)">Electronics · D-Line · ★ 4.8</div></div><span class="badge">Visit</span></a>
+            <a href="#" onclick="go('product');return false" class="row"><span class="av" style="width:46px;height:46px;background:var(--a4)">M</span><div style="flex:1"><div style="font-weight:700">Mama Nkem&rsquo;s Kitchen</div><div style="font-size:.8rem;color:var(--muted)">Meals & dishes · GRA · ★ 4.9</div></div><span class="badge">Visit</span></a>
+            <a href="#" onclick="go('product');return false" class="row"><span class="av" style="width:46px;height:46px;background:var(--a3)">G</span><div style="flex:1"><div style="font-weight:700">Glow Hair & Beauty</div><div style="font-size:.8rem;color:var(--muted)">Hair & beauty · Mile 1 · ★ 4.7</div></div><span class="badge">Visit</span></a>
+            <a href="#" onclick="go('product');return false" class="row"><span class="av" style="width:46px;height:46px;background:var(--a1)">H</span><div style="flex:1"><div style="font-weight:700">HomeMart</div><div style="font-size:.8rem;color:var(--muted)">Groceries · Trans-Amadi · ★ 4.6</div></div><span class="badge">Visit</span></a>
+            <a href="#" onclick="go('product');return false" class="row"><span class="av" style="width:46px;height:46px;background:var(--a6)">R</span><div style="flex:1"><div style="font-weight:700">RiverPharm</div><div style="font-size:.8rem;color:var(--muted)">Pharmacy · Rumuola · ★ 4.9</div></div><span class="badge">Visit</span></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- REAL ESTATE -->
+      <section class="page" id="p-realestate">
+        <h1 class="h1">Homes &amp; Real Estate</h1><p class="sub">Tell I Need what you&rsquo;re looking for, or pick a category — verified agents you can request, call and chat.</p>
+        <div style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;max-width:720px;margin-bottom:16px"><svg width="19" height="19" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input placeholder="e.g. 2-bed flat in GRA under ₦1.5m, or an event centre" style="border:0;outline:0;flex:1;font:inherit;background:transparent;color:var(--ink)"><button onclick="go('ineed')" aria-label="Ask" style="border:0;background:var(--brand);color:var(--on-brand);width:38px;height:38px;border-radius:11px;display:grid;place-items:center"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:var(--on-brand)"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3"/></svg></button></div>
+        <div class="pills" style="margin-bottom:18px"><button class="pill on" onclick="catSel(this)">All</button><button class="pill" onclick="catSel(this)">For sale</button><button class="pill" onclick="catSel(this)">Land leasing</button><button class="pill" onclick="catSel(this)">Home rental</button><button class="pill" onclick="catSel(this)">Hospitality</button><button class="pill" onclick="catSel(this)">Hotels</button><button class="pill" onclick="catSel(this)">Event centres</button></div>
+        <div class="vcards">
+          <a href="#" onclick="go('product');return false" class="vcard" style="background:var(--g-a)"><div class="ov"></div><span class="price">₦1.45m/yr</span><div class="b"><div class="nm">2-bed serviced flat</div><div class="ds">Home rental · GRA Phase 2</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.9 · verified agent</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+          <a href="#" onclick="go('product');return false" class="vcard" style="background:var(--g-c)"><div class="ov"></div><span class="price">₦120m</span><div class="b"><div class="nm">4-bed detached duplex</div><div class="ds">For sale · Peter Odili Rd</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.8</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+          <a href="#" onclick="go('product');return false" class="vcard" style="background:var(--g-b)"><div class="ov"></div><span class="price">₦2.5m/yr</span><div class="b"><div class="nm">2 plots of land</div><div class="ds">Land leasing · Eneka</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.7</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+          <a href="#" onclick="go('product');return false" class="vcard" style="background:var(--g-food)"><div class="ov"></div><span class="price">₦45,000/night</span><div class="b"><div class="nm">Luxury shortlet apartment</div><div class="ds">Hospitality · Old GRA</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.9</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+          <a href="#" onclick="go('product');return false" class="vcard" style="background:var(--g-c)"><div class="ov"></div><span class="price">₦85,000/night</span><div class="b"><div class="nm">Presidential hotel suite</div><div class="ds">Hotels · Trans-Amadi</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.8</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+          <a href="#" onclick="go('product');return false" class="vcard" style="background:var(--g-a)"><div class="ov"></div><span class="price">₦650,000/day</span><div class="b"><div class="nm">Grand event centre</div><div class="ds">Event centres · 800 capacity</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.9</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+        </div>
+      </section>
+
+      <!-- PRODUCT -->
+      <section class="page" id="p-product">
+        <div style="max-width:720px">
+          <div class="detail-hero" style="background:var(--g-food)"><div class="ov"></div>
+            <div class="fcard"><span class="th" style="background:var(--g-c)"></span><div style="flex:1"><div style="font-weight:800;font-size:1.1rem">2-bed serviced flat</div><div style="font-weight:800;color:#ffd9a0;margin-top:2px">₦1.45m<span style="font-size:.8rem;color:#eee;font-weight:500">/yr</span> · <span style="font-size:.8rem">★ 4.9</span></div><div style="font-size:.78rem;opacity:.85;margin-top:4px">PH Homes · verified agent</div></div></div>
+          </div>
+          <h2 style="font-size:1.35rem;font-weight:900;letter-spacing:-.02em;margin:18px 0 0">Masterful 2-bedroom in GRA</h2>
+          <div class="chips2"><span><svg width="14" height="14" viewBox="0 0 24 24" class="ic"><path d="M12 21s6.5-5.4 6.5-10a6.5 6.5 0 1 0-13 0c0 4.6 6.5 10 6.5 10Z"/><circle cx="12" cy="11" r="2.1"/></svg>GRA Phase 2</span><span>2 bed · 2 bath</span><span>Serviced</span></div>
+          <p style="color:var(--muted);line-height:1.65;margin:0;max-width:600px">Newly serviced two-bedroom apartment in a quiet, gated compound. 24/7 power, treated water, fitted kitchen and secure parking. <b style="color:var(--brand)">Show more</b></p>
+          <div class="buyrow"><button class="btn btn-ghost" onclick="socialOpen('room')"><svg width="16" height="16" viewBox="0 0 24 24" class="ic"><path d="M6.5 3.5 9 4l1 4-2 1.5a12 12 0 0 0 6.5 6.5L16 14l4 1 .5 2.5a2 2 0 0 1-2 2.3A16 16 0 0 1 4.2 5.5a2 2 0 0 1 2.3-2Z"/></svg> Call</button><button class="btn btn-ghost" onclick="socialOpen('room')"><svg width="16" height="16" viewBox="0 0 24 24" class="ic"><path d="M4 5.5h16v10H9l-4 3.5v-3.5H4v-10Z"/></svg> Chat</button><button class="btn btn-brand" style="flex:1" onclick="go('ineed')">Send request</button></div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section class="page" id="p-services">
+        <h1 class="h1">Services</h1><p class="sub">Tell I Need what you need, or pick a category — verified providers, booked and tracked. Every payment is escrow‑protected until you approve the job.</p>
+        <div style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;max-width:720px;margin-bottom:16px"><svg width="19" height="19" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input placeholder="Tell I Need what service you need…" style="border:0;outline:0;flex:1;font:inherit;background:transparent;color:var(--ink)"><button onclick="go('ineed')" aria-label="Ask" style="border:0;background:var(--brand);color:var(--on-brand);width:38px;height:38px;border-radius:11px;display:grid;place-items:center"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:var(--on-brand)"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3"/></svg></button></div>
+        <div class="catrow" id="svc-cats">
+          <button class="catcard on" data-cat="all" onclick="svcFilter('all',this)"><div class="thumb" style="background:var(--grad-brand)"><div class="ov"></div><svg width="26" height="26" viewBox="0 0 24 24" class="ic" style="stroke:#fff;position:relative;z-index:2"><path d="M4 4h7v7H4zM13 4h7v7h-7zM13 13h7v7h-7zM4 13h7v7H4z"/></svg></div><span>All</span></button>
+          <button class="catcard" data-cat="cleaner" onclick="svcFilter('cleaner',this)"><div class="thumb"><div class="ov"></div></div><span>Cleaners</span></button>
+          <button class="catcard" data-cat="painter" onclick="svcFilter('painter',this)"><div class="thumb"><div class="ov"></div></div><span>Painters</span></button>
+          <button class="catcard" data-cat="plumber" onclick="svcFilter('plumber',this)"><div class="thumb"><div class="ov"></div></div><span>Plumbers</span></button>
+          <button class="catcard" data-cat="electrician" onclick="svcFilter('electrician',this)"><div class="thumb"><div class="ov"></div></div><span>Electricians</span></button>
+          <button class="catcard" data-cat="laundry" onclick="svcFilter('laundry',this)"><div class="thumb"><div class="ov"></div></div><span>Laundry</span></button>
+          <button class="catcard" data-cat="carwash" onclick="svcFilter('carwash',this)"><div class="thumb"><div class="ov"></div></div><span>Car wash</span></button>
+          <button class="catcard" data-cat="waste" onclick="svcFilter('waste',this)"><div class="thumb"><div class="ov"></div></div><span>Waste mgmt</span></button>
+          <button class="catcard" data-cat="mechanic" onclick="svcFilter('mechanic',this)"><div class="thumb"><div class="ov"></div></div><span>Mechanics</span></button>
+        </div>
+        <div class="vcards" id="svc-grid">
+          <a href="#" onclick="openProvider('brightclean');return false" class="vcard" data-cat="cleaner" style="background:var(--g-a)"><div class="ov"></div><span class="price">from ₦15,000</span><div class="b"><div class="nm">Chidi Okoro</div><div class="ds">Cleaning · GRA Phase 2</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.9 · 320 jobs</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+          <a href="#" onclick="openProvider('sparklehome');return false" class="vcard" data-cat="cleaner" style="background:var(--g-c)"><div class="ov"></div><span class="price">from ₦12,000</span><div class="b"><div class="nm">Blessing Eze</div><div class="ds">Cleaning · D-Line</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.7 · 180 jobs</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+          <a href="#" onclick="openProvider('freshspace');return false" class="vcard" data-cat="cleaner" style="background:var(--g-b)"><div class="ov"></div><span class="price">from ₦18,000</span><div class="b"><div class="nm">Ifeoma Nwankwo</div><div class="ds">Cleaning · Rumuola</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.8 · 95 jobs</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+          <a href="#" onclick="openProvider('propaint');return false" class="vcard" data-cat="painter" style="background:var(--g-food)"><div class="ov"></div><span class="price">from ₦40,000</span><div class="b"><div class="nm">Emeka Obi</div><div class="ds">Painter · D-Line</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.8 · 140 jobs</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+          <a href="#" onclick="openProvider('colorcraft');return false" class="vcard" data-cat="painter" style="background:var(--g-a)"><div class="ov"></div><span class="price">from ₦35,000</span><div class="b"><div class="nm">Samuel Ade</div><div class="ds">Painter · Trans-Amadi</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.6 · 70 jobs</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+          <a href="#" onclick="openProvider('fixit');return false" class="vcard" data-cat="plumber" style="background:var(--g-c)"><div class="ov"></div><span class="price">from ₦8,000</span><div class="b"><div class="nm">Tochukwu Daniel</div><div class="ds">Plumber · Rumuola</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.7 · 210 jobs</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+          <a href="#" onclick="openProvider('aquaflow');return false" class="vcard" data-cat="plumber" style="background:var(--g-b)"><div class="ov"></div><span class="price">from ₦10,000</span><div class="b"><div class="nm">Henry Okon</div><div class="ds">Plumber · Woji</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.8 · 130 jobs</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+          <a href="#" onclick="openProvider('sparkelec');return false" class="vcard" data-cat="electrician" style="background:var(--g-food)"><div class="ov"></div><span class="price">from ₦9,000</span><div class="b"><div class="nm">Uche Bassey</div><div class="ds">Electrician · GRA</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.9 · 260 jobs</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+          <a href="#" onclick="openProvider('powerpro');return false" class="vcard" data-cat="electrician" style="background:var(--g-a)"><div class="ov"></div><span class="price">from ₦12,000</span><div class="b"><div class="nm">David Johnson</div><div class="ds">Electrician · Eliozu</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.7 · 88 jobs</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+          <a href="#" onclick="openProvider('freshlaundry');return false" class="vcard" data-cat="laundry" style="background:var(--g-c)"><div class="ov"></div><span class="price">from ₦3,500</span><div class="b"><div class="nm">Grace Amadi</div><div class="ds">Laundry · Mile 1</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.6 · 150 jobs</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+          <a href="#" onclick="openProvider('cleanpress');return false" class="vcard" data-cat="laundry" style="background:var(--g-b)"><div class="ov"></div><span class="price">from ₦4,000</span><div class="b"><div class="nm">Rita Peter</div><div class="ds">Laundry · GRA</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.8 · 110 jobs</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+          <a href="#" onclick="openProvider('shiny');return false" class="vcard" data-cat="carwash" style="background:var(--g-food)"><div class="ov"></div><span class="price">from ₦2,500</span><div class="b"><div class="nm">Kelvin Umeh</div><div class="ds">Car wash · Trans-Amadi</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.8 · 300 jobs</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+          <a href="#" onclick="openProvider('autoglow');return false" class="vcard" data-cat="carwash" style="background:var(--g-a)"><div class="ov"></div><span class="price">from ₦3,000</span><div class="b"><div class="nm">Joseph Ani</div><div class="ds">Car wash · Aba Rd</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.6 · 120 jobs</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+          <a href="#" onclick="openProvider('greenbin');return false" class="vcard" data-cat="waste" style="background:var(--g-c)"><div class="ov"></div><span class="price">from ₦5,000/mo</span><div class="b"><div class="nm">Victor Eke</div><div class="ds">Waste mgmt · PH City</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.7 · 90 jobs</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+          <a href="#" onclick="openProvider('autofix');return false" class="vcard" data-cat="mechanic" style="background:var(--g-b)"><div class="ov"></div><span class="price">from ₦7,000</span><div class="b"><div class="nm">Musa Ibrahim</div><div class="ds">Mechanic · Rumuokoro</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.8 · 200 jobs</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+          <a href="#" onclick="openProvider('motorcare');return false" class="vcard" data-cat="mechanic" style="background:var(--g-food)"><div class="ov"></div><span class="price">from ₦6,000</span><div class="b"><div class="nm">Sunday Effiong</div><div class="ds">Mechanic · Aba Rd</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.7 · 140 jobs</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+        </div>
+      </section>
+
+      <!-- PROVIDER PROFILE -->
+      <section class="page" id="p-provider">
+        <div style="max-width:720px">
+          <div class="detail-hero" style="height:210px;background:var(--g-a)"><div class="ov"></div><button class="iconbtn" style="position:absolute;top:16px;left:16px" onclick="go('services')" aria-label="Back"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M15 6l-6 6 6 6"/></svg></button></div>
+          <div style="margin-top:-42px;padding:0 6px"><span class="av" id="prov-avatar" style="width:84px;height:84px;font-size:1.6rem;border:4px solid var(--surface)">B</span></div>
+          <div style="padding:12px 6px 0"><div style="display:flex;align-items:center;gap:6px;font-weight:900;font-size:1.3rem;letter-spacing:-.02em"><span id="prov-name">Chidi Okoro</span> <svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:var(--brand);stroke-width:2.4"><path d="M4 12.5 9 17.5 20 6.5"/></svg></div><div id="prov-meta" style="font-size:.84rem;color:var(--muted);margin-top:2px">Cleaning · GRA Phase 2 · ★ 4.9 (320 reviews)</div></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin:12px 6px 0"><span class="badge">✓ Verified</span><span class="badge">⚡ 4-hr response</span><span class="badge">🛡 Escrow protected</span></div>
+          <p id="prov-desc" style="color:var(--muted);line-height:1.6;margin:12px 6px 0">Professional, background-checked and insured. Serving Port Harcourt.</p>
+          <div class="sect-t"><h3>Charges</h3><span style="font-size:.76rem;color:var(--muted)">Paid into escrow</span></div>
+          <div class="list card" id="prov-charges" style="padding:4px 18px;max-width:640px"></div>
+          <div class="sect-t"><h3>Previous work</h3></div>
+          <div class="pg" style="padding:0 6px"><div style="background:var(--g-a)"></div><div style="background:var(--g-c)"></div><div style="background:var(--g-b)"></div><div style="background:var(--g-food)"></div><div style="background:var(--g-c)"></div><div style="background:var(--g-a)"></div></div>
+          <div class="sect-t"><h3>Reviews</h3><span id="prov-revcount" style="font-size:.76rem;color:var(--muted)">320 reviews</span></div>
+          <div class="list card" id="prov-reviews" style="padding:4px 18px;max-width:640px"></div>
+          <div class="buyrow"><button class="btn btn-ghost" onclick="socialOpen('room')"><svg width="17" height="17" viewBox="0 0 24 24" class="ic"><path d="M6.5 3.5 9 4l1 4-2 1.5a12 12 0 0 0 6.5 6.5L16 14l4 1 .5 2.5a2 2 0 0 1-2 2.3A16 16 0 0 1 4.2 5.5a2 2 0 0 1 2.3-2Z"/></svg> Call</button><button class="btn btn-ghost" onclick="socialOpen('room')"><svg width="17" height="17" viewBox="0 0 24 24" class="ic"><path d="M4 5.5h16v10H9l-4 3.5v-3.5H4v-10Z"/></svg> Chat</button><button class="btn btn-brand" style="flex:1" onclick="go('ineed')">Request a service</button></div>
+          <div style="display:flex;align-items:center;gap:9px;margin-top:14px;max-width:520px;background:var(--soft);border-radius:12px;padding:12px 14px"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:var(--brand);flex:0 0 auto"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.7-7 9.5-4.1-1.8-7-5.3-7-9.5V6l7-3Z"/><path d="M9.2 12.2 11 14l4-4.2"/></svg><span style="font-size:.78rem;color:var(--muted);line-height:1.45"><b style="color:var(--ink)">Escrow protected.</b> Your payment is held by Hineed and only released to this provider after you approve the completed job.</span></div>
+        </div>
+      </section>
+
+      <!-- FOOD -->
+      <section class="page" id="p-food">
+        <h1 class="h1">Food</h1><p class="sub">Tell I Need what you&rsquo;re craving, or browse dishes from restaurants near you.</p>
+        <div style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;max-width:720px;margin-bottom:16px"><svg width="19" height="19" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input placeholder="Tell I Need what you want to eat…" style="border:0;outline:0;flex:1;font:inherit;background:transparent;color:var(--ink)"><button onclick="go('ineed')" aria-label="Ask" style="border:0;background:var(--brand);color:var(--on-brand);width:38px;height:38px;border-radius:11px;display:grid;place-items:center"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:var(--on-brand)"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3"/></svg></button></div>
+        <div class="pills" style="margin-bottom:18px"><button class="pill on" onclick="catSel(this)">All</button><button class="pill" onclick="catSel(this)">Rice</button><button class="pill" onclick="catSel(this)">Swallow</button><button class="pill" onclick="catSel(this)">Grills</button><button class="pill" onclick="catSel(this)">Fast food</button><button class="pill" onclick="catSel(this)">Snacks</button><button class="pill" onclick="catSel(this)">Drinks</button></div>
+        <div class="vcards">
+          <a href="#" onclick="go('cart');return false" class="vcard" style="background:var(--g-c)"><div class="ov"></div><span class="price">₦2,900</span><div class="b"><div class="nm">Jollof rice platter</div><div class="ds">Mama Nkem&rsquo;s · 25 min</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.8</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke-width:2"><path d="M12 5v14M5 12h14"/></svg></span></a>
+          <a href="#" onclick="go('cart');return false" class="vcard" style="background:var(--g-a)"><div class="ov"></div><span class="price">₦2,500</span><div class="b"><div class="nm">Fried rice &amp; chicken</div><div class="ds">GRA Bites · 30 min</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.7</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke-width:2"><path d="M12 5v14M5 12h14"/></svg></span></a>
+          <a href="#" onclick="go('cart');return false" class="vcard" style="background:var(--g-food)"><div class="ov"></div><span class="price">₦3,200</span><div class="b"><div class="nm">Pounded yam &amp; egusi</div><div class="ds">Taste of Home · 35 min</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.9</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke-width:2"><path d="M12 5v14M5 12h14"/></svg></span></a>
+          <a href="#" onclick="go('cart');return false" class="vcard" style="background:var(--g-b)"><div class="ov"></div><span class="price">₦1,500</span><div class="b"><div class="nm">Suya platter</div><div class="ds">Mallam&rsquo;s Grill · 20 min</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.8</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke-width:2"><path d="M12 5v14M5 12h14"/></svg></span></a>
+          <a href="#" onclick="go('cart');return false" class="vcard" style="background:var(--g-c)"><div class="ov"></div><span class="price">₦2,000</span><div class="b"><div class="nm">Chicken shawarma</div><div class="ds">Wrap It · 15 min</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.6</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke-width:2"><path d="M12 5v14M5 12h14"/></svg></span></a>
+          <a href="#" onclick="go('cart');return false" class="vcard" style="background:var(--g-a)"><div class="ov"></div><span class="price">₦1,200</span><div class="b"><div class="nm">Fruit smoothie</div><div class="ds">Fresh Blend · 15 min</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.7</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke-width:2"><path d="M12 5v14M5 12h14"/></svg></span></a>
+        </div>
+      </section>
+
+      <!-- MOVE -->
+      <section class="page" id="p-move">
+        <h1 class="h1">Move</h1><p class="sub">Rides, dispatch, delivery, freight and relocation — ask I Need or pick a category.</p>
+        <div style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;max-width:720px;margin-bottom:18px"><svg width="19" height="19" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input placeholder="Where to, or what are you sending?" style="border:0;outline:0;flex:1;font:inherit;background:transparent;color:var(--ink)"><button onclick="go('ineed')" aria-label="Ask" style="border:0;background:var(--brand);color:var(--on-brand);width:38px;height:38px;border-radius:11px;display:grid;place-items:center"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:var(--on-brand)"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3"/></svg></button></div>
+        <div class="sub-v on" id="mv-main">
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:720px">
+          <button class="card" style="padding:18px;text-align:left" onclick="go('provider')"><span class="ic-b" style="background:var(--a5);color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M3.5 16.5v-4l2-4.6h13l2 4.6v4h-17ZM6 16.5V19h2.5v-2.5M15.5 16.5V19H18v-2.5"/></svg></span><div style="font-weight:800;margin-top:10px">Ride</div><div style="font-size:.8rem;color:var(--muted)">Car or bike, anywhere in PH</div></button>
+          <button class="card" style="padding:18px;text-align:left" onclick="go('provider')"><span class="ic-b" style="background:var(--a2);color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M10.5 20.5 12 15l7.5-1.5 1.5-3L13 12 9.5 5.5 7 6l2 6.5-4 1L3.5 12 2 14.5l6.5 1 2 5Z"/></svg></span><div style="font-weight:800;margin-top:10px">Dispatch rider</div><div style="font-size:.8rem;color:var(--muted)">Same-day pickup &amp; drop</div></button>
+          <button class="card" style="padding:18px;text-align:left" onclick="go('provider')"><span class="ic-b" style="background:var(--a6);color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M3 7h11v9H3zM14 10.5h4l3 3.2V16h-7Z"/><circle cx="7" cy="18" r="1.5"/><circle cx="17.5" cy="18" r="1.5"/></svg></span><div style="font-weight:800;margin-top:10px">Delivery &amp; freight</div><div style="font-size:.8rem;color:var(--muted)">Parcels, cargo, waybill</div></button>
+          <button class="card" style="padding:18px;text-align:left" onclick="go('provider')"><span class="ic-b" style="background:var(--a1);color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M3 10h13l3 3v4H3V10ZM6 20a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM16.5 20a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"/></svg></span><div style="font-weight:800;margin-top:10px">Moving / relocation</div><div style="font-size:.8rem;color:var(--muted)">Home &amp; office moves</div></button>
+          <button class="card" style="padding:18px;text-align:left" onclick="moveView('flights')"><span class="ic-b" style="background:var(--a3);color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M10.5 13.5 3 11.2l1.1-2 5.2.7 3.1-4.9 2.2.5-1.6 5.2 4.7 1.3-.4 2.1L13.6 15l-1.7 4.3-1.8-.5.4-5.3Z"/></svg></span><div style="font-weight:800;margin-top:10px">Flights</div><div style="font-size:.8rem;color:var(--muted)">Search, book &amp; pay for flights</div></button>
+        </div>
+        </div>
+        <div class="sub-v" id="mv-flights">
+          <div class="s-top"><button class="iconbtn" onclick="moveView('main')" aria-label="Back"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M15 6l-6 6 6 6"/></svg></button><h2 style="font-size:1.25rem;font-weight:900;margin:0">Book a flight</h2></div>
+          <div class="card" style="padding:20px;max-width:720px">
+            <div class="seg" style="margin-bottom:14px"><button class="on" onclick="catSel(this)">Round trip</button><button onclick="catSel(this)">One way</button></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <label class="ain"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M10.5 13.5 3 11.2l1.1-2 5.2.7 3.1-4.9 2.2.5-1.6 5.2 4.7 1.3-.4 2.1L13.6 15l-1.7 4.3-1.8-.5.4-5.3Z"/></svg><input value="Port Harcourt (PHC)"></label>
+              <label class="ain"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M13.5 10.5 21 12.8l-1.1 2-5.2-.7-3.1 4.9-2.2-.5 1.6-5.2L6.3 12l.4-2.1L10.4 9l1.7-4.3 1.8.5-.4 5.3Z"/></svg><input value="Lagos (LOS)"></label>
+              <label class="ain"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M5 5.5h14v14H5zM5 9h14M9 3.5v4M15 3.5v4"/></svg><input value="Depart · Tue 28 Oct"></label>
+              <label class="ain"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M5 5.5h14v14H5zM5 9h14M9 3.5v4M15 3.5v4"/></svg><input value="Return · Sun 2 Nov"></label>
+            </div>
+            <label class="ain" style="margin-top:12px"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4.5 20.5c0-3.6 3.4-5.8 7.5-5.8s7.5 2.2 7.5 5.8"/></svg><input value="1 passenger · Economy"></label>
+            <button class="btn btn-brand" style="width:100%;margin-top:16px" onclick="moveView('flights')">Search flights</button>
+          </div>
+          <div class="sect-t"><h3>Available flights · PHC → LOS</h3></div>
+          <div class="list card" style="padding:4px 18px;max-width:720px">
+            <div class="row"><span class="ic-b" style="background:var(--a3);color:#fff;font-weight:800;font-size:.72rem">AP</span><div style="flex:1"><div style="font-weight:700">Air Peace · 07:10 → 08:25</div><div style="font-size:.78rem;color:var(--muted)">PHC → LOS · 1h 15m · Non-stop</div></div><div style="text-align:right"><div style="font-weight:800;color:var(--pos)">₦74,500</div><button class="btn btn-brand" style="padding:7px 15px;margin-top:5px" onclick="go('pay')">Book</button></div></div>
+            <div class="row"><span class="ic-b" style="background:var(--a5);color:#fff;font-weight:800;font-size:.72rem">IA</span><div style="flex:1"><div style="font-weight:700">Ibom Air · 10:40 → 11:55</div><div style="font-size:.78rem;color:var(--muted)">PHC → LOS · 1h 15m · Non-stop</div></div><div style="text-align:right"><div style="font-weight:800;color:var(--pos)">₦81,200</div><button class="btn btn-brand" style="padding:7px 15px;margin-top:5px" onclick="go('pay')">Book</button></div></div>
+            <div class="row"><span class="ic-b" style="background:var(--a2);color:#fff;font-weight:800;font-size:.72rem">DA</span><div style="flex:1"><div style="font-weight:700">Dana Air · 14:20 → 15:40</div><div style="font-size:.78rem;color:var(--muted)">PHC → LOS · 1h 20m · Non-stop</div></div><div style="text-align:right"><div style="font-weight:800;color:var(--pos)">₦69,900</div><button class="btn btn-brand" style="padding:7px 15px;margin-top:5px" onclick="go('pay')">Book</button></div></div>
+            <div class="row"><span class="ic-b" style="background:var(--a1);color:#fff;font-weight:800;font-size:.72rem">AK</span><div style="flex:1"><div style="font-weight:700">Arik Air · 18:05 → 19:25</div><div style="font-size:.78rem;color:var(--muted)">PHC → LOS · 1h 20m · Non-stop</div></div><div style="text-align:right"><div style="font-weight:800;color:var(--pos)">₦77,300</div><button class="btn btn-brand" style="padding:7px 15px;margin-top:5px" onclick="go('pay')">Book</button></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- JOBS -->
+      <section class="page" id="p-jobs">
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:14px"><h1 class="h1" style="margin:0">Jobs &amp; Talent</h1><span style="flex:1"></span><div class="seg"><button class="on" id="jb-find-t" onclick="jobsTab('find')">Find a job</button><button id="jb-hire-t" onclick="jobsTab('hire')">Hire talent</button></div></div>
+        <div class="sub-v on" id="jb-find">
+          <div style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;max-width:720px;margin-bottom:16px"><svg width="19" height="19" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input placeholder="Tell I Need the role, pay &amp; location you want…" style="border:0;outline:0;flex:1;font:inherit;background:transparent;color:var(--ink)"><button onclick="go('ineed')" aria-label="Ask" style="border:0;background:var(--brand);color:var(--on-brand);width:38px;height:38px;border-radius:11px;display:grid;place-items:center"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:var(--on-brand)"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3"/></svg></button></div>
+          <div class="pills" style="margin-bottom:16px"><button class="pill on" onclick="catSel(this)">All</button><button class="pill" onclick="catSel(this)">Tech</button><button class="pill" onclick="catSel(this)">Sales</button><button class="pill" onclick="catSel(this)">Admin</button><button class="pill" onclick="catSel(this)">Trades</button><button class="pill" onclick="catSel(this)">Full-time</button><button class="pill" onclick="catSel(this)">Gig</button></div>
+          <div class="list card" style="padding:4px 18px;max-width:760px">
+            <div class="row"><span class="ic-b" style="background:var(--a3);color:#fff"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M8 18l-4-6 4-6M16 6l4 6-4 6"/></svg></span><div style="flex:1"><div style="font-weight:700">Frontend Developer</div><div style="font-size:.8rem;color:var(--muted)">Flux PH · Full-time · ₦450k–₦650k/mo</div></div><button class="btn btn-brand" style="padding:9px 16px" onclick="socialOpen('room')">Apply</button></div>
+            <div class="row"><span class="ic-b" style="background:var(--a2);color:#fff"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M4 16l6-6 4 4 6-6"/></svg></span><div style="flex:1"><div style="font-weight:700">Sales Representative</div><div style="font-size:.8rem;color:var(--muted)">Naija Retail · Full-time · ₦180k + comm.</div></div><button class="btn btn-brand" style="padding:9px 16px" onclick="socialOpen('room')">Apply</button></div>
+            <div class="row"><span class="ic-b" style="background:var(--a5);color:#fff"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M3.5 8.5h17v11h-17zM9 8.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2.5"/></svg></span><div style="flex:1"><div style="font-weight:700">Admin Officer</div><div style="font-size:.8rem;color:var(--muted)">GRA Properties · Full-time · ₦200k/mo</div></div><button class="btn btn-brand" style="padding:9px 16px" onclick="socialOpen('room')">Apply</button></div>
+            <div class="row"><span class="ic-b" style="background:var(--a1);color:#fff"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M14.5 5.5a3.8 3.8 0 0 0 5 5L15 15l-2 5.5-3-3 5.5-2 4.5-4.5"/></svg></span><div style="flex:1"><div style="font-weight:700">Electrician (gig)</div><div style="font-size:.8rem;color:var(--muted)">BuildRight · Contract · ₦40k/job</div></div><button class="btn btn-brand" style="padding:9px 16px" onclick="socialOpen('room')">Apply</button></div>
+          </div>
+        </div>
+        <div class="sub-v" id="jb-hire">
+          <div style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;max-width:720px;margin-bottom:16px"><svg width="19" height="19" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input placeholder="Describe the talent, skills, certs &amp; budget…" style="border:0;outline:0;flex:1;font:inherit;background:transparent;color:var(--ink)"><button onclick="go('ineed')" aria-label="Ask" style="border:0;background:var(--brand);color:var(--on-brand);width:38px;height:38px;border-radius:11px;display:grid;place-items:center"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:var(--on-brand)"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3"/></svg></button></div>
+          <div class="people">
+            <div class="pcard"><div class="cov"></div><div class="pa av"></div><div style="padding:8px 12px 14px"><div style="font-weight:800">Chidi N.</div><div style="font-size:.76rem;color:var(--muted)">Frontend Dev · 4 yrs</div><div style="font-size:.72rem;color:var(--brand);font-weight:700;margin-top:3px">₦500k/mo</div><button class="btn btn-brand" style="width:100%;margin-top:10px;padding:9px" onclick="socialOpen('room')">Reach out</button></div></div>
+            <div class="pcard"><div class="cov" style="background:var(--g-b)"></div><div class="pa av" style="background:var(--a4)"></div><div style="padding:8px 12px 14px"><div style="font-weight:800">Zainab A.</div><div style="font-size:.76rem;color:var(--muted)">Sales Lead · 6 yrs</div><div style="font-size:.72rem;color:var(--brand);font-weight:700;margin-top:3px">₦350k/mo</div><button class="btn btn-ghost" style="width:100%;margin-top:10px;padding:9px" onclick="socialOpen('room')">Reach out</button></div></div>
+            <div class="pcard"><div class="cov" style="background:var(--g-c)"></div><div class="pa av" style="background:var(--a1)"></div><div style="padding:8px 12px 14px"><div style="font-weight:800">Tobi E.</div><div style="font-size:.76rem;color:var(--muted)">Electrician · certified</div><div style="font-size:.72rem;color:var(--brand);font-weight:700;margin-top:3px">₦40k/job</div><button class="btn btn-ghost" style="width:100%;margin-top:10px;padding:9px" onclick="socialOpen('room')">Reach out</button></div></div>
+            <div class="pcard"><div class="cov" style="background:var(--g-food)"></div><div class="pa av" style="background:var(--a5)"></div><div style="padding:8px 12px 14px"><div style="font-weight:800">Ada O.</div><div style="font-size:.76rem;color:var(--muted)">Accountant · ICAN</div><div style="font-size:.72rem;color:var(--brand);font-weight:700;margin-top:3px">₦420k/mo</div><button class="btn btn-ghost" style="width:100%;margin-top:10px;padding:9px" onclick="socialOpen('room')">Reach out</button></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROLE DASHBOARD -->
+      <section class="page" id="p-dash">
+        <!-- Customer -->
+        <div class="sub-v on" id="dash-customer">
+          <h1 class="h1">Your dashboard</h1><p class="sub">Welcome back, Miles — everything you need, at a glance.</p>
+          <div class="stats">
+            <div class="stat"><div class="l">Wallet balance</div><div class="n">₦0.00</div><div class="d up">Tap to fund</div></div>
+            <div class="stat"><div class="l">Open requests</div><div class="n">3</div><div class="d up">1 matched</div></div>
+            <div class="stat"><div class="l">Orders</div><div class="n">2</div><div class="d">1 in transit</div></div>
+            <div class="stat"><div class="l">Saved items</div><div class="n">7</div><div class="d">across 4 shops</div></div>
+          </div>
+          <div class="grid2" style="margin-top:22px">
+            <div>
+              <div class="sect-t" style="margin-top:4px"><h3>Your requests</h3><a href="#" onclick="go('ineed');return false">New request</a></div>
+              <div class="list card" style="padding:4px 18px">
+                <div class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M3.5 10.5 12 4l8.5 6.5V20h-6v-5h-5v5h-6v-9.5Z"/></svg></span><div style="flex:1"><div style="font-weight:700;font-size:.9rem">2-bed flat in GRA</div><div style="font-size:.76rem;color:var(--muted)">HN-4X2K9 · Homes</div></div><span class="badge">Matched</span></div>
+                <div class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M14.5 5.5a3.8 3.8 0 0 0 5 5L15 15l-2 5.5-3-3 5.5-2 4.5-4.5"/></svg></span><div style="flex:1"><div style="font-weight:700;font-size:.9rem">Plumber in D-Line</div><div style="font-size:.76rem;color:var(--muted)">HN-7T1P2 · Services</div></div><span class="badge" style="background:var(--soft);color:var(--star)">Finding</span></div>
+                <div class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M4 11h16a8 8 0 0 1-16 0ZM12 11V6"/></svg></span><div style="flex:1"><div style="font-weight:700;font-size:.9rem">Jollof for 6</div><div style="font-size:.76rem;color:var(--muted)">HN-9K3L0 · Food</div></div><span class="badge">Delivered</span></div>
+              </div>
+            </div>
+            <div>
+              <div class="card" style="padding:18px"><div style="font-weight:800;margin-bottom:12px">Quick actions</div>
+                <button class="btn btn-brand" style="width:100%;margin-bottom:10px" onclick="talk()">Ask I Need</button>
+                <button class="btn btn-ghost" style="width:100%;margin-bottom:10px" onclick="go('pay')">Fund wallet</button>
+                <button class="btn btn-ghost" style="width:100%" onclick="go('market')">Open marketplace</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Provider -->
+        <div class="sub-v" id="dash-provider">
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h1 class="h1" style="margin:0">Provider dashboard</h1><span class="badge">Chidi Okoro</span></div>
+          <p class="sub">Your requests, jobs and earnings in one place.</p>
+          <div class="stats">
+            <div class="stat"><div class="l">Earnings (30d)</div><div class="n">₦486,500</div><div class="d up">▲ 12% vs last month</div></div>
+            <div class="stat"><div class="l">Jobs done</div><div class="n">128</div><div class="d up">4 this week</div></div>
+            <div class="stat"><div class="l">Rating</div><div class="n">4.9</div><div class="d">320 reviews</div></div>
+            <div class="stat"><div class="l">Active requests</div><div class="n">4</div><div class="d up">2 new</div></div>
+            <div class="stat"><div class="l"><svg width="13" height="13" viewBox="0 0 24 24" class="ic" style="stroke:var(--brand)"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.7-7 9.5-4.1-1.8-7-5.3-7-9.5V6l7-3Z"/></svg> In escrow</div><div class="n">₦85,000</div><div class="d">released on customer approval</div></div>
+          </div>
+          <div class="grid2" style="margin-top:22px">
+            <div>
+              <div class="card" style="padding:20px"><div style="display:flex;justify-content:space-between;align-items:center"><div style="font-weight:800">Earnings · last 7 days</div><span class="badge">₦</span></div>
+                <div class="bars"><div class="b" style="height:42%"><span>Mon</span></div><div class="b" style="height:65%"><span>Tue</span></div><div class="b" style="height:50%"><span>Wed</span></div><div class="b" style="height:80%"><span>Thu</span></div><div class="b" style="height:58%"><span>Fri</span></div><div class="b" style="height:95%"><span>Sat</span></div><div class="b" style="height:72%"><span>Sun</span></div></div>
+              </div>
+              <div class="sect-t"><h3>Incoming requests</h3></div>
+              <div class="list card" style="padding:4px 18px">
+                <div class="row"><span class="ic-b" style="background:var(--a1);color:#fff"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M4 12.5 9 17.5 20 6.5"/></svg></span><div style="flex:1"><div style="font-weight:700;font-size:.9rem">Deep clean · 3-bed flat</div><div style="font-size:.76rem;color:var(--muted)">GRA Phase 2 · Sat 10am · ₦25,000</div></div><div style="display:flex;gap:6px"><button class="btn btn-brand" style="padding:7px 13px" onclick="socialOpen('room')">Accept</button><button class="btn btn-ghost" style="padding:7px 13px" onclick="socialOpen('room')">Chat</button></div></div>
+                <div class="row"><span class="ic-b" style="background:var(--a5);color:#fff"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M4 12.5 9 17.5 20 6.5"/></svg></span><div style="flex:1"><div style="font-weight:700;font-size:.9rem">Office cleaning · weekly</div><div style="font-size:.76rem;color:var(--muted)">Trans-Amadi · recurring · ₦40,000/mo</div></div><div style="display:flex;gap:6px"><button class="btn btn-brand" style="padding:7px 13px" onclick="socialOpen('room')">Accept</button><button class="btn btn-ghost" style="padding:7px 13px" onclick="socialOpen('room')">Chat</button></div></div>
+                <div class="row"><span class="ic-b" style="background:var(--a2);color:#fff"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M4 12.5 9 17.5 20 6.5"/></svg></span><div style="flex:1"><div style="font-weight:700;font-size:.9rem">Move-out clean</div><div style="font-size:.76rem;color:var(--muted)">Rumuola · Fri 2pm · ₦30,000</div></div><div style="display:flex;gap:6px"><button class="btn btn-brand" style="padding:7px 13px" onclick="socialOpen('room')">Accept</button><button class="btn btn-ghost" style="padding:7px 13px" onclick="socialOpen('room')">Chat</button></div></div>
+              </div>
+            </div>
+            <div>
+              <div class="card" style="padding:18px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><div style="font-weight:800">Your listings</div><button class="mini" style="border:0;background:var(--soft);color:var(--brand);font-weight:700;padding:6px 12px;border-radius:999px;cursor:pointer">+ Add</button></div>
+                <div class="list"><div class="row"><div style="flex:1;font-weight:600;font-size:.88rem">Home deep clean</div><span style="color:var(--pos);font-weight:700;font-size:.84rem">₦25,000</span></div><div class="row"><div style="flex:1;font-weight:600;font-size:.88rem">Office cleaning</div><span style="color:var(--pos);font-weight:700;font-size:.84rem">from ₦40k/mo</span></div><div class="row"><div style="flex:1;font-weight:600;font-size:.88rem">Post-construction</div><span style="color:var(--pos);font-weight:700;font-size:.84rem">Quote</span></div></div>
+              </div>
+              <div class="card" style="padding:18px;margin-top:16px"><div style="font-weight:800">Next payout</div><div style="font-size:1.6rem;font-weight:900;margin:6px 0">₦112,000</div><div style="font-size:.78rem;color:var(--muted)">Fri 25 Oct · to GTBank ****4821</div><button class="btn btn-ghost" style="width:100%;margin-top:12px" onclick="go('pay')">View wallet</button></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Business -->
+        <div class="sub-v" id="dash-business">
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h1 class="h1" style="margin:0">Business dashboard</h1><span class="badge">KanoTech Store</span></div>
+          <p class="sub">Your store, orders, customers and team.</p>
+          <div class="stats">
+            <div class="stat"><div class="l">Revenue (30d)</div><div class="n">₦3.24m</div><div class="d up">▲ 18%</div></div>
+            <div class="stat"><div class="l">Orders</div><div class="n">342</div><div class="d up">26 today</div></div>
+            <div class="stat"><div class="l">Customers</div><div class="n">1,208</div><div class="d up">+94 this week</div></div>
+            <div class="stat"><div class="l">Products</div><div class="n">56</div><div class="d">4 low stock</div></div>
+          </div>
+          <div class="grid2" style="margin-top:22px">
+            <div>
+              <div class="card" style="padding:20px"><div style="display:flex;justify-content:space-between;align-items:center"><div style="font-weight:800">Revenue · last 7 days</div><span class="badge">₦</span></div>
+                <div class="bars"><div class="b" style="height:55%"><span>Mon</span></div><div class="b" style="height:48%"><span>Tue</span></div><div class="b" style="height:70%"><span>Wed</span></div><div class="b" style="height:62%"><span>Thu</span></div><div class="b" style="height:88%"><span>Fri</span></div><div class="b" style="height:100%"><span>Sat</span></div><div class="b" style="height:76%"><span>Sun</span></div></div>
+              </div>
+              <div class="sect-t"><h3>Recent orders</h3><a href="#" onclick="go('market');return false">Store</a></div>
+              <div class="tblwrap"><table class="tbl"><thead><tr><th>Order</th><th>Customer</th><th>Total</th><th>Status</th></tr></thead><tbody>
+                <tr><td style="font-weight:700">#HN-3920</td><td>Amaka O.</td><td>₦68,900</td><td><span class="st-on">Paid</span></td></tr>
+                <tr><td style="font-weight:700">#HN-3919</td><td>Tunde A.</td><td>₦24,900</td><td><span class="st-on">Shipped</span></td></tr>
+                <tr><td style="font-weight:700">#HN-3918</td><td>Ngozi E.</td><td>₦12,500</td><td style="color:var(--star);font-weight:700">Pending</td></tr>
+                <tr><td style="font-weight:700">#HN-3917</td><td>Emeka K.</td><td>₦42,000</td><td><span class="st-on">Paid</span></td></tr>
+              </tbody></table></div>
+            </div>
+            <div>
+              <div class="card" style="padding:18px"><div style="font-weight:800;margin-bottom:10px">Top products</div>
+                <div class="list"><div class="row"><div style="flex:1;font-weight:600;font-size:.88rem">Rechargeable fan</div><span style="font-size:.8rem;color:var(--muted)">88 sold</span></div><div class="row"><div style="flex:1;font-weight:600;font-size:.88rem">Blender set</div><span style="font-size:.8rem;color:var(--muted)">61 sold</span></div><div class="row"><div style="flex:1;font-weight:600;font-size:.88rem">Gas cooker</div><span style="font-size:.8rem;color:var(--muted)">37 sold</span></div></div>
+              </div>
+              <div class="card" style="padding:18px;margin-top:16px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><div style="font-weight:800">Team</div><button class="mini" style="border:0;background:var(--soft);color:var(--brand);font-weight:700;padding:6px 12px;border-radius:999px;cursor:pointer">+ Invite</button></div>
+                <div class="list"><div class="row"><span class="av" style="width:34px;height:34px;font-size:.7rem">S</span><div style="flex:1"><div style="font-weight:600;font-size:.86rem">Sarah — Manager</div></div><span class="badge">Admin</span></div><div class="row"><span class="av" style="width:34px;height:34px;font-size:.7rem;background:var(--a5)">J</span><div style="flex:1"><div style="font-weight:600;font-size:.86rem">James — Sales</div></div><span class="badge">Staff</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ADMIN LOGIN -->
+      <section class="page" id="p-admin-login">
+        <div style="max-width:420px;margin:30px auto">
+          <div class="card" style="padding:28px">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;margin-bottom:18px">
+              <span style="width:54px;height:54px;border-radius:15px;background:var(--brand);color:var(--on-brand);display:grid;place-items:center"><svg width="26" height="26" viewBox="0 0 24 24" class="ic" style="stroke:var(--on-brand)"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.7-7 9.5-4.1-1.8-7-5.3-7-9.5V6l7-3Z"/><path d="M9.2 12.2 11 14l4-4.2"/></svg></span>
+              <h2 style="margin:6px 0 0;font-weight:900;font-size:1.3rem">Hineed Admin Console</h2>
+              <p style="font-size:.82rem;color:var(--muted);margin:0">Restricted · staff sign-in only</p>
+            </div>
+            <label class="ain" style="margin-bottom:10px"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M3.5 7h17v10h-17V7ZM3.5 7.5l8.5 6 8.5-6"/></svg><input id="adm-email" placeholder="Admin email"></label>
+            <label class="ain"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M6 11h12v9H6v-9ZM8.5 11V8a3.5 3.5 0 0 1 7 0v3"/></svg><input id="adm-pass" type="password" placeholder="Password" onkeydown="if(event.key==='Enter')adminLogin()"></label>
+            <div id="adm-err" style="display:none;color:var(--neg);font-size:.8rem;margin-top:10px;font-weight:600">Invalid credentials — please try again.</div>
+            <button class="btn btn-brand" style="width:100%;margin-top:16px" onclick="adminLogin()">Sign in</button>
+            <p style="font-size:.72rem;color:var(--muted);text-align:center;margin:14px 0 0">Demo console · preview only</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ADMIN CONSOLE -->
+      <section class="page" id="p-admin">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:4px"><h1 class="h1" style="margin:0">Hineed Admin</h1><span class="badge">DEMO DATA</span><span style="flex:1"></span><button class="btn btn-ghost" style="padding:9px 16px" onclick="go('home')">Exit console</button></div>
+        <p class="sub">Platform overview · Port Harcourt</p>
+        <div class="stats">
+          <div class="stat"><div class="l">Total users</div><div class="n">18,452</div><div class="d up">▲ 312 this week</div></div>
+          <div class="stat"><div class="l">Active now</div><div class="n">1,204</div><div class="d up">live sessions</div></div>
+          <div class="stat"><div class="l">Total funded</div><div class="n">₦82.4m</div><div class="d up">▲ 9% MoM</div></div>
+          <div class="stat"><div class="l">Spend volume</div><div class="n">₦61.9m</div><div class="d">this month</div></div>
+          <div class="stat"><div class="l">Platform revenue</div><div class="n">₦4.31m</div><div class="d up">▲ 14%</div></div>
+          <div class="stat"><div class="l">New today</div><div class="n">128</div><div class="d up">sign-ups</div></div>
+        </div>
+        <div class="grid2" style="margin-top:22px">
+          <div>
+            <div class="card" style="padding:20px"><div style="display:flex;justify-content:space-between;align-items:center"><div style="font-weight:800">Transaction volume · last 7 days</div><span class="badge">₦</span></div>
+              <div class="bars"><div class="b" style="height:50%"><span>Mon</span></div><div class="b" style="height:63%"><span>Tue</span></div><div class="b" style="height:58%"><span>Wed</span></div><div class="b" style="height:78%"><span>Thu</span></div><div class="b" style="height:70%"><span>Fri</span></div><div class="b" style="height:100%"><span>Sat</span></div><div class="b" style="height:84%"><span>Sun</span></div></div>
+            </div>
+            <div class="sect-t"><h3>Users</h3><a href="#" onclick="return false">Export CSV</a></div>
+            <div class="tblwrap"><table class="tbl"><thead><tr><th>User</th><th>Role</th><th>Status</th><th>Joined</th><th>Actions</th></tr></thead><tbody>
+              <tr><td style="font-weight:700">Amaka Okoro</td><td>Customer</td><td class="stat-cell"><span class="st-on">Active</span></td><td>12 Oct 2026</td><td><div style="display:flex;gap:6px"><button class="mini" onclick="adminBlock(this)">Block</button><button class="mini danger" onclick="adminDel(this)">Delete</button></div></td></tr>
+              <tr><td style="font-weight:700">Chidi Okoro</td><td>Provider</td><td class="stat-cell"><span class="st-on">Active</span></td><td>03 Sep 2026</td><td><div style="display:flex;gap:6px"><button class="mini" onclick="adminBlock(this)">Block</button><button class="mini danger" onclick="adminDel(this)">Delete</button></div></td></tr>
+              <tr><td style="font-weight:700">KanoTech Store</td><td>Business</td><td class="stat-cell"><span class="st-on">Active</span></td><td>21 Aug 2026</td><td><div style="display:flex;gap:6px"><button class="mini" onclick="adminBlock(this)">Block</button><button class="mini danger" onclick="adminDel(this)">Delete</button></div></td></tr>
+              <tr><td style="font-weight:700">Tunde Adeyemi</td><td>Customer</td><td class="stat-cell"><span class="st-off">Blocked</span></td><td>18 Oct 2026</td><td><div style="display:flex;gap:6px"><button class="mini" onclick="adminBlock(this)">Unblock</button><button class="mini danger" onclick="adminDel(this)">Delete</button></div></td></tr>
+              <tr><td style="font-weight:700">Ngozi Eze</td><td>Customer</td><td class="stat-cell"><span class="st-on">Active</span></td><td>14 Oct 2026</td><td><div style="display:flex;gap:6px"><button class="mini" onclick="adminBlock(this)">Block</button><button class="mini danger" onclick="adminDel(this)">Delete</button></div></td></tr>
+            </tbody></table></div>
+          </div>
+          <div>
+            <div class="card" style="padding:18px"><div style="font-weight:800;margin-bottom:14px">Money flow</div>
+              <div style="margin-bottom:14px"><div style="display:flex;justify-content:space-between;font-size:.84rem"><span style="color:var(--muted)">Funded in</span><b>₦82.4m</b></div><div style="height:8px;border-radius:999px;background:var(--soft);margin-top:6px;overflow:hidden"><div style="height:100%;width:100%;background:var(--brand)"></div></div></div>
+              <div style="margin-bottom:14px"><div style="display:flex;justify-content:space-between;font-size:.84rem"><span style="color:var(--muted)">Spent (goods & services)</span><b>₦61.9m</b></div><div style="height:8px;border-radius:999px;background:var(--soft);margin-top:6px;overflow:hidden"><div style="height:100%;width:75%;background:var(--a5)"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:.84rem"><span style="color:var(--muted)">Platform fees</span><b>₦4.31m</b></div><div style="height:8px;border-radius:999px;background:var(--soft);margin-top:6px;overflow:hidden"><div style="height:100%;width:22%;background:var(--star)"></div></div></div>
+              <div class="sect-t" style="margin:18px 0 10px"><h3 style="font-size:.95rem">Spend by category</h3></div>
+              <div class="list"><div class="row"><div style="flex:1;font-size:.86rem">Marketplace</div><b style="font-size:.84rem">₦28.4m</b></div><div class="row"><div style="flex:1;font-size:.86rem">Food</div><b style="font-size:.84rem">₦14.1m</b></div><div class="row"><div style="flex:1;font-size:.86rem">Services</div><b style="font-size:.84rem">₦11.8m</b></div><div class="row"><div style="flex:1;font-size:.86rem">Move &amp; flights</div><b style="font-size:.84rem">₦7.6m</b></div></div>
+            </div>
+            <div class="card" style="padding:18px;margin-top:16px"><div style="font-weight:800;margin-bottom:10px">Recent activity</div>
+              <div class="list"><div class="row"><span class="ic-b" style="width:34px;height:34px"><svg width="16" height="16" viewBox="0 0 24 24" class="ic"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4.5 20.5c0-3.6 3.4-5.8 7.5-5.8s7.5 2.2 7.5 5.8"/></svg></span><div style="flex:1"><div style="font-size:.84rem"><b>Ngozi E.</b> signed in</div><div style="font-size:.72rem;color:var(--muted)">2 min ago · Port Harcourt</div></div></div><div class="row"><span class="ic-b" style="width:34px;height:34px"><svg width="16" height="16" viewBox="0 0 24 24" class="ic"><path d="M12 5v14M5 12h14"/></svg></span><div style="flex:1"><div style="font-size:.84rem"><b>Emeka K.</b> funded ₦50,000</div><div style="font-size:.72rem;color:var(--muted)">8 min ago · GTBank</div></div></div><div class="row"><span class="ic-b" style="width:34px;height:34px"><svg width="16" height="16" viewBox="0 0 24 24" class="ic"><path d="M3 4h2l2.2 11h10l2-7H6"/></svg></span><div style="flex:1"><div style="font-size:.84rem"><b>Amaka O.</b> spent ₦68,900</div><div style="font-size:.72rem;color:var(--muted)">14 min ago · Marketplace</div></div></div><div class="row"><span class="ic-b" style="width:34px;height:34px"><svg width="16" height="16" viewBox="0 0 24 24" class="ic"><path d="M12 3.5 13.6 8 18 9.5 13.6 11 12 15.5 10.4 11 6 9.5 10.4 8 12 3.5Z"/></svg></span><div style="flex:1"><div style="font-size:.84rem">New sign-up · <b>Chidi N.</b></div><div style="font-size:.72rem;color:var(--muted)">22 min ago · Provider</div></div></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CART -->
+      <section class="page" id="p-cart">
+        <h1 class="h1">Cart & checkout</h1>
+        <div style="max-width:640px">
+          <div class="card" style="padding:16px;margin-bottom:14px"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span class="av" style="width:30px;height:30px;background:var(--a2);font-size:.7rem">K</span><strong style="font-size:.92rem">KanoTech Store</strong></div><div class="list"><div class="row"><span style="width:52px;height:52px;border-radius:12px;background:var(--g-b)"></span><div style="flex:1"><div style="font-weight:600;font-size:.9rem">Rechargeable fan</div><div style="font-size:.78rem;color:var(--muted)">Qty 1 · 8 in stock</div></div><strong style="color:var(--pos)">₦42,000</strong></div></div></div>
+          <div class="card" style="padding:16px;margin-bottom:14px"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span class="av" style="width:30px;height:30px;background:var(--a1);font-size:.7rem">H</span><strong style="font-size:.92rem">HomeMart</strong></div><div class="list"><div class="row"><span style="width:52px;height:52px;border-radius:12px;background:var(--g-c)"></span><div style="flex:1"><div style="font-weight:600;font-size:.9rem">Blender set</div><div style="font-size:.78rem;color:var(--muted)">Qty 1</div></div><strong style="color:var(--pos)">₦24,900</strong></div></div></div>
+          <div class="card" style="padding:16px"><div style="display:flex;justify-content:space-between;font-size:.86rem;color:var(--muted);padding:3px 0"><span>Subtotal</span><span>₦66,900</span></div><div style="display:flex;justify-content:space-between;font-size:.86rem;color:var(--muted);padding:3px 0"><span>Delivery</span><span>₦2,000</span></div><div style="display:flex;justify-content:space-between;font-weight:900;padding:8px 0 0;border-top:1px solid var(--line);margin-top:6px"><span>Total</span><span style="color:var(--pos)">₦68,900</span></div></div>
+          <button class="btn btn-dark" style="width:100%;margin-top:16px" onclick="go('pay')">Checkout · ₦68,900</button>
+        </div>
+      </section>
+
+      <!-- I NEED (with scan) -->
+      <section class="page" id="p-ineed">
+        <div class="sub-v on" id="in-main">
+          <h1 class="h1">Ask I Need</h1><p class="sub">Tell Hineed what you need — in words, or scan something you saw outside.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:720px;margin-bottom:18px">
+            <button class="card" style="padding:18px;text-align:left;cursor:pointer" onclick="talk()"><span class="ic-b" style="background:var(--brand);color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3"/></svg></span><div style="font-weight:800;margin-top:10px">Talk to Hineed</div><div style="font-size:.82rem;color:var(--muted)">Chat or speak — say what you need in plain language.</div></button>
+            <button class="card" style="padding:18px;text-align:left;border:1.5px solid var(--brand);background:var(--soft)" onclick="scanOpen()"><span class="ic-b" style="background:var(--brand);color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M4 8V5.5a1.5 1.5 0 0 1 1.5-1.5H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16M4 12h16"/></svg></span><div style="font-weight:800;margin-top:10px">Scan a product</div><div style="font-size:.82rem;color:var(--muted)">See it outside? Scan to find it &amp; the price here.</div></button>
+          </div>
+          <div class="card" style="padding:22px;max-width:720px">
+            <div style="display:flex;justify-content:flex-end"><span style="background:var(--brand);color:var(--on-brand);padding:12px 15px;border-radius:16px 16px 6px 16px;font-size:.92rem;max-width:80%">I need a 2-bedroom flat in GRA, under ₦1.5m a year</span></div>
+            <div style="display:flex;gap:10px;margin-top:16px"><span style="width:30px;height:30px;border-radius:9px;background:var(--brand);color:var(--on-brand);display:grid;place-items:center;flex:0 0 auto"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke:var(--on-brand)"><path d="M12 3.5 13.6 8 18 9.5 13.6 11 12 15.5 10.4 11 6 9.5 10.4 8 12 3.5Z"/></svg></span><div style="flex:1;background:var(--soft);border-radius:6px 16px 16px 16px;padding:14px"><div style="font-weight:700">Here&rsquo;s what I understood</div><div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:10px"><span class="badge">Homes · Rent</span><span class="badge">GRA, PH</span><span class="badge">2 bedrooms</span><span class="badge">Max ₦1.5m/yr</span></div></div></div>
+            <div style="display:flex;gap:10px;margin-top:18px"><button class="btn btn-brand" onclick="go('product')">See 3 matches</button><button class="btn btn-ghost">Refine</button></div>
+          </div>
+        </div>
+        <div class="sub-v" id="in-scan">
+          <div style="display:flex;align-items:center;gap:11px;margin-bottom:16px"><button class="iconbtn" onclick="scanBack()" aria-label="Back"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M15 6l-6 6 6 6"/></svg></button><h1 class="h1" style="margin:0;font-size:1.4rem">Scan a product</h1></div>
+          <div class="scanframe"><div class="reticle"><div class="scanline"></div></div><div style="position:absolute;bottom:20px;left:0;right:0;text-align:center;color:#fff;font-size:.85rem;opacity:.9">Point at the item you want to find</div></div>
+          <button class="btn btn-brand" style="margin-top:18px;max-width:420px;width:100%" onclick="scanResult()">Simulate scan</button>
+        </div>
+        <div class="sub-v" id="in-result">
+          <div style="display:flex;align-items:center;gap:11px;margin-bottom:16px"><button class="iconbtn" onclick="scanOpen()" aria-label="Back"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M15 6l-6 6 6 6"/></svg></button><h1 class="h1" style="margin:0;font-size:1.4rem">Found it</h1></div>
+          <p class="sub">Hineed matched your scan to a product on the marketplace:</p>
+          <div class="card" style="max-width:520px;overflow:hidden">
+            <div style="height:180px;background:var(--g-b)"></div>
+            <div style="padding:18px">
+              <div style="display:flex;align-items:baseline;gap:8px"><strong style="font-size:1.05rem">Rechargeable standing fan</strong><span style="flex:1"></span><strong style="color:var(--pos);font-size:1.1rem">₦42,000</strong></div>
+              <div style="font-size:.82rem;color:var(--muted);margin-top:4px">Best match · 3 shops selling nearby</div>
+              <div class="list" style="margin-top:8px"><div class="row"><span class="av" style="width:36px;height:36px;background:var(--a2);font-size:.7rem">K</span><div style="flex:1"><div style="font-weight:600;font-size:.86rem">KanoTech Store</div><div style="font-size:.74rem;color:var(--muted)">D-Line · ★ 4.8 · ₦42,000</div></div><span class="badge">Lowest</span></div><div class="row"><span class="av" style="width:36px;height:36px;background:var(--a1);font-size:.7rem">H</span><div style="flex:1"><div style="font-weight:600;font-size:.86rem">HomeMart</div><div style="font-size:.74rem;color:var(--muted)">Trans-Amadi · ★ 4.6 · ₦44,500</div></div></div></div>
+              <div style="display:flex;gap:10px;margin-top:14px"><button class="btn btn-ghost" style="flex:1" onclick="socialOpen('room')">Message shop</button><button class="btn btn-brand" style="flex:1" onclick="go('cart')">Buy now</button></div>
+            </div>
+          </div>
+        </div>
+        <!-- Conversation with Hineed AI -->
+        <div class="sub-v" id="in-chat">
+          <div class="s-top"><button class="iconbtn" onclick="talkBack()" aria-label="Back"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M15 6l-6 6 6 6"/></svg></button>
+            <span style="width:36px;height:36px;border-radius:11px;background:var(--brand);color:var(--on-brand);display:grid;place-items:center"><svg width="19" height="19" viewBox="0 0 24 24" class="ic" style="stroke:var(--on-brand)"><path d="M12 3.5 13.6 8 18 9.5 13.6 11 12 15.5 10.4 11 6 9.5 10.4 8 12 3.5Z"/></svg></span>
+            <div style="min-width:0"><div style="font-weight:800;line-height:1.1">Hineed AI</div><div style="font-size:.74rem;color:var(--brand)" id="aiStatus">Online · ask me anything</div></div>
+          </div>
+          <div class="chatwrap">
+            <div class="chatscroll" id="chatScroll">
+              <div class="aibub">Hi Miles 👋 I&rsquo;m Hineed. Tell me what you need — a home, food, a plumber, a ride, a job — or tap the mic and just talk to me.</div>
+              <div class="chips" style="margin:2px 0"><span onclick="askQuick('I need a 2-bedroom flat in GRA under ₦1.5m a year')">2-bed in GRA</span><span onclick="askQuick('Find me a plumber in D-Line today')">Plumber today</span><span onclick="askQuick('Jollof rice for 6 people tonight')">Jollof for 6</span><span onclick="askQuick('A dispatch rider from Trans-Amadi to GRA')">Dispatch rider</span></div>
+            </div>
+            <div class="chatbar">
+              <button class="mic" id="micBtn" onclick="micToggle()" aria-label="Speak to Hineed"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3"/></svg></button>
+              <input id="chatInput" placeholder="Message Hineed, or tap the mic…" onkeydown="if(event.key==='Enter'){sendChat();}">
+              <button class="send" onclick="sendChat()" aria-label="Send"><svg width="19" height="19" viewBox="0 0 24 24" class="ic" style="stroke:var(--on-brand)"><path d="M4.5 12 20 4l-4 16-4.5-6.5L4.5 12Z"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAY -->
+      <section class="page" id="p-pay">
+        <!-- Pay home -->
+        <div class="sub-v on" id="pay-home">
+          <h1 class="h1">Hineed Pay</h1><p class="sub">Pay for anything on Hineed through a licensed processor. Hineed never holds your money.</p>
+          <div class="wallet"><div style="display:flex;justify-content:space-between;align-items:center"><span style="opacity:.85;font-size:.86rem">Wallet balance</span><span class="badge" style="background:rgba(255,255,255,.18);color:#fff">DEMO</span></div><div class="amt">₦0.00</div><div style="font-size:.8rem;opacity:.85;margin-top:4px">Fund from your bank, send to anyone, buy airtime, pay bills or use crypto.</div></div>
+          <div class="quick" style="grid-template-columns:repeat(5,1fr);gap:10px">
+            <a href="#" onclick="payView('add');return false"><span class="c"><svg width="21" height="21" viewBox="0 0 24 24" class="ic"><path d="M12 5v14M5 12h14"/></svg></span>Add money</a>
+            <a href="#" onclick="payView('send');return false"><span class="c"><svg width="21" height="21" viewBox="0 0 24 24" class="ic"><path d="M4.5 12 20 4l-4 16-4.5-6.5L4.5 12Z"/></svg></span>Send</a>
+            <a href="#" onclick="payView('airtime');return false"><span class="c"><svg width="21" height="21" viewBox="0 0 24 24" class="ic"><path d="M7 3.5h10v17H7v-17ZM10.5 17.8h3"/></svg></span>Airtime</a>
+            <a href="#" onclick="payView('bills');return false"><span class="c"><svg width="21" height="21" viewBox="0 0 24 24" class="ic"><path d="M5 4h11l3 3v13H5V4ZM8 11h8M8 15h6"/></svg></span>Bills</a>
+            <a href="#" onclick="payView('crypto');return false"><span class="c"><svg width="21" height="21" viewBox="0 0 24 24" class="ic"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5h4.2a2.1 2.1 0 0 1 0 4.2H9.5m0 0h4.6"/></svg></span>Crypto</a>
+          </div>
+          <div class="sect-t"><h3>In escrow</h3><span class="badge">Protected</span></div>
+          <div class="card" style="padding:14px 16px;max-width:560px;display:flex;gap:12px;align-items:flex-start;margin-bottom:12px"><span class="ic-b" style="background:var(--brand);color:var(--on-brand);flex:0 0 auto"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:var(--on-brand)"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.7-7 9.5-4.1-1.8-7-5.3-7-9.5V6l7-3Z"/><path d="M9.2 12.2 11 14l4-4.2"/></svg></span><div style="font-size:.84rem;color:var(--muted);line-height:1.5">Money you pay a service provider is held safely in <b style="color:var(--ink)">Hineed Escrow</b>. It&rsquo;s only released to them once the job is done and <b style="color:var(--ink)">you approve it</b>.</div></div>
+          <div class="card" style="padding:16px;max-width:560px;margin-bottom:12px">
+            <div style="display:flex;align-items:center;gap:12px"><span class="ic-b" style="background:var(--a1);color:#fff;flex:0 0 auto"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.7-7 9.5-4.1-1.8-7-5.3-7-9.5V6l7-3Z"/></svg></span><div style="flex:1"><div style="font-weight:700">Chidi Okoro</div><div style="font-size:.78rem;color:var(--muted)">Home deep clean · job completed</div></div><div style="text-align:right"><div style="font-weight:900">₦25,000</div><div class="esc-stat" style="font-size:.72rem;font-weight:700;color:var(--star)">Awaiting your approval</div></div></div>
+            <div class="esc-acts" style="display:flex;gap:8px;margin-top:12px"><button class="btn btn-brand" style="flex:1;padding:11px" onclick="escrowRelease(this)">Approve &amp; release funds</button><button class="btn btn-ghost" style="padding:11px 16px" onclick="socialOpen('room')">Dispute</button></div>
+          </div>
+          <div class="card" style="padding:16px;max-width:560px;margin-bottom:12px">
+            <div style="display:flex;align-items:center;gap:12px"><span class="ic-b" style="background:var(--a3);color:#fff;flex:0 0 auto"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.7-7 9.5-4.1-1.8-7-5.3-7-9.5V6l7-3Z"/></svg></span><div style="flex:1"><div style="font-weight:700">Emeka Obi</div><div style="font-size:.78rem;color:var(--muted)">Interior painting · in progress</div></div><div style="text-align:right"><div style="font-weight:900">₦60,000</div><div style="font-size:.72rem;font-weight:700;color:var(--muted)">Held in escrow</div></div></div>
+            <div style="margin-top:10px;font-size:.76rem;color:var(--muted)">You&rsquo;ll be able to approve &amp; release once the provider marks the job complete.</div>
+          </div>
+          <div class="sect-t"><h3>Recent activity</h3></div>
+          <div class="card list" style="padding:4px 16px;max-width:560px">
+            <div class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M3 4h2l2.2 11h10l2-7H6"/><circle cx="9" cy="19" r="1.4"/><circle cx="17" cy="19" r="1.4"/></svg></span><div style="flex:1"><div style="font-weight:600;font-size:.9rem">Marketplace order</div><div style="font-size:.76rem;color:var(--muted)">Today · Demo</div></div><div style="font-weight:800;color:#B0463A">−₦68,900</div></div>
+            <div class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M4.5 12 20 4l-4 16-4.5-6.5L4.5 12Z"/></svg></span><div style="flex:1"><div style="font-weight:600;font-size:.9rem">Sent to Amaka O.</div><div style="font-size:.76rem;color:var(--muted)">Yesterday · Demo</div></div><div style="font-weight:800;color:#B0463A">−₦5,000</div></div>
+            <div class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M12 5v14M5 12h14"/></svg></span><div style="flex:1"><div style="font-weight:600;font-size:.9rem">Added from GTBank</div><div style="font-size:.76rem;color:var(--muted)">14 Apr · Demo</div></div><div style="font-weight:800;color:var(--brand)">+₦50,000</div></div>
+          </div>
+        </div>
+
+        <!-- Add money -->
+        <div class="sub-v" id="pay-add">
+          <div class="s-top"><button class="iconbtn" onclick="payView('home')" aria-label="Back"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M15 6l-6 6 6 6"/></svg></button><h2 style="font-size:1.25rem;font-weight:900;margin:0">Add money</h2></div>
+          <div class="card" style="padding:20px;max-width:520px">
+            <div style="font-size:.82rem;color:var(--muted);font-weight:600">Amount</div>
+            <div style="display:flex;align-items:center;gap:8px;background:var(--soft);border-radius:14px;padding:14px;margin-top:8px"><span style="font-weight:900;font-size:1.4rem;color:var(--brand)">₦</span><input placeholder="0.00" inputmode="decimal" style="border:0;outline:0;flex:1;font:inherit;font-size:1.4rem;font-weight:900;background:transparent;color:var(--ink)"></div>
+            <div style="display:flex;gap:8px;margin-top:12px"><button class="pill" onclick="catSel(this)">₦5,000</button><button class="pill" onclick="catSel(this)">₦10,000</button><button class="pill" onclick="catSel(this)">₦20,000</button><button class="pill" onclick="catSel(this)">₦50,000</button></div>
+            <div class="sect-t" style="margin:20px 0 10px"><h3 style="font-size:.95rem">Fund from</h3></div>
+            <div class="list" style="padding:0">
+              <label class="row" style="cursor:pointer"><span class="ic-b" style="background:#F26E21;color:#fff;font-size:.6rem;font-weight:800">GTB</span><div style="flex:1"><div style="font-weight:700;font-size:.9rem">GTBank · ****4821</div><div style="font-size:.76rem;color:var(--muted)">Linked bank account</div></div><input type="radio" name="fundsrc" checked style="accent-color:var(--brand);width:18px;height:18px"></label>
+              <label class="row" style="cursor:pointer"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M3 7.5h18v10H3zM3 11h18"/></svg></span><div style="flex:1"><div style="font-weight:700;font-size:.9rem">Debit card · ****6411</div><div style="font-size:.76rem;color:var(--muted)">Visa</div></div><input type="radio" name="fundsrc" style="accent-color:var(--brand);width:18px;height:18px"></label>
+              <label class="row" style="cursor:pointer"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M12 5v14M5 12h14"/></svg></span><div style="flex:1"><div style="font-weight:700;font-size:.9rem">Add new bank or card</div></div><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#c3cdc7"><path d="M9.5 6l6 6-6 6"/></svg></label>
+            </div>
+            <button class="btn btn-brand" style="width:100%;margin-top:18px;padding:14px">Fund wallet</button>
+            <p style="font-size:.74rem;color:var(--muted);text-align:center;margin:12px 0 0">Bank transfers settle instantly through a licensed processor.</p>
+          </div>
+        </div>
+
+        <!-- Send -->
+        <div class="sub-v" id="pay-send">
+          <div class="s-top"><button class="iconbtn" onclick="payView('home')" aria-label="Back"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M15 6l-6 6 6 6"/></svg></button><h2 style="font-size:1.25rem;font-weight:900;margin:0">Send money</h2></div>
+          <div class="seg" style="margin-bottom:16px"><button class="on" onclick="catSel(this)">To Hineed</button><button onclick="catSel(this)">To bank</button><button onclick="catSel(this)">To a service</button></div>
+          <div class="card" style="padding:20px;max-width:520px">
+            <div style="font-size:.82rem;color:var(--muted);font-weight:600">Recipient</div>
+            <div style="display:flex;align-items:center;gap:8px;background:var(--soft);border-radius:12px;padding:13px;margin-top:8px"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></svg><input placeholder="@hineed tag, account number or name" style="border:0;outline:0;flex:1;font:inherit;background:transparent;color:var(--ink)"></div>
+            <div style="font-size:.82rem;color:var(--muted);font-weight:600;margin-top:16px">Amount</div>
+            <div style="display:flex;align-items:center;gap:8px;background:var(--soft);border-radius:14px;padding:14px;margin-top:8px"><span style="font-weight:900;font-size:1.4rem;color:var(--brand)">₦</span><input placeholder="0.00" inputmode="decimal" style="border:0;outline:0;flex:1;font:inherit;font-size:1.4rem;font-weight:900;background:transparent;color:var(--ink)"></div>
+            <div style="font-size:.82rem;color:var(--muted);font-weight:600;margin-top:16px">Recent</div>
+            <div style="display:flex;gap:16px;margin-top:10px;overflow-x:auto">
+              <div style="text-align:center;flex:0 0 auto"><span class="av" style="width:48px;height:48px;margin:0 auto">A</span><div style="font-size:.72rem;margin-top:5px">Amaka</div></div>
+              <div style="text-align:center;flex:0 0 auto"><span class="av" style="width:48px;height:48px;margin:0 auto;background:var(--a3)">T</span><div style="font-size:.72rem;margin-top:5px">Tunde</div></div>
+              <div style="text-align:center;flex:0 0 auto"><span class="av" style="width:48px;height:48px;margin:0 auto;background:var(--a4)">N</span><div style="font-size:.72rem;margin-top:5px">Ngozi</div></div>
+              <div style="text-align:center;flex:0 0 auto"><span class="av" style="width:48px;height:48px;margin:0 auto;background:var(--brand)">P</span><div style="font-size:.72rem;margin-top:5px">PH Homes</div></div>
+            </div>
+            <button class="btn btn-brand" style="width:100%;margin-top:20px;padding:14px">Send</button>
+          </div>
+        </div>
+
+        <!-- Airtime & data -->
+        <div class="sub-v" id="pay-airtime">
+          <div class="s-top"><button class="iconbtn" onclick="payView('home')" aria-label="Back"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M15 6l-6 6 6 6"/></svg></button><h2 style="font-size:1.25rem;font-weight:900;margin:0">Airtime &amp; data</h2></div>
+          <div class="card" style="padding:20px;max-width:520px">
+            <div style="display:flex;gap:10px"><button class="pill on" onclick="catSel(this)">MTN</button><button class="pill" onclick="catSel(this)">Glo</button><button class="pill" onclick="catSel(this)">Airtel</button><button class="pill" onclick="catSel(this)">9mobile</button></div>
+            <div style="display:flex;align-items:center;gap:8px;background:var(--soft);border-radius:12px;padding:13px;margin-top:14px"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M7 3.5h10v17H7v-17ZM10.5 17.8h3"/></svg><input placeholder="Phone number" inputmode="tel" style="border:0;outline:0;flex:1;font:inherit;background:transparent;color:var(--ink)"></div>
+            <div class="sect-t" style="margin:18px 0 10px"><h3 style="font-size:.95rem">Airtime</h3></div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px"><button class="pill" onclick="catSel(this)">₦200</button><button class="pill" onclick="catSel(this)">₦500</button><button class="pill" onclick="catSel(this)">₦1,000</button><button class="pill" onclick="catSel(this)">₦2,000</button><button class="pill" onclick="catSel(this)">₦5,000</button><button class="pill" onclick="catSel(this)">Other</button></div>
+            <div class="sect-t" style="margin:18px 0 10px"><h3 style="font-size:.95rem">Data</h3></div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px"><button class="pill" onclick="catSel(this)">1GB · ₦800</button><button class="pill" onclick="catSel(this)">5GB · ₦2,500</button><button class="pill" onclick="catSel(this)">10GB · ₦4,000</button></div>
+            <button class="btn btn-brand" style="width:100%;margin-top:20px;padding:14px">Buy</button>
+          </div>
+        </div>
+
+        <!-- Bills -->
+        <div class="sub-v" id="pay-bills">
+          <div class="s-top"><button class="iconbtn" onclick="payView('home')" aria-label="Back"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M15 6l-6 6 6 6"/></svg></button><h2 style="font-size:1.25rem;font-weight:900;margin:0">Pay bills</h2></div>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:520px">
+            <button class="card" style="padding:18px;text-align:left" onclick="payView('bills')"><span class="ic-b" style="background:var(--a1);color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M13 3 4 14h7l-1 7 9-11h-7l1-7Z"/></svg></span><div style="font-weight:800;margin-top:10px">Electricity</div><div style="font-size:.78rem;color:var(--muted)">PHED, prepaid &amp; postpaid</div></button>
+            <button class="card" style="padding:18px;text-align:left" onclick="payView('bills')"><span class="ic-b" style="background:var(--a6);color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M4 9.5 12 4l8 5.5V20H4V9.5ZM9 20v-6h6v6"/></svg></span><div style="font-weight:800;margin-top:10px">TV &amp; cable</div><div style="font-size:.78rem;color:var(--muted)">DStv, GOtv, Startimes</div></button>
+            <button class="card" style="padding:18px;text-align:left" onclick="payView('bills')"><span class="ic-b" style="background:var(--a2);color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><circle cx="12" cy="12" r="9"/><path d="M3.5 12h17M12 3.5c3 3 3 14 0 17M12 3.5c-3 3-3 14 0 17"/></svg></span><div style="font-weight:800;margin-top:10px">Internet</div><div style="font-size:.78rem;color:var(--muted)">Spectranet, Smile &amp; more</div></button>
+            <button class="card" style="padding:18px;text-align:left" onclick="payView('bills')"><span class="ic-b" style="background:var(--a5);color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M4 7h16v4H4zM4 11v8h16v-8M9 15h6"/></svg></span><div style="font-weight:800;margin-top:10px">Education</div><div style="font-size:.78rem;color:var(--muted)">WAEC, JAMB, school fees</div></button>
+          </div>
+        </div>
+
+        <!-- Crypto -->
+        <div class="sub-v" id="pay-crypto">
+          <div class="s-top"><button class="iconbtn" onclick="payView('home')" aria-label="Back"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M15 6l-6 6 6 6"/></svg></button><h2 style="font-size:1.25rem;font-weight:900;margin:0">Crypto</h2></div>
+          <div class="wallet" style="background:linear-gradient(140deg,#1a1d2e,#060814)"><div style="display:flex;justify-content:space-between;align-items:center"><span style="opacity:.85;font-size:.86rem">Crypto balance</span><span class="badge" style="background:rgba(255,255,255,.18);color:#fff">DEMO</span></div><div class="amt" style="font-size:1.9rem">0.00 USDT</div><div style="font-size:.8rem;opacity:.85;margin-top:4px">≈ ₦0.00 · Fund with crypto, swap to Naira, spend anywhere on Hineed.</div></div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:520px;margin-top:16px">
+            <button class="card" style="padding:16px;text-align:center" onclick="payView('crypto')"><span class="ic-b" style="margin:0 auto"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M12 19V5M6 13l6 6 6-6"/></svg></span><div style="font-weight:700;font-size:.85rem;margin-top:8px">Receive</div></button>
+            <button class="card" style="padding:16px;text-align:center" onclick="payView('crypto')"><span class="ic-b" style="margin:0 auto"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M7 7h10v10M17 7 6 18"/></svg></span><div style="font-weight:700;font-size:.85rem;margin-top:8px">Swap to ₦</div></button>
+            <button class="card" style="padding:16px;text-align:center" onclick="payView('crypto')"><span class="ic-b" style="margin:0 auto"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M4.5 12 20 4l-4 16-4.5-6.5L4.5 12Z"/></svg></span><div style="font-weight:700;font-size:.85rem;margin-top:8px">Send</div></button>
+          </div>
+          <div class="card" style="padding:20px;max-width:520px;margin-top:16px">
+            <div style="font-weight:800;margin-bottom:12px">Swap crypto → Naira</div>
+            <div style="display:flex;align-items:center;gap:10px;background:var(--soft);border-radius:12px;padding:13px"><span class="ic-b" style="background:#26A17B;color:#fff;width:34px;height:34px;font-size:.62rem;font-weight:800">USDT</span><input placeholder="0.00" inputmode="decimal" style="border:0;outline:0;flex:1;font:inherit;font-weight:800;background:transparent;color:var(--ink)"></div>
+            <div style="text-align:center;color:var(--muted);margin:8px 0"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+            <div style="display:flex;align-items:center;gap:10px;background:var(--soft);border-radius:12px;padding:13px"><span class="ic-b" style="background:var(--brand);color:#fff;width:34px;height:34px;font-weight:900">₦</span><input placeholder="0.00" inputmode="decimal" style="border:0;outline:0;flex:1;font:inherit;font-weight:800;background:transparent;color:var(--ink)"></div>
+            <div style="font-size:.76rem;color:var(--muted);margin-top:10px">Rate: 1 USDT ≈ ₦1,650 · settled to your Naira wallet instantly</div>
+            <button class="btn btn-brand" style="width:100%;margin-top:16px;padding:14px">Swap now</button>
+          </div>
+          <p style="font-size:.74rem;color:var(--muted);max-width:520px;margin:14px 0 0">Crypto moves through a licensed, compliant partner. You can receive crypto, swap it to Naira and spend it on anything in Hineed.</p>
+        </div>
+      </section>
+
+      <!-- SOCIAL (full app) -->
+      <section class="page" id="p-social">
+        <div class="s-top"><h1 class="h1" style="margin:0">Hineed You</h1><span style="flex:1"></span>
+          <button class="iconbtn" onclick="sv('notifs')" aria-label="Notifications"><span class="dot"></span><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M18 16V11a6 6 0 1 0-12 0v5l-1.5 2.5h15L18 16ZM10 20.5a2.2 2.2 0 0 0 4 0"/></svg></button>
+          <button class="iconbtn" onclick="sv('profile')" aria-label="My profile"><span class="av" style="width:26px;height:26px;font-size:.7rem">M</span></button>
+        </div>
+        <div class="s-nav">
+          <button class="s-tab on" id="sv-feed" onclick="sv('feed')">For You</button>
+          <button class="s-tab" id="sv-connect" onclick="sv('connect')">Connect</button>
+          <button class="s-tab" id="sv-chats" onclick="sv('chats')">Chats</button>
+          <button class="s-tab" id="sv-profile" onclick="sv('profile')">Profile</button>
+        </div>
+
+        <div class="sview on" id="s-feed">
+          <div class="feed">
+            <div class="stories"><span class="s" style="border-style:dashed;display:grid;place-items:center;color:var(--brand)"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M12 5v14M5 12h14"/></svg></span><span class="s"><span class="in"></span></span><span class="s"><span class="in" style="background:var(--g-b)"></span></span><span class="s"><span class="in" style="background:var(--g-c)"></span></span><span class="s"><span class="in" style="background:var(--g-food)"></span></span></div>
+            <div class="post">
+              <div style="display:flex;align-items:center;gap:11px"><button onclick="sv('profile')" style="border:0;background:transparent;padding:0;cursor:pointer"><span class="av" style="width:42px;height:42px"></span></button><div style="flex:1"><button onclick="sv('profile')" style="border:0;background:transparent;padding:0;font-weight:700;cursor:pointer;color:inherit">Amaka O.</button><div style="font-size:.76rem;color:var(--muted)">Port Harcourt · 2h</div></div><button class="badge" style="border:0;padding:7px 14px">Follow</button></div>
+              <p style="margin:12px 0 0;font-size:.95rem">New to GRA and looking to meet people who love hiking and good food. Say hi!</p>
+              <div class="ph" style="background:var(--g-c)"></div>
+              <div class="acts"><button><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M12 20s-7.5-4.6-7.5-9.4A4.1 4.1 0 0 1 12 8a4.1 4.1 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20Z"/></svg>2.4k</button><button><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M4 5.5h16v10H9l-4 3.5v-3.5H4v-10Z"/></svg>128</button><button><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><circle cx="6" cy="12" r="2.3"/><circle cx="17.5" cy="6.3" r="2.3"/><circle cx="17.5" cy="17.7" r="2.3"/><path d="M8.2 10.8l7.6-3.6M8.2 13.2l7.6 3.6"/></svg>31</button><span style="flex:1"></span><button onclick="sv('room')" style="color:var(--brand)"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M4 5.5h16v10H9l-4 3.5v-3.5H4v-10Z"/></svg>Chat</button></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sview" id="s-connect">
+          <div class="pills" style="margin-bottom:16px"><span class="pill on">For you</span><span class="pill">Friends</span><span class="pill">Dating</span><span class="pill">Networking</span></div>
+          <div class="people">
+            <div class="pcard"><div class="cov"></div><div class="pa av"></div><div style="padding:8px 12px 14px"><div style="font-weight:800">Amaka O.</div><div style="font-size:.76rem;color:var(--muted)">24 · GRA</div><button class="btn btn-brand" style="width:100%;margin-top:10px;padding:9px" onclick="sv('profile')">View</button></div></div>
+            <div class="pcard"><div class="cov" style="background:var(--g-b)"></div><div class="pa av" style="background:var(--a3)"></div><div style="padding:8px 12px 14px"><div style="font-weight:800">Tunde A.</div><div style="font-size:.76rem;color:var(--muted)">29 · D-Line</div><button class="btn btn-ghost" style="width:100%;margin-top:10px;padding:9px">Connect</button></div></div>
+            <div class="pcard"><div class="cov" style="background:var(--g-c)"></div><div class="pa av" style="background:var(--a4)"></div><div style="padding:8px 12px 14px"><div style="font-weight:800">Ngozi E.</div><div style="font-size:.76rem;color:var(--muted)">27 · Rumuola</div><button class="btn btn-ghost" style="width:100%;margin-top:10px;padding:9px">Connect</button></div></div>
+            <div class="pcard"><div class="cov" style="background:var(--g-food)"></div><div class="pa av" style="background:var(--a5)"></div><div style="padding:8px 12px 14px"><div style="font-weight:800">Emeka K.</div><div style="font-size:.76rem;color:var(--muted)">31 · GRA</div><button class="btn btn-ghost" style="width:100%;margin-top:10px;padding:9px">Connect</button></div></div>
+          </div>
+        </div>
+
+        <div class="sview" id="s-chats">
+          <div class="pills" style="margin-bottom:16px"><span class="pill on">All</span><span class="pill">Unseen</span><span class="pill">Requests</span></div>
+          <div class="card list" style="padding:4px 16px;max-width:680px">
+            <button onclick="sv('room')" style="border:0;background:transparent;width:100%;text-align:left;cursor:pointer" class="row"><span class="av" style="width:46px;height:46px"></span><div style="flex:1;min-width:0"><div style="font-weight:700;font-size:.92rem">Amaka O.</div><div style="font-size:.82rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Would love to join the hike!</div></div><div style="text-align:right"><div style="font-size:.72rem;color:var(--muted)">12m</div><span class="badge" style="margin-top:4px">2</span></div></button>
+            <button onclick="sv('room')" style="border:0;background:transparent;width:100%;text-align:left;cursor:pointer" class="row"><span class="av" style="width:46px;height:46px;background:var(--brand)">P</span><div style="flex:1;min-width:0"><div style="font-weight:700;font-size:.92rem">PH Homes</div><div style="font-size:.82rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">The flat is available Saturday 10am…</div></div><div style="font-size:.72rem;color:var(--muted)">1h</div></button>
+            <button onclick="sv('room')" style="border:0;background:transparent;width:100%;text-align:left;cursor:pointer" class="row"><span class="av" style="width:46px;height:46px;background:var(--a2)">K</span><div style="flex:1;min-width:0"><div style="font-weight:700;font-size:.92rem">KanoTech Store</div><div style="font-size:.82rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Your fan is out for delivery.</div></div><div style="font-size:.72rem;color:var(--muted)">3h</div></button>
+          </div>
+        </div>
+
+        <div class="sview" id="s-room">
+          <div class="room">
+            <div class="room-top"><button class="iconbtn" style="border:0" onclick="sv('chats')" aria-label="Back"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M15 6l-6 6 6 6"/></svg></button><button onclick="sv('profile')" style="border:0;background:transparent;cursor:pointer"><span class="av" style="width:40px;height:40px"></span></button><div style="flex:1"><div style="font-weight:800">Amaka O.</div><div style="font-size:.74rem;color:var(--brand)">Online</div></div>
+              <button class="iconbtn" aria-label="Call"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M6.5 3.5 9 4l1 4-2 1.5a12 12 0 0 0 6.5 6.5L16 14l4 1 .5 2.5a2 2 0 0 1-2 2.3A16 16 0 0 1 4.2 5.5a2 2 0 0 1 2.3-2Z"/></svg></button>
+              <button class="iconbtn" aria-label="Video call"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M3.5 7.5h11v9h-11v-9ZM14.5 11l6-3v8l-6-3"/></svg></button>
+            </div>
+            <div class="room-body">
+              <div class="bub">Hey Miles! Saw your post about the GRA hike 🌿</div>
+              <div class="bub me">Yes! This Saturday 7am at Pleasure Park. Join us?</div>
+              <div class="bub">Count me in. Also — is that fan you shared still available?</div>
+              <div class="bub me">It is, I&rsquo;ll send it over.</div>
+              <div style="text-align:center;font-size:.72rem;color:var(--muted);margin:4px 0">You can call, go live, gift, send money or buy for each other below.</div>
+            </div>
+            <div class="room-acts">
+              <button class="racts"><svg width="15" height="15" viewBox="0 0 24 24" class="ic"><path d="M12 8v13M5 12h14M8 8a2.5 2.5 0 0 1 4-3 2.5 2.5 0 0 1 4 3"/></svg>Gift</button>
+              <button class="racts"><svg width="15" height="15" viewBox="0 0 24 24" class="ic"><path d="M4 7.5h13a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H4v-12Z"/></svg>Send money</button>
+              <button class="racts"><svg width="15" height="15" viewBox="0 0 24 24" class="ic"><path d="M5 8h14l-1 12H6L5 8ZM9 8V6a3 3 0 0 1 6 0v2"/></svg>Buy for them</button>
+              <button class="racts"><svg width="15" height="15" viewBox="0 0 24 24" class="ic"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/></svg>Go live</button>
+            </div>
+            <div class="room-in"><input placeholder="Message Amaka…"><button class="btn btn-brand" style="padding:11px 16px"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:var(--on-brand)"><path d="M4.5 12 20 4l-4 16-4.5-6.5L4.5 12Z"/></svg></button></div>
+          </div>
+        </div>
+
+        <div class="sview" id="s-profile">
+          <div style="max-width:680px">
+            <div class="cover"><button class="iconbtn" style="position:absolute;top:12px;left:12px" onclick="sv('feed')" aria-label="Back"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M15 6l-6 6 6 6"/></svg></button></div>
+            <div style="margin-top:-44px;padding:0 6px"><span class="av" style="width:88px;height:88px;font-size:1.7rem;border:4px solid var(--surface)">A</span></div>
+            <div style="padding:12px 6px 0"><div style="font-weight:900;font-size:1.35rem;letter-spacing:-.02em">Amaka O.</div><div style="font-size:.84rem;color:var(--muted);margin-top:2px">Port Harcourt · Loves hiking &amp; jollof</div></div>
+            <div style="display:flex;gap:28px;margin:14px 6px;font-size:.86rem"><span><b>248</b> <span style="color:var(--muted)">posts</span></span><span><b>12.4k</b> <span style="color:var(--muted)">followers</span></span><span><b>318</b> <span style="color:var(--muted)">following</span></span></div>
+            <div style="display:flex;gap:8px;margin:0 6px 16px;flex-wrap:wrap">
+              <button class="btn btn-brand" id="followBtn" style="flex:1;min-width:108px" onclick="toggleFollow(this)">Follow</button>
+              <button class="btn btn-ghost" onclick="sv('room')" aria-label="Message" title="Message"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M4 5.5h16v10H9l-4 3.5v-3.5H4v-10Z"/></svg></button>
+              <button class="btn btn-ghost" onclick="sv('room')" aria-label="Call" title="Call"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M6.5 3.5 9 4l1 4-2 1.5a12 12 0 0 0 6.5 6.5L16 14l4 1 .5 2.5a2 2 0 0 1-2 2.3A16 16 0 0 1 4.2 5.5a2 2 0 0 1 2.3-2Z"/></svg></button>
+              <button class="btn btn-ghost" onclick="payPerson('Amaka O.')" aria-label="Send money" title="Pay / send money"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M4 7.5h13a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H4v-12ZM16.5 13.5h1.5"/></svg> Pay</button>
+              <button class="btn btn-ghost" id="blockBtn" onclick="toggleBlock(this)" aria-label="Block" title="Block"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><circle cx="12" cy="12" r="8.5"/><path d="M6 6l12 12"/></svg></button>
+            </div>
+            <div class="pg" style="padding:0 6px"><div style="background:var(--g-a)"></div><div style="background:var(--g-c)"></div><div style="background:var(--g-food)"></div><div style="background:var(--g-b)"></div><div style="background:var(--g-c)"></div><div style="background:var(--g-a)"></div></div>
+          </div>
+        </div>
+
+        <div class="sview" id="s-notifs">
+          <div style="max-width:620px">
+            <div class="s-top"><button class="iconbtn" onclick="sv('feed')" aria-label="Back"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M15 6l-6 6 6 6"/></svg></button><h2 style="font-size:1.2rem;font-weight:900;margin:0">Notifications</h2></div>
+            <div class="card list" style="padding:4px 16px">
+              <div class="row"><span class="av" style="width:40px;height:40px"></span><div style="flex:1"><div style="font-size:.88rem"><b>Amaka O.</b> started following you</div><div style="font-size:.74rem;color:var(--muted)">12m</div></div></div>
+              <div class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M12 20s-7.5-4.6-7.5-9.4A4.1 4.1 0 0 1 12 8a4.1 4.1 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20Z"/></svg></span><div style="flex:1"><div style="font-size:.88rem"><b>Tunde</b> liked your post</div><div style="font-size:.74rem;color:var(--muted)">1h</div></div></div>
+              <div class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M4 7.5h13a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H4v-12Z"/></svg></span><div style="flex:1"><div style="font-size:.88rem"><b>Ngozi</b> sent you ₦2,000</div><div style="font-size:.74rem;color:var(--muted)">3h</div></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROFILE -->
+      <section class="page" id="p-profile">
+        <h1 class="h1">Profile</h1>
+        <div class="card" style="padding:22px;max-width:680px;display:flex;align-items:center;gap:16px"><span class="av" style="width:72px;height:72px;font-size:1.6rem">M</span><div style="flex:1"><div style="font-weight:900;font-size:1.3rem;letter-spacing:-.02em">Miles Goodluck</div><div style="color:var(--muted);font-size:.86rem">Port Harcourt · Verified</div><div style="display:flex;gap:7px;margin-top:8px"><span class="badge">Admin</span><span class="badge" id="prof-role">Customer</span></div></div></div>
+        <div class="card list" style="padding:4px 18px;max-width:680px;margin-top:16px">
+          <a href="#" onclick="openDash();return false" class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M4 4h7v7H4zM13 4h7v4h-7zM13 11h7v9h-7zM4 14h7v6H4z"/></svg></span><div style="flex:1;font-weight:600;font-size:.9rem">My dashboard</div><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#c3cdc7"><path d="M9.5 6l6 6-6 6"/></svg></a>
+          <a href="#" class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span><div style="flex:1;font-weight:600;font-size:.9rem">My requests & orders</div><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#c3cdc7"><path d="M9.5 6l6 6-6 6"/></svg></a>
+          <a href="#" onclick="go('pay');return false" class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M4 7.5h13a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H4v-12Z"/></svg></span><div style="flex:1;font-weight:600;font-size:.9rem">Payment & wallet</div><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#c3cdc7"><path d="M9.5 6l6 6-6 6"/></svg></a>
+          <a href="#" class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M14.5 5.5a3.8 3.8 0 0 0 5 5L15 15l-2 5.5-3-3 5.5-2 4.5-4.5"/></svg></span><div style="flex:1;font-weight:600;font-size:.9rem">Sell or offer a service</div><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#c3cdc7"><path d="M9.5 6l6 6-6 6"/></svg></a>
+          <a href="#" onclick="adminOpen();return false" class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.7-7 9.5-4.1-1.8-7-5.3-7-9.5V6l7-3Z"/></svg></span><div style="flex:1;font-weight:600;font-size:.9rem">Admin console</div><span class="badge">Staff</span></a>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<nav class="bottom" id="bottom">
+  <button data-p="home" class="on"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M4 10.5 12 4l8 6.5V20h-5.5v-5.5h-5V20H4v-9.5Z"/></svg>Home</button>
+  <button data-p="market"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M5 8h14l-1 12H6L5 8ZM9 8V6a3 3 0 0 1 6 0v2"/></svg>Shop</button>
+  <button data-p="ineed"><span class="ctr"><svg width="23" height="23" viewBox="0 0 24 24" class="ic"><path d="M12 3.5 13.6 8 18 9.5 13.6 11 12 15.5 10.4 11 6 9.5 10.4 8 12 3.5Z"/></svg></span></button>
+  <button data-p="pay"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M4 7.5h13a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H4v-12ZM16.5 13.5h1.5"/></svg>Pay</button>
+  <button data-p="social"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M12 20s-7.5-4.6-7.5-9.4A4.1 4.1 0 0 1 12 8a4.1 4.1 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20Z"/></svg>Social</button>
+</nav>
+
+<script>
+  var navHist=[];
+  function curPage(){ var el=document.querySelector('.page.on'); return el? el.id.replace('p-',''):'home'; }
+  function go(p, noPush){
+    var cur=curPage();
+    if(!noPush && cur!==p) navHist.push(cur);
+    document.querySelectorAll('.page').forEach(s=>s.classList.toggle('on', s.id==='p-'+p));
+    document.querySelectorAll('#nav button, #bottom button').forEach(b=>b.classList.toggle('on', b.dataset.p===p));
+    if(p==='pay') payView('home');
+    if(p==='jobs') jobsTab('find');
+    if(p==='move') moveView('main');
+    if(p==='dash'){ var nd=document.getElementById('nav-dash'); if(nd) nd.classList.add('on'); }
+    updateBack();
+    try{ window.scrollTo(0,0);}catch(e){}
+  }
+  function goBack(){ if(navHist.length){ go(navHist.pop(), true); } }
+  function updateBack(){ var b=document.getElementById('backBtn'); if(b) b.style.display=navHist.length?'inline-grid':'none'; }
+  document.querySelectorAll('#nav button, #bottom button').forEach(b=>{ if(b.dataset.p) b.addEventListener('click',()=>go(b.dataset.p)); });
+  function setTheme(t){ if(t==='green')t='dark'; document.documentElement.setAttribute('data-theme',t); ['dark','light','bw'].forEach(function(x){ var b=document.getElementById('t-'+x); if(b) b.classList.toggle('on', x===t); }); try{localStorage.setItem('hineed-theme',t);}catch(e){} }
+  function mkTab(t){ document.getElementById('mk-products').classList.toggle('on',t==='products'); document.getElementById('mk-shops').classList.toggle('on',t==='shops'); document.getElementById('seg-p').classList.toggle('on',t==='products'); document.getElementById('seg-s').classList.toggle('on',t==='shops'); }
+  function catSelect(el){ document.querySelectorAll('#cats .pill').forEach(p=>p.classList.remove('on')); el.classList.add('on'); }
+  function catSel(el){ Array.from(el.parentElement.children).forEach(c=>{ if(c.classList) c.classList.remove('on'); }); el.classList.add('on'); }
+  function jobsTab(t){ document.getElementById('jb-find').classList.toggle('on',t==='find'); document.getElementById('jb-hire').classList.toggle('on',t==='hire'); document.getElementById('jb-find-t').classList.toggle('on',t==='find'); document.getElementById('jb-hire-t').classList.toggle('on',t==='hire'); }
+  function payView(v){ document.querySelectorAll('#p-pay .sub-v').forEach(e=>e.classList.toggle('on', e.id==='pay-'+v)); try{window.scrollTo(0,0);}catch(e){} }
+  function escrowRelease(btn){ var card=btn.closest('.card'); if(!card) return; var s=card.querySelector('.esc-stat'); if(s){ s.textContent='Released to provider ✓'; s.style.color='var(--pos)'; } var a=card.querySelector('.esc-acts'); if(a) a.innerHTML='<div style="flex:1;text-align:center;color:var(--pos);font-weight:700;font-size:.85rem;padding:8px;background:var(--soft);border-radius:12px">✓ Funds released — the provider has been paid</div>'; }
+  /* ---- Service providers (test accounts) ---- */
+  var CATLBL={cleaner:'Cleaning',painter:'Painter',plumber:'Plumber',electrician:'Electrician',laundry:'Laundry',carwash:'Car wash',waste:'Waste mgmt',mechanic:'Mechanic'};
+  var CAT_CHARGES={
+    cleaner:[['Standard home clean','₦15,000'],['Deep clean (3-bed)','₦25,000'],['Move-in / move-out','₦30,000'],['Office cleaning','from ₦40k/mo']],
+    painter:[['1-bedroom (walls)','₦40,000'],['Full flat repaint','₦120,000'],['Exterior / fence','Quote']],
+    plumber:[['Call-out & diagnosis','₦8,000'],['Tap / pipe repair','from ₦12,000'],['Full installation','Quote']],
+    electrician:[['Call-out & diagnosis','₦9,000'],['Wiring repair','from ₦15,000'],['Inverter / solar setup','Quote']],
+    laundry:[['Wash & fold (per bag)','₦3,500'],['Ironing (per item)','₦300'],['Duvet / curtains','from ₦5,000']],
+    carwash:[['Exterior wash','₦2,500'],['Full valet (in & out)','₦6,000'],['Engine wash','₦4,000']],
+    waste:[['Weekly pickup','₦5,000/mo'],['One-off haul','from ₦8,000'],['Commercial contract','Quote']],
+    mechanic:[['Diagnostic check','₦7,000'],['Oil & filter service','from ₦18,000'],['Major repair','Quote']]
+  };
+  var REVIEWS=[['Amaka O.',5,'Prompt, professional and very neat. Highly recommend!'],['Tunde A.',5,'Great job and fair pricing. Booked again already.'],['Ngozi E.',4,'Arrived on time and did solid work. Very satisfied.']];
+  var PROV={
+    brightclean:{n:'Chidi Okoro',c:'cleaner',a:'GRA Phase 2',r:'4.9',rv:'320',b:'Professional home & office cleaning crew. Deep cleans, move-in/out and post-construction. Background-checked, insured, 4-hour response in GRA.'},
+    sparklehome:{n:'Blessing Eze',c:'cleaner',a:'D-Line',r:'4.7',rv:'180',b:'Friendly, detail-focused home cleaning. Flexible scheduling and eco-friendly products.'},
+    freshspace:{n:'Ifeoma Nwankwo',c:'cleaner',a:'Rumuola',r:'4.8',rv:'95',b:'Residential and office cleaning specialists with a trained, vetted team.'},
+    propaint:{n:'Emeka Obi',c:'painter',a:'D-Line',r:'4.8',rv:'140',b:'Interior and exterior painting with a clean, smooth finish. Free colour consultation.'},
+    colorcraft:{n:'Samuel Ade',c:'painter',a:'Trans-Amadi',r:'4.6',rv:'70',b:'Decorative and standard painting for homes and businesses. Neat and on-time.'},
+    fixit:{n:'Tochukwu Daniel',c:'plumber',a:'Rumuola',r:'4.7',rv:'210',b:'Fast, reliable plumbing repairs and installations. Emergency call-outs available.'},
+    aquaflow:{n:'Henry Okon',c:'plumber',a:'Woji',r:'4.8',rv:'130',b:'Licensed plumbers for leaks, fittings, water systems and full installs.'},
+    sparkelec:{n:'Uche Bassey',c:'electrician',a:'GRA',r:'4.9',rv:'260',b:'Certified electricians for wiring, faults, inverters and solar. Safety-first.'},
+    powerpro:{n:'David Johnson',c:'electrician',a:'Eliozu',r:'4.7',rv:'88',b:'Domestic and commercial electrical work. Honest quotes, tidy jobs.'},
+    freshlaundry:{n:'Grace Amadi',c:'laundry',a:'Mile 1',r:'4.6',rv:'150',b:'Wash, dry, fold and ironing with free pickup and delivery in the area.'},
+    cleanpress:{n:'Rita Peter',c:'laundry',a:'GRA',r:'4.8',rv:'110',b:'Premium laundry and dry-cleaning. Same-day service on request.'},
+    shiny:{n:'Kelvin Umeh',c:'carwash',a:'Trans-Amadi',r:'4.8',rv:'300',b:'Hand car wash and full valeting. Mobile service comes to you.'},
+    autoglow:{n:'Joseph Ani',c:'carwash',a:'Aba Rd',r:'4.6',rv:'120',b:'Interior and exterior detailing that makes your car look new.'},
+    greenbin:{n:'Victor Eke',c:'waste',a:'PH City',r:'4.7',rv:'90',b:'Reliable household and commercial waste collection and disposal.'},
+    autofix:{n:'Musa Ibrahim',c:'mechanic',a:'Rumuokoro',r:'4.8',rv:'200',b:'Full-service garage: diagnostics, servicing and repairs for all makes.'},
+    motorcare:{n:'Sunday Effiong',c:'mechanic',a:'Aba Rd',r:'4.7',rv:'140',b:'Trusted mechanics for servicing, brakes, AC and engine repair.'}
+  };
+  function fillProvider(id){ var p=PROV[id]; if(!p) return;
+    var set=function(i,t){ var e=document.getElementById(i); if(e) e.textContent=t; };
+    set('prov-name',p.n); set('prov-avatar',p.n.charAt(0));
+    set('prov-meta',CATLBL[p.c]+' · '+p.a+' · ★ '+p.r+' ('+p.rv+' reviews)');
+    set('prov-desc',p.b); set('prov-revcount',p.rv+' reviews');
+    var ch=CAT_CHARGES[p.c]||[], h='';
+    ch.forEach(function(c){ h+='<div class="row"><div style="flex:1;font-weight:600;font-size:.9rem">'+c[0]+'</div><span style="font-weight:800;color:var(--pos);margin-right:12px">'+c[1]+'</span><button class="btn btn-brand" style="padding:7px 14px" onclick="go(\'pay\')">Book</button></div>'; });
+    var pc=document.getElementById('prov-charges'); if(pc) pc.innerHTML=h;
+    var rh=''; REVIEWS.forEach(function(rv){ var s=''; for(var i=0;i<5;i++) s+=(i<rv[1]?'★':'☆'); rh+='<div class="row"><span class="av" style="width:38px;height:38px;font-size:.78rem">'+rv[0].charAt(0)+'</span><div style="flex:1"><div style="font-weight:700;font-size:.86rem">'+rv[0]+' <span style="color:var(--star)">'+s+'</span></div><div style="font-size:.82rem;color:var(--muted)">'+rv[2]+'</div></div></div>'; });
+    var pr=document.getElementById('prov-reviews'); if(pr) pr.innerHTML=rh;
+  }
+  function openProvider(id){ fillProvider(id); go('provider'); }
+  function toggleFollow(b){ if(b.textContent.trim()==='Following'){ b.textContent='Follow'; b.classList.remove('btn-ghost'); b.classList.add('btn-brand'); } else { b.textContent='Following'; b.classList.remove('btn-brand'); b.classList.add('btn-ghost'); } }
+  function toggleBlock(b){ if(b.getAttribute('data-on')==='1'){ b.removeAttribute('data-on'); b.style.color=''; b.title='Block'; } else { b.setAttribute('data-on','1'); b.style.color='var(--neg)'; b.title='Blocked — tap to unblock'; } }
+  function payPerson(n){ go('pay'); payView('send'); try{window.scrollTo(0,0);}catch(e){} }
+  function svcFilter(cat, el){ document.querySelectorAll('#p-services .catrow .catcard').forEach(function(b){ b.classList.remove('on'); }); if(el) el.classList.add('on'); document.querySelectorAll('#svc-grid .vcard').forEach(function(c){ c.style.display=(cat==='all'||c.getAttribute('data-cat')===cat)?'':'none'; }); }
+  try{ fillProvider('brightclean'); }catch(e){}
+  function sv(v){ document.querySelectorAll('#p-social .sview').forEach(e=>e.classList.toggle('on', e.id==='s-'+v)); document.querySelectorAll('.s-tab').forEach(t=>t.classList.remove('on')); var tab=document.getElementById('sv-'+v); if(tab) tab.classList.add('on'); try{window.scrollTo(0,0);}catch(e){} }
+  function socialOpen(v){ go('social'); sv(v); }
+  var IN_VIEWS=['in-main','in-scan','in-result','in-chat'];
+  function inView(v){ IN_VIEWS.forEach(id=>{ var e=document.getElementById(id); if(e) e.classList.toggle('on', id===v); }); }
+  function scanJump(){ go('ineed'); inView('in-scan'); try{window.scrollTo(0,0);}catch(e){} }
+  function scanOpen(){ inView('in-scan'); }
+  function scanResult(){ inView('in-result'); }
+  function scanBack(){ inView('in-main'); }
+  function talk(){ go('ineed'); inView('in-chat'); try{window.scrollTo(0,0);}catch(e){} }
+  function talkBack(){ inView('in-main'); }
+  function esc(s){ return (''+s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function bub(cls,html){ var w=document.getElementById('chatScroll'); if(!w) return; var d=document.createElement('div'); d.className=cls; d.innerHTML=html; w.appendChild(d); w.scrollTop=w.scrollHeight; return d; }
+  function aiReply(q){
+    var s=document.getElementById('aiStatus'); if(s) s.textContent='Typing…';
+    setTimeout(function(){
+      if(s) s.textContent='Online · ask me anything';
+      bub('aibub','Got it — here&rsquo;s what I understood from <b>&ldquo;'+esc(q)+'&rdquo;</b>:<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px"><span class="badge">Request captured</span><span class="badge">Port Harcourt</span><span class="badge">Best matches found</span></div><div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-brand" style="padding:9px 14px" onclick="go(\'product\')">See matches</button><button class="btn btn-ghost" style="padding:9px 14px" onclick="go(\'market\')">Browse instead</button></div>');
+    }, 700);
+  }
+  function sendChat(){ var i=document.getElementById('chatInput'); if(!i) return; var t=(i.value||'').trim(); if(!t) return; bub('ubub',esc(t)); i.value=''; aiReply(t); }
+  function askQuick(t){ bub('ubub',esc(t)); aiReply(t); }
+  function micToggle(){
+    var m=document.getElementById('micBtn'), s=document.getElementById('aiStatus'); if(!m) return;
+    if(m.classList.contains('on')){ m.classList.remove('on'); if(s) s.textContent='Online · ask me anything'; return; }
+    m.classList.add('on'); if(s) s.textContent='Listening…';
+    setTimeout(function(){
+      m.classList.remove('on');
+      var phrases=['I need a cleaner for a 2-bedroom flat this weekend','Find me jollof rice for 6 people tonight','Get me a plumber in D-Line today','I want a ride from Trans-Amadi to GRA'];
+      var t=phrases[Math.floor(Math.random()*phrases.length)];
+      bub('ubub','🎤 '+esc(t)); aiReply(t);
+    }, 1700);
+  }
+  function authStep(s){ document.querySelectorAll('.astep').forEach(e=>e.classList.toggle('on', e.id==='a-'+s)); try{document.querySelector('.authcard').scrollTo(0,0);}catch(e){} }
+  var ROLE='customer';
+  var ROLE_LABEL={customer:'Customer',provider:'Provider',business:'Business'};
+  function enterApp(role){ ROLE=role||'customer'; var a=document.getElementById('auth'); if(a) a.style.display='none';
+    var nd=document.getElementById('nav-dash'); if(nd) nd.style.display=(ROLE==='customer')?'none':'flex';
+    var sr=document.getElementById('side-role'); if(sr) sr.textContent='Port Harcourt · '+ROLE_LABEL[ROLE];
+    var pr=document.getElementById('prof-role'); if(pr) pr.textContent=ROLE_LABEL[ROLE];
+    if(ROLE==='customer'){ go('home'); } else { openDash(); }
+  }
+  function openDash(){ ['dash-customer','dash-provider','dash-business'].forEach(function(id){ var e=document.getElementById(id); if(e) e.classList.toggle('on', id==='dash-'+ROLE); }); go('dash'); }
+  function moveView(v){ ['mv-main','mv-flights'].forEach(function(id){ var e=document.getElementById(id); if(e) e.classList.toggle('on', id==='mv-'+v); }); try{window.scrollTo(0,0);}catch(e){} }
+  function adminOpen(){ go('admin-login'); }
+  function adminLogin(){ var e=(document.getElementById('adm-email').value||'').trim().toLowerCase(); var p=document.getElementById('adm-pass').value||''; if(e==='admin@hineed.ai' && p==='Hineed@2026'){ document.getElementById('adm-err').style.display='none'; document.getElementById('adm-pass').value=''; go('admin'); } else { document.getElementById('adm-err').style.display='block'; } }
+  function adminBlock(btn){ var tr=btn.closest('tr'); var cell=tr.querySelector('.stat-cell'); if(cell.querySelector('.st-on')){ cell.innerHTML='<span class="st-off">Blocked</span>'; btn.textContent='Unblock'; } else { cell.innerHTML='<span class="st-on">Active</span>'; btn.textContent='Block'; } }
+  function adminDel(btn){ var tr=btn.closest('tr'); if(tr && tr.parentNode) tr.parentNode.removeChild(tr); }
+  function enterAppLegacy(){ var a=document.getElementById('auth'); if(a) a.style.display='none'; }
+
+  /* ---- Real photos (loaded by the viewer's browser; picsum fallback so nothing ever shows broken) ---- */
+  (function(){
+    var U=function(id,w){return 'https://images.unsplash.com/photo-'+id+'?auto=format&fit=crop&w='+(w||700)+'&q=72';};
+    var P={
+      food:['img/food_spread.jpg','1546069901-ba9599a7e63c','1504674900247-0877df9cc836','1555939594-58d7cb561ad1','1540189549336-e6e99c3679fe','1476224203421-9ac39bcb3327'],
+      people:['img/person_man_green.jpg','img/social_woman_cafe.jpg','img/woman_green.jpg','1494790108377-be9c29b29330','1500648767791-00dcc994a43e','1507003211169-0a1dd7228f2d','1517841905240-472988babdf9'],
+      home:['img/realestate.jpg','1560448204-e02f11c3d0e2','1512917774080-9991f1c4c750','1493809842364-78817add7ffb','1484154218962-a197022b5858'],
+      work:['img/cleaner.jpg','1600585152220-90363fe7e115','1521791136064-7986c2920216','1607472586893-edb57bdc0e39','1416879595882-3373a0480b5b'],
+      goods:['img/grocery_family.jpg','img/grocery_phone.jpg','img/cashier.jpg','1505740420928-5e560c06d30e','1523275335684-37898b6baf30','1526170375885-4d8ecf77b99f'],
+      life:['img/social_woman_cafe.jpg','1469474968028-56623f02e42e','1441974231531-c6227db76b6e','1500534623283-312aade485b7','1507525428034-b723cf961d3e']
+    };
+    var isLocal=function(e){return e.indexOf('img/')===0;};
+    var sN=0;
+    function put(el,cat,i,w){ if(!el) return; var pool=P[cat]||P.life; var id=pool[((i||0)%pool.length+pool.length)%pool.length];
+      try{ if(getComputedStyle(el).position==='static') el.style.position='relative'; }catch(e){ el.style.position='relative'; }
+      el.style.overflow='hidden';
+      var im=document.createElement('img'); im.className='photo'; im.loading='lazy'; im.decoding='async'; im.alt=''; var s='hn'+(sN++);
+      im.onerror=function(){ this.onerror=null; this.src='https://picsum.photos/seed/'+s+'/'+(w||700)+'/'+Math.round((w||700)*0.72); };
+      im.src=isLocal(id)?id:U(id,w); el.insertBefore(im, el.firstChild);
+    }
+    function fill(sel,cat,w,off){ document.querySelectorAll(sel).forEach(function(el,i){ put(el,cat,i+(off||0),w); }); }
+    // Home trending
+    var ht=document.querySelectorAll('#p-home .vcards .vcard'); put(ht[0],'home',0,700); put(ht[1],'food',0,700); put(ht[2],'goods',0,700);
+    put(document.querySelector('#p-home .rail .card div[style*="height:120px"]'),'life',1,500);
+    // Food
+    fill('#p-food .vcards .vcard','food',700);
+    // Services providers
+    fill('#p-services .vcards .vcard','work',700);
+    // Service category thumbnails
+    var CAT_IMG={cleaner:'1581578731548-c64695cc6952',painter:'1589939705384-5185137a7f0f',plumber:'1607472586893-edb57bdc0e39',electrician:'1621905252507-b35492cc74b4',laundry:'1545173168-9f1947eebb7f',carwash:'1605164599901-db7f68c4b1a4',waste:'1532996122724-e3c354a0b15b',mechanic:'1486262715619-67b85e0b08d3'};
+    document.querySelectorAll('#svc-cats .catcard[data-cat]').forEach(function(el){ var cat=el.getAttribute('data-cat'); var id=CAT_IMG[cat]; var th=el.querySelector('.thumb'); if(!th||!id) return; var im=document.createElement('img'); im.className='photo'; im.loading='lazy'; im.alt=''; var s='cat-'+cat; im.onerror=function(){ this.onerror=null; this.src='https://picsum.photos/seed/'+s+'/220/170'; }; im.src=U(id,220); th.insertBefore(im, th.firstChild); });
+    // Real estate listings
+    fill('#p-realestate .vcards .vcard','home',700);
+    // Marketplace products
+    var mcat=['goods','food','goods','goods','goods','goods','goods'];
+    document.querySelectorAll('#p-market .prods .prod .img').forEach(function(el,i){ put(el,mcat[i]||'goods',i,500); });
+    // Product (homes) hero + thumb
+    put(document.querySelector('#p-product .detail-hero'),'home',1,900);
+    put(document.querySelector('#p-product .fcard .th'),'home',2,200);
+    // Provider profile
+    put(document.querySelector('#p-provider .detail-hero'),'work',0,900);
+    document.querySelectorAll('#p-provider .pg div').forEach(function(el,i){ put(el,'work',i+1,400); });
+    put(document.querySelector('#p-provider .av'),'people',1,200);
+    // Social feed
+    put(document.querySelector('#s-feed .post .ph'),'life',0,700);
+    put(document.querySelector('#s-feed .post .av'),'people',1,100);
+    document.querySelectorAll('#s-feed .stories .s .in').forEach(function(el,i){ put(el,'people',i+2,120); });
+    // Social connect
+    document.querySelectorAll('#s-connect .pcard .cov').forEach(function(el,i){ put(el,'life',i,400); });
+    document.querySelectorAll('#s-connect .pcard .pa').forEach(function(el,i){ put(el,'people',i,160); });
+    // Social chats (first avatar = Amaka)
+    var ca=document.querySelectorAll('#s-chats .row .av'); put(ca[0],'people',0,100);
+    // Social profile
+    put(document.querySelector('#s-profile .cover'),'life',2,800);
+    put(document.querySelector('#s-profile .av'),'people',2,200);
+    document.querySelectorAll('#s-profile .pg div').forEach(function(el,i){ put(el,'life',i+1,400); });
+    // Jobs — talent
+    document.querySelectorAll('#jb-hire .pcard .cov').forEach(function(el,i){ put(el,'work',i,400); });
+    document.querySelectorAll('#jb-hire .pcard .pa').forEach(function(el,i){ put(el,'people',i+3,160); });
+  })();
+  (function(){ try{ var s=localStorage.getItem('hineed-theme'); if(s) setTheme(s); if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.classList.add('dark'); }catch(e){} })();
+</script>
+
+<!-- ============================================================
+     HINEED BACKEND BRIDGE
+     Connects this UI to the real backend (/api/*): live provider
+     data from the database, real sign-up/sessions, and real
+     bookings with escrow. If the API is ever unreachable the UI
+     still works as a demo (every call fails soft).
+     ============================================================ -->
+<script>
+(function(){
+  "use strict";
+  var API = {
+    get: function(u){ return fetch(u, {credentials:'same-origin'}).then(r=>r.json().catch(()=>({}))); },
+    post: function(u,b){ return fetch(u,{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify(b||{})}).then(async r=>({ok:r.ok,status:r.status,data:await r.json().catch(()=>({}))})); },
+    patch: function(u,b){ return fetch(u,{method:'PATCH',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify(b||{})}).then(async r=>({ok:r.ok,status:r.status,data:await r.json().catch(()=>({}))})); }
+  };
+  window.HINEED = window.HINEED || {};
+  window.HINEED.user = null;
+  window.HINEED.lastBooking = null;
+
+  /* ---- tiny toast ---- */
+  function toast(msg, kind){
+    var t=document.createElement('div');
+    t.textContent=msg;
+    t.style.cssText='position:fixed;left:50%;bottom:92px;transform:translateX(-50%) translateY(10px);z-index:9999;background:'+(kind==='bad'?'#e5484d':'var(--brand,#0E7C3A)')+';color:#fff;padding:11px 18px;border-radius:999px;font:600 .86rem/1 Inter,system-ui,sans-serif;box-shadow:0 10px 30px rgba(0,0,0,.3);opacity:0;transition:opacity .22s,transform .22s;max-width:86vw;text-align:center';
+    document.body.appendChild(t);
+    requestAnimationFrame(function(){ t.style.opacity='1'; t.style.transform='translateX(-50%) translateY(0)'; });
+    setTimeout(function(){ t.style.opacity='0'; t.style.transform='translateX(-50%) translateY(10px)'; setTimeout(function(){ t.remove(); }, 260); }, 2600);
+  }
+  window.HINEED.toast = toast;
+
+  /* ---- 1) hydrate the catalog from the database ---- */
+  function hydrate(){
+    return API.get('/api/catalog').then(function(d){
+      if(!d || !d.PROV) return;
+      try {
+        if(d.CATLBL) window.CATLBL = Object.assign(window.CATLBL||{}, d.CATLBL);
+        if(d.CAT_CHARGES) window.CAT_CHARGES = Object.assign(window.CAT_CHARGES||{}, d.CAT_CHARGES);
+        if(d.PROV) window.PROV = Object.assign(window.PROV||{}, d.PROV);
+        if(d.REVIEWS && d.REVIEWS.length) window.REVIEWS = d.REVIEWS;
+        // re-render whichever provider is on screen with fresh data
+        if(typeof window.fillProvider==='function') window.fillProvider(window.HINEED.curProv || 'brightclean');
+      } catch(e){ /* keep demo data */ }
+    }).catch(function(){ /* offline -> keep built-in demo data */ });
+  }
+
+  /* ---- 2) provider detail renderer that books for real ---- */
+  var _origFill = window.fillProvider;
+  window.fillProvider = function(id){
+    window.HINEED.curProv = id;
+    var P = (window.PROV||{})[id]; if(!P){ if(_origFill) return _origFill(id); return; }
+    var CATLBL = window.CATLBL||{}, CAT_CHARGES = window.CAT_CHARGES||{}, REVIEWS = window.REVIEWS||[];
+    var set=function(i,t){ var e=document.getElementById(i); if(e) e.textContent=t; };
+    set('prov-name',P.n); set('prov-avatar',(P.n||'?').charAt(0));
+    set('prov-meta',(CATLBL[P.c]||P.c)+' · '+P.a+' · ★ '+P.r+' ('+P.rv+' reviews)');
+    set('prov-desc',P.b); set('prov-revcount',P.rv+' reviews');
+    var ch=CAT_CHARGES[P.c]||[], pc=document.getElementById('prov-charges');
+    if(pc){
+      pc.innerHTML='';
+      ch.forEach(function(c){
+        var row=document.createElement('div'); row.className='row';
+        row.innerHTML='<div style="flex:1;font-weight:600;font-size:.9rem"></div><span style="font-weight:800;color:var(--pos);margin-right:12px"></span><button class="btn btn-brand" style="padding:7px 14px">Book</button>';
+        row.children[0].textContent=c[0];
+        row.children[1].textContent=c[1];
+        row.children[2].addEventListener('click', function(){ bookService(id, c[0], c[1]); });
+        pc.appendChild(row);
+      });
+    }
+    var pr=document.getElementById('prov-reviews');
+    if(pr){
+      pr.innerHTML='';
+      REVIEWS.forEach(function(rv){
+        var s=''; for(var i=0;i<5;i++) s+=(i<rv[1]?'★':'☆');
+        var row=document.createElement('div'); row.className='row';
+        row.innerHTML='<span class="av" style="width:38px;height:38px;font-size:.78rem"></span><div style="flex:1"><div style="font-weight:700;font-size:.86rem"> <span style="color:var(--star)"></span></div><div style="font-size:.82rem;color:var(--muted)"></div></div>';
+        row.querySelector('.av').textContent=(rv[0]||'?').charAt(0);
+        var head=row.querySelector('div > div'); head.childNodes[0].textContent=rv[0]+' ';
+        head.querySelector('span').textContent=s;
+        row.querySelectorAll('div > div')[1].textContent=rv[2];
+        pr.appendChild(row);
+      });
+    }
+  };
+
+  /* ---- 3) real booking + escrow ---- */
+  window.bookService = function(providerId, service, price){
+    API.post('/api/bookings', {providerId:providerId, service:service, price:price}).then(function(res){
+      if(res.ok && res.data.booking){
+        window.HINEED.lastBooking = res.data.booking.id;
+        toast('Booked ✓  '+(price||'')+' held in escrow');
+        if(typeof go==='function') go('pay');
+        if(typeof payView==='function') try{ payView('escrow'); }catch(e){}
+      } else if(res.status===401){
+        toast('Create a free account to book', 'bad');
+        if(typeof go==='function') go('auth');
+        var a=document.getElementById('auth'); if(a) a.style.display='flex';
+        if(typeof authStep==='function') authStep('signup');
+      } else {
+        toast(res.data.error || 'Could not book right now', 'bad');
+        if(typeof go==='function') go('pay');
+      }
+    }).catch(function(){ toast('Network issue — try again', 'bad'); if(typeof go==='function') go('pay'); });
+  };
+
+  var _origRelease = window.escrowRelease;
+  window.escrowRelease = function(){
+    var id = window.HINEED.lastBooking;
+    if(id){
+      API.patch('/api/bookings/'+id, {action:'release'}).then(function(res){
+        if(res.ok) toast('Funds released to provider ✓');
+        else toast((res.data&&res.data.error) || 'Release failed', 'bad');
+      }).catch(function(){ toast('Network issue', 'bad'); });
+    }
+    if(typeof _origRelease==='function') try{ _origRelease(); }catch(e){}
+  };
+
+  /* ---- 4) real sign-up wired into the existing onboarding ---- */
+  var _origEnter = window.enterApp;
+  window.enterApp = function(role){
+    var g=function(id){ var e=document.getElementById(id); return e? (e.value||'').trim() : ''; };
+    var name=g('su-name'), email=g('su-email'), phone=g('su-phone'), pass=g('su-pass');
+    var err=document.getElementById('su-err');
+    var proceed=function(){ if(_origEnter) _origEnter(role); };
+
+    // No email/password entered (e.g. Google/Apple/Continue demo buttons) -> just enter.
+    if(!email || !pass){ proceed(); return; }
+
+    if(err){ err.style.display='none'; }
+    API.post('/api/auth/signup', {name:name, email:email, phone:phone, password:pass, role:(role||'customer')})
+      .then(function(res){
+        if(res.ok && res.data.user){
+          window.HINEED.user = res.data.user;
+          toast('Welcome, '+(res.data.user.name||'to Hineed')+' ✓');
+          proceed();
+        } else {
+          if(err){ err.textContent = res.data.error || 'Could not create account.'; err.style.display='block'; }
+          else toast(res.data.error || 'Could not create account', 'bad');
+          // stay on the signup step so they can fix it
+          if(typeof authStep==='function') authStep('signup');
+        }
+      })
+      .catch(function(){ proceed(); }); // offline -> let the demo through
+  };
+
+  /* ---- 5) restore session on load (so a returning user is known) ---- */
+  function restore(){
+    return API.get('/api/auth/me').then(function(d){ if(d && d.user) window.HINEED.user = d.user; }).catch(function(){});
+  }
+
+  /* ---- boot ---- */
+  function boot(){ hydrate(); restore(); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();
+</script>
+</body>
+</html>
+
+</body></html>
