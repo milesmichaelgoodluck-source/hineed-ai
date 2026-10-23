@@ -16,6 +16,7 @@ export async function POST(req) {
   const name = (body.name || "").trim();
   const email = (body.email || "").trim().toLowerCase();
   const phone = (body.phone || "").trim() || null;
+  const dob = (body.dob || "").trim() || null;
   const password = String(body.password || "");
   const role = ROLES.includes(body.role) ? body.role : "customer";
 
@@ -29,10 +30,15 @@ export async function POST(req) {
     if (!verifyPassword(password, existing.passwordHash)) {
       return bad("That email is already registered. Check your password.", 409);
     }
-    user = updateUser(existing.id, { role, ...(name ? { name } : {}), ...(phone ? { phone } : {}) });
+    user = updateUser(existing.id, {
+      role,
+      ...(name ? { name } : {}),
+      ...(phone ? { phone } : {}),
+      ...(dob ? { dob } : {}),
+    });
   } else {
     user = createUser({
-      name: name || email.split("@")[0], email, phone, role, passwordHash: hashPassword(password),
+      name: name || email.split("@")[0], email, phone, dob, role, passwordHash: hashPassword(password),
     });
   }
 

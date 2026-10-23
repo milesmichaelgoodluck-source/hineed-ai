@@ -93,6 +93,28 @@ No rush: deploy first, see it live, add this later.
 
 ---
 
+## Email verification codes (OTP)
+
+Sign-up now includes an email verification step. Out of the box it runs in
+**test mode**: the 6-digit code is shown on screen so the flow works immediately.
+
+To send **real codes to people's Gmail**, set two Environment Variables on Vercel:
+
+1. Create a free account at **resend.com** and copy your API key.
+2. In Vercel → your project → **Settings → Environment Variables**, add:
+   - `RESEND_API_KEY` = your Resend key
+   - `EMAIL_FROM` = e.g. `Hineed.AI <noreply@yourdomain.com>`
+3. Verify your sending domain in Resend (required to email anyone other than
+   your own address). Then redeploy.
+
+SMS OTP (e.g. via Termii) can be added the same way later — just ask.
+
+## Updating the live app
+
+Because Vercel is connected to your `hineed-ai` GitHub repo, **every push
+auto-deploys**. To ship changes: double-click **`2-UPDATE-HINEED.bat`** on your
+Desktop — it commits and pushes, and Vercel rebuilds in ~1–2 minutes.
+
 ## Security notes
 - `.env` is never uploaded (it’s git-ignored). Set real secrets in Vercel’s
   Environment Variables instead.

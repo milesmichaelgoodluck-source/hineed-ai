@@ -270,12 +270,38 @@
   .gbrand{background:linear-gradient(160deg,#0a9e4e,#087A3E 44%,#062D20)}
   .ain{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:13px;padding:13px 14px} .ain input{border:0;outline:0;flex:1;font:inherit;background:transparent;color:var(--ink)}
   .rolecard{display:flex;align-items:center;gap:13px;border:1.5px solid var(--line);background:var(--surface);border-radius:18px;padding:15px;text-align:left;color:var(--ink);width:100%} .rolecard.on{border-color:var(--brand);background:var(--soft)}
+  /* Desktop: show a branded panel beside the auth card so the screen fills a laptop */
+  .auth-brand{display:none}
+  @media(min-width:900px){
+    #auth{display:flex;align-items:center;justify-content:center;gap:clamp(24px,6vw,96px);padding:0}
+    .auth-brand{display:flex;flex:1 1 0;min-width:0;align-self:stretch;background:var(--grad-brand);color:#fff;align-items:center;justify-content:flex-end;padding:6vw 4vw}
+    .auth-brand-inner{max-width:460px;display:flex;flex-direction:column;gap:20px}
+    .auth-brand-inner h1{font-size:clamp(2rem,2.4vw,2.9rem);font-weight:900;letter-spacing:-.03em;line-height:1.08;margin:0}
+    .auth-brand-inner p{font-size:1.05rem;line-height:1.55;opacity:.92;margin:0}
+    .auth-brand-inner ul{list-style:none;padding:0;margin:4px 0 0;display:flex;flex-direction:column;gap:12px}
+    .auth-brand-inner li{display:flex;align-items:center;gap:11px;font-weight:600;opacity:.95}
+    .auth-brand-inner li span{width:30px;height:30px;border-radius:9px;background:rgba(255,255,255,.16);display:grid;place-items:center;flex:0 0 auto}
+    .auth-brand .mk-lg{width:64px;height:64px;border-radius:18px;background:#fff;display:grid;place-items:center;padding:12px;box-sizing:border-box}
+    #auth .authcard{flex:0 0 auto;margin:0}
+  }
 </style>
 </head>
 <body>
 
 <!-- ENTRY FLOW -->
 <div id="auth">
+  <div class="auth-brand" aria-hidden="true">
+    <div class="auth-brand-inner">
+      <span class="mk-lg"><img src="mark.png" alt="Hineed" style="width:100%;height:100%;object-fit:contain"></span>
+      <h1>Everything you need,<br>in one place.</h1>
+      <p>Homes, services, products, food, jobs, travel and payments — just tell Hineed what you need, right here in Port Harcourt.</p>
+      <ul>
+        <li><span><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke:#fff"><path d="M20 6 9 17l-5-5"/></svg></span>Verified providers &amp; secure escrow</li>
+        <li><span><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke:#fff"><path d="M20 6 9 17l-5-5"/></svg></span>Pay, hire, shop and move — one app</li>
+        <li><span><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke:#fff"><path d="M20 6 9 17l-5-5"/></svg></span>Your AI concierge, always on</li>
+      </ul>
+    </div>
+  </div>
   <div class="authcard">
     <div class="astep on" id="a-splash">
       <div class="gbrand" style="flex:1;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:30px;position:relative">
@@ -302,26 +328,56 @@
           <h2 style="font-size:1.3rem;font-weight:900;margin:6px 0 0;letter-spacing:-.02em">Welcome to Hineed</h2>
           <p style="font-size:.84rem;color:var(--muted);margin:0">Create your account or log in to get started</p>
         </div>
-        <div class="seg" style="margin:6px 0"><button class="on" style="flex:1">Sign Up</button><button style="flex:1">Log In</button></div>
-        <label class="ain"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4.5 20.5c0-3.6 3.4-5.8 7.5-5.8s7.5 2.2 7.5 5.8"/></svg><input id="su-name" placeholder="Full name"></label>
-        <label class="ain"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M3.5 7h17v10h-17V7ZM3.5 7.5l8.5 6 8.5-6"/></svg><input id="su-email" type="email" placeholder="Email address"></label>
-        <label class="ain"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M7 3.5h10v17H7v-17ZM10.5 17.8h3"/></svg><input id="su-phone" type="tel" placeholder="Phone number"></label>
-        <label class="ain"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M6 11h12v9H6v-9ZM8.5 11V8a3.5 3.5 0 0 1 7 0v3"/></svg><input id="su-pass" type="password" placeholder="Create password"></label>
+        <div class="seg" style="margin:6px 0"><button class="on" style="flex:1" onclick="authStep('signup')">Sign Up</button><button style="flex:1" onclick="authStep('login')">Log In</button></div>
+        <label class="ain"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4.5 20.5c0-3.6 3.4-5.8 7.5-5.8s7.5 2.2 7.5 5.8"/></svg><input id="su-name" autocomplete="name" placeholder="Full name"></label>
+        <label class="ain"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M3.5 7h17v10h-17V7ZM3.5 7.5l8.5 6 8.5-6"/></svg><input id="su-email" type="email" autocomplete="email" placeholder="Email address (Gmail)"></label>
+        <label class="ain"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M7 3.5h10v17H7v-17ZM10.5 17.8h3"/></svg><input id="su-phone" type="tel" autocomplete="tel" placeholder="Phone number"></label>
+        <label class="ain"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M7 4h10M7 4v16h10V4M4 9h3M4 13h3M4 17h3"/></svg><input id="su-dob" type="date" autocomplete="bday" placeholder="Date of birth" style="color:var(--ink)"></label>
+        <label class="ain"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M6 11h12v9H6v-9ZM8.5 11V8a3.5 3.5 0 0 1 7 0v3"/></svg><input id="su-pass" type="password" autocomplete="new-password" placeholder="Create password (min 6)"></label>
         <div id="su-err" style="display:none;color:var(--neg,#e5484d);font-size:.8rem;margin:-4px 2px 0"></div>
-        <button class="btn btn-brand" onclick="authStep('role')">Create account</button>
+        <button class="btn btn-brand" onclick="goToRole()">Create account</button>
         <div style="display:flex;align-items:center;gap:10px;color:var(--muted);font-size:.78rem;margin:2px 0"><span style="flex:1;height:1px;background:var(--line)"></span>Or continue with<span style="flex:1;height:1px;background:var(--line)"></span></div>
-        <div style="display:flex;gap:11px"><button class="btn btn-ghost" style="flex:1" onclick="authStep('role')">Google</button><button class="btn btn-ghost" style="flex:1" onclick="authStep('role')">Apple</button></div>
+        <div style="display:flex;gap:11px"><button class="btn btn-ghost" style="flex:1" onclick="HINEED&&HINEED.toast&&HINEED.toast('Use email sign-up for now','bad')">Google</button><button class="btn btn-ghost" style="flex:1" onclick="HINEED&&HINEED.toast&&HINEED.toast('Use email sign-up for now','bad')">Apple</button></div>
+        <div style="text-align:center;font-size:.82rem;color:var(--muted)">Already have an account? <b style="color:var(--brand);cursor:pointer" onclick="authStep('login')">Log in</b></div>
+      </div>
+    </div>
+    <div class="astep" id="a-login">
+      <div style="padding:30px 24px;display:flex;flex-direction:column;gap:12px;min-height:100%">
+        <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px">
+          <img src="mark.png" alt="Hineed" width="56" height="56">
+          <h2 style="font-size:1.3rem;font-weight:900;margin:6px 0 0;letter-spacing:-.02em">Welcome back</h2>
+          <p style="font-size:.84rem;color:var(--muted);margin:0">Log in to your Hineed account</p>
+        </div>
+        <div class="seg" style="margin:6px 0"><button style="flex:1" onclick="authStep('signup')">Sign Up</button><button class="on" style="flex:1" onclick="authStep('login')">Log In</button></div>
+        <label class="ain"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M3.5 7h17v10h-17V7ZM3.5 7.5l8.5 6 8.5-6"/></svg><input id="li-email" type="email" autocomplete="email" placeholder="Email address"></label>
+        <label class="ain"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M6 11h12v9H6v-9ZM8.5 11V8a3.5 3.5 0 0 1 7 0v3"/></svg><input id="li-pass" type="password" autocomplete="current-password" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()"></label>
+        <div id="li-err" style="display:none;color:var(--neg,#e5484d);font-size:.8rem;margin:-4px 2px 0"></div>
+        <button class="btn btn-brand" onclick="doLogin()">Log in</button>
+        <div style="text-align:center;font-size:.82rem;color:var(--muted)">New here? <b style="color:var(--brand);cursor:pointer" onclick="authStep('signup')">Create an account</b></div>
+      </div>
+    </div>
+    <div class="astep" id="a-verify">
+      <div style="padding:30px 24px;display:flex;flex-direction:column;gap:14px;min-height:100%">
+        <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px">
+          <img src="mark.png" alt="Hineed" width="56" height="56">
+          <h2 style="font-size:1.3rem;font-weight:900;margin:6px 0 0;letter-spacing:-.02em">Verify your email</h2>
+          <p id="vf-hint" style="font-size:.84rem;color:var(--muted);margin:0">Enter the 6-digit code we sent you</p>
+        </div>
+        <label class="ain"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M3.5 7h17v10h-17V7ZM3.5 7.5l8.5 6 8.5-6"/></svg><input id="vf-code" inputmode="numeric" maxlength="6" placeholder="6-digit code" style="letter-spacing:5px;font-weight:800" onkeydown="if(event.key==='Enter')verifyCode()"></label>
+        <div id="vf-err" style="display:none;color:var(--neg,#e5484d);font-size:.8rem;margin:-4px 2px 0"></div>
+        <button class="btn btn-brand" onclick="verifyCode()">Verify &amp; continue</button>
+        <div style="text-align:center;font-size:.82rem;color:var(--muted)">Didn't get it? <b style="color:var(--brand);cursor:pointer" onclick="resendCode()">Resend code</b> · <b style="color:var(--muted);cursor:pointer" onclick="enterApp(ROLE)">Skip for now</b></div>
       </div>
     </div>
     <div class="astep" id="a-role">
       <div style="padding:30px 24px;display:flex;flex-direction:column;gap:12px;min-height:100%">
         <h2 style="font-size:1.4rem;font-weight:900;margin:6px 0 2px;letter-spacing:-.02em">How will you use Hineed?</h2>
         <p style="font-size:.86rem;color:var(--muted);margin:0 0 6px">You can switch or add a role anytime.</p>
-        <button class="rolecard on" onclick="enterApp('customer')"><span class="ic-b" style="background:var(--brand);color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4.5 20.5c0-3.6 3.4-5.8 7.5-5.8s7.5 2.2 7.5 5.8"/></svg></span><span style="flex:1"><span style="font-weight:800;display:block">I need things done</span><span style="font-size:.78rem;color:var(--muted)">Homes, services, products, food & more</span></span></button>
-        <button class="rolecard" onclick="enterApp('provider')"><span class="ic-b" style="background:var(--a1);color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M14.5 5.5a3.8 3.8 0 0 0 5 5L15 15l-2 5.5-3-3 5.5-2 4.5-4.5"/></svg></span><span style="flex:1"><span style="font-weight:800;display:block">I offer a service or sell</span><span style="font-size:.78rem;color:var(--muted)">Get matched to real requests</span></span></button>
-        <button class="rolecard" onclick="enterApp('business')"><span class="ic-b" style="background:var(--a5);color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M4 21V6l7-3 7 3v15M4 21h16M9 21v-4h6v4"/></svg></span><span style="flex:1"><span style="font-weight:800;display:block">I run a business</span><span style="font-size:.78rem;color:var(--muted)">Source, hire and operate</span></span></button>
+        <button class="rolecard on" onclick="selectRole('customer',this)"><span class="ic-b" style="background:var(--brand);color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4.5 20.5c0-3.6 3.4-5.8 7.5-5.8s7.5 2.2 7.5 5.8"/></svg></span><span style="flex:1"><span style="font-weight:800;display:block">I need things done</span><span style="font-size:.78rem;color:var(--muted)">Homes, services, products, food & more</span></span></button>
+        <button class="rolecard" onclick="selectRole('provider',this)"><span class="ic-b" style="background:var(--a1);color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M14.5 5.5a3.8 3.8 0 0 0 5 5L15 15l-2 5.5-3-3 5.5-2 4.5-4.5"/></svg></span><span style="flex:1"><span style="font-weight:800;display:block">I offer a service or sell</span><span style="font-size:.78rem;color:var(--muted)">Get matched to real requests</span></span></button>
+        <button class="rolecard" onclick="selectRole('business',this)"><span class="ic-b" style="background:var(--a5);color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M4 21V6l7-3 7 3v15M4 21h16M9 21v-4h6v4"/></svg></span><span style="flex:1"><span style="font-weight:800;display:block">I run a business</span><span style="font-size:.78rem;color:var(--muted)">Source, hire and operate</span></span></button>
         <span style="flex:1"></span>
-        <button class="btn btn-brand" onclick="enterApp()">Continue</button>
+        <button class="btn btn-brand" onclick="chooseRole(window.__pendingRole||'customer')">Continue</button>
       </div>
     </div>
   </div>
@@ -341,7 +397,8 @@
       <button onclick="socialOpen('chats')"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M4 5.5h16v10H9l-4 3.5v-3.5H4v-10Z"/></svg>Chats</button>
     </nav>
     <div class="sp"></div>
-    <button onclick="go('profile')" style="border:0;background:transparent;padding:0;text-align:left"><div class="me"><span class="av" style="width:38px;height:38px">M</span><div style="min-width:0"><div style="font-weight:700;font-size:.86rem">Miles Goodluck</div><div style="font-size:.74rem;color:var(--muted)" id="side-role">Port Harcourt · Customer</div></div></div></button>
+    <button onclick="go('profile')" style="border:0;background:transparent;padding:0;text-align:left"><div class="me"><span class="av" id="side-avatar" style="width:38px;height:38px">M</span><div style="min-width:0"><div id="side-name" style="font-weight:700;font-size:.86rem">Miles Goodluck</div><div style="font-size:.74rem;color:var(--muted)" id="side-role">Port Harcourt · Customer</div></div></div></button>
+    <button onclick="doLogout()" style="margin-top:8px;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:1px solid var(--line);background:transparent;color:var(--muted);font-weight:700;font-size:.84rem;padding:10px;border-radius:12px"><svg width="17" height="17" viewBox="0 0 24 24" class="ic"><path d="M15 17l5-5-5-5M20 12H9M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3"/></svg>Log out</button>
   </aside>
 
   <div class="main">
@@ -624,6 +681,8 @@
               </div>
             </div>
           </div>
+          <div class="sect-t" style="margin-top:24px"><h3>Your bookings</h3><a href="#" onclick="go('services');return false">Book a service</a></div>
+          <div class="list card" id="cust-bookings" style="padding:4px 18px"><div style="padding:16px;color:var(--muted);font-size:.86rem">Loading…</div></div>
         </div>
 
         <!-- Provider -->
@@ -1351,37 +1410,129 @@
     if(typeof _origRelease==='function') try{ _origRelease(); }catch(e){}
   };
 
-  /* ---- 4) real sign-up wired into the existing onboarding ---- */
-  var _origEnter = window.enterApp;
+  /* ---- 4) auth: signup -> verify, login, logout, roles ---- */
+  function val(id){ var e=document.getElementById(id); return e? (e.value||'').trim() : ''; }
+  function showErr(id,msg){ var el=document.getElementById(id); if(el){ el.textContent=msg; el.style.display='block'; } else toast(msg,'bad'); }
+  function hideErr(id){ var el=document.getElementById(id); if(el) el.style.display='none'; }
+
+  // enterApp is UI-only now (the account is created earlier in the flow).
   window.enterApp = function(role){
-    var g=function(id){ var e=document.getElementById(id); return e? (e.value||'').trim() : ''; };
-    var name=g('su-name'), email=g('su-email'), phone=g('su-phone'), pass=g('su-pass');
-    var err=document.getElementById('su-err');
-    var proceed=function(){ if(_origEnter) _origEnter(role); };
-
-    // No email/password entered (e.g. Google/Apple/Continue demo buttons) -> just enter.
-    if(!email || !pass){ proceed(); return; }
-
-    if(err){ err.style.display='none'; }
-    API.post('/api/auth/signup', {name:name, email:email, phone:phone, password:pass, role:(role||'customer')})
-      .then(function(res){
-        if(res.ok && res.data.user){
-          window.HINEED.user = res.data.user;
-          toast('Welcome, '+(res.data.user.name||'to Hineed')+' ✓');
-          proceed();
-        } else {
-          if(err){ err.textContent = res.data.error || 'Could not create account.'; err.style.display='block'; }
-          else toast(res.data.error || 'Could not create account', 'bad');
-          // stay on the signup step so they can fix it
-          if(typeof authStep==='function') authStep('signup');
-        }
-      })
-      .catch(function(){ proceed(); }); // offline -> let the demo through
+    try{ window.ROLE = role || window.ROLE || 'customer'; }catch(e){}
+    var r = role || (typeof ROLE!=='undefined'? ROLE : 'customer');
+    var a=document.getElementById('auth'); if(a) a.style.display='none';
+    var nd=document.getElementById('nav-dash'); if(nd) nd.style.display='flex';   // dashboard for everyone
+    var LBL=(typeof ROLE_LABEL!=='undefined'?ROLE_LABEL:{customer:'Customer',provider:'Provider',business:'Business'});
+    var sr=document.getElementById('side-role'); if(sr) sr.textContent='Port Harcourt · '+(LBL[r]||'Customer');
+    var pr=document.getElementById('prof-role'); if(pr) pr.textContent=(LBL[r]||'Customer');
+    var u=window.HINEED && window.HINEED.user;
+    if(u && u.name){ var nm=document.getElementById('side-name'); if(nm) nm.textContent=u.name; var av=document.getElementById('side-avatar'); if(av) av.textContent=u.name.charAt(0).toUpperCase(); }
+    if(r==='customer'){ if(typeof go==='function') go('home'); } else { if(typeof openDash==='function') openDash(); }
   };
 
-  /* ---- 5) restore session on load (so a returning user is known) ---- */
+  window.goToRole = function(){
+    var email=val('su-email'), pass=val('su-pass');
+    if(!email || email.indexOf('@')<0){ showErr('su-err','Enter a valid email address.'); return; }
+    if(pass.length<6){ showErr('su-err','Password must be at least 6 characters.'); return; }
+    hideErr('su-err');
+    if(typeof authStep==='function') authStep('role');
+  };
+
+  window.selectRole = function(role, el){
+    window.__pendingRole = role;
+    try{ document.querySelectorAll('#a-role .rolecard').forEach(function(b){ b.classList.remove('on'); }); }catch(e){}
+    if(el) el.classList.add('on');
+  };
+
+  window.chooseRole = function(role){
+    try{ window.ROLE = role || 'customer'; }catch(e){}
+    var name=val('su-name'), email=val('su-email'), phone=val('su-phone'), pass=val('su-pass'), dob=val('su-dob');
+    if(!email || !pass){ enterApp(role||'customer'); return; }            // social/demo path
+    API.post('/api/auth/signup', {name:name,email:email,phone:phone,dob:dob,password:pass,role:(role||'customer')}).then(function(res){
+      if(res.ok && res.data.user){
+        window.HINEED.user=res.data.user; window.HINEED.pendingEmail=email;
+        try{ localStorage.setItem('hineed-email', email); }catch(e){}
+        API.post('/api/auth/request-code', {email:email}).then(function(cr){
+          var hint=document.getElementById('vf-hint');
+          if(cr.data && cr.data.devCode){ if(hint) hint.innerHTML='Test mode (email sending not set up yet): your code is <b style="color:var(--brand);font-size:1.15rem;letter-spacing:3px">'+cr.data.devCode+'</b>'; }
+          else if(hint){ hint.textContent='We sent a 6-digit code to '+email; }
+          if(typeof authStep==='function') authStep('verify');
+        }).catch(function(){ if(typeof authStep==='function') authStep('verify'); });
+      } else {
+        showErr('su-err', res.data.error || 'Could not create account.');
+        if(typeof authStep==='function') authStep('signup');
+      }
+    }).catch(function(){ enterApp(role||'customer'); });
+  };
+
+  window.verifyCode = function(){
+    var code=val('vf-code'), email=(window.HINEED&&window.HINEED.pendingEmail)||'';
+    if(!code){ showErr('vf-err','Enter the 6-digit code.'); return; }
+    API.post('/api/auth/verify-code', {email:email, code:code}).then(function(res){
+      if(res.ok){ hideErr('vf-err'); toast('Email verified ✓'); enterApp(window.ROLE||'customer'); }
+      else showErr('vf-err', (res.data&&res.data.error)||'Wrong or expired code.');
+    }).catch(function(){ enterApp(window.ROLE||'customer'); });
+  };
+
+  window.resendCode = function(){
+    var email=(window.HINEED&&window.HINEED.pendingEmail)||''; if(!email) return;
+    API.post('/api/auth/request-code', {email:email}).then(function(cr){
+      var hint=document.getElementById('vf-hint');
+      if(cr.data && cr.data.devCode){ if(hint) hint.innerHTML='Test mode: your code is <b style="color:var(--brand);font-size:1.15rem;letter-spacing:3px">'+cr.data.devCode+'</b>'; toast('New code ready'); }
+      else toast('Code re-sent to '+email);
+    });
+  };
+
+  window.doLogin = function(){
+    var email=val('li-email'), pass=val('li-pass');
+    if(!email || !pass){ showErr('li-err','Enter your email and password.'); return; }
+    API.post('/api/auth/login', {email:email, password:pass}).then(function(res){
+      if(res.ok && res.data.user){
+        window.HINEED.user=res.data.user;
+        try{ localStorage.setItem('hineed-email', email); }catch(e){}
+        hideErr('li-err'); enterApp(res.data.user.role||'customer');
+      } else showErr('li-err', (res.data&&res.data.error)||'Wrong email or password.');
+    }).catch(function(){ showErr('li-err','Network issue — try again.'); });
+  };
+
+  window.doLogout = function(){
+    API.post('/api/auth/logout', {}).then(function(){
+      window.HINEED.user=null;
+      var a=document.getElementById('auth'); if(a) a.style.display='';
+      if(typeof authStep==='function') authStep('login');
+      prefillEmail();
+      try{ window.scrollTo(0,0); }catch(e){}
+    }).catch(function(){ try{ location.reload(); }catch(e){} });
+  };
+
+  function prefillEmail(){
+    try{ var e=localStorage.getItem('hineed-email'); if(e){ ['li-email','su-email'].forEach(function(id){ var el=document.getElementById(id); if(el && !el.value) el.value=e; }); } }catch(e){}
+  }
+
+  /* ---- 5) customer dashboard: load real bookings ---- */
+  var _origOpenDash = window.openDash;
+  window.openDash = function(){
+    if(typeof _origOpenDash==='function') _origOpenDash();
+    loadMyBookings();
+  };
+  function loadMyBookings(){
+    var box=document.getElementById('cust-bookings'); if(!box) return;
+    API.get('/api/bookings').then(function(d){
+      if(!d || !d.bookings) return;
+      if(!d.bookings.length){ box.innerHTML='<div style="padding:16px;color:var(--muted);font-size:.86rem">No bookings yet — open a provider and tap Book.</div>'; return; }
+      var h=''; d.bookings.forEach(function(b){
+        var color=b.status==='released'?'var(--pos)':(b.status==='cancelled'?'var(--neg)':'var(--star)');
+        h+='<div class="row"><div style="flex:1"><div style="font-weight:700;font-size:.9rem">'+esc(b.service)+'</div><div style="font-size:.76rem;color:var(--muted)">'+esc(b.provider)+' · '+esc(b.price)+'</div></div><span class="badge" style="background:var(--soft);color:'+color+'">'+esc(b.status)+'</span></div>';
+      });
+      box.innerHTML=h;
+    }).catch(function(){});
+  }
+
+  /* ---- 6) restore session on load (auto-login returning users) ---- */
   function restore(){
-    return API.get('/api/auth/me').then(function(d){ if(d && d.user) window.HINEED.user = d.user; }).catch(function(){});
+    return API.get('/api/auth/me').then(function(d){
+      if(d && d.user){ window.HINEED.user=d.user; enterApp(d.user.role||'customer'); }
+      else prefillEmail();
+    }).catch(function(){ prefillEmail(); });
   }
 
   /* ---- boot ---- */
