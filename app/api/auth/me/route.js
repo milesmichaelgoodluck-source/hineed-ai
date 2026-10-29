@@ -28,6 +28,7 @@ export const PATCH = withDb(async (req) => {
   let body;
   try { body = await req.json(); } catch { body = {}; }
   const patch = {};
+  if (typeof body.role === "string" && ["customer", "provider", "business", "rider"].includes(body.role)) patch.role = body.role;
   if (typeof body.name === "string" && body.name.trim()) patch.name = body.name.trim();
   if (typeof body.phone === "string") patch.phone = body.phone.trim() || null;
   if (typeof body.location === "string") patch.location = body.location.trim() || null;

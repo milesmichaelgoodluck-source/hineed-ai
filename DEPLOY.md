@@ -163,11 +163,21 @@ code to the user's phone, add an SMS provider key — **Termii** (good for Niger
 Africa): set `TERMII_API_KEY` (and optional `TERMII_SENDER_ID`) in Vercel, then
 redeploy. The account's phone number is used automatically.
 
-## Maps (optional)
+## Location & Maps (Google)
 
-Ride pickup/drop-off and locations work as text today. For an interactive map
-with live positions, a Google Maps (or Mapbox) API key is needed — tell me when
-you have one and I'll wire the live map in.
+Location is **live now**. In Account → Edit → **"Use my current location"**, the
+app reads the device GPS and turns it into a real "City, Country" address. It
+works with no key out of the box (via OpenStreetMap). To use **Google's**
+location service for more precise addresses, add one key:
+
+1. In **console.cloud.google.com** → APIs & Services, enable **Geocoding API**
+   (and later **Maps JavaScript API** for the interactive map), create an API key.
+2. In Vercel → Settings → Environment Variables, add `GOOGLE_MAPS_API_KEY` = your key.
+3. Redeploy. The app automatically switches to Google; the key stays on the
+   server and is never exposed in the app.
+
+An interactive live map for the ride page (moving car, route line) is the next
+step once the Maps JavaScript key is in — tell me when it's added.
 
 ## Admin console (owner-only)
 

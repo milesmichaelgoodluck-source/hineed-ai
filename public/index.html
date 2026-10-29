@@ -1143,14 +1143,74 @@
 
       <!-- PROFILE -->
       <section class="page" id="p-profile">
-        <h1 class="h1">Profile</h1>
-        <div class="card" style="padding:22px;max-width:680px;display:flex;align-items:center;gap:16px"><span class="av" style="width:72px;height:72px;font-size:1.6rem">M</span><div style="flex:1"><div style="font-weight:900;font-size:1.3rem;letter-spacing:-.02em">Miles Goodluck</div><div style="color:var(--muted);font-size:.86rem">Port Harcourt · Verified</div><div style="display:flex;gap:7px;margin-top:8px"><span class="badge">Admin</span><span class="badge" id="prof-role">Customer</span></div></div></div>
+        <h1 class="h1">Account</h1>
+        <div class="card" style="padding:22px;max-width:680px;display:flex;align-items:center;gap:16px">
+          <span class="av" id="prof-av" style="width:72px;height:72px;font-size:1.6rem;background-size:cover;background-position:center">M</span>
+          <div style="flex:1;min-width:0">
+            <div id="prof-name" style="font-weight:900;font-size:1.3rem;letter-spacing:-.02em">Your account</div>
+            <div id="prof-loc" style="color:var(--muted);font-size:.86rem">Tap Edit to add your details</div>
+            <div id="prof-badges" style="display:flex;gap:7px;margin-top:8px;flex-wrap:wrap"><span class="badge" id="prof-role">Customer</span></div>
+          </div>
+          <button class="btn btn-ghost" style="padding:8px 14px" onclick="editProfile()">Edit</button>
+        </div>
+
+        <div class="card" id="prof-edit" style="display:none;padding:18px;max-width:680px;margin-top:14px">
+          <div style="font-weight:800;margin-bottom:12px">Edit profile</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <label class="ain"><input id="pe-name" placeholder="Full name"></label>
+            <label class="ain"><input id="pe-phone" type="tel" placeholder="Phone number"></label>
+            <label class="ain"><input id="pe-loc" placeholder="Your location (city, country)"></label>
+            <button class="btn btn-ghost" type="button" onclick="detectLocation()" style="justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="margin-right:7px"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3.2M12 18.8V22M2 12h3.2M18.8 12H22"/></svg><span id="pe-loc-btn">Use my current location</span></button>
+            <label style="font-size:.86rem;color:var(--muted);display:flex;align-items:center;gap:12px;cursor:pointer;padding:4px 0"><span id="pe-photo-prev" class="av" style="width:46px;height:46px;background-size:cover;background-position:center"></span>Change photo<input id="pe-photo" type="file" accept="image/*" style="display:none" onchange="pickProfilePhoto(this)"></label>
+            <div style="display:flex;gap:10px;margin-top:4px"><button class="btn btn-brand" style="flex:1" onclick="saveProfile()">Save changes</button><button class="btn btn-ghost" onclick="editProfile(false)">Cancel</button></div>
+          </div>
+        </div>
+
+        <div id="prof-kyc"></div>
+
         <div class="card list" style="padding:4px 18px;max-width:680px;margin-top:16px">
           <a href="#" onclick="openDash();return false" class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M4 4h7v7H4zM13 4h7v4h-7zM13 11h7v9h-7zM4 14h7v6H4z"/></svg></span><div style="flex:1;font-weight:600;font-size:.9rem">My dashboard</div><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#c3cdc7"><path d="M9.5 6l6 6-6 6"/></svg></a>
-          <a href="#" class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span><div style="flex:1;font-weight:600;font-size:.9rem">My requests & orders</div><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#c3cdc7"><path d="M9.5 6l6 6-6 6"/></svg></a>
+          <a href="#" onclick="openDash();return false" class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span><div style="flex:1;font-weight:600;font-size:.9rem">My requests & orders</div><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#c3cdc7"><path d="M9.5 6l6 6-6 6"/></svg></a>
           <a href="#" onclick="go('pay');return false" class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M4 7.5h13a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H4v-12Z"/></svg></span><div style="flex:1;font-weight:600;font-size:.9rem">Payment & wallet</div><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#c3cdc7"><path d="M9.5 6l6 6-6 6"/></svg></a>
-          <a href="#" class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M14.5 5.5a3.8 3.8 0 0 0 5 5L15 15l-2 5.5-3-3 5.5-2 4.5-4.5"/></svg></span><div style="flex:1;font-weight:600;font-size:.9rem">Sell or offer a service</div><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#c3cdc7"><path d="M9.5 6l6 6-6 6"/></svg></a>
-          <a href="#" onclick="adminOpen();return false" class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.7-7 9.5-4.1-1.8-7-5.3-7-9.5V6l7-3Z"/></svg></span><div style="flex:1;font-weight:600;font-size:.9rem">Admin console</div><span class="badge">Staff</span></a>
+          <a href="#" onclick="becomeSeller();return false" class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M14.5 5.5a3.8 3.8 0 0 0 5 5L15 15l-2 5.5-3-3 5.5-2 4.5-4.5"/></svg></span><div style="flex:1;font-weight:600;font-size:.9rem">Sell or offer a service</div><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#c3cdc7"><path d="M9.5 6l6 6-6 6"/></svg></a>
+          <a href="#" onclick="go('support');return false" class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><circle cx="12" cy="12" r="8"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .9-1 1.7M12 16.5v.01"/></svg></span><div style="flex:1;font-weight:600;font-size:.9rem">Help & support</div><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#c3cdc7"><path d="M9.5 6l6 6-6 6"/></svg></a>
+          <a href="#" onclick="go('about');return false" class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><circle cx="12" cy="12" r="8"/><path d="M12 11v5M12 8v.01"/></svg></span><div style="flex:1;font-weight:600;font-size:.9rem">About Hineed</div><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#c3cdc7"><path d="M9.5 6l6 6-6 6"/></svg></a>
+          <a href="#" id="prof-admin-row" style="display:none" onclick="adminOpen();return false" class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.7-7 9.5-4.1-1.8-7-5.3-7-9.5V6l7-3Z"/></svg></span><div style="flex:1;font-weight:600;font-size:.9rem">Admin console</div><span class="badge">Staff</span></a>
+          <a href="#" onclick="doLogout();return false" class="row" style="color:var(--neg)"><span class="ic-b" style="background:rgba(229,72,77,.12)"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:var(--neg)"><path d="M15 17l5-5-5-5M20 12H9M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3"/></svg></span><div style="flex:1;font-weight:700;font-size:.9rem">Log out</div></a>
+        </div>
+      </section>
+
+      <section class="page" id="p-support">
+        <h1 class="h1">Help &amp; support</h1>
+        <div class="card" style="padding:20px;max-width:680px">
+          <div style="font-weight:800;font-size:1.05rem">We're here to help</div>
+          <p style="color:var(--muted);font-size:.9rem;margin:8px 0 16px">Reach the Hineed team any time — we usually reply within a few hours.</p>
+          <div class="list" style="padding:0">
+            <a href="#" onclick="go('ineed');return false" class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M12 3.5 13.6 8 18 9.5 13.6 11 12 15.5 10.4 11 6 9.5 10.4 8Z"/></svg></span><div style="flex:1;font-weight:600;font-size:.9rem">Ask the Hineed AI assistant</div><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#c3cdc7"><path d="M9.5 6l6 6-6 6"/></svg></a>
+            <a href="mailto:support@hineed.ai" class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M3.5 7h17v10h-17V7ZM3.5 7.5l8.5 6 8.5-6"/></svg></span><div style="flex:1;font-weight:600;font-size:.9rem">Email support@hineed.ai</div><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#c3cdc7"><path d="M9.5 6l6 6-6 6"/></svg></a>
+            <a href="https://wa.me/2348000000000" target="_blank" rel="noopener" class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M4 5.5h16v10H9l-4 3.5v-3.5H4z"/></svg></span><div style="flex:1;font-weight:600;font-size:.9rem">Chat on WhatsApp</div><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#c3cdc7"><path d="M9.5 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+        <div class="card" style="padding:20px;max-width:680px;margin-top:14px">
+          <div style="font-weight:800;margin-bottom:10px">Frequently asked</div>
+          <details style="border-bottom:1px solid var(--line);padding:10px 0"><summary style="font-weight:600;cursor:pointer;font-size:.9rem">How do I get verified (KYC)?</summary><p style="color:var(--muted);font-size:.86rem;margin:8px 0 0">Open Account → Identity verification and upload a valid ID. Our team reviews it, usually within 24 hours.</p></details>
+          <details style="border-bottom:1px solid var(--line);padding:10px 0"><summary style="font-weight:600;cursor:pointer;font-size:.9rem">How does payment & escrow work?</summary><p style="color:var(--muted);font-size:.86rem;margin:8px 0 0">When you book, your money is held safely in escrow and only released to the provider once you confirm the job is done.</p></details>
+          <details style="padding:10px 0"><summary style="font-weight:600;cursor:pointer;font-size:.9rem">How do I start selling or offering a service?</summary><p style="color:var(--muted);font-size:.86rem;margin:8px 0 0">Open Account → Sell or offer a service, pick what you do, set up your shop or profile, and you go live on the marketplace.</p></details>
+        </div>
+      </section>
+
+      <section class="page" id="p-about">
+        <h1 class="h1">About Hineed</h1>
+        <div class="card" style="padding:24px;max-width:680px;text-align:center">
+          <span style="width:80px;height:80px;border-radius:22px;background:var(--brand);display:inline-grid;place-items:center;padding:14px;box-sizing:border-box"><img src="mark.png" alt="Hineed" style="width:100%;height:100%;object-fit:contain;filter:brightness(0) invert(1)"></span>
+          <div style="font-size:1.4rem;font-weight:900;margin-top:12px">Hineed<span style="color:var(--brand)">.AI</span></div>
+          <div style="color:var(--muted);font-size:.9rem;margin-top:4px">Everything you need, in one place.</div>
+          <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-top:16px;text-align:left">Hineed.AI brings services, products, jobs, real estate, travel, rides and payments into a single app. Tell Hineed what you need and get matched to trusted people and businesses near you — safely, with money held in escrow until the job is done.</p>
+        </div>
+        <div class="card list" style="padding:4px 18px;max-width:680px;margin-top:14px">
+          <a href="#" class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M9 11l2 2 4-4M12 3l7 3v5.5c0 4.2-2.9 7.7-7 9.5-4.1-1.8-7-5.3-7-9.5V6l7-3Z"/></svg></span><div style="flex:1;font-weight:600;font-size:.9rem">Privacy policy</div><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#c3cdc7"><path d="M9.5 6l6 6-6 6"/></svg></a>
+          <a href="#" class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 4h10v16H7zM9 8h6M9 12h6M9 16h3"/></svg></span><div style="flex:1;font-weight:600;font-size:.9rem">Terms of service</div><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#c3cdc7"><path d="M9.5 6l6 6-6 6"/></svg></a>
+          <div class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><circle cx="12" cy="12" r="8"/><path d="M12 11v5M12 8v.01"/></svg></span><div style="flex:1;font-weight:600;font-size:.9rem">Version</div><span style="color:var(--muted);font-size:.85rem">1.0.0</span></div>
         </div>
       </section>
 
@@ -1922,6 +1982,7 @@
 
   /* ================= KYC ================= */
   function kycCard(u){ var st=(u&&u.kyc&&u.kyc.status)||'none'; var label=st==='verified'?'<span style="color:var(--pos);font-weight:800">● Verified ✓</span>':(st==='pending'?'<span style="color:var(--star)">Pending review…</span>':(st==='rejected'?'<span style="color:var(--neg)">Declined — please re-submit</span>':'Not verified yet')); return '<div class="card" style="padding:16px;margin-top:18px"><div style="font-weight:800;margin-bottom:6px">Identity verification (KYC)</div><div style="font-size:.86rem;margin-bottom:'+(st==='verified'?'0':'10px')+'">'+label+'</div>'+(st==='verified'?'':'<button class="btn btn-ghost" onclick="submitKyc()">Upload ID document</button>')+'</div>'; }
+  window.kycCard = kycCard;
   window.kycCard=kycCard;
   window.submitKyc=function(){ pickImage(function(d){ api('POST','/api/kyc',{doc:d}).then(function(r){ if(r.ok){ T('ID submitted for verification ✓'); var role=window.ROLE; if(role==='rider')renderRiderDash(); else if(role==='provider')renderProviderDash(); else if(role==='business')renderBusinessDash(); } else T((r.data&&r.data.error)||'Could not upload','bad'); }); }); };
 
@@ -2023,8 +2084,8 @@
      +mlink('Chats',I('<path d="M4 5.5h16v10H9l-4 3.5v-3.5H4z"/>'),"socialOpen('chats')")
      +mlink('Notifications',I('<path d="M18 16V11a6 6 0 1 0-12 0v5l-1.5 2.5h15z"/>'),"openNotifs()")
      +mlink('Account settings',I('<circle cx="12" cy="12" r="3.2"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.5-2-3.4-2.3 1a7 7 0 0 0-2-1.2L14 2h-4l-.6 2.5a7 7 0 0 0-2 1.2l-2.3-1-2 3.4 2 1.5A7 7 0 0 0 5 12a7 7 0 0 0 .1 1.2l-2 1.5 2 3.4 2.3-1a7 7 0 0 0 2 1.2L10 22h4l.6-2.5a7 7 0 0 0 2-1.2l2.3 1 2-3.4-2-1.5A7 7 0 0 0 19 12Z"/>'),"go('profile')")
-     +mlink('Support',I('<circle cx="12" cy="12" r="8"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .9-1 1.7M12 16.5v.01"/>'),"go('ineed')")
-     +mlink('About Hineed',I('<circle cx="12" cy="12" r="8"/><path d="M12 11v5M12 8v.01"/>'),"go('profile')");
+     +mlink('Support',I('<circle cx="12" cy="12" r="8"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .9-1 1.7M12 16.5v.01"/>'),"go('support')")
+     +mlink('About Hineed',I('<circle cx="12" cy="12" r="8"/><path d="M12 11v5M12 8v.01"/>'),"go('about')");
     el('hn-m-links').innerHTML=links;
     requestAnimationFrame(function(){ menu.classList.add('on'); });
   };
@@ -2048,6 +2109,139 @@
       if(auth && getComputedStyle(auth).display!=='none' && splash && splash.classList.contains('on') && typeof authStep==='function') authStep('onboarding');
     }catch(e){}
   }, 3500);
+})();
+</script>
+<script>
+/* ===================== Account / profile / location ===================== */
+(function(){
+  function el(id){ return document.getElementById(id); }
+  function H(){ return window.HINEED || (window.HINEED={}); }
+  function me(){ return H().user || null; }
+  function toast(m,k){ try{ if(H().toast) H().toast(m,k); }catch(e){} }
+  var _pendingPhoto = null;
+
+  function initials(name){ return ((name||'U').trim()[0]||'U').toUpperCase(); }
+
+  function renderAccount(){
+    var u = me(); if(!u) return;
+    var av = el('prof-av');
+    if(av){
+      if(u.photo){ av.style.backgroundImage='url('+u.photo+')'; av.textContent=''; }
+      else { av.style.backgroundImage=''; av.textContent=initials(u.name); }
+    }
+    var nm = el('prof-name'); if(nm) nm.textContent = u.name || 'Your account';
+    var loc = el('prof-loc'); if(loc) loc.textContent = u.location ? u.location : 'Tap Edit to add your location';
+    var role = el('prof-role');
+    var RL = {customer:'Customer',provider:'Service provider',business:'Business',rider:'Driver / rider'};
+    if(role) role.textContent = RL[u.role] || 'Customer';
+    // verified badge
+    var badges = el('prof-badges');
+    if(badges){
+      var extra = badges.querySelector('.hn-vbadge');
+      var verified = u.verified || (u.kyc && u.kyc.status==='verified');
+      if(verified && !extra){ var s=document.createElement('span'); s.className='badge hn-vbadge'; s.style.color='var(--pos)'; s.textContent='● Verified'; badges.appendChild(s); }
+      if(!verified && extra){ extra.remove(); }
+    }
+    var kyc = el('prof-kyc');
+    if(kyc && typeof window.kycCard==='function'){ kyc.innerHTML = window.kycCard(u); }
+    var admin = el('prof-admin-row'); if(admin) admin.style.display='flex';
+  }
+  window.renderAccount = renderAccount;
+
+  window.editProfile = function(show){
+    var box = el('prof-edit'); if(!box) return;
+    var open = (show===false) ? false : (box.style.display==='none');
+    if(open){
+      var u = me()||{};
+      if(el('pe-name')) el('pe-name').value = u.name||'';
+      if(el('pe-phone')) el('pe-phone').value = u.phone||'';
+      if(el('pe-loc')) el('pe-loc').value = u.location||'';
+      _pendingPhoto = null;
+      var pv = el('pe-photo-prev');
+      if(pv){ if(u.photo){ pv.style.backgroundImage='url('+u.photo+')'; pv.textContent=''; } else { pv.style.backgroundImage=''; pv.textContent=initials(u.name); } }
+      box.style.display='';
+      try{ box.scrollIntoView({behavior:'smooth',block:'center'}); }catch(e){}
+    } else { box.style.display='none'; }
+  };
+
+  function resizeTo(src,max,cb){ var img=new Image(); img.onload=function(){ var w=img.width,h=img.height; if(w>max||h>max){ if(w>h){h=Math.round(h*max/w);w=max;}else{w=Math.round(w*max/h);h=max;} } var c=document.createElement('canvas'); c.width=w;c.height=h; try{ c.getContext('2d').drawImage(img,0,0,w,h); cb(c.toDataURL('image/jpeg',0.82)); }catch(e){ cb(src);} }; img.onerror=function(){cb(src);}; img.src=src; }
+
+  window.pickProfilePhoto = function(input){
+    var f = input && input.files && input.files[0]; if(!f) return;
+    var r = new FileReader();
+    r.onload = function(){ resizeTo(r.result, 600, function(data){ _pendingPhoto = data; var pv=el('pe-photo-prev'); if(pv){ pv.style.backgroundImage='url('+data+')'; pv.textContent=''; } }); };
+    r.readAsDataURL(f);
+  };
+
+  window.detectLocation = function(){
+    var btn = el('pe-loc-btn');
+    if(!navigator.geolocation){ toast('Location not supported on this device','bad'); return; }
+    if(btn) btn.textContent='Locating…';
+    navigator.geolocation.getCurrentPosition(function(pos){
+      var la=pos.coords.latitude, ln=pos.coords.longitude;
+      fetch('/api/geocode?lat='+la+'&lng='+ln).then(function(r){return r.json();}).then(function(d){
+        if(d && d.label){ if(el('pe-loc')) el('pe-loc').value=d.label; toast('Location detected ✓'); }
+        else { if(el('pe-loc')) el('pe-loc').value = la.toFixed(3)+', '+ln.toFixed(3); toast('Got your coordinates'); }
+        if(btn) btn.textContent='Use my current location';
+      }).catch(function(){ if(el('pe-loc')) el('pe-loc').value = la.toFixed(3)+', '+ln.toFixed(3); if(btn) btn.textContent='Use my current location'; });
+    }, function(err){
+      if(btn) btn.textContent='Use my current location';
+      toast(err && err.code===1 ? 'Allow location access to use this' : 'Could not get your location','bad');
+    }, {enableHighAccuracy:true, timeout:10000, maximumAge:60000});
+  };
+
+  window.saveProfile = function(){
+    var body = {
+      name: (el('pe-name')&&el('pe-name').value||'').trim(),
+      phone: (el('pe-phone')&&el('pe-phone').value||'').trim(),
+      location: (el('pe-loc')&&el('pe-loc').value||'').trim()
+    };
+    if(_pendingPhoto) body.photo = _pendingPhoto;
+    fetch('/api/auth/me',{method:'PATCH',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+      .then(function(r){return r.json();}).then(function(d){
+        if(d && d.user){ H().user = d.user; renderAccount(); window.editProfile(false); toast('Profile saved ✓'); }
+        else toast('Could not save — try again','bad');
+      }).catch(function(){ toast('Network issue — try again','bad'); });
+  };
+
+  /* ---- Become a seller / provider / rider ---- */
+  window.becomeSeller = function(){
+    var ex = el('hn-role-sheet'); if(ex) ex.remove();
+    var opts = [
+      ['business','I run a business','Source, hire, sell products','M4 21V6l7-3 7 3v15M4 21h16M9 21v-4h6v4'],
+      ['provider','I offer a service','Get matched to real requests','M14.5 5.5a3.8 3.8 0 0 0 5 5L15 15l-2 5.5-3-3 5.5-2 4.5-4.5'],
+      ['rider','I drive or deliver','Accept rides & deliveries','M5 18a2 2 0 1 0 4 0 2 2 0 0 0-4 0ZM15 18a2 2 0 1 0 4 0 2 2 0 0 0-4 0ZM7 18h7l-1.5-9H9M14 11h3l2 4']
+    ];
+    var rows = opts.map(function(o){ return '<button class="row" style="width:100%;text-align:left;background:transparent;border:1px solid var(--line);border-radius:14px;margin-bottom:10px;padding:14px" onclick="switchRole(\''+o[0]+'\')"><span class="ic-b"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="'+o[3]+'"/></svg></span><span style="flex:1"><b style="display:block">'+o[1]+'</b><span style="font-size:.8rem;color:var(--muted)">'+o[2]+'</span></span></button>'; }).join('');
+    var d = document.createElement('div');
+    d.id='hn-role-sheet';
+    d.style.cssText='position:fixed;inset:0;z-index:300;display:flex;align-items:flex-end;justify-content:center';
+    d.innerHTML='<div onclick="document.getElementById(\'hn-role-sheet\').remove()" style="position:absolute;inset:0;background:rgba(0,0,0,.45)"></div><div style="position:relative;background:var(--surface);color:var(--ink);width:100%;max-width:520px;border-radius:22px 22px 0 0;padding:22px 18px calc(22px + env(safe-area-inset-bottom));box-shadow:0 -10px 40px rgba(0,0,0,.2)"><div style="width:40px;height:4px;border-radius:3px;background:var(--line);margin:0 auto 14px"></div><div style="font-weight:900;font-size:1.15rem;margin-bottom:4px">Start selling on Hineed</div><div style="color:var(--muted);font-size:.86rem;margin-bottom:16px">What do you want to do? You can switch back any time.</div>'+rows+'</div>';
+    document.body.appendChild(d);
+  };
+
+  window.switchRole = function(r){
+    var sheet = el('hn-role-sheet'); if(sheet) sheet.remove();
+    fetch('/api/auth/me',{method:'PATCH',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({role:r})})
+      .then(function(res){return res.json();}).then(function(d){
+        if(d && d.user){
+          H().user = d.user; try{ window.ROLE = r; }catch(e){}
+          renderAccount();
+          // The role dashboard shows its own shop / service / vehicle setup form.
+          if(typeof openDash==='function'){ openDash(); }
+          toast('Role switched — finish your setup in the dashboard ✓');
+        } else toast('Could not switch — try again','bad');
+      }).catch(function(){ toast('Network issue — try again','bad'); });
+  };
+
+  /* ---- Render the account page whenever it's opened ---- */
+  var _go = window.go;
+  window.go = function(p){ if(_go) _go(p); if(p==='profile'){ try{ renderAccount(); }catch(e){} } };
+  // also catch nav/bottom button clicks that call the inner go()
+  document.addEventListener('click', function(ev){
+    var b = ev.target && ev.target.closest && ev.target.closest('[data-p="profile"]');
+    if(b){ setTimeout(function(){ try{ renderAccount(); }catch(e){} }, 0); }
+  }, true);
 })();
 </script>
 </body>
