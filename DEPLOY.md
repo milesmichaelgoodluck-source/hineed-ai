@@ -115,6 +115,33 @@ Because Vercel is connected to your `hineed-ai` GitHub repo, **every push
 auto-deploys**. To ship changes: double-click **`2-UPDATE-HINEED.bat`** on your
 Desktop — it commits and pushes, and Vercel rebuilds in ~1–2 minutes.
 
+## Admin console (owner-only)
+
+Open the app → your **Profile** (tap your name, bottom-left) → **Admin console**.
+Sign in with:
+
+- **Username:** `hineed.admin`
+- **Password:** `Hineed@Admin#2026`
+
+From there you see platform stats and every user, and can block or delete accounts.
+**Change these before real launch** by setting `ADMIN_USERNAME` and `ADMIN_PASSWORD`
+in Vercel → Settings → Environment Variables, then redeploy.
+
+## Social login (Google / Facebook)
+
+The "Continue with Google / Facebook" buttons work once you add developer keys:
+
+**Google:** create an OAuth client at console.cloud.google.com → set the redirect
+URI to `https://YOUR-DOMAIN/api/auth/oauth/callback?provider=google` → add
+`GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` in Vercel.
+
+**Facebook:** create an app at developers.facebook.com → redirect URI
+`https://YOUR-DOMAIN/api/auth/oauth/callback?provider=facebook` → add
+`FACEBOOK_CLIENT_ID` and `FACEBOOK_CLIENT_SECRET`.
+
+Until then, email + password (with the verification code) works fully. Apple
+sign-in is a later stage (it needs a paid Apple Developer account).
+
 ## Security notes
 - `.env` is never uploaded (it’s git-ignored). Set real secrets in Vercel’s
   Environment Variables instead.

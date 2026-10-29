@@ -1,33 +1,36 @@
 import { NextResponse } from "next/server";
-import { listBookings, createBooking, getProvider } from "@/lib/store";
+import { listBookings, listBookingsForProvider, createBooking, getProvider, findUserById } from "@/lib/store";
 import { sessionFromRequest } from "@/lib/auth";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-// List the signed-in user's bookings.
+// GET /api/bookings            -> my bookings (as a customer)
+// GET /api/bookings?role=provider -> bookings made TO me (as a provider)
 export async function GET(req) {
   const session = sessionFromRequest(req);
   if (!session?.uid) return NextResponse.json({ error: "Not signed in." }, { status: 401 });
 
+  const role = new URL(req.url).searchParams.get("role");
+  if (role === "provider") {
+    const bookings = listBookingsForProvider(session.uid).map((b) => {
+      const buyer = findUserById(b.userId);
+      return { id: b.id, customer: buyer?.name || "Customer", service: b.service, price: b.price, status: b.status, createdAt: b.createdAt };
+    });
+    return NextResponse.json({ bookings });
+  }
+
   const bookings = listBookings(session.uid).map((b) => {
     const p = getProvider(b.providerId);
     return {
-      id: b.id,
-      provider: p?.name || b.providerId,
-      category: p?.category || null,
-      area: p?.area || null,
-      service: b.service,
-      price: b.price,
-      status: b.status,
-      createdAt: b.createdAt,
+      id: b.id, provider: b.providerName || p?.name || b.providerId,
+      category: p?.category || null, area: p?.area || null,
+      service: b.service, price: b.price, status: b.status, createdAt: b.createdAt,
     };
   });
-
   return NextResponse.json({ bookings });
 }
 
-// Create a booking. Money is modelled as held in escrow on creation.
 export async function POST(req) {
   const session = sessionFromRequest(req);
   if (!session?.uid) return NextResponse.json({ error: "Please sign in to book." }, { status: 401 });
@@ -42,15 +45,8 @@ export async function POST(req) {
   const provider = getProvider(providerId);
   if (!provider) return NextResponse.json({ error: "Unknown provider." }, { status: 404 });
 
-  const booking = createBooking({ userId: session.uid, providerId, service, price });
-
+  const booking = createBooking({ userId: session.uid, providerId, providerName: provider.name, service, price });
   return NextResponse.json({
-    booking: {
-      id: booking.id,
-      provider: provider.name,
-      service: booking.service,
-      price: booking.price,
-      status: booking.status,
-    },
+    booking: { id: booking.id, provider: provider.name, service: booking.service, price: booking.price, status: booking.status },
   });
 }

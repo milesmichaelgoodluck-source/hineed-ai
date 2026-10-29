@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createUser, findUserByEmail, updateUser } from "@/lib/store";
+import { createUser, findUserByEmail, updateUser, publicUser } from "@/lib/store";
 import { hashPassword, verifyPassword, signSession, COOKIE_NAME, SESSION_MAX_AGE } from "@/lib/auth";
 
 export const runtime = "nodejs";
@@ -17,6 +17,7 @@ export async function POST(req) {
   const email = (body.email || "").trim().toLowerCase();
   const phone = (body.phone || "").trim() || null;
   const dob = (body.dob || "").trim() || null;
+  const location = (body.location || "").trim() || null;
   const password = String(body.password || "");
   const role = ROLES.includes(body.role) ? body.role : "customer";
 
@@ -35,19 +36,17 @@ export async function POST(req) {
       ...(name ? { name } : {}),
       ...(phone ? { phone } : {}),
       ...(dob ? { dob } : {}),
+      ...(location ? { location } : {}),
     });
   } else {
     user = createUser({
-      name: name || email.split("@")[0], email, phone, dob, role, passwordHash: hashPassword(password),
+      name: name || email.split("@")[0], email, phone, dob, location, role, passwordHash: hashPassword(password),
     });
   }
 
   return withSession(user);
 }
 
-function publicUser(u) {
-  return { id: u.id, name: u.name, email: u.email, phone: u.phone, role: u.role };
-}
 function bad(error, status = 400) {
   return NextResponse.json({ error }, { status });
 }

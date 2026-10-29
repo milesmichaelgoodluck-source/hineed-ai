@@ -56,8 +56,10 @@
     --g-food:linear-gradient(135deg,#2a2a2a,#000); --g-a:linear-gradient(135deg,#333,#111);
     --g-b:linear-gradient(135deg,#3a3a3a,#141414); --g-c:linear-gradient(135deg,#2e2e2e,#0d0d0d);
   }
-  *{box-sizing:border-box} html,body{margin:0;padding:0}
-  body{background:var(--wall);background-color:var(--bg);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased;line-height:1.5}
+  *{box-sizing:border-box} html,body{margin:0;padding:0;overflow-x:hidden;max-width:100%}
+  html{scrollbar-gutter:stable}
+  body{background:var(--wall);background-color:var(--bg);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased;line-height:1.5;min-height:100vh;position:relative}
+  img,video,canvas{max-width:100%}
   a{text-decoration:none;color:inherit} button{font-family:inherit;cursor:pointer}
   .ic{stroke:currentColor;stroke-width:1.85;fill:none;stroke-linecap:round;stroke-linejoin:round} img{max-width:100%}
 
@@ -294,7 +296,7 @@
     <div class="auth-brand-inner">
       <span class="mk-lg"><img src="mark.png" alt="Hineed" style="width:100%;height:100%;object-fit:contain"></span>
       <h1>Everything you need,<br>in one place.</h1>
-      <p>Homes, services, products, food, jobs, travel and payments — just tell Hineed what you need, right here in Port Harcourt.</p>
+      <p>Homes, services, products, food, jobs, travel and payments — just tell Hineed what you need, wherever you are in the world.</p>
       <ul>
         <li><span><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke:#fff"><path d="M20 6 9 17l-5-5"/></svg></span>Verified providers &amp; secure escrow</li>
         <li><span><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke:#fff"><path d="M20 6 9 17l-5-5"/></svg></span>Pay, hire, shop and move — one app</li>
@@ -337,7 +339,7 @@
         <div id="su-err" style="display:none;color:var(--neg,#e5484d);font-size:.8rem;margin:-4px 2px 0"></div>
         <button class="btn btn-brand" onclick="goToRole()">Create account</button>
         <div style="display:flex;align-items:center;gap:10px;color:var(--muted);font-size:.78rem;margin:2px 0"><span style="flex:1;height:1px;background:var(--line)"></span>Or continue with<span style="flex:1;height:1px;background:var(--line)"></span></div>
-        <div style="display:flex;gap:11px"><button class="btn btn-ghost" style="flex:1" onclick="HINEED&&HINEED.toast&&HINEED.toast('Use email sign-up for now','bad')">Google</button><button class="btn btn-ghost" style="flex:1" onclick="HINEED&&HINEED.toast&&HINEED.toast('Use email sign-up for now','bad')">Apple</button></div>
+        <div style="display:flex;gap:9px"><button class="btn btn-ghost" style="flex:1" onclick="oauthStart('google')">Google</button><button class="btn btn-ghost" style="flex:1" onclick="oauthStart('facebook')">Facebook</button><button class="btn btn-ghost" style="flex:1" onclick="oauthStart('apple')">Apple</button></div>
         <div style="text-align:center;font-size:.82rem;color:var(--muted)">Already have an account? <b style="color:var(--brand);cursor:pointer" onclick="authStep('login')">Log in</b></div>
       </div>
     </div>
@@ -353,6 +355,8 @@
         <label class="ain"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M6 11h12v9H6v-9ZM8.5 11V8a3.5 3.5 0 0 1 7 0v3"/></svg><input id="li-pass" type="password" autocomplete="current-password" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()"></label>
         <div id="li-err" style="display:none;color:var(--neg,#e5484d);font-size:.8rem;margin:-4px 2px 0"></div>
         <button class="btn btn-brand" onclick="doLogin()">Log in</button>
+        <div style="display:flex;align-items:center;gap:10px;color:var(--muted);font-size:.78rem;margin:2px 0"><span style="flex:1;height:1px;background:var(--line)"></span>Or continue with<span style="flex:1;height:1px;background:var(--line)"></span></div>
+        <div style="display:flex;gap:9px"><button class="btn btn-ghost" style="flex:1" onclick="oauthStart('google')">Google</button><button class="btn btn-ghost" style="flex:1" onclick="oauthStart('facebook')">Facebook</button><button class="btn btn-ghost" style="flex:1" onclick="oauthStart('apple')">Apple</button></div>
         <div style="text-align:center;font-size:.82rem;color:var(--muted)">New here? <b style="color:var(--brand);cursor:pointer" onclick="authStep('signup')">Create an account</b></div>
       </div>
     </div>
@@ -761,7 +765,7 @@
               <h2 style="margin:6px 0 0;font-weight:900;font-size:1.3rem">Hineed Admin Console</h2>
               <p style="font-size:.82rem;color:var(--muted);margin:0">Restricted · staff sign-in only</p>
             </div>
-            <label class="ain" style="margin-bottom:10px"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M3.5 7h17v10h-17V7ZM3.5 7.5l8.5 6 8.5-6"/></svg><input id="adm-email" placeholder="Admin email"></label>
+            <label class="ain" style="margin-bottom:10px"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M3.5 7h17v10h-17V7ZM3.5 7.5l8.5 6 8.5-6"/></svg><input id="adm-email" placeholder="Admin username" autocomplete="username"></label>
             <label class="ain"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M6 11h12v9H6v-9ZM8.5 11V8a3.5 3.5 0 0 1 7 0v3"/></svg><input id="adm-pass" type="password" placeholder="Password" onkeydown="if(event.key==='Enter')adminLogin()"></label>
             <div id="adm-err" style="display:none;color:var(--neg);font-size:.8rem;margin-top:10px;font-weight:600">Invalid credentials — please try again.</div>
             <button class="btn btn-brand" style="width:100%;margin-top:16px" onclick="adminLogin()">Sign in</button>
@@ -1421,10 +1425,11 @@
     var r = role || (typeof ROLE!=='undefined'? ROLE : 'customer');
     var a=document.getElementById('auth'); if(a) a.style.display='none';
     var nd=document.getElementById('nav-dash'); if(nd) nd.style.display='flex';   // dashboard for everyone
-    var LBL=(typeof ROLE_LABEL!=='undefined'?ROLE_LABEL:{customer:'Customer',provider:'Provider',business:'Business'});
-    var sr=document.getElementById('side-role'); if(sr) sr.textContent='Port Harcourt · '+(LBL[r]||'Customer');
-    var pr=document.getElementById('prof-role'); if(pr) pr.textContent=(LBL[r]||'Customer');
+    var LBL={customer:'Customer',provider:'Service provider',business:'Business'};
     var u=window.HINEED && window.HINEED.user;
+    var loc=(u && u.location) ? u.location : 'Global';
+    var sr=document.getElementById('side-role'); if(sr) sr.textContent=loc+' · '+(LBL[r]||'Customer');
+    var pr=document.getElementById('prof-role'); if(pr) pr.textContent=(LBL[r]||'Customer');
     if(u && u.name){ var nm=document.getElementById('side-name'); if(nm) nm.textContent=u.name; var av=document.getElementById('side-avatar'); if(av) av.textContent=u.name.charAt(0).toUpperCase(); }
     if(r==='customer'){ if(typeof go==='function') go('home'); } else { if(typeof openDash==='function') openDash(); }
   };
@@ -1446,7 +1451,7 @@
   window.chooseRole = function(role){
     try{ window.ROLE = role || 'customer'; }catch(e){}
     var name=val('su-name'), email=val('su-email'), phone=val('su-phone'), pass=val('su-pass'), dob=val('su-dob');
-    if(!email || !pass){ enterApp(role||'customer'); return; }            // social/demo path
+    if(!email || !pass){ showErr('su-err','Please enter your email and a password first.'); authStep('signup'); return; }
     API.post('/api/auth/signup', {name:name,email:email,phone:phone,dob:dob,password:pass,role:(role||'customer')}).then(function(res){
       if(res.ok && res.data.user){
         window.HINEED.user=res.data.user; window.HINEED.pendingEmail=email;
@@ -1461,7 +1466,7 @@
         showErr('su-err', res.data.error || 'Could not create account.');
         if(typeof authStep==='function') authStep('signup');
       }
-    }).catch(function(){ enterApp(role||'customer'); });
+    }).catch(function(){ showErr('su-err','Network issue — please try again.'); if(typeof authStep==='function') authStep('signup'); });
   };
 
   window.verifyCode = function(){
@@ -1530,7 +1535,7 @@
   /* ---- 6) restore session on load (auto-login returning users) ---- */
   function restore(){
     return API.get('/api/auth/me').then(function(d){
-      if(d && d.user){ window.HINEED.user=d.user; enterApp(d.user.role||'customer'); }
+      if(d && d.user){ window.HINEED.user=d.user; var rt=null; try{ rt=localStorage.getItem('hineed-route'); }catch(e){} enterApp(d.user.role||'customer'); if(rt && rt!=='auth' && rt!=='admin' && rt!=='admin-login' && typeof go==='function') setTimeout(function(){ go(rt); },0); }
       else prefillEmail();
     }).catch(function(){ prefillEmail(); });
   }
@@ -1541,7 +1546,230 @@
   else boot();
 })();
 </script>
+
+<!-- ============================================================
+     HINEED v3 — real dashboards, shop, social, scanner, admin
+     ============================================================ -->
+<script>
+(function(){
+  "use strict";
+  var H = window.HINEED = window.HINEED || {};
+  function el(id){ return document.getElementById(id); }
+  function api(method,url,body){ return fetch(url,{method:method,credentials:'same-origin',headers:body?{'Content-Type':'application/json'}:undefined,body:body?JSON.stringify(body):undefined}).then(async function(r){return {ok:r.ok,status:r.status,data:await r.json().catch(function(){return {};})};}); }
+  function T(m,k){ if(H.toast) H.toast(m,k); }
+  function E(s){ return (''+(s==null?'':s)).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function me(){ return H.user||null; }
+  function uid(){ return H.user && H.user.id; }
+  function amt(s){ var m=(''+s).replace(/[^0-9.]/g,''); var n=parseFloat(m); return isNaN(n)?0:n; }
+  function timeAgo(t){ try{var d=(Date.now()-new Date(t).getTime())/1000; if(d<60)return 'just now'; if(d<3600)return Math.floor(d/60)+'m ago'; if(d<86400)return Math.floor(d/3600)+'h ago'; return Math.floor(d/86400)+'d ago';}catch(e){return '';} }
+
+  // styles for dynamic bits
+  var st=document.createElement('style');
+  st.textContent=".hn-in{width:100%;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;padding:11px 13px;font:inherit;outline:0}"
+   +".hn-modal{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.55);display:none;align-items:flex-end;justify-content:center}"
+   +".hn-modal.on{display:flex}"
+   +".hn-sheet{background:var(--surface);width:100%;max-width:520px;max-height:88vh;border-radius:22px 22px 0 0;display:flex;flex-direction:column;overflow:hidden}"
+   +"@media(min-width:600px){.hn-modal{align-items:center}.hn-sheet{border-radius:22px}}"
+   +".hn-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:8px}"
+   +".hn-b{max-width:76%;padding:9px 13px;border-radius:14px;font-size:.9rem;line-height:1.35}"
+   +".hn-b.me{align-self:flex-end;background:var(--brand);color:var(--on-brand)}"
+   +".hn-b.them{align-self:flex-start;background:var(--soft);color:var(--ink)}"
+   +"#scan-video{width:100%;border-radius:16px;background:#000;max-height:60vh;object-fit:cover}";
+  document.head.appendChild(st);
+
+  function stat(l,n,d){ return '<div class="stat"><div class="l">'+E(l)+'</div><div class="n">'+E(n)+'</div><div class="d">'+E(d||'')+'</div></div>'; }
+  function emptyRow(t){ return '<div style="padding:16px;color:var(--muted);font-size:.86rem">'+E(t)+'</div>'; }
+  function badge(s){ var c=s==='released'||s==='completed'?'var(--pos)':(s==='cancelled'?'var(--neg)':'var(--star)'); return '<span class="badge" style="background:var(--soft);color:'+c+'">'+E(s)+'</span>'; }
+
+  /* ================= route persistence ================= */
+  var _go = window.go;
+  window.go = function(p){ if(_go) _go(p); try{ localStorage.setItem('hineed-route', p); }catch(e){} afterPage(p); };
+  function afterPage(p){ if(p==='social') renderFeed(); else if(p==='market') renderShop(); else if(p==='admin-login'){} }
+
+  /* ================= OAuth ================= */
+  window.oauthStart = function(provider){
+    if(provider==='apple'){ T('Apple sign-in is coming soon — use Google, Facebook or email','bad'); return; }
+    var url='/api/auth/oauth?provider='+provider;
+    fetch(url,{redirect:'manual'}).then(function(r){
+      if(r.status===200){ r.json().then(function(d){ if(d&&d.configured===false){ T(provider.charAt(0).toUpperCase()+provider.slice(1)+" sign-in isn't set up yet — add its keys (DEPLOY.md). Email works now.",'bad'); } else location.href=url; }).catch(function(){ location.href=url; }); }
+      else location.href=url;
+    }).catch(function(){ location.href=url; });
+  };
+  // handle return from OAuth
+  try{ var qp=new URLSearchParams(location.search); var a=qp.get('auth'); if(a){ if(a==='oauth_error') setTimeout(function(){T('Social sign-in failed — try again or use email','bad');},600); if(a==='oauth_noemail') setTimeout(function(){T('That account has no shared email — use email sign-up','bad');},600); history.replaceState(null,'',location.pathname); } }catch(e){}
+
+  /* ================= dashboards ================= */
+  var _od = window.openDash;
+  window.openDash = function(){ if(_od) _od(); var r=window.ROLE; if(r==='provider') renderProviderDash(); else if(r==='business') renderBusinessDash(); };
+
+  window.saveProviderProfile = function(){
+    api('PATCH','/api/auth/me',{profile:{category:(el('pv-cat').value||'').trim(),area:(el('pv-area').value||'').trim(),bio:(el('pv-bio').value||'').trim()}}).then(function(res){ if(res.ok){ H.user=res.data.user; T('Profile saved ✓'); renderProviderDash(); } else T('Could not save','bad'); });
+  };
+  window.providerComplete = function(id){ api('PATCH','/api/bookings/'+id,{action:'complete'}).then(function(r){ if(r.ok){ T('Marked done'); renderProviderDash(); } }); };
+  window.shareWork = function(){
+    var title=(el('wk-title').value||'').trim(); if(!title){ T('Add a title','bad'); return; }
+    api('POST','/api/works',{title:title,description:(el('wk-desc').value||'').trim()}).then(function(r){ if(r.ok){ T('Work posted to your profile ✓'); renderProviderDash(); } else T(r.data.error||'Failed','bad'); });
+  };
+
+  function renderThreadList(threads){
+    if(!threads||!threads.length) return '<div class="list card" style="padding:4px 18px">'+emptyRow('No messages yet.')+'</div>';
+    var h='<div class="list card" style="padding:4px 18px">';
+    threads.forEach(function(t){ h+='<div class="row" style="cursor:pointer" onclick="openChat(\''+t.otherId+'\',\''+E(t.otherName).replace(/'/g,"\\'")+'\')"><span class="av" style="width:38px;height:38px">'+E((t.otherName||'U').charAt(0))+'</span><div style="flex:1"><div style="font-weight:700;font-size:.9rem">'+E(t.otherName)+'</div><div style="font-size:.78rem;color:var(--muted)">'+E(t.last?t.last.body:'')+'</div></div>'+(t.unread?'<span class="badge">'+t.unread+'</span>':'')+'</div>'; });
+    return h+'</div>';
+  }
+
+  function renderProviderDash(){
+    var box=el('dash-provider'); if(!box) return; var u=me()||{};
+    Promise.all([api('GET','/api/bookings?role=provider'),api('GET','/api/works?owner='+encodeURIComponent(uid())),api('GET','/api/calls'),api('GET','/api/messages')]).then(function(res){
+      var reqs=res[0].data.bookings||[],works=res[1].data.works||[],calls=res[2].data.calls||[],threads=res[3].data.threads||[];
+      var prof=u.profile||{}; var unread=threads.reduce(function(a,t){return a+(t.unread||0);},0);
+      var h='<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h1 class="h1" style="margin:0">Provider dashboard</h1><span class="badge">'+E(u.name)+'</span></div><p class="sub">Your requests, works, calls and messages.</p>';
+      h+='<div class="card" style="padding:16px;margin-bottom:16px"><div style="font-weight:800;margin-bottom:10px">Your service profile</div><div style="display:flex;gap:10px;flex-wrap:wrap"><input id="pv-cat" class="hn-in" style="flex:1;min-width:150px" placeholder="Category (e.g. painter)" value="'+E(prof.category||'')+'"><input id="pv-area" class="hn-in" style="flex:1;min-width:150px" placeholder="Area / city" value="'+E(prof.area||'')+'"></div><textarea id="pv-bio" class="hn-in" style="margin-top:10px;min-height:56px" placeholder="Short bio">'+E(prof.bio||'')+'</textarea><button class="btn btn-brand" style="margin-top:10px" onclick="saveProviderProfile()">Save profile</button><div style="font-size:.76rem;color:var(--muted);margin-top:8px">Saving publishes you in the ecosystem so customers can find and book you.</div></div>';
+      h+='<div class="stats">'+stat('Requests',reqs.length,'')+stat('Works shared',works.length,'')+stat('Unread messages',unread,'')+stat('Call requests',calls.length,'')+'</div>';
+      h+='<div class="sect-t" style="margin-top:20px"><h3>Incoming requests</h3></div><div class="list card" style="padding:4px 18px">';
+      if(!reqs.length) h+=emptyRow('No service requests yet.'); else reqs.forEach(function(b){ h+='<div class="row"><div style="flex:1"><div style="font-weight:700;font-size:.9rem">'+E(b.service)+'</div><div style="font-size:.76rem;color:var(--muted)">'+E(b.customer)+' · '+E(b.price)+'</div></div>'+badge(b.status)+(b.status==='held'?'<button class="btn btn-brand" style="padding:6px 11px;margin-left:8px" onclick="providerComplete(\''+b.id+'\')">Mark done</button>':'')+'</div>'; });
+      h+='</div>';
+      h+='<div class="sect-t" style="margin-top:20px"><h3>Call requests</h3></div><div class="list card" style="padding:4px 18px">';
+      if(!calls.length) h+=emptyRow('No call requests yet.'); else calls.forEach(function(c){ h+='<div class="row"><div style="flex:1"><div style="font-weight:700;font-size:.9rem">'+E(c.fromName)+'</div><div style="font-size:.76rem;color:var(--muted)">requested a call · '+timeAgo(c.createdAt)+'</div></div><button class="btn btn-ghost" style="padding:6px 11px" onclick="openChat(\''+c.fromId+'\',\''+E(c.fromName).replace(/\x27/g,"")+'\')">Message</button></div>'; });
+      h+='</div>';
+      h+='<div class="sect-t" style="margin-top:20px"><h3>Messages</h3></div>'+renderThreadList(threads);
+      h+='<div class="card" style="padding:16px;margin-top:20px"><div style="font-weight:800;margin-bottom:10px">Share a completed job</div><input id="wk-title" class="hn-in" placeholder="Title (e.g. 3-bed repaint)"><textarea id="wk-desc" class="hn-in" style="margin-top:10px;min-height:56px" placeholder="Describe the work"></textarea><button class="btn btn-brand" style="margin-top:10px" onclick="shareWork()">Post to my profile</button></div>';
+      h+='<div class="sect-t" style="margin-top:20px"><h3>Your works</h3></div><div class="vcards">';
+      if(!works.length) h+=emptyRow('No works shared yet.'); else works.forEach(function(w){ h+='<div class="card" style="padding:14px"><div style="font-weight:700">'+E(w.title)+'</div><div style="font-size:.8rem;color:var(--muted);margin-top:4px">'+E(w.description||'')+'</div></div>'; });
+      h+='</div>';
+      box.innerHTML=h;
+    });
+  }
+
+  window.saveShop = function(){ api('PATCH','/api/auth/me',{shop:{name:(el('sh-name').value||'').trim(),kind:(el('sh-kind').value||'').trim(),bio:(el('sh-bio').value||'').trim()}}).then(function(res){ if(res.ok){ H.user=res.data.user; T('Shop saved ✓'); renderBusinessDash(); } }); };
+  window.addProduct = function(){ var name=(el('pr-name').value||'').trim(); if(!name){ T('Product name needed','bad'); return; } api('POST','/api/products',{name:name,price:(el('pr-price').value||'').trim(),description:(el('pr-desc').value||'').trim(),category:(el('pr-cat').value||'goods').trim()}).then(function(r){ if(r.ok){ T('Product added ✓'); renderBusinessDash(); } else T(r.data.error||'Failed','bad'); }); };
+  window.deleteProductUI = function(id){ api('DELETE','/api/products/'+id).then(function(r){ if(r.ok){ T('Removed'); renderBusinessDash(); } }); };
+  window.acceptOrder = function(id){ api('PATCH','/api/orders/'+id,{action:'accept'}).then(function(r){ if(r.ok){ T('Order accepted'); renderBusinessDash(); } }); };
+  window.completeOrder = function(id){ api('PATCH','/api/orders/'+id,{action:'complete'}).then(function(r){ if(r.ok){ T('Order completed'); renderBusinessDash(); } }); };
+
+  function renderBusinessDash(){
+    var box=el('dash-business'); if(!box) return; var u=me()||{};
+    Promise.all([api('GET','/api/orders?role=seller'),api('GET','/api/products?mine=1'),api('GET','/api/calls'),api('GET','/api/messages')]).then(function(res){
+      var orders=res[0].data.orders||[],products=res[1].data.products||[],calls=res[2].data.calls||[],threads=res[3].data.threads||[];
+      var shop=u.shop||{}; var unread=threads.reduce(function(a,t){return a+(t.unread||0);},0);
+      var sales=orders.filter(function(o){return o.status!=='cancelled';}).reduce(function(a,o){return a+amt(o.price)*(o.qty||1);},0);
+      var customers={}; orders.forEach(function(o){customers[o.buyerId]=1;}); threads.forEach(function(t){customers[t.otherId]=1;});
+      var h='<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h1 class="h1" style="margin:0">Business dashboard</h1><span class="badge">'+E(shop.name||u.name)+'</span></div><p class="sub">Your shop, orders, sales and customers.</p>';
+      h+='<div class="card" style="padding:16px;margin-bottom:16px"><div style="font-weight:800;margin-bottom:10px">Your shop</div><div style="display:flex;gap:10px;flex-wrap:wrap"><input id="sh-name" class="hn-in" style="flex:1;min-width:150px" placeholder="Shop name" value="'+E(shop.name||'')+'"><input id="sh-kind" class="hn-in" style="flex:1;min-width:150px" placeholder="What you sell (e.g. food, fashion)" value="'+E(shop.kind||'')+'"></div><textarea id="sh-bio" class="hn-in" style="margin-top:10px;min-height:52px" placeholder="About your shop">'+E(shop.bio||'')+'</textarea><button class="btn btn-brand" style="margin-top:10px" onclick="saveShop()">Save shop</button></div>';
+      h+='<div class="stats">'+stat('Total sales',(sales?('$'+sales.toFixed(0)):'$0'),'')+stat('Orders',orders.length,'')+stat('Customers',Object.keys(customers).length,'')+stat('Chats',threads.length,'')+'</div>';
+      h+='<div class="card" style="padding:16px;margin-top:16px"><div style="font-weight:800;margin-bottom:10px">Add a product to your shop</div><div style="display:flex;gap:10px;flex-wrap:wrap"><input id="pr-name" class="hn-in" style="flex:2;min-width:150px" placeholder="Product name"><input id="pr-price" class="hn-in" style="flex:1;min-width:90px" placeholder="Price (e.g. $20)"></div><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px"><input id="pr-cat" class="hn-in" style="flex:1;min-width:120px" placeholder="Category" value="goods"><input id="pr-desc" class="hn-in" style="flex:2;min-width:150px" placeholder="Short description"></div><button class="btn btn-brand" style="margin-top:10px" onclick="addProduct()">Add product</button></div>';
+      h+='<div class="sect-t" style="margin-top:20px"><h3>Your products</h3></div><div class="vcards">';
+      if(!products.length) h+=emptyRow('No products yet — add your first above.'); else products.forEach(function(p){ h+='<div class="card" style="padding:14px"><div style="display:flex;justify-content:space-between;gap:8px"><div style="font-weight:700">'+E(p.name)+'</div><div style="font-weight:800;color:var(--pos)">'+E(p.price)+'</div></div><div style="font-size:.8rem;color:var(--muted);margin-top:4px">'+E(p.description||'')+'</div><button class="btn btn-ghost" style="padding:6px 11px;margin-top:10px" onclick="deleteProductUI(\''+p.id+'\')">Remove</button></div>'; });
+      h+='</div>';
+      h+='<div class="sect-t" style="margin-top:20px"><h3>Incoming orders</h3></div><div class="list card" style="padding:4px 18px">';
+      if(!orders.length) h+=emptyRow('No orders yet.'); else orders.forEach(function(o){ h+='<div class="row"><div style="flex:1"><div style="font-weight:700;font-size:.9rem">'+E(o.productName)+' ×'+(o.qty||1)+'</div><div style="font-size:.76rem;color:var(--muted)">'+E(o.buyerName)+' · '+E(o.price)+(o.note?' · "'+E(o.note)+'"':'')+'</div></div>'+badge(o.status)+(o.status==='placed'?'<button class="btn btn-brand" style="padding:6px 11px;margin-left:8px" onclick="acceptOrder(\''+o.id+'\')">Accept</button>':(o.status==='accepted'?'<button class="btn btn-brand" style="padding:6px 11px;margin-left:8px" onclick="completeOrder(\''+o.id+'\')">Complete</button>':''))+'</div>'; });
+      h+='</div>';
+      h+='<div class="sect-t" style="margin-top:20px"><h3>Call requests</h3></div><div class="list card" style="padding:4px 18px">';
+      if(!calls.length) h+=emptyRow('No call requests yet.'); else calls.forEach(function(c){ h+='<div class="row"><div style="flex:1"><div style="font-weight:700;font-size:.9rem">'+E(c.fromName)+'</div><div style="font-size:.76rem;color:var(--muted)">requested a call · '+timeAgo(c.createdAt)+'</div></div><button class="btn btn-ghost" style="padding:6px 11px" onclick="openChat(\''+c.fromId+'\',\''+E(c.fromName).replace(/\x27/g,"")+'\')">Message</button></div>'; });
+      h+='</div>';
+      h+='<div class="sect-t" style="margin-top:20px"><h3>Conversations</h3></div>'+renderThreadList(threads);
+      box.innerHTML=h;
+    });
+  }
+
+  /* ================= shop (customer) ================= */
+  function renderShop(){
+    var page=el('p-market'); if(!page) return; var host=el('hn-shop'); if(!host){ host=document.createElement('div'); host.id='hn-shop'; host.className='content-pad'; var c=page.querySelector('.content')||page; c.insertBefore(host,c.firstChild); }
+    api('GET','/api/products').then(function(r){
+      var products=r.data.products||[];
+      var h='<h1 class="h1">Shops on Hineed</h1><p class="sub">Order from local businesses — they get your order instantly.</p><div class="vcards">';
+      if(!products.length) h+=emptyRow('No products listed yet. Businesses can add products from their dashboard.'); else products.forEach(function(p){ h+='<div class="card" style="padding:14px"><div style="display:flex;justify-content:space-between;gap:8px"><div style="font-weight:700">'+E(p.name)+'</div><div style="font-weight:800;color:var(--pos)">'+E(p.price)+'</div></div><div style="font-size:.78rem;color:var(--muted);margin-top:3px">'+E(p.shop||p.seller)+'</div><div style="font-size:.8rem;color:var(--muted);margin-top:6px">'+E(p.description||'')+'</div><div style="display:flex;gap:8px;margin-top:10px"><button class="btn btn-brand" style="flex:1;padding:8px" onclick="orderProduct(\''+p.id+'\',\''+E(p.name).replace(/\x27/g,"")+'\')">Order</button><button class="btn btn-ghost" style="padding:8px 12px" onclick="openChat(\''+p.ownerId+'\',\''+E(p.shop||p.seller).replace(/\x27/g,"")+'\')">Message</button></div></div>'; });
+      h+='</div>';
+      host.innerHTML=h;
+    });
+  }
+  window.orderProduct = function(id,name){ api('POST','/api/orders',{productId:id,qty:1}).then(function(r){ if(r.ok){ T('Order placed for '+name+' ✓ — the seller has been notified'); } else T(r.data.error||'Could not order','bad'); }); };
+
+  /* ================= social feed ================= */
+  function renderFeed(){
+    var feed=el('s-feed'); if(!feed) return; var host=el('hn-feed'); if(!host){ host=document.createElement('div'); host.id='hn-feed'; feed.insertBefore(host,feed.firstChild); }
+    Promise.all([api('GET','/api/posts'),api('GET','/api/works')]).then(function(res){
+      var posts=(res[0].data.posts||[]).map(function(p){p._t='post';return p;});
+      var works=(res[1].data.works||[]).map(function(w){w._t='work';return w;});
+      var items=posts.concat(works).sort(function(a,b){return a.createdAt<b.createdAt?1:-1;});
+      var h='<div class="card" style="padding:14px;margin-bottom:14px"><textarea id="po-text" class="hn-in" style="min-height:52px" placeholder="Share something with the Hineed community…"></textarea><div style="display:flex;justify-content:flex-end;margin-top:8px"><button class="btn btn-brand" style="padding:8px 18px" onclick="submitPost()">Post</button></div></div>';
+      if(!items.length) h+=emptyRow('No posts yet — be the first to share!');
+      items.forEach(function(it){
+        if(it._t==='work'){
+          h+='<div class="card" style="padding:16px;margin-bottom:12px"><div style="display:flex;align-items:center;gap:10px"><span class="av" style="width:40px;height:40px">'+E((it.ownerName||'P').charAt(0))+'</span><div style="flex:1"><div style="font-weight:700">'+E(it.ownerName)+' <span class="badge" style="margin-left:4px">'+E(it.category||'work')+'</span></div><div style="font-size:.76rem;color:var(--muted)">shared a completed job · '+timeAgo(it.createdAt)+'</div></div></div><div style="font-weight:700;margin-top:10px">'+E(it.title)+'</div><div style="font-size:.88rem;color:var(--muted);margin-top:3px">'+E(it.description||'')+'</div><div style="display:flex;gap:8px;margin-top:12px"><button class="btn btn-brand" style="padding:8px 14px" onclick="bookProvider(\''+it.ownerId+'\',\''+E(it.ownerName).replace(/\x27/g,"")+'\')">Book</button><button class="btn btn-ghost" style="padding:8px 14px" onclick="openChat(\''+it.ownerId+'\',\''+E(it.ownerName).replace(/\x27/g,"")+'\')">Message</button><button class="btn btn-ghost" style="padding:8px 14px" onclick="requestCall(\''+it.ownerId+'\')">Request call</button></div></div>';
+        } else {
+          h+='<div class="card" style="padding:16px;margin-bottom:12px"><div style="display:flex;align-items:center;gap:10px"><span class="av" style="width:40px;height:40px">'+E((it.author||'U').charAt(0))+'</span><div style="flex:1"><div style="font-weight:700">'+E(it.author)+'</div><div style="font-size:.76rem;color:var(--muted)">'+timeAgo(it.createdAt)+'</div></div></div><div style="margin-top:10px">'+E(it.text)+'</div><div style="display:flex;gap:16px;margin-top:12px;color:var(--muted);font-size:.86rem"><span style="cursor:pointer;'+(it.liked?'color:var(--brand);font-weight:700':'')+'" onclick="likePost(\''+it.id+'\',this)">♥ <b>'+it.likes+'</b></span><span style="cursor:pointer" onclick="focusComment(\''+it.id+'\')">💬 '+it.comments.length+'</span></div>';
+          h+='<div id="cm-'+it.id+'" style="margin-top:10px;border-top:1px solid var(--line);padding-top:10px">';
+          it.comments.forEach(function(c){ h+='<div style="font-size:.84rem;margin-bottom:6px"><b>'+E(c.author)+'</b> '+E(c.text)+'</div>'; });
+          h+='<div style="display:flex;gap:8px;margin-top:6px"><input id="ci-'+it.id+'" class="hn-in" style="padding:8px 11px" placeholder="Write a comment…" onkeydown="if(event.key===\'Enter\')sendComment(\''+it.id+'\')"><button class="btn btn-ghost" style="padding:8px 12px" onclick="sendComment(\''+it.id+'\')">Send</button></div></div>';
+          h+='</div>';
+        }
+      });
+      host.innerHTML=h;
+    });
+  }
+  window.submitPost = function(){ var t=(el('po-text').value||'').trim(); if(!t){ T('Write something first','bad'); return; } api('POST','/api/posts',{text:t}).then(function(r){ if(r.ok){ renderFeed(); } else T(r.data.error||'Could not post','bad'); }); };
+  window.likePost = function(id){ api('POST','/api/posts/'+id+'/like').then(function(r){ if(r.ok) renderFeed(); }); };
+  window.focusComment = function(id){ var i=el('ci-'+id); if(i) i.focus(); };
+  window.sendComment = function(id){ var i=el('ci-'+id); var t=(i&&i.value||'').trim(); if(!t) return; api('POST','/api/posts/'+id+'/comment',{text:t}).then(function(r){ if(r.ok) renderFeed(); }); };
+  window.bookProvider = function(id,name){ api('POST','/api/bookings',{providerId:id,service:'Service request',price:'Quote'}).then(function(r){ if(r.ok){ T('Request sent to '+name+' ✓'); } else T(r.data.error||'Could not book','bad'); }); };
+  window.requestCall = function(id){ api('POST','/api/calls',{toId:id}).then(function(r){ if(r.ok) T('Call request sent ✓'); else T(r.data.error||'Failed','bad'); }); };
+
+  /* ================= chat modal ================= */
+  var modal;
+  function ensureModal(){ if(modal) return modal; modal=document.createElement('div'); modal.className='hn-modal'; modal.innerHTML='<div class="hn-sheet"><div style="display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)"><span class="av" id="hn-chat-av" style="width:36px;height:36px"></span><div style="flex:1;font-weight:800" id="hn-chat-name"></div><button class="iconbtn" onclick="closeChat()" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="hn-msgs" id="hn-chat-msgs"></div><div style="display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)"><input id="hn-chat-in" class="hn-in" placeholder="Type a message…" onkeydown="if(event.key===\'Enter\')sendChatMsg()"><button class="btn btn-brand" style="padding:10px 16px" onclick="sendChatMsg()">Send</button></div></div>'; document.body.appendChild(modal); return modal; }
+  window.openChat = function(otherId,name){ if(!uid()){ T('Sign in to message','bad'); return; } ensureModal(); H.chatWith=otherId; el('hn-chat-name').textContent=name||'Chat'; el('hn-chat-av').textContent=(name||'U').charAt(0); modal.classList.add('on'); loadChat(); };
+  window.closeChat = function(){ if(modal) modal.classList.remove('on'); H.chatWith=null; };
+  function loadChat(){ if(!H.chatWith) return; api('GET','/api/messages?with='+encodeURIComponent(H.chatWith)).then(function(r){ var box=el('hn-chat-msgs'); var msgs=r.data.messages||[]; box.innerHTML = msgs.length? msgs.map(function(m){return '<div class="hn-b '+(m.mine?'me':'them')+'">'+E(m.body)+'</div>';}).join('') : '<div style="color:var(--muted);text-align:center;margin-top:20px;font-size:.86rem">Say hello 👋</div>'; box.scrollTop=box.scrollHeight; }); }
+  window.sendChatMsg = function(){ var i=el('hn-chat-in'); var t=(i&&i.value||'').trim(); if(!t||!H.chatWith) return; i.value=''; api('POST','/api/messages',{toId:H.chatWith,body:t}).then(function(r){ if(r.ok) loadChat(); else T('Could not send','bad'); }); };
+
+  /* ================= camera scanner ================= */
+  var _scanOpen = window.scanOpen;
+  window.scanOpen = function(){ if(_scanOpen) _scanOpen(); startScanner(); };
+  function startScanner(){
+    var box=el('in-scan'); if(!box) return;
+    box.innerHTML='<div style="display:flex;align-items:center;gap:11px;margin-bottom:16px"><button class="iconbtn" onclick="scanBack()" aria-label="Back"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M15 6l-6 6 6 6"/></svg></button><h1 class="h1" style="margin:0;font-size:1.4rem">Scan a product</h1></div>'
+     +'<video id="scan-video" playsinline muted></video>'
+     +'<div id="scan-status" style="text-align:center;color:var(--muted);font-size:.84rem;margin-top:10px">Point your camera at a product barcode or QR code…</div>'
+     +'<div style="display:flex;gap:8px;margin-top:14px"><input id="scan-q" class="hn-in" placeholder="…or type a product name to search"><button class="btn btn-brand" style="padding:10px 16px" onclick="scanSearch(document.getElementById(\'scan-q\').value)">Search</button></div>'
+     +'<div id="scan-results" style="margin-top:16px"></div>';
+    var v=el('scan-video');
+    navigator.mediaDevices && navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}}).then(function(stream){
+      H.scanStream=stream; v.srcObject=stream; v.play();
+      if('BarcodeDetector' in window){
+        try{ var det=new window.BarcodeDetector(); var tick=function(){ if(!el('scan-video')){ stopScanner(); return; } det.detect(v).then(function(codes){ if(codes&&codes.length){ el('scan-status').textContent='Detected: '+codes[0].rawValue; scanSearch(codes[0].rawValue); } else requestAnimationFrame(tick); }).catch(function(){ requestAnimationFrame(tick); }); }; requestAnimationFrame(tick); }catch(e){ el('scan-status').textContent='Auto-detect not supported — type the product name below.'; }
+      } else { el('scan-status').textContent='Live camera on. Auto-detect isn\'t supported on this browser — type the product name below.'; }
+    }).catch(function(){ el('scan-status').innerHTML='<span style="color:var(--neg)">Camera not available or permission denied.</span> You can still search by name below.'; });
+  }
+  function stopScanner(){ try{ if(H.scanStream){ H.scanStream.getTracks().forEach(function(t){t.stop();}); H.scanStream=null; } }catch(e){} }
+  var _scanBack=window.scanBack; window.scanBack=function(){ stopScanner(); if(_scanBack) _scanBack(); };
+  window.scanSearch = function(q){ q=(q||'').trim(); if(!q) return; stopScanner(); api('GET','/api/products').then(function(r){ var all=r.data.products||[]; var ql=q.toLowerCase(); var hits=all.filter(function(p){return (p.name||'').toLowerCase().indexOf(ql)>=0 || (p.description||'').toLowerCase().indexOf(ql)>=0 || (p.barcode&&p.barcode===q);}); var box=el('scan-results'); if(!box) return; if(!hits.length){ box.innerHTML='<div class="card" style="padding:16px;color:var(--muted)">No match for “'+E(q)+'” in Hineed shops yet. Try a product name.</div>'; return; } box.innerHTML='<div style="font-weight:800;margin-bottom:10px">Found '+hits.length+' match'+(hits.length>1?'es':'')+'</div><div class="vcards">'+hits.map(function(p){return '<div class="card" style="padding:14px"><div style="display:flex;justify-content:space-between"><div style="font-weight:700">'+E(p.name)+'</div><div style="font-weight:800;color:var(--pos)">'+E(p.price)+'</div></div><div style="font-size:.78rem;color:var(--muted);margin-top:3px">'+E(p.shop||p.seller)+'</div><button class="btn btn-brand" style="width:100%;margin-top:10px;padding:8px" onclick="orderProduct(\''+p.id+'\',\''+E(p.name).replace(/\x27/g,"")+'\')">Order</button></div>';}).join('')+'</div>'; }); };
+
+  /* ================= admin (owner only) ================= */
+  window.adminLogin = function(){
+    var u=(el('adm-email').value||'').trim(); var p=el('adm-pass').value||'';
+    api('POST','/api/admin/login',{username:u,password:p}).then(function(res){
+      if(res.ok){ var e=el('adm-err'); if(e) e.style.display='none'; el('adm-pass').value=''; go('admin'); renderAdmin(); }
+      else { var e=el('adm-err'); if(e){ e.textContent='Wrong admin username or password.'; e.style.display='block'; } }
+    });
+  };
+  function renderAdmin(){
+    var box=el('p-admin'); if(!box) return; var c=box.querySelector('.content')||box;
+    api('GET','/api/admin/overview').then(function(r){
+      if(!r.ok){ c.innerHTML='<div class="content" style="padding:26px"><div class="card" style="padding:20px;color:var(--neg)">Admin access required.</div></div>'; return; }
+      var s=r.data.stats||{}, users=r.data.users||[];
+      var h='<div class="content" style="padding:26px 28px 40px"><div style="display:flex;align-items:center;gap:12px"><h1 class="h1" style="margin:0">Admin console</h1><button class="btn btn-ghost" style="padding:7px 14px" onclick="adminLogout()">Log out</button></div><p class="sub">Platform overview and user management.</p>';
+      h+='<div class="stats">'+stat('Users',s.users,'')+stat('Providers',s.providers,'')+stat('Businesses',s.businesses,'')+stat('Orders',s.orders,'')+'</div>';
+      h+='<div class="sect-t" style="margin-top:22px"><h3>All users</h3></div><div class="list card" style="padding:4px 18px">';
+      if(!users.length) h+=emptyRow('No users yet.'); else users.forEach(function(u){ h+='<div class="row"><div style="flex:1"><div style="font-weight:700;font-size:.9rem">'+E(u.name)+' <span class="badge">'+E(u.role)+'</span>'+(u.blocked?' <span class="badge" style="background:var(--soft);color:var(--neg)">blocked</span>':'')+'</div><div style="font-size:.76rem;color:var(--muted)">'+E(u.email)+(u.location?' · '+E(u.location):'')+'</div></div><button class="btn btn-ghost" style="padding:6px 11px" onclick="adminBlock(\''+u.id+'\','+(u.blocked?'false':'true')+')">'+(u.blocked?'Unblock':'Block')+'</button><button class="btn btn-ghost" style="padding:6px 11px;margin-left:6px;color:var(--neg)" onclick="adminDelete(\''+u.id+'\')">Delete</button></div>'; });
+      h+='</div></div>';
+      c.innerHTML=h;
+    });
+  }
+  window.adminBlock = function(id,block){ api('PATCH','/api/admin/users/'+id,{action:block?'block':'unblock'}).then(function(r){ if(r.ok){ T(block?'User blocked':'User unblocked'); renderAdmin(); } else T('Admin only','bad'); }); };
+  window.adminDelete = function(id){ api('DELETE','/api/admin/users/'+id).then(function(r){ if(r.ok){ T('User deleted'); renderAdmin(); } }); };
+  window.adminLogout = function(){ api('POST','/api/admin/logout').then(function(){ T('Signed out of admin'); go('home'); }); };
+})();
+</script>
 </body>
 </html>
-
-</body></html>
