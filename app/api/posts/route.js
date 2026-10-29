@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
+import { withDb } from "@/lib/db";
 import { listPosts, createPost, findUserById } from "@/lib/store";
 import { sessionFromRequest } from "@/lib/auth";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-export async function GET(req) {
+export const GET = withDb(async (req) => {
   const session = sessionFromRequest(req);
   const me = session?.uid || null;
   const posts = listPosts().map((p) => ({
@@ -15,9 +16,9 @@ export async function GET(req) {
     createdAt: p.createdAt,
   }));
   return NextResponse.json({ posts });
-}
+});
 
-export async function POST(req) {
+export const POST = withDb(async (req) => {
   const session = sessionFromRequest(req);
   if (!session?.uid) return NextResponse.json({ error: "Sign in to post." }, { status: 401 });
   const me = findUserById(session.uid);
@@ -26,4 +27,4 @@ export async function POST(req) {
   if (!text && !body.image) return NextResponse.json({ error: "Write something to post." }, { status: 400 });
   const post = createPost({ authorId: session.uid, authorName: me?.name || "User", text, image: body.image || null });
   return NextResponse.json({ post: { id: post.id, author: post.authorName, text: post.text, image: post.image, likes: 0, liked: false, comments: [], createdAt: post.createdAt } });
-}
+});

@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
+import { withDb } from "@/lib/db";
 import { findUserByEmail, publicUser } from "@/lib/store";
-import { verifyPassword, signSession, COOKIE_NAME, SESSION_MAX_AGE } from "@/lib/auth";
+import { verifyPassword, tokenForUser, COOKIE_NAME, SESSION_MAX_AGE } from "@/lib/auth";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-export async function POST(req) {
+export const POST = withDb(async (req) => {
   let body;
   try { body = await req.json(); } catch { return NextResponse.json({ error: "Invalid request." }, { status: 400 }); }
 
@@ -16,14 +17,11 @@ export async function POST(req) {
   if (!user || !verifyPassword(password, user.passwordHash)) {
     return NextResponse.json({ error: "Wrong email or password." }, { status: 401 });
   }
-  if (user.blocked) {
-    return NextResponse.json({ error: "This account has been suspended." }, { status: 403 });
-  }
+  if (user.blocked) return NextResponse.json({ error: "This account has been suspended." }, { status: 403 });
 
   const res = NextResponse.json({ user: publicUser(user) });
-  res.cookies.set(COOKIE_NAME, signSession({ uid: user.id }), {
-    httpOnly: true, sameSite: "lax", path: "/",
-    maxAge: SESSION_MAX_AGE, secure: process.env.NODE_ENV === "production",
+  res.cookies.set(COOKIE_NAME, tokenForUser(user), {
+    httpOnly: true, sameSite: "lax", path: "/", maxAge: SESSION_MAX_AGE, secure: process.env.NODE_ENV === "production",
   });
   return res;
-}
+});

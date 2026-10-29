@@ -1,15 +1,14 @@
 import { NextResponse } from "next/server";
+import { withDb } from "@/lib/db";
 import { createUser, findUserByEmail, updateUser, publicUser } from "@/lib/store";
-import { hashPassword, verifyPassword, signSession, COOKIE_NAME, SESSION_MAX_AGE } from "@/lib/auth";
+import { hashPassword, verifyPassword, tokenForUser, COOKIE_NAME, SESSION_MAX_AGE } from "@/lib/auth";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const ROLES = ["customer", "provider", "business"];
+const ROLES = ["customer", "provider", "business", "rider"];
 
-// Single onboarding endpoint: creates an account, or logs the person in if the
-// email already exists and the password matches.
-export async function POST(req) {
+export const POST = withDb(async (req) => {
   let body;
   try { body = await req.json(); } catch { return bad("Invalid request."); }
 
@@ -25,7 +24,6 @@ export async function POST(req) {
   if (password.length < 6) return bad("Password must be at least 6 characters.");
 
   const existing = findUserByEmail(email);
-
   let user;
   if (existing) {
     if (!verifyPassword(password, existing.passwordHash)) {
@@ -39,22 +37,16 @@ export async function POST(req) {
       ...(location ? { location } : {}),
     });
   } else {
-    user = createUser({
-      name: name || email.split("@")[0], email, phone, dob, location, role, passwordHash: hashPassword(password),
-    });
+    user = createUser({ name: name || email.split("@")[0], email, phone, dob, location, role, passwordHash: hashPassword(password) });
   }
-
   return withSession(user);
-}
+});
 
-function bad(error, status = 400) {
-  return NextResponse.json({ error }, { status });
-}
+function bad(error, status = 400) { return NextResponse.json({ error }, { status }); }
 function withSession(user) {
   const res = NextResponse.json({ user: publicUser(user) });
-  res.cookies.set(COOKIE_NAME, signSession({ uid: user.id }), {
-    httpOnly: true, sameSite: "lax", path: "/",
-    maxAge: SESSION_MAX_AGE, secure: process.env.NODE_ENV === "production",
+  res.cookies.set(COOKIE_NAME, tokenForUser(user), {
+    httpOnly: true, sameSite: "lax", path: "/", maxAge: SESSION_MAX_AGE, secure: process.env.NODE_ENV === "production",
   });
   return res;
 }

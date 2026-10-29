@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
+import { withDb } from "@/lib/db";
 import { PROVIDERS, isConfigured, callbackUrl } from "@/lib/oauth";
 import { findUserByEmail, createUser } from "@/lib/store";
-import { signSession, COOKIE_NAME, SESSION_MAX_AGE } from "@/lib/auth";
+import { tokenForUser, COOKIE_NAME, SESSION_MAX_AGE } from "@/lib/auth";
 import crypto from "node:crypto";
 
 export const runtime = "nodejs";
@@ -9,7 +10,7 @@ export const dynamic = "force-dynamic";
 
 // Handles the redirect back from Google/Facebook: exchanges the code for the
 // user's email, creates or finds the account, signs them in, sends them home.
-export async function GET(req) {
+export const GET = withDb(async (req) => {
   const url = new URL(req.url);
   const provider = url.searchParams.get("provider") || "";
   const code = url.searchParams.get("code");
@@ -48,7 +49,7 @@ export async function GET(req) {
     }
 
     const res = NextResponse.redirect(`${url.origin}/?auth=ok`);
-    res.cookies.set(COOKIE_NAME, signSession({ uid: user.id }), {
+    res.cookies.set(COOKIE_NAME, tokenForUser(user), {
       httpOnly: true, sameSite: "lax", path: "/",
       maxAge: SESSION_MAX_AGE, secure: process.env.NODE_ENV === "production",
     });
@@ -56,4 +57,4 @@ export async function GET(req) {
   } catch {
     return NextResponse.redirect(`${url.origin}/?auth=oauth_error`);
   }
-}
+});

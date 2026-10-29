@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
+import { withDb } from "@/lib/db";
 import { getOtp, clearOtp, markVerifiedByEmail } from "@/lib/store";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-export async function POST(req) {
+export const POST = withDb(async (req) => {
   let body;
   try { body = await req.json(); } catch { return NextResponse.json({ error: "Invalid request." }, { status: 400 }); }
-
   const email = (body.email || "").trim().toLowerCase();
   const code = String(body.code || "").trim();
 
@@ -19,4 +19,4 @@ export async function POST(req) {
   clearOtp(email);
   markVerifiedByEmail(email);
   return NextResponse.json({ ok: true });
-}
+});

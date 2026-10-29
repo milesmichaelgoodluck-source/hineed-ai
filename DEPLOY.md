@@ -115,6 +115,60 @@ Because Vercel is connected to your `hineed-ai` GitHub repo, **every push
 auto-deploys**. To ship changes: double-click **`2-UPDATE-HINEED.bat`** on your
 Desktop — it commits and pushes, and Vercel rebuilds in ~1–2 minutes.
 
+## ⭐ Database — makes logins PERSIST (do this one)
+
+Without a database, the free hosting resets its memory, so accounts vanish and
+refreshing logs people out. Adding a database (one-time, ~2 minutes, no separate
+signup) fixes that — logins stay, "log in with your old account" works, and
+refresh keeps you where you are.
+
+1. In Vercel → your **hineed-ai** project → **Storage** tab → **Create Database**
+   → choose **Postgres** (Neon) → **Create** → **Connect** it to the project.
+   Vercel automatically adds the `DATABASE_URL` / `POSTGRES_URL` environment
+   variable for you.
+2. Go to **Deployments** → open the latest → **Redeploy**.
+
+That's it — the app detects the database and everything persists from then on.
+(Locally it still uses a file, so `npm run dev` needs no setup.)
+
+## Connect a database (makes accounts & data permanent) — do this first
+
+Without a database, the free Vercel server forgets everything when it sleeps, so
+people get logged out and shops/orders disappear. Connecting a free Postgres
+fixes this permanently. ~3 minutes:
+
+1. In your Vercel project → **Storage** → **Create Database** → **Postgres**
+   (Neon). Accept the defaults and create it.
+2. Vercel automatically adds the connection as `DATABASE_URL` (and/or
+   `POSTGRES_URL`) to your project's environment variables — nothing to copy.
+3. **Redeploy** (double-click `2-UPDATE-HINEED.bat`, or in Vercel click
+   Redeploy). From now on every account, shop, order, post and message persists.
+
+The app already supports this — it uses the database automatically once
+`DATABASE_URL` is present. (Even before you do this, people now stay logged in
+across refreshes thanks to their secure session.)
+
+## AI assistant (Claude) — "Ask I Need"
+
+The in-app AI concierge is wired to the Anthropic (Claude) API. To switch it fully live:
+
+1. Create an API key at **console.anthropic.com** → API Keys (this is a paid, pay-per-use service; add a little credit).
+2. In Vercel → Settings → Environment Variables, add `ANTHROPIC_API_KEY` = your key. (Optional: `ANTHROPIC_MODEL`, default `claude-3-5-haiku-latest`.)
+3. Redeploy. Without a key it still replies with helpful guidance (fallback mode).
+
+## SMS verification codes (optional)
+
+Codes already go by email (and show on-screen in test mode). To **also text** the
+code to the user's phone, add an SMS provider key — **Termii** (good for Nigeria/
+Africa): set `TERMII_API_KEY` (and optional `TERMII_SENDER_ID`) in Vercel, then
+redeploy. The account's phone number is used automatically.
+
+## Maps (optional)
+
+Ride pickup/drop-off and locations work as text today. For an interactive map
+with live positions, a Google Maps (or Mapbox) API key is needed — tell me when
+you have one and I'll wire the live map in.
+
 ## Admin console (owner-only)
 
 Open the app → your **Profile** (tap your name, bottom-left) → **Admin console**.

@@ -80,7 +80,7 @@
 
   .main{min-width:0;display:flex;flex-direction:column}
   .top{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:14px;padding:13px 28px;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-  .mkm{display:none}
+  .mkm{display:none} .hn-burger,.hn-theme-m{display:none}
   .srch{flex:1;max-width:540px;display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:10px 13px;color:var(--muted);font-size:.9rem}
   .srch input{border:0;outline:0;background:transparent;color:var(--ink);font:inherit;flex:1;min-width:0}
   .top .sp{flex:1}
@@ -93,6 +93,7 @@
   .content{padding:26px 28px 40px;width:100%;max-width:1280px;margin:0 auto}
   .page{display:none;animation:fade .25s ease} .page.on{display:block}
   @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @keyframes hnpulse{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1)}}
   .h1{font-size:1.9rem;font-weight:900;letter-spacing:-.03em;margin:0 0 4px} .sub{color:var(--muted);margin:0 0 20px}
   .grid2{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:26px;align-items:start}
   .sect-t{display:flex;align-items:center;justify-content:space-between;margin:26px 2px 14px}
@@ -251,8 +252,9 @@
   @media (max-width:1080px){ .grid2{grid-template-columns:minmax(0,1fr)} .rail{display:none} .vcards{grid-template-columns:repeat(2,1fr)} .prods{grid-template-columns:repeat(3,1fr)} }
   @media (max-width:899px){
     .app{grid-template-columns:1fr} .side{display:none}
-    .top{padding:12px 16px} .mkm{display:flex;align-items:center;gap:9px}
-    .mkm .mk{width:30px;height:30px;border-radius:9px} .mkm .wd{font-size:1.05rem}
+    .top{padding:12px 14px;gap:8px} .mkm{display:flex;align-items:center;gap:9px}
+    .mkm .wd{font-size:1.22rem;font-weight:900} .mkm img{width:30px;height:30px}
+    .hn-burger,.hn-theme-m{display:grid} .theme,.hn-hide-m{display:none}
     .srch{display:none} .content{padding:18px 16px 94px}
     .h1{font-size:1.5rem} .hero{padding:24px} .hero .q{font-size:1.55rem}
     .svc{grid-template-columns:repeat(4,1fr);gap:12px} .svc a{padding:12px 4px;font-size:.72rem} .svc .i{width:44px;height:44px}
@@ -310,7 +312,7 @@
         <span style="width:100px;height:100px;border-radius:28px;background:#fff;display:grid;place-items:center;padding:16px;box-sizing:border-box;box-shadow:0 12px 30px -10px rgba(0,0,0,.35)"><img src="mark.png" alt="Hineed" style="width:100%;height:100%;object-fit:contain"></span>
         <div style="font-size:2rem;font-weight:900;letter-spacing:-.03em">Hineed<span style="color:#bff0cf">.AI</span></div>
         <div style="opacity:.9">Everything you need, in one place.</div>
-        <button class="btn" style="position:absolute;bottom:34px;left:28px;right:28px;background:#fff;color:#087A3E" onclick="authStep('onboarding')">Get started</button>
+        <div style="position:absolute;bottom:40px;left:0;right:0;display:flex;justify-content:center"><span class="hn-splash-dots" style="display:flex;gap:7px"><span style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.9);animation:hnpulse 1.2s infinite"></span><span style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.5);animation:hnpulse 1.2s .2s infinite"></span><span style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);animation:hnpulse 1.2s .4s infinite"></span></span></div>
       </div>
     </div>
     <div class="astep" id="a-onboarding">
@@ -370,7 +372,54 @@
         <label class="ain"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M3.5 7h17v10h-17V7ZM3.5 7.5l8.5 6 8.5-6"/></svg><input id="vf-code" inputmode="numeric" maxlength="6" placeholder="6-digit code" style="letter-spacing:5px;font-weight:800" onkeydown="if(event.key==='Enter')verifyCode()"></label>
         <div id="vf-err" style="display:none;color:var(--neg,#e5484d);font-size:.8rem;margin:-4px 2px 0"></div>
         <button class="btn btn-brand" onclick="verifyCode()">Verify &amp; continue</button>
-        <div style="text-align:center;font-size:.82rem;color:var(--muted)">Didn't get it? <b style="color:var(--brand);cursor:pointer" onclick="resendCode()">Resend code</b> · <b style="color:var(--muted);cursor:pointer" onclick="enterApp(ROLE)">Skip for now</b></div>
+        <div style="text-align:center;font-size:.82rem;color:var(--muted)">Didn't get it? <b style="color:var(--brand);cursor:pointer" onclick="resendCode()">Resend code</b> · <b style="color:var(--muted);cursor:pointer" onclick="afterAuth()">Skip for now</b></div>
+      </div>
+    </div>
+    <div class="astep" id="a-shop-setup">
+      <div style="padding:30px 24px;display:flex;flex-direction:column;gap:11px;min-height:100%">
+        <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px">
+          <img src="mark.png" alt="Hineed" width="52" height="52">
+          <h2 style="font-size:1.3rem;font-weight:900;margin:6px 0 0;letter-spacing:-.02em">Set up your shop</h2>
+          <p style="font-size:.84rem;color:var(--muted);margin:0">This goes live on the marketplace so customers can find you.</p>
+        </div>
+        <input id="os-shop" class="hn-in" placeholder="Shop name">
+        <input id="os-kind" class="hn-in" placeholder="What you sell (e.g. food, fashion, electronics)">
+        <textarea id="os-bio" class="hn-in" style="min-height:52px" placeholder="About your shop"></textarea>
+        <div style="font-weight:700;font-size:.85rem;margin-top:2px">Add your first product (optional)</div>
+        <div style="display:flex;gap:8px"><input id="os-prod" class="hn-in" style="flex:2" placeholder="Product name"><input id="os-price" class="hn-in" style="flex:1" placeholder="Price"></div>
+        <div id="os-err" style="display:none;color:var(--neg,#e5484d);font-size:.8rem"></div>
+        <button class="btn btn-brand" onclick="finishShopSetup()">Go live</button>
+      </div>
+    </div>
+    <div class="astep" id="a-service-setup">
+      <div style="padding:30px 24px;display:flex;flex-direction:column;gap:11px;min-height:100%">
+        <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px">
+          <img src="mark.png" alt="Hineed" width="52" height="52">
+          <h2 style="font-size:1.3rem;font-weight:900;margin:6px 0 0;letter-spacing:-.02em">Set up your service</h2>
+          <p style="font-size:.84rem;color:var(--muted);margin:0">This publishes your profile so customers can find, message and book you.</p>
+        </div>
+        <input id="op-cat" class="hn-in" placeholder="Service you offer (e.g. plumber, cleaner)">
+        <input id="op-area" class="hn-in" placeholder="Area / city you cover">
+        <div style="display:flex;gap:8px"><input id="op-exp" class="hn-in" style="flex:1" placeholder="Years of experience"><input id="op-rate" class="hn-in" style="flex:1" placeholder="Rate / budget"></div>
+        <textarea id="op-bio" class="hn-in" style="min-height:52px" placeholder="Short bio — what you do best"></textarea>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:2px"><span style="font-size:.86rem;color:var(--muted)">Available for work now?</span><button id="op-active" data-on="1" onclick="toggleActive(this)" style="border:0;padding:8px 18px;border-radius:999px;font-weight:800;background:var(--brand);color:var(--on-brand);cursor:pointer">Active</button></div>
+        <div style="font-size:.76rem;color:var(--muted)">ID / KYC verification can be added later from your dashboard.</div>
+        <div id="op-err" style="display:none;color:var(--neg,#e5484d);font-size:.8rem"></div>
+        <button class="btn btn-brand" onclick="finishServiceSetup()">Go live</button>
+      </div>
+    </div>
+    <div class="astep" id="a-rider-setup">
+      <div style="padding:30px 24px;display:flex;flex-direction:column;gap:11px;min-height:100%">
+        <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px">
+          <img src="mark.png" alt="Hineed" width="52" height="52">
+          <h2 style="font-size:1.3rem;font-weight:900;margin:6px 0 0;letter-spacing:-.02em">Set up as a rider</h2>
+          <p style="font-size:.84rem;color:var(--muted);margin:0">Add your vehicle so you can accept rides and deliveries.</p>
+        </div>
+        <input id="or-veh" class="hn-in" placeholder="Vehicle (e.g. Toyota Corolla, motorbike)">
+        <input id="or-plate" class="hn-in" placeholder="Plate number (optional)">
+        <div style="font-size:.76rem;color:var(--muted)">ID / KYC verification can be added later from your dashboard.</div>
+        <div id="or-err" style="display:none;color:var(--neg,#e5484d);font-size:.8rem"></div>
+        <button class="btn btn-brand" onclick="finishRiderSetup()">Go live</button>
       </div>
     </div>
     <div class="astep" id="a-role">
@@ -380,6 +429,7 @@
         <button class="rolecard on" onclick="selectRole('customer',this)"><span class="ic-b" style="background:var(--brand);color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4.5 20.5c0-3.6 3.4-5.8 7.5-5.8s7.5 2.2 7.5 5.8"/></svg></span><span style="flex:1"><span style="font-weight:800;display:block">I need things done</span><span style="font-size:.78rem;color:var(--muted)">Homes, services, products, food & more</span></span></button>
         <button class="rolecard" onclick="selectRole('provider',this)"><span class="ic-b" style="background:var(--a1);color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M14.5 5.5a3.8 3.8 0 0 0 5 5L15 15l-2 5.5-3-3 5.5-2 4.5-4.5"/></svg></span><span style="flex:1"><span style="font-weight:800;display:block">I offer a service or sell</span><span style="font-size:.78rem;color:var(--muted)">Get matched to real requests</span></span></button>
         <button class="rolecard" onclick="selectRole('business',this)"><span class="ic-b" style="background:var(--a5);color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M4 21V6l7-3 7 3v15M4 21h16M9 21v-4h6v4"/></svg></span><span style="flex:1"><span style="font-weight:800;display:block">I run a business</span><span style="font-size:.78rem;color:var(--muted)">Source, hire and operate</span></span></button>
+        <button class="rolecard" onclick="selectRole('rider',this)"><span class="ic-b" style="background:var(--a6);color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M5 18a2 2 0 1 0 4 0 2 2 0 0 0-4 0ZM15 18a2 2 0 1 0 4 0 2 2 0 0 0-4 0ZM7 18h7l-1.5-9H9M14 11h3l2 4"/></svg></span><span style="flex:1"><span style="font-weight:800;display:block">I drive or deliver</span><span style="font-size:.78rem;color:var(--muted)">Accept rides &amp; deliveries</span></span></button>
         <span style="flex:1"></span>
         <button class="btn btn-brand" onclick="chooseRole(window.__pendingRole||'customer')">Continue</button>
       </div>
@@ -407,14 +457,16 @@
 
   <div class="main">
     <header class="top">
+      <button class="iconbtn hn-burger" onclick="openMenu()" aria-label="Menu" title="Menu"><svg width="20" height="20" viewBox="0 0 24 24" class="ic"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       <button class="iconbtn" id="backBtn" onclick="goBack()" aria-label="Go back" title="Back" style="display:none"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M15 6l-6 6 6 6"/></svg></button>
-      <div class="mkm"><img src="mark.png" alt="Hineed" width="30" height="30"><span class="wd">Hineed<i>.AI</i></span></div>
-      <div class="srch"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input placeholder="Search Hineed, or ask I Need…"></div>
+      <div class="mkm" onclick="go('home')" style="cursor:pointer"><img src="mark.png" alt="Hineed" width="32" height="32"><span class="wd">Hineed<i>.AI</i></span></div>
+      <div class="srch"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input id="topSearch" placeholder="Search products, shops, services…" onkeydown="if(event.key==='Enter')doSearch(this.value)"></div>
       <div class="sp"></div>
       <div class="theme"><button id="t-dark" class="on" onclick="setTheme('dark')">Dark</button><button id="t-light" onclick="setTheme('light')">Light</button><button id="t-bw" onclick="setTheme('bw')">B·W</button></div>
-      <button class="iconbtn" aria-label="All services" title="All services" onclick="go('explore')"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M4 4h7v7H4zM13 4h7v7h-7zM13 13h7v7h-7zM4 13h7v7H4z"/></svg></button>
+      <button class="iconbtn hn-theme-m" onclick="cycleTheme()" aria-label="Change theme" title="Change theme"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M12 3v2M12 19v2M5 12H3M21 12h-2M6 6 4.5 4.5M19.5 19.5 18 18M18 6l1.5-1.5M4.5 19.5 6 18"/><circle cx="12" cy="12" r="3.3"/></svg></button>
+      <button class="iconbtn hn-hide-m" aria-label="All services" title="All services" onclick="go('explore')"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M4 4h7v7H4zM13 4h7v7h-7zM13 13h7v7h-7zM4 13h7v7H4z"/></svg></button>
       <button class="iconbtn" aria-label="Scan a product" title="Scan a product" onclick="scanJump()"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M4 8V5.5a1.5 1.5 0 0 1 1.5-1.5H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16M4 12h16"/></svg></button>
-      <button class="iconbtn" aria-label="Notifications" onclick="socialOpen('notifs')"><span class="dot"></span><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M18 16V11a6 6 0 1 0-12 0v5l-1.5 2.5h15L18 16ZM10 20.5a2.2 2.2 0 0 0 4 0"/></svg></button>
+      <button class="iconbtn" aria-label="Notifications" onclick="openNotifs()"><span class="dot"></span><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M18 16V11a6 6 0 1 0-12 0v5l-1.5 2.5h15L18 16ZM10 20.5a2.2 2.2 0 0 0 4 0"/></svg></button>
     </header>
 
     <div class="content">
@@ -423,8 +475,8 @@
       <section class="page on" id="p-home">
         <div class="grid2">
           <div>
-            <div class="hero"><img src="img/hero_scooter.jpg" alt="" class="hero-bg"><div class="hero-ov"></div><div class="k">HINEED AI · YOUR CONCIERGE</div><div class="q">What do you need<br>today, Miles?</div>
-              <div class="bar"><svg width="19" height="19" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input placeholder="A home, a plumber, lunch, a ride…"><button class="go" onclick="talk()" aria-label="Talk to Hineed AI" title="Talk to Hineed AI"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3"/></svg></button></div>
+            <div class="hero"><img src="img/hero_scooter.jpg" alt="" class="hero-bg"><div class="hero-ov"></div><div class="k">HINEED AI · YOUR CONCIERGE</div><div class="q">What do you need<br>today<span id="hero-name">, Miles</span>?</div>
+              <div class="bar"><svg width="19" height="19" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input id="homeSearch" placeholder="Search a product, shop or service…" onkeydown="if(event.key==='Enter')doSearch(this.value)"><button class="go" onclick="talk()" aria-label="Talk to Hineed AI" title="Talk to Hineed AI"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3"/></svg></button></div>
               <div class="chips"><span>2-bed in GRA under ₦1.5m</span><span>Plumber in D-Line today</span><span>Jollof for 6 tonight</span></div>
             </div>
             <div class="sect-t"><h3>Explore the ecosystem</h3><a href="#" onclick="go('explore');return false">All</a></div>
@@ -661,7 +713,7 @@
       <section class="page" id="p-dash">
         <!-- Customer -->
         <div class="sub-v on" id="dash-customer">
-          <h1 class="h1">Your dashboard</h1><p class="sub">Welcome back, Miles — everything you need, at a glance.</p>
+          <h1 class="h1">Your dashboard</h1><p class="sub">Welcome back<span id="dash-greet-name">, Miles</span> — everything you need, at a glance.</p>
           <div class="stats">
             <div class="stat"><div class="l">Wallet balance</div><div class="n">₦0.00</div><div class="d up">Tap to fund</div></div>
             <div class="stat"><div class="l">Open requests</div><div class="n">3</div><div class="d up">1 matched</div></div>
@@ -1430,7 +1482,11 @@
     var loc=(u && u.location) ? u.location : 'Global';
     var sr=document.getElementById('side-role'); if(sr) sr.textContent=loc+' · '+(LBL[r]||'Customer');
     var pr=document.getElementById('prof-role'); if(pr) pr.textContent=(LBL[r]||'Customer');
-    if(u && u.name){ var nm=document.getElementById('side-name'); if(nm) nm.textContent=u.name; var av=document.getElementById('side-avatar'); if(av) av.textContent=u.name.charAt(0).toUpperCase(); }
+    if(u && u.name){ var nm=document.getElementById('side-name'); if(nm) nm.textContent=u.name; var av=document.getElementById('side-avatar'); if(av) av.textContent=u.name.charAt(0).toUpperCase();
+      var first=(''+u.name).trim().split(/\s+/)[0];
+      var hn=document.getElementById('hero-name'); if(hn) hn.textContent=', '+first;
+      var dg=document.getElementById('dash-greet-name'); if(dg) dg.textContent=', '+first;
+    }
     if(r==='customer'){ if(typeof go==='function') go('home'); } else { if(typeof openDash==='function') openDash(); }
   };
 
@@ -1473,10 +1529,43 @@
     var code=val('vf-code'), email=(window.HINEED&&window.HINEED.pendingEmail)||'';
     if(!code){ showErr('vf-err','Enter the 6-digit code.'); return; }
     API.post('/api/auth/verify-code', {email:email, code:code}).then(function(res){
-      if(res.ok){ hideErr('vf-err'); toast('Email verified ✓'); enterApp(window.ROLE||'customer'); }
+      if(res.ok){ hideErr('vf-err'); toast('Email verified ✓'); afterAuth(); }
       else showErr('vf-err', (res.data&&res.data.error)||'Wrong or expired code.');
-    }).catch(function(){ enterApp(window.ROLE||'customer'); });
+    }).catch(function(){ afterAuth(); });
   };
+  // After verifying: business/provider must set up their shop/service before entering.
+  window.afterAuth = function(){
+    var r=window.ROLE||'customer'; var u=window.HINEED&&window.HINEED.user;
+    if(r==='business' && !(u&&u.shop&&u.shop.name)){ if(typeof authStep==='function') authStep('shop-setup'); return; }
+    if(r==='provider' && !(u&&u.profile&&u.profile.category)){ if(typeof authStep==='function') authStep('service-setup'); return; }
+    if(r==='rider' && !(u&&u.driver&&u.driver.vehicle)){ if(typeof authStep==='function') authStep('rider-setup'); return; }
+    enterApp(r);
+  };
+  window.finishRiderSetup = function(){
+    var veh=val('or-veh'); if(!veh){ showErr('or-err','Enter your vehicle (e.g. Toyota Corolla, bike).'); return; }
+    API.patch('/api/auth/me',{driver:{vehicle:veh,plate:val('or-plate'),online:true}}).then(function(res){
+      if(res.ok){ window.HINEED.user=res.data.user; toast("You're live as a rider ✓"); enterApp('rider'); }
+      else showErr('or-err', res.data.error||'Could not save.');
+    });
+  };
+  window.finishShopSetup = function(){
+    var name=val('os-shop'); if(!name){ showErr('os-err','Enter your shop name.'); return; }
+    API.patch('/api/auth/me',{shop:{name:name,kind:val('os-kind'),bio:val('os-bio')}}).then(function(res){
+      if(res.ok){ window.HINEED.user=res.data.user; var pn=val('os-prod');
+        if(pn){ API.post('/api/products',{name:pn,price:val('os-price'),description:''}).then(function(){ toast('Your shop is live ✓'); enterApp('business'); }); }
+        else { toast('Your shop is live ✓'); enterApp('business'); }
+      } else showErr('os-err', res.data.error||'Could not save.');
+    });
+  };
+  window.finishServiceSetup = function(){
+    var cat=val('op-cat'); if(!cat){ showErr('op-err','What service do you offer?'); return; }
+    var activeOn = document.getElementById('op-active'); var active = activeOn ? activeOn.getAttribute('data-on')==='1' : true;
+    API.patch('/api/auth/me',{profile:{category:cat,area:val('op-area'),experience:val('op-exp'),rate:val('op-rate'),bio:val('op-bio'),active:active}}).then(function(res){
+      if(res.ok){ window.HINEED.user=res.data.user; toast('Your service profile is live ✓'); enterApp('provider'); }
+      else showErr('op-err', res.data.error||'Could not save.');
+    });
+  };
+  window.toggleActive = function(btn){ var on=btn.getAttribute('data-on')==='1'; btn.setAttribute('data-on', on?'0':'1'); btn.textContent = on?'Inactive':'Active'; btn.style.background = on?'var(--soft)':'var(--brand)'; btn.style.color = on?'var(--muted)':'var(--on-brand)'; };
 
   window.resendCode = function(){
     var email=(window.HINEED&&window.HINEED.pendingEmail)||''; if(!email) return;
@@ -1603,7 +1692,8 @@
   window.openDash = function(){ if(_od) _od(); var r=window.ROLE; if(r==='provider') renderProviderDash(); else if(r==='business') renderBusinessDash(); };
 
   window.saveProviderProfile = function(){
-    api('PATCH','/api/auth/me',{profile:{category:(el('pv-cat').value||'').trim(),area:(el('pv-area').value||'').trim(),bio:(el('pv-bio').value||'').trim()}}).then(function(res){ if(res.ok){ H.user=res.data.user; T('Profile saved ✓'); renderProviderDash(); } else T('Could not save','bad'); });
+    var ab=el('pv-active'); var active = ab ? ab.getAttribute('data-on')==='1' : true;
+    api('PATCH','/api/auth/me',{profile:{category:(el('pv-cat').value||'').trim(),area:(el('pv-area').value||'').trim(),experience:(el('pv-exp')?el('pv-exp').value:'').trim(),rate:(el('pv-rate')?el('pv-rate').value:'').trim(),bio:(el('pv-bio').value||'').trim(),active:active}}).then(function(res){ if(res.ok){ H.user=res.data.user; T('Profile saved ✓'); renderProviderDash(); } else T('Could not save','bad'); });
   };
   window.providerComplete = function(id){ api('PATCH','/api/bookings/'+id,{action:'complete'}).then(function(r){ if(r.ok){ T('Marked done'); renderProviderDash(); } }); };
   window.shareWork = function(){
@@ -1624,7 +1714,8 @@
       var reqs=res[0].data.bookings||[],works=res[1].data.works||[],calls=res[2].data.calls||[],threads=res[3].data.threads||[];
       var prof=u.profile||{}; var unread=threads.reduce(function(a,t){return a+(t.unread||0);},0);
       var h='<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h1 class="h1" style="margin:0">Provider dashboard</h1><span class="badge">'+E(u.name)+'</span></div><p class="sub">Your requests, works, calls and messages.</p>';
-      h+='<div class="card" style="padding:16px;margin-bottom:16px"><div style="font-weight:800;margin-bottom:10px">Your service profile</div><div style="display:flex;gap:10px;flex-wrap:wrap"><input id="pv-cat" class="hn-in" style="flex:1;min-width:150px" placeholder="Category (e.g. painter)" value="'+E(prof.category||'')+'"><input id="pv-area" class="hn-in" style="flex:1;min-width:150px" placeholder="Area / city" value="'+E(prof.area||'')+'"></div><textarea id="pv-bio" class="hn-in" style="margin-top:10px;min-height:56px" placeholder="Short bio">'+E(prof.bio||'')+'</textarea><button class="btn btn-brand" style="margin-top:10px" onclick="saveProviderProfile()">Save profile</button><div style="font-size:.76rem;color:var(--muted);margin-top:8px">Saving publishes you in the ecosystem so customers can find and book you.</div></div>';
+      var isActive = !!prof.active;
+      h+='<div class="card" style="padding:16px;margin-bottom:16px"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><div style="font-weight:800">Your service profile</div><button id="pv-active" data-on="'+(isActive?'1':'0')+'" onclick="toggleActive(this)" style="border:0;padding:7px 16px;border-radius:999px;font-weight:800;cursor:pointer;background:'+(isActive?'var(--brand)':'var(--soft)')+';color:'+(isActive?'var(--on-brand)':'var(--muted)')+'">'+(isActive?'Active':'Inactive')+'</button></div><div style="display:flex;gap:10px;flex-wrap:wrap"><input id="pv-cat" class="hn-in" style="flex:1;min-width:150px" placeholder="Service (e.g. painter)" value="'+E(prof.category||'')+'"><input id="pv-area" class="hn-in" style="flex:1;min-width:150px" placeholder="Area / city" value="'+E(prof.area||'')+'"></div><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px"><input id="pv-exp" class="hn-in" style="flex:1;min-width:120px" placeholder="Years of experience" value="'+E(prof.experience||'')+'"><input id="pv-rate" class="hn-in" style="flex:1;min-width:120px" placeholder="Rate / budget" value="'+E(prof.rate||'')+'"></div><textarea id="pv-bio" class="hn-in" style="margin-top:10px;min-height:56px" placeholder="Short bio">'+E(prof.bio||'')+'</textarea><button class="btn btn-brand" style="margin-top:10px" onclick="saveProviderProfile()">Save profile</button><div style="font-size:.76rem;color:var(--muted);margin-top:8px">Saving publishes you so customers can find, message and book you.</div></div>';
       h+='<div class="stats">'+stat('Requests',reqs.length,'')+stat('Works shared',works.length,'')+stat('Unread messages',unread,'')+stat('Call requests',calls.length,'')+'</div>';
       h+='<div class="sect-t" style="margin-top:20px"><h3>Incoming requests</h3></div><div class="list card" style="padding:4px 18px">';
       if(!reqs.length) h+=emptyRow('No service requests yet.'); else reqs.forEach(function(b){ h+='<div class="row"><div style="flex:1"><div style="font-weight:700;font-size:.9rem">'+E(b.service)+'</div><div style="font-size:.76rem;color:var(--muted)">'+E(b.customer)+' · '+E(b.price)+'</div></div>'+badge(b.status)+(b.status==='held'?'<button class="btn btn-brand" style="padding:6px 11px;margin-left:8px" onclick="providerComplete(\''+b.id+'\')">Mark done</button>':'')+'</div>'; });
@@ -1637,12 +1728,14 @@
       h+='<div class="sect-t" style="margin-top:20px"><h3>Your works</h3></div><div class="vcards">';
       if(!works.length) h+=emptyRow('No works shared yet.'); else works.forEach(function(w){ h+='<div class="card" style="padding:14px"><div style="font-weight:700">'+E(w.title)+'</div><div style="font-size:.8rem;color:var(--muted);margin-top:4px">'+E(w.description||'')+'</div></div>'; });
       h+='</div>';
+      h+=kycCard(u);
       box.innerHTML=h;
     });
   }
 
   window.saveShop = function(){ api('PATCH','/api/auth/me',{shop:{name:(el('sh-name').value||'').trim(),kind:(el('sh-kind').value||'').trim(),bio:(el('sh-bio').value||'').trim()}}).then(function(res){ if(res.ok){ H.user=res.data.user; T('Shop saved ✓'); renderBusinessDash(); } }); };
-  window.addProduct = function(){ var name=(el('pr-name').value||'').trim(); if(!name){ T('Product name needed','bad'); return; } api('POST','/api/products',{name:name,price:(el('pr-price').value||'').trim(),description:(el('pr-desc').value||'').trim(),category:(el('pr-cat').value||'goods').trim()}).then(function(r){ if(r.ok){ T('Product added ✓'); renderBusinessDash(); } else T(r.data.error||'Failed','bad'); }); };
+  window.addProduct = function(){ var name=(el('pr-name').value||'').trim(); if(!name){ T('Product name needed','bad'); return; } api('POST','/api/products',{name:name,price:(el('pr-price').value||'').trim(),description:(el('pr-desc').value||'').trim(),category:(el('pr-cat').value||'goods').trim(),image:H.newProductImg||null}).then(function(r){ if(r.ok){ T('Product added ✓'); H.newProductImg=null; renderBusinessDash(); } else T(r.data.error||'Failed','bad'); }); };
+  window.pickProductImg = function(){ pickImage(function(d){ H.newProductImg=d; var pv=el('pr-prev'); if(pv) pv.innerHTML='<img src="'+d+'" style="width:56px;height:56px;object-fit:cover;border-radius:10px">'; }); };
   window.deleteProductUI = function(id){ api('DELETE','/api/products/'+id).then(function(r){ if(r.ok){ T('Removed'); renderBusinessDash(); } }); };
   window.acceptOrder = function(id){ api('PATCH','/api/orders/'+id,{action:'accept'}).then(function(r){ if(r.ok){ T('Order accepted'); renderBusinessDash(); } }); };
   window.completeOrder = function(id){ api('PATCH','/api/orders/'+id,{action:'complete'}).then(function(r){ if(r.ok){ T('Order completed'); renderBusinessDash(); } }); };
@@ -1657,7 +1750,7 @@
       var h='<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h1 class="h1" style="margin:0">Business dashboard</h1><span class="badge">'+E(shop.name||u.name)+'</span></div><p class="sub">Your shop, orders, sales and customers.</p>';
       h+='<div class="card" style="padding:16px;margin-bottom:16px"><div style="font-weight:800;margin-bottom:10px">Your shop</div><div style="display:flex;gap:10px;flex-wrap:wrap"><input id="sh-name" class="hn-in" style="flex:1;min-width:150px" placeholder="Shop name" value="'+E(shop.name||'')+'"><input id="sh-kind" class="hn-in" style="flex:1;min-width:150px" placeholder="What you sell (e.g. food, fashion)" value="'+E(shop.kind||'')+'"></div><textarea id="sh-bio" class="hn-in" style="margin-top:10px;min-height:52px" placeholder="About your shop">'+E(shop.bio||'')+'</textarea><button class="btn btn-brand" style="margin-top:10px" onclick="saveShop()">Save shop</button></div>';
       h+='<div class="stats">'+stat('Total sales',(sales?('$'+sales.toFixed(0)):'$0'),'')+stat('Orders',orders.length,'')+stat('Customers',Object.keys(customers).length,'')+stat('Chats',threads.length,'')+'</div>';
-      h+='<div class="card" style="padding:16px;margin-top:16px"><div style="font-weight:800;margin-bottom:10px">Add a product to your shop</div><div style="display:flex;gap:10px;flex-wrap:wrap"><input id="pr-name" class="hn-in" style="flex:2;min-width:150px" placeholder="Product name"><input id="pr-price" class="hn-in" style="flex:1;min-width:90px" placeholder="Price (e.g. $20)"></div><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px"><input id="pr-cat" class="hn-in" style="flex:1;min-width:120px" placeholder="Category" value="goods"><input id="pr-desc" class="hn-in" style="flex:2;min-width:150px" placeholder="Short description"></div><button class="btn btn-brand" style="margin-top:10px" onclick="addProduct()">Add product</button></div>';
+      h+='<div class="card" style="padding:16px;margin-top:16px"><div style="font-weight:800;margin-bottom:10px">Add a product to your shop</div><div style="display:flex;gap:10px;flex-wrap:wrap"><input id="pr-name" class="hn-in" style="flex:2;min-width:150px" placeholder="Product name"><input id="pr-price" class="hn-in" style="flex:1;min-width:90px" placeholder="Price (e.g. $20)"></div><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px"><input id="pr-cat" class="hn-in" style="flex:1;min-width:120px" placeholder="Category" value="goods"><input id="pr-desc" class="hn-in" style="flex:2;min-width:150px" placeholder="Short description"></div><div style="display:flex;align-items:center;gap:10px;margin-top:10px"><button class="btn btn-ghost" style="padding:8px 14px" onclick="pickProductImg()">Add photo</button><span id="pr-prev"></span></div><button class="btn btn-brand" style="margin-top:10px" onclick="addProduct()">Add product</button></div>';
       h+='<div class="sect-t" style="margin-top:20px"><h3>Your products</h3></div><div class="vcards">';
       if(!products.length) h+=emptyRow('No products yet — add your first above.'); else products.forEach(function(p){ h+='<div class="card" style="padding:14px"><div style="display:flex;justify-content:space-between;gap:8px"><div style="font-weight:700">'+E(p.name)+'</div><div style="font-weight:800;color:var(--pos)">'+E(p.price)+'</div></div><div style="font-size:.8rem;color:var(--muted);margin-top:4px">'+E(p.description||'')+'</div><button class="btn btn-ghost" style="padding:6px 11px;margin-top:10px" onclick="deleteProductUI(\''+p.id+'\')">Remove</button></div>'; });
       h+='</div>';
@@ -1668,6 +1761,7 @@
       if(!calls.length) h+=emptyRow('No call requests yet.'); else calls.forEach(function(c){ h+='<div class="row"><div style="flex:1"><div style="font-weight:700;font-size:.9rem">'+E(c.fromName)+'</div><div style="font-size:.76rem;color:var(--muted)">requested a call · '+timeAgo(c.createdAt)+'</div></div><button class="btn btn-ghost" style="padding:6px 11px" onclick="openChat(\''+c.fromId+'\',\''+E(c.fromName).replace(/\x27/g,"")+'\')">Message</button></div>'; });
       h+='</div>';
       h+='<div class="sect-t" style="margin-top:20px"><h3>Conversations</h3></div>'+renderThreadList(threads);
+      h+=kycCard(u);
       box.innerHTML=h;
     });
   }
@@ -1678,7 +1772,7 @@
     api('GET','/api/products').then(function(r){
       var products=r.data.products||[];
       var h='<h1 class="h1">Shops on Hineed</h1><p class="sub">Order from local businesses — they get your order instantly.</p><div class="vcards">';
-      if(!products.length) h+=emptyRow('No products listed yet. Businesses can add products from their dashboard.'); else products.forEach(function(p){ h+='<div class="card" style="padding:14px"><div style="display:flex;justify-content:space-between;gap:8px"><div style="font-weight:700">'+E(p.name)+'</div><div style="font-weight:800;color:var(--pos)">'+E(p.price)+'</div></div><div style="font-size:.78rem;color:var(--muted);margin-top:3px">'+E(p.shop||p.seller)+'</div><div style="font-size:.8rem;color:var(--muted);margin-top:6px">'+E(p.description||'')+'</div><div style="display:flex;gap:8px;margin-top:10px"><button class="btn btn-brand" style="flex:1;padding:8px" onclick="orderProduct(\''+p.id+'\',\''+E(p.name).replace(/\x27/g,"")+'\')">Order</button><button class="btn btn-ghost" style="padding:8px 12px" onclick="openChat(\''+p.ownerId+'\',\''+E(p.shop||p.seller).replace(/\x27/g,"")+'\')">Message</button></div></div>'; });
+      if(!products.length) h+=emptyRow('No products listed yet. Businesses can add products from their dashboard.'); else products.forEach(function(p){ h+='<div class="card" style="padding:14px">'+(p.image?'<img src="'+p.image+'" style="width:100%;height:120px;object-fit:cover;border-radius:12px;margin-bottom:10px">':'')+'<div style="display:flex;justify-content:space-between;gap:8px"><div style="font-weight:700">'+E(p.name)+'</div><div style="font-weight:800;color:var(--pos)">'+E(p.price)+'</div></div><div style="font-size:.78rem;color:var(--muted);margin-top:3px">'+E(p.shop||p.seller)+'</div><div style="font-size:.8rem;color:var(--muted);margin-top:6px">'+E(p.description||'')+'</div><div style="display:flex;gap:8px;margin-top:10px"><button class="btn btn-brand" style="flex:1;padding:8px" onclick="orderProduct(\''+p.id+'\',\''+E(p.name).replace(/\x27/g,"")+'\')">Order</button><button class="btn btn-ghost" style="padding:8px 12px" onclick="openChat(\''+p.ownerId+'\',\''+E(p.shop||p.seller).replace(/\x27/g,"")+'\')">Message</button></div></div>'; });
       h+='</div>';
       host.innerHTML=h;
     });
@@ -1755,20 +1849,205 @@
   };
   function renderAdmin(){
     var box=el('p-admin'); if(!box) return; var c=box.querySelector('.content')||box;
-    api('GET','/api/admin/overview').then(function(r){
+    Promise.all([api('GET','/api/admin/overview'),api('GET','/api/admin/kyc')]).then(function(res){
+      var r=res[0];
       if(!r.ok){ c.innerHTML='<div class="content" style="padding:26px"><div class="card" style="padding:20px;color:var(--neg)">Admin access required.</div></div>'; return; }
-      var s=r.data.stats||{}, users=r.data.users||[];
+      var s=r.data.stats||{}, users=r.data.users||[]; var pending=(res[1].data&&res[1].data.pending)||[];
       var h='<div class="content" style="padding:26px 28px 40px"><div style="display:flex;align-items:center;gap:12px"><h1 class="h1" style="margin:0">Admin console</h1><button class="btn btn-ghost" style="padding:7px 14px" onclick="adminLogout()">Log out</button></div><p class="sub">Platform overview and user management.</p>';
       h+='<div class="stats">'+stat('Users',s.users,'')+stat('Providers',s.providers,'')+stat('Businesses',s.businesses,'')+stat('Orders',s.orders,'')+'</div>';
+      h+='<div class="sect-t" style="margin-top:22px"><h3>KYC verification'+(pending.length?' ('+pending.length+' pending)':'')+'</h3></div><div class="list card" style="padding:4px 18px">';
+      if(!pending.length) h+=emptyRow('No pending ID verifications.'); else pending.forEach(function(u){ h+='<div class="row"><div style="flex:1"><div style="font-weight:700;font-size:.9rem">'+E(u.name)+' <span class="badge">'+E(u.role)+'</span></div><div style="font-size:.76rem;color:var(--muted)">'+E(u.email)+'</div></div><button class="btn btn-brand" style="padding:6px 11px" onclick="adminKyc(\''+u.id+'\',\'verify\')">Verify</button><button class="btn btn-ghost" style="padding:6px 11px;margin-left:6px;color:var(--neg)" onclick="adminKyc(\''+u.id+'\',\'reject\')">Reject</button></div>'; });
+      h+='</div>';
       h+='<div class="sect-t" style="margin-top:22px"><h3>All users</h3></div><div class="list card" style="padding:4px 18px">';
       if(!users.length) h+=emptyRow('No users yet.'); else users.forEach(function(u){ h+='<div class="row"><div style="flex:1"><div style="font-weight:700;font-size:.9rem">'+E(u.name)+' <span class="badge">'+E(u.role)+'</span>'+(u.blocked?' <span class="badge" style="background:var(--soft);color:var(--neg)">blocked</span>':'')+'</div><div style="font-size:.76rem;color:var(--muted)">'+E(u.email)+(u.location?' · '+E(u.location):'')+'</div></div><button class="btn btn-ghost" style="padding:6px 11px" onclick="adminBlock(\''+u.id+'\','+(u.blocked?'false':'true')+')">'+(u.blocked?'Unblock':'Block')+'</button><button class="btn btn-ghost" style="padding:6px 11px;margin-left:6px;color:var(--neg)" onclick="adminDelete(\''+u.id+'\')">Delete</button></div>'; });
       h+='</div></div>';
       c.innerHTML=h;
     });
   }
+  window.adminKyc = function(id,action){ api('POST','/api/admin/kyc',{userId:id,action:action}).then(function(r){ if(r.ok){ T(action==='verify'?'User verified ✓':'Verification rejected'); renderAdmin(); } else T('Admin only','bad'); }); };
   window.adminBlock = function(id,block){ api('PATCH','/api/admin/users/'+id,{action:block?'block':'unblock'}).then(function(r){ if(r.ok){ T(block?'User blocked':'User unblocked'); renderAdmin(); } else T('Admin only','bad'); }); };
   window.adminDelete = function(id){ api('DELETE','/api/admin/users/'+id).then(function(r){ if(r.ok){ T('User deleted'); renderAdmin(); } }); };
   window.adminLogout = function(){ api('POST','/api/admin/logout').then(function(){ T('Signed out of admin'); go('home'); }); };
+
+  /* ================= search + public profiles ================= */
+  var sOverlay;
+  function ensureSearchOverlay(){ if(sOverlay) return sOverlay; sOverlay=document.createElement('div'); sOverlay.className='hn-modal'; sOverlay.innerHTML='<div class="hn-sheet" style="max-height:92vh"><div style="display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)"><div id="hn-sr-title" style="flex:1;font-weight:800">Search</div><button class="iconbtn" onclick="closeSearch()" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div id="hn-sr-body" style="overflow-y:auto;padding:16px"></div></div>'; document.body.appendChild(sOverlay); return sOverlay; }
+  window.closeSearch=function(){ if(sOverlay) sOverlay.classList.remove('on'); };
+  window.doSearch=function(q){ q=(q||'').trim(); if(!q){ T('Type something to search','bad'); return; } ensureSearchOverlay(); el('hn-sr-title').textContent='Results for “'+q+'”'; el('hn-sr-body').innerHTML='<div style="color:var(--muted);text-align:center;padding:24px">Searching…</div>'; sOverlay.classList.add('on'); api('GET','/api/search?q='+encodeURIComponent(q)).then(function(r){ renderSearch(r.data||{}); }); };
+  function renderSearch(d){
+    var body=el('hn-sr-body'); var products=d.products||[],shops=d.shops||[],providers=d.providers||[];
+    if(!products.length && !shops.length && !providers.length){ body.innerHTML='<div style="color:var(--muted);text-align:center;padding:30px">No results — try another word.</div>'; return; }
+    var h='';
+    if(providers.length){ h+='<div style="font-weight:800;margin:4px 0 10px">Service providers</div>'; providers.forEach(function(p){ h+='<div class="row" style="cursor:pointer" onclick="openProfile(\''+p.id+'\')"><span class="av" style="width:40px;height:40px">'+E((p.name||'?').charAt(0))+'</span><div style="flex:1"><div style="font-weight:700;font-size:.9rem">'+E(p.name)+' '+(p.active?'<span class="badge" style="background:var(--soft);color:var(--pos)">● Active</span>':'<span class="badge" style="background:var(--soft);color:var(--muted)">Offline</span>')+'</div><div style="font-size:.78rem;color:var(--muted)">'+E(p.category||'')+(p.area?' · '+E(p.area):'')+(p.rate?' · '+E(p.rate):'')+'</div></div></div>'; }); }
+    if(shops.length){ h+='<div style="font-weight:800;margin:16px 0 10px">Shops</div>'; shops.forEach(function(s){ h+='<div class="row" style="cursor:pointer" onclick="openProfile(\''+s.id+'\')"><span class="av" style="width:40px;height:40px;background:var(--a2)">'+E((s.name||'?').charAt(0))+'</span><div style="flex:1"><div style="font-weight:700;font-size:.9rem">'+E(s.name)+'</div><div style="font-size:.78rem;color:var(--muted)">'+E(s.kind||'Shop')+(s.location?' · '+E(s.location):'')+'</div></div></div>'; }); }
+    if(products.length){ h+='<div style="font-weight:800;margin:16px 0 10px">Products</div><div class="vcards">'; products.forEach(function(p){ h+='<div class="card" style="padding:14px"><div style="display:flex;justify-content:space-between"><div style="font-weight:700">'+E(p.name)+'</div><div style="font-weight:800;color:var(--pos)">'+E(p.price)+'</div></div><div style="font-size:.78rem;color:var(--muted);margin-top:3px">'+E(p.shop||'')+'</div><div style="display:flex;gap:8px;margin-top:10px"><button class="btn btn-brand" style="flex:1;padding:8px" onclick="orderProduct(\''+p.id+'\',\''+E(p.name).replace(/\x27/g,"")+'\')">Order</button><button class="btn btn-ghost" style="padding:8px 12px" onclick="openChat(\''+p.shopId+'\',\''+E(p.shop).replace(/\x27/g,"")+'\')">Message</button></div></div>'; }); h+='</div>'; }
+    body.innerHTML=h;
+  }
+  window.openProfile=function(id){ ensureSearchOverlay(); el('hn-sr-title').textContent='Profile'; el('hn-sr-body').innerHTML='<div style="color:var(--muted);text-align:center;padding:24px">Loading…</div>'; sOverlay.classList.add('on'); api('GET','/api/profile/'+id).then(function(r){ if(!r.ok||!r.data.profile){ el('hn-sr-body').innerHTML='<div style="color:var(--muted);text-align:center;padding:30px">Profile not found.</div>'; return; } renderProfile(r.data.profile); }); };
+  function renderProfile(p){
+    var body=el('hn-sr-body'); var title=p.name||p.shopName||'?';
+    var h='<div style="display:flex;align-items:center;gap:12px"><span class="av" style="width:56px;height:56px;font-size:1.3rem">'+E(title.charAt(0))+'</span><div style="flex:1"><div style="font-weight:800;font-size:1.1rem">'+E(title)+'</div><div style="font-size:.82rem;color:var(--muted)">'+E(p.role==='business'?(p.kind||'Shop'):(p.category||'Service provider'))+(p.area?' · '+E(p.area):'')+'</div>'+(p.role==='provider'?(p.active?'<span class="badge" style="background:var(--soft);color:var(--pos);margin-top:5px;display:inline-block">● Active now</span>':'<span class="badge" style="background:var(--soft);color:var(--muted);margin-top:5px;display:inline-block">Currently offline</span>'):'')+'</div></div>';
+    var rv=(p.rating||0), rc=(p.reviewCount||0);
+    if(rc||p.verified){ var stx=''; for(var si=1;si<=5;si++) stx+=(si<=Math.round(rv)?'★':'☆'); h+='<div style="margin-top:8px;font-size:.86rem">'+(rc?'<span style="color:var(--star)">'+stx+'</span> '+rv+' ('+rc+' reviews)':'')+(p.verified?' <span class="badge" style="background:var(--soft);color:var(--pos)">Verified ✓</span>':'')+'</div>'; }
+    if(p.bio) h+='<div style="margin-top:12px;font-size:.9rem">'+E(p.bio)+'</div>';
+    if(p.role==='provider'){
+      var meta=[]; if(p.experience) meta.push(E(p.experience)+' yrs experience'); if(p.rate) meta.push(E(p.rate));
+      if(meta.length) h+='<div style="margin-top:8px;font-size:.84rem;color:var(--muted)">'+meta.join(' · ')+'</div>';
+      h+='<div style="display:flex;gap:8px;margin-top:14px"><button class="btn btn-brand" style="flex:1;padding:10px" onclick="bookProvider(\''+p.id+'\',\''+E(title).replace(/\x27/g,"")+'\');closeSearch()">Book</button><button class="btn btn-ghost" style="padding:10px 14px" onclick="openChat(\''+p.id+'\',\''+E(title).replace(/\x27/g,"")+'\');closeSearch()">Message</button><button class="btn btn-ghost" style="padding:10px 14px" onclick="requestCall(\''+p.id+'\')">Call</button></div>';
+      var works=p.works||[]; h+='<div style="font-weight:800;margin:18px 0 10px">Work &amp; services</div>'+(works.length?('<div class="vcards">'+works.map(function(w){return '<div class="card" style="padding:14px"><div style="font-weight:700">'+E(w.title)+'</div><div style="font-size:.8rem;color:var(--muted);margin-top:4px">'+E(w.description||'')+'</div></div>';}).join('')+'</div>'):emptyRow('No posted work yet.'));
+    } else if(p.role==='business'){
+      h+='<div style="display:flex;gap:8px;margin-top:14px"><button class="btn btn-ghost" style="flex:1;padding:10px" onclick="openChat(\''+p.id+'\',\''+E(title).replace(/\x27/g,"")+'\');closeSearch()">Message shop</button></div>';
+      var prods=p.products||[]; h+='<div style="font-weight:800;margin:18px 0 10px">Products</div>'+(prods.length?('<div class="vcards">'+prods.map(function(pr){return '<div class="card" style="padding:14px"><div style="display:flex;justify-content:space-between"><div style="font-weight:700">'+E(pr.name)+'</div><div style="font-weight:800;color:var(--pos)">'+E(pr.price)+'</div></div><div style="font-size:.8rem;color:var(--muted);margin-top:4px">'+E(pr.description||'')+'</div><button class="btn btn-brand" style="width:100%;margin-top:10px;padding:8px" onclick="orderProduct(\''+pr.id+'\',\''+E(pr.name).replace(/\x27/g,"")+'\')">Order</button></div>';}).join('')+'</div>'):emptyRow('No products yet.'));
+    }
+    h+='<div style="display:flex;align-items:center;justify-content:space-between;margin:18px 0 10px"><div style="font-weight:800">Reviews</div><button class="btn btn-ghost" style="padding:6px 12px" onclick="openReview(\''+p.id+'\',\''+E(title).replace(/\x27/g,"")+'\')">Write a review</button></div>';
+    var revs=p.reviews||[]; h+= revs.length ? revs.map(function(x){var st='';for(var i=1;i<=5;i++)st+=(i<=x.rating?'★':'☆');return '<div class="row"><div style="flex:1"><div style="font-weight:700;font-size:.86rem">'+E(x.author)+' <span style="color:var(--star)">'+st+'</span></div>'+(x.body?'<div style="font-size:.82rem;color:var(--muted)">'+E(x.body)+'</div>':'')+'</div></div>';}).join('') : emptyRow('No reviews yet — be the first.');
+    body.innerHTML=h;
+  }
+
+  /* ================= images / uploads ================= */
+  function iv(id){ var e=el(id); return e?(e.value||'').trim():''; }
+  window.pickImage=function(cb){ var inp=document.createElement('input'); inp.type='file'; inp.accept='image/*'; inp.onchange=function(){ var f=inp.files&&inp.files[0]; if(!f) return; var r=new FileReader(); r.onload=function(){ resizeDataUrl(r.result,900,cb); }; r.readAsDataURL(f); }; inp.click(); };
+  function resizeDataUrl(src,max,cb){ var img=new Image(); img.onload=function(){ var w=img.width,h=img.height; if(w>max||h>max){ if(w>h){h=Math.round(h*max/w);w=max;}else{w=Math.round(w*max/h);h=max;} } var c=document.createElement('canvas'); c.width=w;c.height=h; try{ c.getContext('2d').drawImage(img,0,0,w,h); cb(c.toDataURL('image/jpeg',0.8)); }catch(e){ cb(src);} }; img.onerror=function(){cb(src);}; img.src=src; };
+
+  /* ================= notifications ================= */
+  window.openNotifs=function(){ ensureSearchOverlay(); el('hn-sr-title').textContent='Notifications'; el('hn-sr-body').innerHTML='<div style="color:var(--muted);text-align:center;padding:24px">Loading…</div>'; sOverlay.classList.add('on'); api('GET','/api/notifications').then(function(r){ var n=(r.data&&r.data.notifications)||[]; el('hn-sr-body').innerHTML = n.length? n.map(function(x){ return '<div class="row" style="cursor:pointer" onclick="notifGo(\''+(x.link||'')+'\')">'+(x.read?'':'<span style="width:8px;height:8px;border-radius:50%;background:var(--brand);flex:0 0 auto"></span>')+'<div style="flex:1"><div style="font-size:.88rem">'+E(x.text)+'</div><div style="font-size:.74rem;color:var(--muted)">'+timeAgo(x.createdAt)+'</div></div></div>'; }).join('') : '<div style="color:var(--muted);text-align:center;padding:30px">No notifications yet.</div>'; api('POST','/api/notifications').then(refreshNotifBadge); }); };
+  window.notifGo=function(link){ closeSearch(); if(link==='dash'){ if(typeof openDash==='function') openDash(); } else if(link && typeof go==='function'){ go(link); } };
+  function refreshNotifBadge(){ if(!uid()) return; api('GET','/api/notifications').then(function(r){ var u=(r.data&&r.data.unread)||0; document.querySelectorAll('.dot').forEach(function(d){ d.style.display = u>0?'':'none'; }); }); }
+  window.refreshNotifBadge=refreshNotifBadge;
+
+  /* ================= ratings & reviews ================= */
+  window.openReview=function(targetId,name){ ensureSearchOverlay(); H.revRating=5; H.revTarget=targetId; el('hn-sr-title').textContent='Review '+(name||''); var stars=''; for(var i=1;i<=5;i++) stars+='<span id="star-'+i+'" onclick="setStar('+i+')" style="font-size:2rem;cursor:pointer;color:var(--star)">★</span>'; el('hn-sr-body').innerHTML='<div style="text-align:center;margin-top:6px">'+stars+'</div><textarea id="rev-body" class="hn-in" style="margin-top:14px;min-height:70px" placeholder="Share your experience (optional)"></textarea><button class="btn btn-brand" style="width:100%;margin-top:12px" onclick="submitReview()">Post review</button>'; sOverlay.classList.add('on'); };
+  window.setStar=function(n){ H.revRating=n; for(var i=1;i<=5;i++){ var s=el('star-'+i); if(s) s.style.color=i<=n?'var(--star)':'var(--line)'; } };
+  window.submitReview=function(){ var b=el('rev-body'); api('POST','/api/reviews',{targetId:H.revTarget,rating:H.revRating||5,body:b?b.value:''}).then(function(r){ if(r.ok){ T('Review posted ✓'); closeSearch(); } else T((r.data&&r.data.error)||'Could not post','bad'); }); };
+
+  /* ================= KYC ================= */
+  function kycCard(u){ var st=(u&&u.kyc&&u.kyc.status)||'none'; var label=st==='verified'?'<span style="color:var(--pos);font-weight:800">● Verified ✓</span>':(st==='pending'?'<span style="color:var(--star)">Pending review…</span>':(st==='rejected'?'<span style="color:var(--neg)">Declined — please re-submit</span>':'Not verified yet')); return '<div class="card" style="padding:16px;margin-top:18px"><div style="font-weight:800;margin-bottom:6px">Identity verification (KYC)</div><div style="font-size:.86rem;margin-bottom:'+(st==='verified'?'0':'10px')+'">'+label+'</div>'+(st==='verified'?'':'<button class="btn btn-ghost" onclick="submitKyc()">Upload ID document</button>')+'</div>'; }
+  window.kycCard=kycCard;
+  window.submitKyc=function(){ pickImage(function(d){ api('POST','/api/kyc',{doc:d}).then(function(r){ if(r.ok){ T('ID submitted for verification ✓'); var role=window.ROLE; if(role==='rider')renderRiderDash(); else if(role==='provider')renderProviderDash(); else if(role==='business')renderBusinessDash(); } else T((r.data&&r.data.error)||'Could not upload','bad'); }); }); };
+
+  /* ================= ride booking (customer) ================= */
+  function rideBadge(s){ var c=s==='completed'?'var(--pos)':(s==='cancelled'?'var(--neg)':'var(--star)'); var lbl=s==='requested'?'Finding a rider…':(s==='accepted'?'Rider on the way':(s==='arriving'?'Arriving':s)); return '<span class="badge" style="background:var(--soft);color:'+c+'">'+E(lbl)+'</span>'; }
+  function renderRide(){
+    var mv=el('mv-main'); if(!mv) return; var host=el('hn-ride'); if(!host){ host=document.createElement('div'); host.id='hn-ride'; mv.insertBefore(host, mv.firstChild); }
+    api('GET','/api/rides').then(function(r){
+      var rides=r.data.rides||[]; var active=rides.filter(function(x){return x.status!=='completed'&&x.status!=='cancelled';})[0];
+      var h='<h1 class="h1">Book a ride</h1><p class="sub">A rider takes you there — or delivers for you.</p>';
+      h+='<div class="card" style="padding:16px"><input id="rd-pickup" class="hn-in" placeholder="Pickup location" style="margin-bottom:10px"><input id="rd-drop" class="hn-in" placeholder="Where to?"><button class="btn btn-brand" style="width:100%;margin-top:12px" onclick="requestRide()">Request ride</button></div>';
+      if(active){ h+='<div class="card" style="padding:16px;margin-top:14px"><div style="font-weight:800;margin-bottom:6px">Your ride</div><div style="font-size:.9rem">'+E(active.pickup)+' → '+E(active.dropoff)+'</div><div style="margin-top:8px">'+rideBadge(active.status)+(active.driverName?' · '+E(active.driverName):'')+'</div>'+(active.status!=='completed'?'<button class="btn btn-ghost" style="margin-top:10px;padding:8px 14px" onclick="cancelRide(\''+active.id+'\')">Cancel</button>':'')+'</div>'; }
+      host.innerHTML=h;
+    });
+  }
+  window.requestRide=function(){ var p=iv('rd-pickup'),d=iv('rd-drop'); if(!p||!d){ T('Enter pickup and drop-off','bad'); return; } api('POST','/api/rides',{pickup:p,dropoff:d}).then(function(r){ if(r.ok){ T('Ride requested — finding a rider…'); renderRide(); } else T((r.data&&r.data.error)||'Failed','bad'); }); };
+  window.cancelRide=function(id){ api('PATCH','/api/rides/'+id,{action:'cancel'}).then(function(){ T('Ride cancelled'); renderRide(); }); };
+
+  /* ================= rider (driver) dashboard ================= */
+  window.renderRiderDash=function(){
+    var pd=el('p-dash'); if(!pd) return; var cont=pd.querySelector('.content')||pd; var box=el('dash-rider'); if(!box){ box=document.createElement('div'); box.className='sub-v'; box.id='dash-rider'; cont.appendChild(box); }
+    ['dash-customer','dash-provider','dash-business'].forEach(function(idd){var e=el(idd);if(e)e.classList.remove('on');}); box.classList.add('on');
+    var u=me()||{}; var online=!!(u.driver&&u.driver.online);
+    Promise.all([api('GET','/api/rides?role=open'),api('GET','/api/rides?role=driver')]).then(function(res){
+      var open=res[0].data.rides||[], mine=res[1].data.rides||[]; var active=mine.filter(function(x){return x.status==='accepted'||x.status==='arriving';});
+      var h='<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h1 class="h1" style="margin:0">Rider dashboard</h1><button id="rider-online" onclick="toggleOnline()" style="border:0;padding:8px 18px;border-radius:999px;font-weight:800;cursor:pointer;background:'+(online?'var(--brand)':'var(--soft)')+';color:'+(online?'var(--on-brand)':'var(--muted)')+'">'+(online?'● Online':'Go online')+'</button></div><p class="sub">Accept ride & delivery requests near you.</p>';
+      h+='<div class="sect-t" style="margin-top:14px"><h3>Your active jobs</h3></div><div class="list card" style="padding:4px 18px">';
+      if(!active.length) h+=emptyRow('No active jobs.'); else active.forEach(function(r){ h+='<div class="row"><div style="flex:1"><div style="font-weight:700;font-size:.9rem">'+E(r.pickup)+' → '+E(r.dropoff)+'</div><div style="font-size:.76rem;color:var(--muted)">'+E(r.riderName)+' · '+rideBadge(r.status)+'</div></div>'+(r.status==='accepted'?'<button class="btn btn-brand" style="padding:6px 11px" onclick="rideAction(\''+r.id+'\',\'arrive\')">Arriving</button>':'<button class="btn btn-brand" style="padding:6px 11px" onclick="rideAction(\''+r.id+'\',\'complete\')">Complete</button>')+'</div>'; });
+      h+='</div>';
+      h+='<div class="sect-t" style="margin-top:18px"><h3>Open requests</h3></div><div class="list card" style="padding:4px 18px">';
+      if(!online) h+=emptyRow('Go online to receive requests.'); else if(!open.length) h+=emptyRow('No open requests right now.'); else open.forEach(function(r){ h+='<div class="row"><div style="flex:1"><div style="font-weight:700;font-size:.9rem">'+E(r.pickup)+' → '+E(r.dropoff)+'</div><div style="font-size:.76rem;color:var(--muted)">'+E(r.riderName)+' · '+timeAgo(r.createdAt)+'</div></div><button class="btn btn-brand" style="padding:6px 11px" onclick="rideAction(\''+r.id+'\',\'accept\')">Accept</button></div>'; });
+      h+='</div>'+kycCard(u);
+      box.innerHTML=h;
+    });
+  };
+  window.toggleOnline=function(){ var u=me()||{}; var on=!(u.driver&&u.driver.online); api('PATCH','/api/auth/me',{driver:{online:on}}).then(function(r){ if(r.ok){ H.user=r.data.user; T(on?'You are online':'You are offline'); renderRiderDash(); } }); };
+  window.rideAction=function(id,action){ api('PATCH','/api/rides/'+id,{action:action}).then(function(r){ if(r.ok){ T('Updated'); renderRiderDash(); } else T((r.data&&r.data.error)||'Failed','bad'); }); };
+
+  /* ================= hooks: move page, rider dash, notif polling ================= */
+  var _go2=window.go; window.go=function(p){ if(_go2) _go2(p); if(p==='move') renderRide(); };
+  var _od2=window.openDash; window.openDash=function(){ if(_od2) _od2(); if(window.ROLE==='rider') renderRiderDash(); };
+  setInterval(function(){ try{ if(uid()) refreshNotifBadge(); }catch(e){} }, 30000);
+  setTimeout(function(){ try{ if(uid()) refreshNotifBadge(); }catch(e){} }, 2500);
+})();
+</script>
+
+<!-- Hineed AI concierge (Claude) -->
+<script>
+(function(){
+  var H=window.HINEED=window.HINEED||{};
+  function el(id){return document.getElementById(id);}
+  function E(s){return (''+(s==null?'':s)).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+  window.aiReply=function(q){
+    var s=el('aiStatus'); if(s) s.textContent='Typing…';
+    H.aiHistory=H.aiHistory||[]; H.aiHistory.push({role:'user',content:q});
+    fetch('/api/assistant',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:H.aiHistory.slice(-10)})})
+      .then(function(r){return r.json();}).then(function(d){
+        if(s) s.textContent='Online · ask me anything';
+        var reply=(d&&d.reply)||'Sorry, please try again.';
+        H.aiHistory.push({role:'assistant',content:reply});
+        if(typeof bub==='function') bub('aibub', E(reply).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\n/g,'<br>'));
+      }).catch(function(){ if(s) s.textContent='Online · ask me anything'; if(typeof bub==='function') bub('aibub','Network issue — please try again.'); });
+  };
+
+  // ---- compact theme switch (mobile): cycle dark -> light -> b&w ----
+  window.cycleTheme=function(){
+    var cur=document.documentElement.getAttribute('data-theme')||'dark';
+    var next=cur==='dark'?'light':(cur==='light'?'bw':'dark');
+    if(typeof setTheme==='function') setTheme(next);
+    if(window.HINEED&&window.HINEED.toast) window.HINEED.toast(next==='bw'?'Black & white':(next.charAt(0).toUpperCase()+next.slice(1))+' theme');
+  };
+
+  // ---- slide-out menu (fintech style) ----
+  var menu;
+  function buildMenu(){
+    if(menu) return menu;
+    menu=document.createElement('div');
+    menu.id='hn-menu'; menu.className='hn-drawer';
+    menu.innerHTML='<div class="hn-drawer-panel"><div class="hn-drawer-head"><span class="av" id="hn-m-av" style="width:52px;height:52px;font-size:1.1rem"></span><div style="flex:1;min-width:0"><div id="hn-m-name" style="font-weight:800;font-size:1.05rem"></div><div id="hn-m-role" style="font-size:.78rem;color:var(--muted)"></div></div><button class="iconbtn" onclick="closeMenu()" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="hn-drawer-links" id="hn-m-links"></div><button class="btn btn-ghost" style="margin:14px;color:var(--neg)" onclick="closeMenu();doLogout()">Log out</button></div><div class="hn-drawer-scrim" onclick="closeMenu()"></div>';
+    document.body.appendChild(menu);
+    return menu;
+  }
+  function mlink(label,icon,onclick){ return '<button class="hn-mlink" onclick="closeMenu();'+onclick+'"><span class="hn-mi">'+icon+'</span>'+label+'</button>'; }
+  window.openMenu=function(){
+    buildMenu();
+    var u=(window.HINEED&&window.HINEED.user)||{};
+    el('hn-m-name').textContent=u.name||'Your account';
+    var roleLbl={customer:'Customer',provider:'Service provider',business:'Business',rider:'Rider'}[u.role]||'Customer';
+    el('hn-m-role').textContent=(u.location?u.location+' · ':'')+roleLbl;
+    el('hn-m-av').textContent=(u.name||'U').charAt(0).toUpperCase();
+    var I=function(d){return '<svg width="19" height="19" viewBox="0 0 24 24" class="ic">'+d+'</svg>';};
+    var links=''
+     +mlink('Home',I('<path d="M4 10.5 12 4l8 6.5V20h-5.5v-5.5h-5V20H4z"/>'),"go('home')")
+     +mlink('My dashboard',I('<path d="M4 4h7v7H4zM13 4h7v4h-7zM13 11h7v9h-7zM4 14h7v6H4z"/>'),"openDash()")
+     +mlink('Marketplace',I('<path d="M5 8h14l-1 12H6zM9 8V6a3 3 0 0 1 6 0v2"/>'),"go('market')")
+     +mlink('Ask I Need (AI)',I('<path d="M12 3.5 13.6 8 18 9.5 13.6 11 12 15.5 10.4 11 6 9.5 10.4 8z"/>'),"go('ineed')")
+     +mlink('Hineed Pay',I('<path d="M4 7.5h13a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H4z"/>'),"go('pay')")
+     +mlink('Social',I('<path d="M12 20s-7.5-4.6-7.5-9.4A4.1 4.1 0 0 1 12 8a4.1 4.1 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20Z"/>'),"go('social')")
+     +mlink('Chats',I('<path d="M4 5.5h16v10H9l-4 3.5v-3.5H4z"/>'),"socialOpen('chats')")
+     +mlink('Notifications',I('<path d="M18 16V11a6 6 0 1 0-12 0v5l-1.5 2.5h15z"/>'),"openNotifs()")
+     +mlink('Account settings',I('<circle cx="12" cy="12" r="3.2"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.5-2-3.4-2.3 1a7 7 0 0 0-2-1.2L14 2h-4l-.6 2.5a7 7 0 0 0-2 1.2l-2.3-1-2 3.4 2 1.5A7 7 0 0 0 5 12a7 7 0 0 0 .1 1.2l-2 1.5 2 3.4 2.3-1a7 7 0 0 0 2 1.2L10 22h4l.6-2.5a7 7 0 0 0 2-1.2l2.3 1 2-3.4-2-1.5A7 7 0 0 0 19 12Z"/>'),"go('profile')")
+     +mlink('Support',I('<circle cx="12" cy="12" r="8"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .9-1 1.7M12 16.5v.01"/>'),"go('ineed')")
+     +mlink('About Hineed',I('<circle cx="12" cy="12" r="8"/><path d="M12 11v5M12 8v.01"/>'),"go('profile')");
+    el('hn-m-links').innerHTML=links;
+    requestAnimationFrame(function(){ menu.classList.add('on'); });
+  };
+  window.closeMenu=function(){ if(menu) menu.classList.remove('on'); };
+
+  var ms=document.createElement('style');
+  ms.textContent=".hn-drawer{position:fixed;inset:0;z-index:260;pointer-events:none}"
+   +".hn-drawer-scrim{position:absolute;inset:0;background:rgba(0,0,0,.5);opacity:0;transition:opacity .25s}"
+   +".hn-drawer-panel{position:absolute;top:0;left:0;bottom:0;width:84%;max-width:330px;background:var(--surface);transform:translateX(-100%);transition:transform .26s cubic-bezier(.22,.61,.36,1);display:flex;flex-direction:column;box-shadow:var(--shadow);overflow-y:auto}"
+   +".hn-drawer.on{pointer-events:auto}.hn-drawer.on .hn-drawer-scrim{opacity:1}.hn-drawer.on .hn-drawer-panel{transform:none}"
+   +".hn-drawer-head{display:flex;align-items:center;gap:12px;padding:20px 16px;border-bottom:1px solid var(--line)}"
+   +".hn-drawer-links{display:flex;flex-direction:column;padding:8px 10px;gap:2px}"
+   +".hn-mlink{display:flex;align-items:center;gap:13px;width:100%;border:0;background:transparent;color:var(--ink);font:inherit;font-weight:600;font-size:.95rem;padding:13px 12px;border-radius:12px;text-align:left}"
+   +".hn-mlink:hover{background:var(--soft)}.hn-mi{color:var(--brand);display:grid;place-items:center}";
+  document.head.appendChild(ms);
+
+  // Splash auto-advances to onboarding after ~3.5s (only while the splash is showing and nobody is logged in yet)
+  setTimeout(function(){
+    try{
+      var auth=el('auth'), splash=el('a-splash');
+      if(auth && getComputedStyle(auth).display!=='none' && splash && splash.classList.contains('on') && typeof authStep==='function') authStep('onboarding');
+    }catch(e){}
+  }, 3500);
 })();
 </script>
 </body>

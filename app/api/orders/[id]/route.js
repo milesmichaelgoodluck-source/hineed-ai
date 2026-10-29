@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { withDb } from "@/lib/db";
 import { updateOrderStatus } from "@/lib/store";
 import { sessionFromRequest } from "@/lib/auth";
 
@@ -7,7 +8,7 @@ export const dynamic = "force-dynamic";
 
 const NEXT = { accept: "accepted", complete: "completed", cancel: "cancelled" };
 
-export async function PATCH(req, { params }) {
+export const PATCH = withDb(async (req, { params }) => {
   const session = sessionFromRequest(req);
   if (!session?.uid) return NextResponse.json({ error: "Sign in required." }, { status: 401 });
   const { id } = await params;
@@ -17,4 +18,4 @@ export async function PATCH(req, { params }) {
   const updated = updateOrderStatus(id, status, session.uid);
   if (!updated) return NextResponse.json({ error: "Not found." }, { status: 404 });
   return NextResponse.json({ order: { id: updated.id, status: updated.status } });
-}
+});
