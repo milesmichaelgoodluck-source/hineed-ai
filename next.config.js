@@ -10,6 +10,15 @@ const nextConfig = {
       beforeFiles: [{ source: "/", destination: "/index.html" }],
     };
   },
+  // Always serve the freshest app shell so a refresh after a deploy shows the
+  // new version immediately (no stale cached HTML on phones).
+  async headers() {
+    const noCache = [{ key: "Cache-Control", value: "no-cache, no-store, must-revalidate" }];
+    return [
+      { source: "/", headers: noCache },
+      { source: "/index.html", headers: noCache },
+    ];
+  },
 };
 
 module.exports = nextConfig;
