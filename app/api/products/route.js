@@ -12,7 +12,7 @@ export const GET = withDb(async (req) => {
   const owner = mine && session?.uid ? session.uid : null;
   const products = listProducts(owner).map((p) => {
     const o = findUserById(p.ownerId);
-    return { ...p, seller: o?.name || "Shop", shop: o?.shop?.name || o?.name || "Shop" };
+    return { ...p, seller: o?.name || p.seller || p.shop || "Shop", shop: o?.shop?.name || o?.name || p.shop || "Shop" };
   });
   return NextResponse.json({ products });
 });

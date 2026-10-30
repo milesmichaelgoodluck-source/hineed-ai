@@ -93,21 +93,50 @@ No rush: deploy first, see it live, add this later.
 
 ---
 
-## Email verification codes (OTP)
+## ⭐ Turn OFF the on-screen code — send REAL codes (email + SMS)
 
-Sign-up now includes an email verification step. Out of the box it runs in
-**test mode**: the 6-digit code is shown on screen so the flow works immediately.
+Right now, because no delivery service is connected yet, the 6-digit code is
+shown on the verify screen so sign-up still works. **The moment you connect
+email or SMS below, that on-screen code disappears automatically** and the code
+is delivered to the person's inbox or phone instead. Nothing else to change.
 
-To send **real codes to people's Gmail**, set two Environment Variables on Vercel:
+You can turn on **either or both**. SMS (Termii) is the quickest.
 
-1. Create a free account at **resend.com** and copy your API key.
-2. In Vercel → your project → **Settings → Environment Variables**, add:
-   - `RESEND_API_KEY` = your Resend key
-   - `EMAIL_FROM` = e.g. `Hineed.AI <noreply@yourdomain.com>`
-3. Verify your sending domain in Resend (required to email anyone other than
-   your own address). Then redeploy.
+### Option A — SMS code by text (Termii, ~3 minutes, best for Nigeria)
+1. Create an account at **termii.com** and copy your **API key**.
+2. In Vercel → your **hineed-ai** project → **Settings → Environment Variables**, add:
+   - `TERMII_API_KEY` = your Termii key
+   - `TERMII_SENDER_ID` = `Hineed` (or your approved sender name)
+3. **Redeploy** (double-click `2-UPDATE-HINEED.bat`). Done — codes now text to
+   the phone number entered at sign-up.
 
-SMS OTP (e.g. via Termii) can be added the same way later — just ask.
+### Option B — Email code from your own Gmail (100% FREE, no domain, any inbox)
+This sends the code **from your Gmail** to anyone's inbox, free (~500/day). No
+paid service and no domain needed — just a one-time Google "App Password".
+
+1. Turn on **2-Step Verification** for your Google account:
+   **myaccount.google.com → Security → 2-Step Verification** → follow the steps.
+2. Create an **App Password**: go to **myaccount.google.com/apppasswords**, name
+   it `Hineed`, click Create, and copy the **16-character password** it shows
+   (looks like `abcd efgh ijkl mnop`).
+3. In Vercel → your **hineed-ai** project → **Settings → Environment Variables**, add:
+   - `GMAIL_USER` = your Gmail address (e.g. `milesmichaelgoodluck@gmail.com`)
+   - `GMAIL_APP_PASSWORD` = the 16-character app password from step 2
+4. **Redeploy** (double-click `2-UPDATE-HINEED.bat`). Done — codes now email to
+   whatever address people sign up with, and the on-screen code disappears.
+
+### Option C — Email via Resend (needs a domain to reach other people)
+1. Create a free account at **resend.com**, copy the **API key**, add
+   `RESEND_API_KEY` (and optional `EMAIL_FROM`) in Vercel.
+2. To email **anyone's** Gmail, verify a sending domain in Resend (your
+   `hineed.ai` domain + the DNS records they show). Until then it only delivers
+   to your own account email. **Redeploy.**
+
+(If both Gmail and Resend are set, Gmail is used first.)
+
+Login itself already uses the person's **real email + password** (passwords are
+securely hashed). The code step confirms the email/phone actually belongs to
+them. Once A or B is on, that confirmation is a real text/email — no on-screen code.
 
 ## Updating the live app
 

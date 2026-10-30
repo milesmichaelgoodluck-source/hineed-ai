@@ -372,7 +372,7 @@
         <label class="ain"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M3.5 7h17v10h-17V7ZM3.5 7.5l8.5 6 8.5-6"/></svg><input id="vf-code" inputmode="numeric" maxlength="6" placeholder="6-digit code" style="letter-spacing:5px;font-weight:800" onkeydown="if(event.key==='Enter')verifyCode()"></label>
         <div id="vf-err" style="display:none;color:var(--neg,#e5484d);font-size:.8rem;margin:-4px 2px 0"></div>
         <button class="btn btn-brand" onclick="verifyCode()">Verify &amp; continue</button>
-        <div style="text-align:center;font-size:.82rem;color:var(--muted)">Didn't get it? <b style="color:var(--brand);cursor:pointer" onclick="resendCode()">Resend code</b> · <b style="color:var(--muted);cursor:pointer" onclick="afterAuth()">Skip for now</b></div>
+        <div style="text-align:center;font-size:.82rem;color:var(--muted)">Didn't get it? <b style="color:var(--brand);cursor:pointer" onclick="resendCode()">Resend code</b></div>
       </div>
     </div>
     <div class="astep" id="a-shop-setup">
@@ -529,26 +529,10 @@
           <button class="pill on" onclick="catSelect(this)">All</button><button class="pill" onclick="catSelect(this)">Meals & dishes</button><button class="pill" onclick="catSelect(this)">Hair & beauty</button><button class="pill" onclick="catSelect(this)">Groceries</button><button class="pill" onclick="catSelect(this)">Electronics</button><button class="pill" onclick="catSelect(this)">Pharmacy</button>
         </div>
         <div class="sub-v on" id="mk-products">
-          <div class="prods">
-            <div class="prod"><div class="img" style="background:var(--g-a)"></div><button class="add" aria-label="Add"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke-width:2.1"><path d="M12 5v14M5 12h14"/></svg></button><div class="bd"><div class="nm">Rechargeable fan</div><div class="pr">₦42,000</div></div></div>
-            <div class="prod"><div class="img" style="background:var(--g-c)"></div><button class="add" aria-label="Add"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke-width:2.1"><path d="M12 5v14M5 12h14"/></svg></button><div class="bd"><div class="nm">Jollof + plantain</div><div class="pr">₦2,900</div></div></div>
-            <div class="prod"><div class="img" style="background:var(--g-b)"></div><button class="add" aria-label="Add"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke-width:2.1"><path d="M12 5v14M5 12h14"/></svg></button><div class="bd"><div class="nm">Lace wig 24&quot;</div><div class="pr">₦35,000</div></div></div>
-            <div class="prod"><div class="img" style="background:var(--g-a)"></div><button class="add" aria-label="Add"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke-width:2.1"><path d="M12 5v14M5 12h14"/></svg></button><div class="bd"><div class="nm">Gas cooker</div><div class="pr">₦78,500</div></div></div>
-            <div class="prod"><div class="img" style="background:var(--g-c)"></div><button class="add" aria-label="Add"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke-width:2.1"><path d="M12 5v14M5 12h14"/></svg></button><div class="bd"><div class="nm">Paracetamol pack</div><div class="pr">₦1,200</div></div></div>
-            <div class="prod"><div class="img" style="background:var(--g-b)"></div><button class="add" aria-label="Add"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke-width:2.1"><path d="M12 5v14M5 12h14"/></svg></button><div class="bd"><div class="nm">Office chair</div><div class="pr">₦55,000</div></div></div>
-            <div class="prod"><div class="img" style="background:var(--g-a)"></div><button class="add" aria-label="Add"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke-width:2.1"><path d="M12 5v14M5 12h14"/></svg></button><div class="bd"><div class="nm">Blender set</div><div class="pr">₦24,900</div></div></div>
-            <div class="prod"><div class="img" style="background:var(--g-c)"></div><button class="add" aria-label="Add"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke-width:2.1"><path d="M12 5v14M5 12h14"/></svg></button><div class="bd"><div class="nm">Rice 50kg bag</div><div class="pr">₦82,000</div></div></div>
-          </div>
-          <div style="margin-top:24px"><button class="btn btn-brand" onclick="go('cart')"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:var(--on-brand)"><path d="M3 4h2l2.2 11h10l2-7H6"/><circle cx="9" cy="19" r="1.4"/><circle cx="17" cy="19" r="1.4"/></svg> View cart (2)</button></div>
+          <div class="prods" id="mk-prod-grid"><div style="padding:22px;color:var(--muted);font-size:.88rem">Loading products…</div></div>
         </div>
         <div class="sub-v" id="mk-shops">
-          <div class="list card" style="padding:4px 18px;max-width:760px">
-            <a href="#" onclick="go('product');return false" class="row"><span class="av" style="width:46px;height:46px;background:var(--a2)">K</span><div style="flex:1"><div style="font-weight:700">KanoTech Store</div><div style="font-size:.8rem;color:var(--muted)">Electronics · D-Line · ★ 4.8</div></div><span class="badge">Visit</span></a>
-            <a href="#" onclick="go('product');return false" class="row"><span class="av" style="width:46px;height:46px;background:var(--a4)">M</span><div style="flex:1"><div style="font-weight:700">Mama Nkem&rsquo;s Kitchen</div><div style="font-size:.8rem;color:var(--muted)">Meals & dishes · GRA · ★ 4.9</div></div><span class="badge">Visit</span></a>
-            <a href="#" onclick="go('product');return false" class="row"><span class="av" style="width:46px;height:46px;background:var(--a3)">G</span><div style="flex:1"><div style="font-weight:700">Glow Hair & Beauty</div><div style="font-size:.8rem;color:var(--muted)">Hair & beauty · Mile 1 · ★ 4.7</div></div><span class="badge">Visit</span></a>
-            <a href="#" onclick="go('product');return false" class="row"><span class="av" style="width:46px;height:46px;background:var(--a1)">H</span><div style="flex:1"><div style="font-weight:700">HomeMart</div><div style="font-size:.8rem;color:var(--muted)">Groceries · Trans-Amadi · ★ 4.6</div></div><span class="badge">Visit</span></a>
-            <a href="#" onclick="go('product');return false" class="row"><span class="av" style="width:46px;height:46px;background:var(--a6)">R</span><div style="flex:1"><div style="font-weight:700">RiverPharm</div><div style="font-size:.8rem;color:var(--muted)">Pharmacy · Rumuola · ★ 4.9</div></div><span class="badge">Visit</span></a>
-          </div>
+          <div class="list card" id="mk-shop-list" style="padding:4px 18px;max-width:760px"><div style="padding:16px;color:var(--muted);font-size:.88rem">Loading shops…</div></div>
         </div>
       </section>
 
@@ -715,30 +699,26 @@
         <div class="sub-v on" id="dash-customer">
           <h1 class="h1">Your dashboard</h1><p class="sub">Welcome back<span id="dash-greet-name">, Miles</span> — everything you need, at a glance.</p>
           <div class="stats">
-            <div class="stat"><div class="l">Wallet balance</div><div class="n">₦0.00</div><div class="d up">Tap to fund</div></div>
-            <div class="stat"><div class="l">Open requests</div><div class="n">3</div><div class="d up">1 matched</div></div>
-            <div class="stat"><div class="l">Orders</div><div class="n">2</div><div class="d">1 in transit</div></div>
-            <div class="stat"><div class="l">Saved items</div><div class="n">7</div><div class="d">across 4 shops</div></div>
+            <div class="stat"><div class="l">Wallet balance</div><div class="n">₦0.00</div><div class="d up">Coming soon</div></div>
+            <div class="stat"><div class="l">Open requests</div><div class="n" id="cd-reqN">0</div><div class="d up" id="cd-reqD">None yet</div></div>
+            <div class="stat"><div class="l">Orders</div><div class="n" id="cd-ordN">0</div><div class="d" id="cd-ordD">None yet</div></div>
+            <div class="stat"><div class="l">Saved items</div><div class="n" id="cd-savedN">0</div><div class="d">Tap ♥ to save</div></div>
           </div>
           <div class="grid2" style="margin-top:22px">
             <div>
               <div class="sect-t" style="margin-top:4px"><h3>Your requests</h3><a href="#" onclick="go('ineed');return false">New request</a></div>
-              <div class="list card" style="padding:4px 18px">
-                <div class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M3.5 10.5 12 4l8.5 6.5V20h-6v-5h-5v5h-6v-9.5Z"/></svg></span><div style="flex:1"><div style="font-weight:700;font-size:.9rem">2-bed flat in GRA</div><div style="font-size:.76rem;color:var(--muted)">HN-4X2K9 · Homes</div></div><span class="badge">Matched</span></div>
-                <div class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M14.5 5.5a3.8 3.8 0 0 0 5 5L15 15l-2 5.5-3-3 5.5-2 4.5-4.5"/></svg></span><div style="flex:1"><div style="font-weight:700;font-size:.9rem">Plumber in D-Line</div><div style="font-size:.76rem;color:var(--muted)">HN-7T1P2 · Services</div></div><span class="badge" style="background:var(--soft);color:var(--star)">Finding</span></div>
-                <div class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M4 11h16a8 8 0 0 1-16 0ZM12 11V6"/></svg></span><div style="flex:1"><div style="font-weight:700;font-size:.9rem">Jollof for 6</div><div style="font-size:.76rem;color:var(--muted)">HN-9K3L0 · Food</div></div><span class="badge">Delivered</span></div>
-              </div>
+              <div class="list card" id="cd-requests" style="padding:4px 18px"><div style="padding:16px;color:var(--muted);font-size:.86rem">Loading…</div></div>
             </div>
             <div>
               <div class="card" style="padding:18px"><div style="font-weight:800;margin-bottom:12px">Quick actions</div>
                 <button class="btn btn-brand" style="width:100%;margin-bottom:10px" onclick="talk()">Ask I Need</button>
-                <button class="btn btn-ghost" style="width:100%;margin-bottom:10px" onclick="go('pay')">Fund wallet</button>
-                <button class="btn btn-ghost" style="width:100%" onclick="go('market')">Open marketplace</button>
+                <button class="btn btn-ghost" style="width:100%;margin-bottom:10px" onclick="go('market')">Open marketplace</button>
+                <button class="btn btn-ghost" style="width:100%" onclick="go('services')">Book a service</button>
               </div>
             </div>
           </div>
-          <div class="sect-t" style="margin-top:24px"><h3>Your bookings</h3><a href="#" onclick="go('services');return false">Book a service</a></div>
-          <div class="list card" id="cust-bookings" style="padding:4px 18px"><div style="padding:16px;color:var(--muted);font-size:.86rem">Loading…</div></div>
+          <div class="sect-t" style="margin-top:24px"><h3>Your orders</h3><a href="#" onclick="go('market');return false">Shop marketplace</a></div>
+          <div class="list card" id="cust-orders" style="padding:4px 18px"><div style="padding:16px;color:var(--muted);font-size:.86rem">Loading…</div></div>
         </div>
 
         <!-- Provider -->
@@ -1245,8 +1225,8 @@
   function updateBack(){ var b=document.getElementById('backBtn'); if(b) b.style.display=navHist.length?'inline-grid':'none'; }
   document.querySelectorAll('#nav button, #bottom button').forEach(b=>{ if(b.dataset.p) b.addEventListener('click',()=>go(b.dataset.p)); });
   function setTheme(t){ if(t==='green')t='dark'; document.documentElement.setAttribute('data-theme',t); ['dark','light','bw'].forEach(function(x){ var b=document.getElementById('t-'+x); if(b) b.classList.toggle('on', x===t); }); try{localStorage.setItem('hineed-theme',t);}catch(e){} }
-  function mkTab(t){ document.getElementById('mk-products').classList.toggle('on',t==='products'); document.getElementById('mk-shops').classList.toggle('on',t==='shops'); document.getElementById('seg-p').classList.toggle('on',t==='products'); document.getElementById('seg-s').classList.toggle('on',t==='shops'); }
-  function catSelect(el){ document.querySelectorAll('#cats .pill').forEach(p=>p.classList.remove('on')); el.classList.add('on'); }
+  function mkTab(t){ document.getElementById('mk-products').classList.toggle('on',t==='products'); document.getElementById('mk-shops').classList.toggle('on',t==='shops'); document.getElementById('seg-p').classList.toggle('on',t==='products'); document.getElementById('seg-s').classList.toggle('on',t==='shops'); if(t==='shops' && typeof window.renderShops==='function') window.renderShops(); else if(typeof window.renderShop==='function') window.renderShop(); }
+  function catSelect(el){ document.querySelectorAll('#cats .pill').forEach(p=>p.classList.remove('on')); el.classList.add('on'); window.__mkCat=(el.textContent||'All').trim(); if(typeof window.renderShop==='function') window.renderShop(); }
   function catSel(el){ Array.from(el.parentElement.children).forEach(c=>{ if(c.classList) c.classList.remove('on'); }); el.classList.add('on'); }
   function jobsTab(t){ document.getElementById('jb-find').classList.toggle('on',t==='find'); document.getElementById('jb-hire').classList.toggle('on',t==='hire'); document.getElementById('jb-find-t').classList.toggle('on',t==='find'); document.getElementById('jb-hire-t').classList.toggle('on',t==='hire'); }
   function payView(v){ document.querySelectorAll('#p-pay .sub-v').forEach(e=>e.classList.toggle('on', e.id==='pay-'+v)); try{window.scrollTo(0,0);}catch(e){} }
@@ -1574,8 +1554,10 @@
         try{ localStorage.setItem('hineed-email', email); }catch(e){}
         API.post('/api/auth/request-code', {email:email}).then(function(cr){
           var hint=document.getElementById('vf-hint');
-          if(cr.data && cr.data.devCode){ if(hint) hint.innerHTML='Test mode (email sending not set up yet): your code is <b style="color:var(--brand);font-size:1.15rem;letter-spacing:3px">'+cr.data.devCode+'</b>'; }
-          else if(hint){ hint.textContent='We sent a 6-digit code to '+email; }
+          if(cr.data && cr.data.viaEmail && cr.data.viaSms){ if(hint) hint.textContent='We sent a 6-digit code to your email and phone.'; }
+          else if(cr.data && cr.data.viaSms){ if(hint) hint.textContent='We sent a 6-digit code by SMS to your phone.'; }
+          else if(cr.data && cr.data.viaEmail){ if(hint) hint.textContent='We sent a 6-digit code to '+email+'.'; }
+          else if(cr.data && cr.data.devCode){ if(hint) hint.innerHTML='Delivery isn\'t switched on yet — your code is <b style="color:var(--brand);font-size:1.15rem;letter-spacing:3px">'+cr.data.devCode+'</b>'; }
           if(typeof authStep==='function') authStep('verify');
         }).catch(function(){ if(typeof authStep==='function') authStep('verify'); });
       } else {
@@ -1631,7 +1613,8 @@
     var email=(window.HINEED&&window.HINEED.pendingEmail)||''; if(!email) return;
     API.post('/api/auth/request-code', {email:email}).then(function(cr){
       var hint=document.getElementById('vf-hint');
-      if(cr.data && cr.data.devCode){ if(hint) hint.innerHTML='Test mode: your code is <b style="color:var(--brand);font-size:1.15rem;letter-spacing:3px">'+cr.data.devCode+'</b>'; toast('New code ready'); }
+      if(cr.data && (cr.data.viaEmail||cr.data.viaSms)){ if(hint) hint.textContent='We sent a new code to '+(cr.data.viaSms?'your phone':email)+'.'; toast('New code sent'); }
+      else if(cr.data && cr.data.devCode){ if(hint) hint.innerHTML='Delivery isn\'t switched on yet — your code is <b style="color:var(--brand);font-size:1.15rem;letter-spacing:3px">'+cr.data.devCode+'</b>'; toast('New code ready'); }
       else toast('Code re-sent to '+email);
     });
   };
@@ -1827,16 +1810,38 @@
   }
 
   /* ================= shop (customer) ================= */
+  var MK_GRAD=['g-a','g-b','g-c','g-food'];
   function renderShop(){
-    var page=el('p-market'); if(!page) return; var host=el('hn-shop'); if(!host){ host=document.createElement('div'); host.id='hn-shop'; host.className='content-pad'; var c=page.querySelector('.content')||page; c.insertBefore(host,c.firstChild); }
+    var grid=el('mk-prod-grid'); if(!grid) return;
     api('GET','/api/products').then(function(r){
-      var products=r.data.products||[];
-      var h='<h1 class="h1">Shops on Hineed</h1><p class="sub">Order from local businesses — they get your order instantly.</p><div class="vcards">';
-      if(!products.length) h+=emptyRow('No products listed yet. Businesses can add products from their dashboard.'); else products.forEach(function(p){ h+='<div class="card" style="padding:14px">'+(p.image?'<img src="'+p.image+'" style="width:100%;height:120px;object-fit:cover;border-radius:12px;margin-bottom:10px">':'')+'<div style="display:flex;justify-content:space-between;gap:8px"><div style="font-weight:700">'+E(p.name)+'</div><div style="font-weight:800;color:var(--pos)">'+E(p.price)+'</div></div><div style="font-size:.78rem;color:var(--muted);margin-top:3px">'+E(p.shop||p.seller)+'</div><div style="font-size:.8rem;color:var(--muted);margin-top:6px">'+E(p.description||'')+'</div><div style="display:flex;gap:8px;margin-top:10px"><button class="btn btn-brand" style="flex:1;padding:8px" onclick="orderProduct(\''+p.id+'\',\''+E(p.name).replace(/\x27/g,"")+'\')">Order</button><button class="btn btn-ghost" style="padding:8px 12px" onclick="openChat(\''+p.ownerId+'\',\''+E(p.shop||p.seller).replace(/\x27/g,"")+'\')">Message</button></div></div>'; });
-      h+='</div>';
-      host.innerHTML=h;
-    });
+      var products=(r.data&&r.data.products)||[];
+      window.__mkProducts=products;
+      if(!products.length){ grid.innerHTML='<div style="padding:22px;color:var(--muted);font-size:.88rem">No products yet — businesses can add products from their dashboard.</div>'; return; }
+      var cat=window.__mkCat||'All';
+      var list=cat==='All'?products:products.filter(function(p){return (p.category||'').toLowerCase().indexOf(cat.toLowerCase())>-1;});
+      if(!list.length){ grid.innerHTML='<div style="padding:22px;color:var(--muted);font-size:.88rem">No products in “'+E(cat)+'” yet.</div>'; return; }
+      var h=''; list.forEach(function(p,i){
+        var nm=E(p.name).replace(/'/g,"’"), shop=E(p.shop||p.seller||'Shop').replace(/'/g,"’");
+        h+='<div class="prod">'+(p.image?'<div class="img" style="background-image:url('+p.image+');background-size:cover;background-position:center"></div>':'<div class="img" style="background:var(--'+MK_GRAD[i%MK_GRAD.length]+')"></div>')
+          +'<button class="add" aria-label="Order" onclick="orderProduct(\''+p.id+'\',\''+nm+'\')"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke-width:2.1"><path d="M12 5v14M5 12h14"/></svg></button>'
+          +'<div class="bd"><div class="nm">'+E(p.name)+'</div><div class="pr">'+E(p.price)+'</div><div style="font-size:.72rem;color:var(--muted);margin-top:2px">'+shop+'</div>'
+          +'<button class="btn btn-ghost" style="width:100%;padding:6px;margin-top:8px;font-size:.78rem" onclick="openChat(\''+p.ownerId+'\',\''+shop+'\')">Message shop</button></div></div>';
+      });
+      grid.innerHTML=h;
+    }).catch(function(){ grid.innerHTML='<div style="padding:22px;color:var(--muted)">Could not load products.</div>'; });
   }
+  function renderShops(){
+    var box=el('mk-shop-list'); if(!box) return;
+    api('GET','/api/shops').then(function(r){
+      var shops=(r.data&&r.data.shops)||[];
+      if(!shops.length){ box.innerHTML=emptyRow('No shops yet.'); return; }
+      box.innerHTML=shops.map(function(s){ var nm=E(s.name).replace(/'/g,"’");
+        return '<a href="#" onclick="openShop(\''+s.id+'\',\''+nm+'\');return false" class="row"><span class="av" style="width:46px;height:46px;background:var(--'+(s.color||'a2')+')">'+E((s.avatar||s.name||'S').charAt(0))+'</span><div style="flex:1"><div style="font-weight:700">'+E(s.name)+'</div><div style="font-size:.8rem;color:var(--muted)">'+E(s.kind||'')+(s.area?' · '+E(s.area):'')+' · ★ '+(s.rating||5)+'</div></div><span class="badge">Visit</span></a>';
+      }).join('');
+    }).catch(function(){ box.innerHTML=emptyRow('Could not load shops.'); });
+  }
+  window.renderShops=renderShops; window.renderShop=renderShop;
+  window.openShop=function(id,name){ mkTab('products'); window.__mkShopFilter=id; var grid=el('mk-prod-grid'); if(!grid) return; var all=window.__mkProducts||[]; var list=all.filter(function(p){return p.ownerId===id;}); if(!list.length){ T('Opening '+name); renderShop(); return; } window.__mkCat='All'; var h=''; list.forEach(function(p,i){ var nm=E(p.name).replace(/'/g,"’"), shop=E(p.shop||name).replace(/'/g,"’"); h+='<div class="prod"><div class="img" style="background:var(--'+MK_GRAD[i%MK_GRAD.length]+')"></div><button class="add" aria-label="Order" onclick="orderProduct(\''+p.id+'\',\''+nm+'\')"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke-width:2.1"><path d="M12 5v14M5 12h14"/></svg></button><div class="bd"><div class="nm">'+E(p.name)+'</div><div class="pr">'+E(p.price)+'</div><div style="font-size:.72rem;color:var(--muted);margin-top:2px">'+shop+'</div></div></div>'; }); grid.innerHTML=h; };
   window.orderProduct = function(id,name){ api('POST','/api/orders',{productId:id,qty:1}).then(function(r){ if(r.ok){ T('Order placed for '+name+' ✓ — the seller has been notified'); } else T(r.data.error||'Could not order','bad'); }); };
 
   /* ================= social feed ================= */
@@ -2242,6 +2247,37 @@
     var b = ev.target && ev.target.closest && ev.target.closest('[data-p="profile"]');
     if(b){ setTimeout(function(){ try{ renderAccount(); }catch(e){} }, 0); }
   }, true);
+
+  /* ===== Customer dashboard — real data, real empty states ===== */
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function setTxt(id,v){ var e=el(id); if(e) e.textContent=v; }
+  function emptyBox(title,sub){ return '<div style="padding:26px 16px;text-align:center"><div style="font-weight:700;font-size:.92rem">'+esc(title)+'</div>'+(sub?'<div style="color:var(--muted);font-size:.82rem;margin-top:5px">'+esc(sub)+'</div>':'')+'</div>'; }
+  function statusColor(s){ return s==='released'||s==='completed'||s==='delivered'?'var(--pos)':(s==='cancelled'?'var(--neg)':'var(--star)'); }
+  function bookingRow(b){ return '<div class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M14.5 5.5a3.8 3.8 0 0 0 5 5L15 15l-2 5.5-3-3 5.5-2 4.5-4.5"/></svg></span><div style="flex:1;min-width:0"><div style="font-weight:700;font-size:.9rem">'+esc(b.service)+'</div><div style="font-size:.76rem;color:var(--muted)">'+esc(b.provider||'')+(b.price?' · '+esc(b.price):'')+'</div></div><span class="badge" style="background:var(--soft);color:'+statusColor(b.status)+'">'+esc(b.status||'pending')+'</span></div>'; }
+  function orderRow(o){ return '<div class="row"><span class="ic-b"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M5 8h14l-1 12H6zM9 8V6a3 3 0 0 1 6 0v2"/></svg></span><div style="flex:1;min-width:0"><div style="font-weight:700;font-size:.9rem">'+esc(o.productName||'Order')+' ×'+(o.qty||1)+'</div><div style="font-size:.76rem;color:var(--muted)">'+esc(o.price||'')+'</div></div><span class="badge" style="background:var(--soft);color:'+statusColor(o.status)+'">'+esc(o.status||'placed')+'</span></div>'; }
+
+  window.renderCustomerDash = function(){
+    var u=me();
+    var greet=el('dash-greet-name'); if(greet) greet.textContent = u&&u.name? (', '+String(u.name).split(' ')[0]) : '';
+    var reqBox=el('cd-requests'), ordBox=el('cust-orders');
+    fetch('/api/bookings',{credentials:'same-origin'}).then(function(r){return r.json();}).then(function(d){
+      var list=(d&&d.bookings)||[];
+      var open=list.filter(function(b){return b.status!=='released'&&b.status!=='cancelled'&&b.status!=='completed';});
+      setTxt('cd-reqN', String(list.length));
+      setTxt('cd-reqD', open.length? (open.length+' active') : (list.length?'All done':'None yet'));
+      if(reqBox){ reqBox.innerHTML = list.length ? list.map(bookingRow).join('') : emptyBox('No requests yet','Tap Ask I Need to find a home, service, product or ride.'); }
+    }).catch(function(){ if(reqBox) reqBox.innerHTML=emptyBox('No requests yet',''); });
+    fetch('/api/orders',{credentials:'same-origin'}).then(function(r){return r.json();}).then(function(d){
+      var list=(d&&d.orders)||[];
+      var prog=list.filter(function(o){return o.status==='placed'||o.status==='accepted';});
+      setTxt('cd-ordN', String(list.length));
+      setTxt('cd-ordD', prog.length? (prog.length+' in progress') : (list.length?'All delivered':'None yet'));
+      if(ordBox){ ordBox.innerHTML = list.length ? list.map(orderRow).join('') : emptyBox('No orders yet','Browse the marketplace and place your first order.'); }
+    }).catch(function(){ if(ordBox) ordBox.innerHTML=emptyBox('No orders yet',''); });
+  };
+
+  var _openDash = window.openDash;
+  window.openDash = function(){ if(_openDash) _openDash(); try{ if((window.ROLE||'customer')==='customer') renderCustomerDash(); }catch(e){} };
 })();
 </script>
 </body>
