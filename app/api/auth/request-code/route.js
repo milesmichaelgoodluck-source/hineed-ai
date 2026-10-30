@@ -24,5 +24,15 @@ export const POST = withDb(async (req) => {
   const sent = emailRes.sent || smsRes.sent;
   const payload = { sent, viaEmail: emailRes.sent, viaSms: smsRes.sent };
   if (!sent) payload.devCode = code; // test mode — no provider configured yet
+  // Safe diagnostics (no secret values) — booleans + a short reason string.
+  if (new URL(req.url).searchParams.get("debug") === "1") {
+    payload.debug = {
+      gmailSet: !!(process.env.GMAIL_USER && process.env.GMAIL_APP_PASSWORD),
+      resendSet: !!process.env.RESEND_API_KEY,
+      emailReason: emailRes.reason || null,
+      emailVia: emailRes.via || null,
+      gmailErr: globalThis.__gmailErr || null,
+    };
+  }
   return NextResponse.json(payload);
 });
