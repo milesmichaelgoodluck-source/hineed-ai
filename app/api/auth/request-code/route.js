@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { withDb } from "@/lib/db";
+import { withDb, dbMode } from "@/lib/db";
 import { setOtp, findUserByEmail } from "@/lib/store";
 import { sendOtpEmail } from "@/lib/email";
 import { sendOtpSms } from "@/lib/sms";
@@ -32,6 +32,7 @@ export const POST = withDb(async (req) => {
       emailReason: emailRes.reason || null,
       emailVia: emailRes.via || null,
       gmailErr: globalThis.__gmailErr || null,
+      dbMode: dbMode(),
     };
   }
   return NextResponse.json(payload);
