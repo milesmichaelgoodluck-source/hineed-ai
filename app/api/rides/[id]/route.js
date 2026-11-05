@@ -26,6 +26,9 @@ export const PATCH = withDb(async (req, { params }) => {
   } else if (body.action === "complete" && ride.driverId === session.uid) {
     patch = { status: "completed" };
     addNotification(ride.riderId, "ride", "Your ride is complete", "move");
+  } else if (body.action === "delivered" && ride.driverId === session.uid) {
+    patch = { status: "delivered" };
+    addNotification(ride.riderId, "ride", "Your delivery has been completed ✓", "move");
   } else if (body.action === "cancel") {
     patch = { status: "cancelled" };
   } else {
