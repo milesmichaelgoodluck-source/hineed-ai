@@ -572,7 +572,7 @@
         </div>
         <div id="mk-search-wrap" style="display:flex;gap:10px;flex-wrap:wrap;max-width:720px;margin-bottom:16px">
           <label class="ain" style="flex:2;min-width:180px"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input id="mk-q" placeholder="Search a product…" onkeydown="if(event.key==='Enter')mkSearch()"></label>
-          <label class="ain" style="flex:1;min-width:130px"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.3"/></svg><input id="mk-loc" placeholder="Location" onkeydown="if(event.key==='Enter')mkSearch()"></label>
+          <label class="ain" style="flex:1;min-width:130px"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.3"/></svg><input id="mk-loc" placeholder="Location" onkeydown="if(event.key==='Enter')mkSearch()"><button type="button" onclick="useMyLocation('mk-loc',this)" aria-label="Use my location" style="border:0;background:none;color:var(--brand);cursor:pointer;padding:0 2px;font-weight:700;white-space:nowrap">📍 GPS</button></label>
           <button class="btn btn-brand" style="padding:0 18px" onclick="mkSearch()">Search</button>
         </div>
         <div class="sect-t" style="margin-top:0"><h3>Popular categories</h3></div>
@@ -630,7 +630,7 @@
         <h1 class="h1">Services</h1><p class="sub">Tell I Need what service you need and where — verified pros near you show up. Every payment is escrow‑protected until you approve the job.</p>
         <div style="display:flex;gap:10px;flex-wrap:wrap;max-width:720px;margin-bottom:16px">
           <label class="ain" style="flex:2;min-width:180px"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input id="svc-q" placeholder="What service do you need?" onkeydown="if(event.key==='Enter')svcSearch()"></label>
-          <label class="ain" style="flex:1;min-width:130px"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.3"/></svg><input id="svc-loc" placeholder="Location" onkeydown="if(event.key==='Enter')svcSearch()"></label>
+          <label class="ain" style="flex:1;min-width:130px"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.3"/></svg><input id="svc-loc" placeholder="Location" onkeydown="if(event.key==='Enter')svcSearch()"><button type="button" onclick="useMyLocation('svc-loc',this)" aria-label="Use my location" style="border:0;background:none;color:var(--brand);cursor:pointer;padding:0 2px;font-weight:700;white-space:nowrap">📍 GPS</button></label>
           <button class="btn btn-brand" style="padding:0 18px" onclick="svcSearch()">Search</button>
         </div>
         <div class="catrow" id="svc-cats">
@@ -678,7 +678,7 @@
           <div class="pg" style="padding:0 6px"><div style="background:var(--g-a)"></div><div style="background:var(--g-c)"></div><div style="background:var(--g-b)"></div><div style="background:var(--g-food)"></div><div style="background:var(--g-c)"></div><div style="background:var(--g-a)"></div></div>
           <div class="sect-t"><h3>Reviews</h3><span id="prov-revcount" style="font-size:.76rem;color:var(--muted)">320 reviews</span></div>
           <div class="list card" id="prov-reviews" style="padding:4px 18px;max-width:640px"></div>
-          <div class="buyrow"><button class="btn btn-ghost" onclick="socialOpen('room')"><svg width="17" height="17" viewBox="0 0 24 24" class="ic"><path d="M6.5 3.5 9 4l1 4-2 1.5a12 12 0 0 0 6.5 6.5L16 14l4 1 .5 2.5a2 2 0 0 1-2 2.3A16 16 0 0 1 4.2 5.5a2 2 0 0 1 2.3-2Z"/></svg> Call</button><button class="btn btn-ghost" onclick="socialOpen('room')"><svg width="17" height="17" viewBox="0 0 24 24" class="ic"><path d="M4 5.5h16v10H9l-4 3.5v-3.5H4v-10Z"/></svg> Chat</button><button class="btn btn-brand" style="flex:1" onclick="go('ineed')">Request a service</button></div>
+          <div class="buyrow"><button class="btn btn-ghost" onclick="callProvider()"><svg width="17" height="17" viewBox="0 0 24 24" class="ic"><path d="M6.5 3.5 9 4l1 4-2 1.5a12 12 0 0 0 6.5 6.5L16 14l4 1 .5 2.5a2 2 0 0 1-2 2.3A16 16 0 0 1 4.2 5.5a2 2 0 0 1 2.3-2Z"/></svg> Call</button><button class="btn btn-ghost" onclick="chatProvider()"><svg width="17" height="17" viewBox="0 0 24 24" class="ic"><path d="M4 5.5h16v10H9l-4 3.5v-3.5H4v-10Z"/></svg> Chat</button><button class="btn btn-brand" style="flex:1" onclick="requestProvider()">Request a service</button></div>
           <div style="display:flex;align-items:center;gap:9px;margin-top:14px;max-width:520px;background:var(--soft);border-radius:12px;padding:12px 14px"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:var(--brand);flex:0 0 auto"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.7-7 9.5-4.1-1.8-7-5.3-7-9.5V6l7-3Z"/><path d="M9.2 12.2 11 14l4-4.2"/></svg><span style="font-size:.78rem;color:var(--muted);line-height:1.45"><b style="color:var(--ink)">Escrow protected.</b> Your payment is held by Hineed and only released to this provider after you approve the completed job.</span></div>
         </div>
       </section>
@@ -688,10 +688,13 @@
         <h1 class="h1">Food</h1><p class="sub">Tell I Need what you&rsquo;re craving and where — kitchens near you show up to order.</p>
         <div style="display:flex;gap:10px;flex-wrap:wrap;max-width:720px;margin-bottom:16px">
           <label class="ain" style="flex:2;min-width:180px"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input id="food-q" placeholder="What do you want to eat?" onkeydown="if(event.key==='Enter')foodSearch()"></label>
-          <label class="ain" style="flex:1;min-width:130px"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.3"/></svg><input id="food-loc" placeholder="Location" onkeydown="if(event.key==='Enter')foodSearch()"></label>
+          <label class="ain" style="flex:1;min-width:130px"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:#9AA6A0"><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.3"/></svg><input id="food-loc" placeholder="Location" onkeydown="if(event.key==='Enter')foodSearch()"><button type="button" onclick="useMyLocation('food-loc',this)" aria-label="Use my location" style="border:0;background:none;color:var(--brand);cursor:pointer;padding:0 2px;font-weight:700;white-space:nowrap">📍 GPS</button></label>
           <button class="btn btn-brand" style="padding:0 18px" onclick="foodSearch()">Search</button>
         </div>
         <div class="pills" style="margin-bottom:18px"><button class="pill on" onclick="catSel(this)">All</button><button class="pill" onclick="catSel(this)">Rice</button><button class="pill" onclick="catSel(this)">Swallow</button><button class="pill" onclick="catSel(this)">Grills</button><button class="pill" onclick="catSel(this)">Fast food</button><button class="pill" onclick="catSel(this)">Snacks</button><button class="pill" onclick="catSel(this)">Drinks</button></div>
+        <div class="sect-t" style="margin-top:0"><h3>Restaurants &amp; kitchens</h3></div>
+        <div class="shoprail" id="food-restaurants"><div style="padding:8px;color:var(--muted);font-size:.85rem">Loading restaurants…</div></div>
+        <div class="sect-t"><h3>Dishes</h3></div>
         <div class="vcards" id="food-grid"><div style="padding:22px;color:var(--muted);font-size:.88rem">Loading dishes…</div></div>
         <div class="vcards" style="display:none">
           <a href="#" onclick="go('cart');return false" class="vcard" style="background:var(--g-c)"><div class="ov"></div><span class="price">₦2,900</span><div class="b"><div class="nm">Jollof rice platter</div><div class="ds">Mama Nkem&rsquo;s · 25 min</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.8</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke-width:2"><path d="M12 5v14M5 12h14"/></svg></span></a>
@@ -1176,20 +1179,7 @@
         </div>
 
         <div class="sview" id="s-profile">
-          <div style="max-width:680px">
-            <div class="cover"><button class="iconbtn" style="position:absolute;top:12px;left:12px" onclick="sv('feed')" aria-label="Back"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M15 6l-6 6 6 6"/></svg></button></div>
-            <div style="margin-top:-44px;padding:0 6px"><span class="av" style="width:88px;height:88px;font-size:1.7rem;border:4px solid var(--surface)">A</span></div>
-            <div style="padding:12px 6px 0"><div style="font-weight:900;font-size:1.35rem;letter-spacing:-.02em">Amaka O.</div><div style="font-size:.84rem;color:var(--muted);margin-top:2px">Port Harcourt · Loves hiking &amp; jollof</div></div>
-            <div style="display:flex;gap:28px;margin:14px 6px;font-size:.86rem"><span><b>248</b> <span style="color:var(--muted)">posts</span></span><span><b>12.4k</b> <span style="color:var(--muted)">followers</span></span><span><b>318</b> <span style="color:var(--muted)">following</span></span></div>
-            <div style="display:flex;gap:8px;margin:0 6px 16px;flex-wrap:wrap">
-              <button class="btn btn-brand" id="followBtn" style="flex:1;min-width:108px" onclick="toggleFollow(this)">Follow</button>
-              <button class="btn btn-ghost" onclick="sv('room')" aria-label="Message" title="Message"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M4 5.5h16v10H9l-4 3.5v-3.5H4v-10Z"/></svg></button>
-              <button class="btn btn-ghost" onclick="sv('room')" aria-label="Call" title="Call"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M6.5 3.5 9 4l1 4-2 1.5a12 12 0 0 0 6.5 6.5L16 14l4 1 .5 2.5a2 2 0 0 1-2 2.3A16 16 0 0 1 4.2 5.5a2 2 0 0 1 2.3-2Z"/></svg></button>
-              <button class="btn btn-ghost" onclick="payPerson('Amaka O.')" aria-label="Send money" title="Pay / send money"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M4 7.5h13a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H4v-12ZM16.5 13.5h1.5"/></svg> Pay</button>
-              <button class="btn btn-ghost" id="blockBtn" onclick="toggleBlock(this)" aria-label="Block" title="Block"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><circle cx="12" cy="12" r="8.5"/><path d="M6 6l12 12"/></svg></button>
-            </div>
-            <div class="pg" style="padding:0 6px"><div style="background:var(--g-a)"></div><div style="background:var(--g-c)"></div><div style="background:var(--g-food)"></div><div style="background:var(--g-b)"></div><div style="background:var(--g-c)"></div><div style="background:var(--g-a)"></div></div>
-          </div>
+          <div id="s-profile-body" style="max-width:680px"><div style="padding:22px;color:var(--muted)">Loading your profile…</div></div>
         </div>
 
         <div class="sview" id="s-notifs">
@@ -1429,7 +1419,7 @@
   function payPerson(n){ go('pay'); payView('send'); try{window.scrollTo(0,0);}catch(e){} }
   function svcFilter(cat, el){ document.querySelectorAll('#p-services .catrow .catcard').forEach(function(b){ b.classList.remove('on'); }); if(el) el.classList.add('on'); window.__svcCat=cat; if(typeof window.renderServices==='function'){ window.renderServices(); } else { document.querySelectorAll('#svc-grid .vcard').forEach(function(c){ c.style.display=(cat==='all'||c.getAttribute('data-cat')===cat)?'':'none'; }); } }
   try{ fillProvider('brightclean'); }catch(e){}
-  function sv(v){ document.querySelectorAll('#p-social .sview').forEach(e=>e.classList.toggle('on', e.id==='s-'+v)); document.querySelectorAll('.s-tab').forEach(t=>t.classList.remove('on')); var tab=document.getElementById('sv-'+v); if(tab) tab.classList.add('on'); try{window.scrollTo(0,0);}catch(e){} if(v==='connect'){ try{ renderConnect(); }catch(e){} } else if(v==='feed'){ try{ renderFeed(); }catch(e){} } }
+  function sv(v){ document.querySelectorAll('#p-social .sview').forEach(e=>e.classList.toggle('on', e.id==='s-'+v)); document.querySelectorAll('.s-tab').forEach(t=>t.classList.remove('on')); var tab=document.getElementById('sv-'+v); if(tab) tab.classList.add('on'); try{window.scrollTo(0,0);}catch(e){} if(v==='connect'){ try{ renderConnect(); }catch(e){} } else if(v==='feed'){ try{ renderFeed(); }catch(e){} } else if(v==='profile'){ try{ renderMyProfile(); }catch(e){} } }
   function socialOpen(v){ go('social'); sv(v); }
   var IN_VIEWS=['in-main','in-scan','in-result','in-chat'];
   function inView(v){ IN_VIEWS.forEach(id=>{ var e=document.getElementById(id); if(e) e.classList.toggle('on', id===v); }); }
@@ -1617,37 +1607,20 @@
     window.HINEED.curProv = id;
     var P = (window.PROV||{})[id]; if(!P){ if(_origFill) return _origFill(id); return; }
     var CATLBL = window.CATLBL||{}, CAT_CHARGES = window.CAT_CHARGES||{}, REVIEWS = window.REVIEWS||[];
+    window.__curProvider={id:id, name:P.n};
+    function ez(s){ return (''+(s==null?'':s)).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]; }); }
     var set=function(i,t){ var e=document.getElementById(i); if(e) e.textContent=t; };
     set('prov-name',P.n); set('prov-avatar',(P.n||'?').charAt(0));
     set('prov-meta',(CATLBL[P.c]||P.c)+' · '+P.a+' · ★ '+P.r+' ('+P.rv+' reviews)');
     set('prov-desc',P.b); set('prov-revcount',P.rv+' reviews');
     var ch=CAT_CHARGES[P.c]||[], pc=document.getElementById('prov-charges');
-    if(pc){
-      pc.innerHTML='';
-      ch.forEach(function(c){
-        var row=document.createElement('div'); row.className='row';
-        row.innerHTML='<div style="flex:1;font-weight:600;font-size:.9rem"></div><span style="font-weight:800;color:var(--pos);margin-right:12px"></span><button class="btn btn-brand" style="padding:7px 14px">Book</button>';
-        row.children[0].textContent=c[0];
-        row.children[1].textContent=c[1];
-        row.children[2].addEventListener('click', function(){ bookService(id, c[0], c[1]); });
-        pc.appendChild(row);
-      });
-    }
+    if(pc){ pc.innerHTML = ch.length ? ch.map(function(c){ return '<div class="row"><div style="flex:1;font-weight:600;font-size:.9rem">'+ez(c[0])+'</div><span style="font-weight:800;color:var(--pos);margin-right:12px">'+ez(c[1])+'</span><button class="btn btn-brand" style="padding:7px 14px" onclick="bookService(\''+id+'\',\''+ez(c[0]).replace(/\x27/g,'')+'\',\''+ez(c[1]).replace(/\x27/g,'')+'\')">Book</button></div>'; }).join('') : '<div style="padding:14px;color:var(--muted);font-size:.86rem">Contact this pro for a quote.</div>'; }
     var pr=document.getElementById('prov-reviews');
-    if(pr){
-      pr.innerHTML='';
-      REVIEWS.forEach(function(rv){
-        var s=''; for(var i=0;i<5;i++) s+=(i<rv[1]?'★':'☆');
-        var row=document.createElement('div'); row.className='row';
-        row.innerHTML='<span class="av" style="width:38px;height:38px;font-size:.78rem"></span><div style="flex:1"><div style="font-weight:700;font-size:.86rem"> <span style="color:var(--star)"></span></div><div style="font-size:.82rem;color:var(--muted)"></div></div>';
-        row.querySelector('.av').textContent=(rv[0]||'?').charAt(0);
-        var head=row.querySelector('div > div'); head.childNodes[0].textContent=rv[0]+' ';
-        head.querySelector('span').textContent=s;
-        row.querySelectorAll('div > div')[1].textContent=rv[2];
-        pr.appendChild(row);
-      });
-    }
+    if(pr){ pr.innerHTML = REVIEWS.map(function(rv){ var s=''; for(var i=0;i<5;i++) s+=(i<rv[1]?'★':'☆'); return '<div class="row"><span class="av" style="width:38px;height:38px;font-size:.78rem">'+ez((rv[0]||'?').charAt(0))+'</span><div style="flex:1"><div style="font-weight:700;font-size:.86rem">'+ez(rv[0])+' <span style="color:var(--star)">'+s+'</span></div><div style="font-size:.82rem;color:var(--muted)">'+ez(rv[2])+'</div></div></div>'; }).join(''); }
   };
+  window.callProvider=function(){ var c=window.__curProvider; if(c&&window.callShop) callShop(c.id,c.name); else if(window.T) T('Open a provider first','bad'); };
+  window.chatProvider=function(){ var c=window.__curProvider; if(c&&window.openChat) openChat(c.id,c.name); };
+  window.requestProvider=function(){ var c=window.__curProvider; if(c&&window.bookService) bookService(c.id,'Service request','Quote'); };
 
   /* ---- 3) real booking + escrow ---- */
   window.bookService = function(providerId, service, price){
@@ -2136,9 +2109,9 @@
         if(it._t==='work'){
           h+='<div class="card" style="padding:16px;margin-bottom:12px"><div style="display:flex;align-items:center;gap:10px"><span class="av photo-av" style="width:40px;height:40px;border-radius:50%;background-image:url('+HP.face(it.ownerId||it.ownerName)+')"></span><div style="flex:1"><div style="font-weight:700">'+E(it.ownerName)+' <span class="badge" style="margin-left:4px">'+E(it.category||'work')+'</span></div><div style="font-size:.76rem;color:var(--muted)">shared a completed job · '+timeAgo(it.createdAt)+'</div></div></div><div style="font-weight:700;margin-top:10px">'+E(it.title)+'</div><div style="font-size:.88rem;color:var(--muted);margin-top:3px">'+E(it.description||'')+'</div><div style="display:flex;gap:8px;margin-top:12px"><button class="btn btn-brand" style="padding:8px 14px" onclick="bookProvider(\''+it.ownerId+'\',\''+E(it.ownerName).replace(/\x27/g,"")+'\')">Book</button><button class="btn btn-ghost" style="padding:8px 14px" onclick="openChat(\''+it.ownerId+'\',\''+E(it.ownerName).replace(/\x27/g,"")+'\')">Message</button><button class="btn btn-ghost" style="padding:8px 14px" onclick="requestCall(\''+it.ownerId+'\')">Request call</button></div></div>';
         } else {
-          h+='<div class="card" style="padding:16px;margin-bottom:12px"><div style="display:flex;align-items:center;gap:10px"><span class="av photo-av" style="width:40px;height:40px;border-radius:50%;background-image:url('+HP.face(it.author)+')"></span><div style="flex:1"><div style="font-weight:700">'+E(it.author)+'</div><div style="font-size:.76rem;color:var(--muted)">'+timeAgo(it.createdAt)+'</div></div></div><div style="margin-top:10px">'+E(it.text)+'</div><div style="display:flex;gap:16px;margin-top:12px;color:var(--muted);font-size:.86rem"><span style="cursor:pointer;'+(it.liked?'color:var(--brand);font-weight:700':'')+'" onclick="likePost(\''+it.id+'\',this)">♥ <b>'+it.likes+'</b></span><span style="cursor:pointer" onclick="focusComment(\''+it.id+'\')">💬 '+it.comments.length+'</span></div>';
+          h+='<div class="card" style="padding:16px;margin-bottom:12px"><div style="display:flex;align-items:center;gap:10px"><span class="av photo-av" style="width:40px;height:40px;border-radius:50%;background-image:url('+HP.face(it.author)+')"></span><div style="flex:1"><div style="font-weight:700">'+E(it.author)+'</div><div style="font-size:.76rem;color:var(--muted)">'+timeAgo(it.createdAt)+'</div></div></div><div style="margin-top:10px">'+E(it.text)+'</div><div style="display:flex;gap:16px;margin-top:12px;color:var(--muted);font-size:.86rem"><span style="cursor:pointer;'+(it.liked?'color:var(--brand);font-weight:700':'')+'" onclick="likePost(\''+it.id+'\',this)">♥ <b>'+it.likes+'</b></span><span style="cursor:pointer" onclick="focusComment(\''+it.id+'\')">💬 '+((it.comments||[]).length)+'</span></div>';
           h+='<div id="cm-'+it.id+'" style="margin-top:10px;border-top:1px solid var(--line);padding-top:10px">';
-          it.comments.forEach(function(c){ h+='<div style="font-size:.84rem;margin-bottom:6px"><b>'+E(c.author)+'</b> '+E(c.text)+'</div>'; });
+          (it.comments||[]).forEach(function(c){ h+='<div style="font-size:.84rem;margin-bottom:6px"><b>'+E(c.author)+'</b> '+E(c.text)+'</div>'; });
           h+='<div style="display:flex;gap:8px;margin-top:6px"><input id="ci-'+it.id+'" class="hn-in" style="padding:8px 11px" placeholder="Write a comment…" onkeydown="if(event.key===\'Enter\')sendComment(\''+it.id+'\')"><button class="btn btn-ghost" style="padding:8px 12px" onclick="sendComment(\''+it.id+'\')">Send</button></div></div>';
           h+='</div>';
         }
@@ -2171,6 +2144,27 @@
     }).join('');
   }
   window.renderConnect=renderConnect; window.renderFeed=renderFeed;
+  window.renderMyProfile=function(){
+    var body=el('s-profile-body'); if(!body) return;
+    var u=(window.HINEED&&window.HINEED.user)||null;
+    if(!u){ body.innerHTML='<div class="cover"><button class="iconbtn" style="position:absolute;top:12px;left:12px" onclick="sv(\'feed\')"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M15 6l-6 6 6 6"/></svg></button></div><div style="padding:24px 6px;text-align:center"><div style="font-weight:800;margin-bottom:8px">You’re not signed in</div><div style="color:var(--muted);font-size:.88rem;margin-bottom:14px">Sign in to set up your profile.</div><button class="btn btn-brand" onclick="go(\'auth\')">Sign in</button></div>'; return; }
+    var photo=u.photo||((window.HP&&HP.face)?HP.face(u.id||u.name):'');
+    var av=u.photo?('<span class="av" style="width:88px;height:88px;border:4px solid var(--surface);background-image:url('+u.photo+');background-size:cover;background-position:center"></span>')
+                  :('<span class="av" style="width:88px;height:88px;font-size:1.7rem;border:4px solid var(--surface);background-image:url('+photo+');background-size:cover;background-position:center"></span>');
+    var RL={customer:'Customer',provider:'Service provider',business:'Business',rider:'Driver / rider'};
+    var h='<div class="cover" style="background-image:url('+((window.HP&&HP.scene)?HP.scene(u.id||u.name):'')+');background-size:cover;background-position:center"><button class="iconbtn" style="position:absolute;top:12px;left:12px;background:rgba(0,0,0,.4);border:0;color:#fff" onclick="sv(\'feed\')" aria-label="Back"><svg width="19" height="19" viewBox="0 0 24 24" class="ic" style="stroke:#fff"><path d="M15 6l-6 6 6 6"/></svg></button></div>'
+      +'<div style="margin-top:-44px;padding:0 6px">'+av+'</div>'
+      +'<div style="padding:12px 6px 0"><div style="font-weight:900;font-size:1.35rem;letter-spacing:-.02em">'+E(u.name||'Your profile')+'</div><div style="font-size:.84rem;color:var(--muted);margin-top:2px">'+E(u.location||'Add your location')+' · '+E(RL[u.role]||'Customer')+'</div></div>'
+      +'<div style="display:flex;gap:10px;margin:16px 6px"><button class="btn btn-brand" style="flex:1" onclick="go(\'profile\');setTimeout(function(){try{editProfile(true);}catch(e){}},150)">Edit profile</button><button class="btn btn-ghost" onclick="go(\'profile\')">Account &amp; settings</button></div>'
+      +'<div class="sect-t" style="margin:8px 6px"><h3>Your posts</h3></div><div id="s-myposts" style="padding:0 6px"><div style="color:var(--muted);font-size:.86rem;padding:8px">Loading…</div></div>';
+    body.innerHTML=h;
+    api('GET','/api/posts').then(function(r){
+      var mine=((r.data&&r.data.posts)||[]).filter(function(p){ return p.author===u.name; });
+      var box=el('s-myposts'); if(!box) return;
+      if(!mine.length){ box.innerHTML='<div style="color:var(--muted);font-size:.86rem;padding:8px 2px">You haven’t posted yet. Share something from the feed!</div>'; return; }
+      box.innerHTML=mine.map(function(p){ return '<div class="card" style="padding:14px;margin-bottom:10px"><div style="font-size:.76rem;color:var(--muted);margin-bottom:4px">'+timeAgo(p.createdAt)+'</div>'+E(p.text)+'</div>'; }).join('');
+    }).catch(function(){ var box=el('s-myposts'); if(box) box.innerHTML=''; });
+  };
   window.submitPost = function(){ var t=(el('po-text').value||'').trim(); if(!t){ T('Write something first','bad'); return; } api('POST','/api/posts',{text:t}).then(function(r){ if(r.ok){ renderFeed(); } else T(r.data.error||'Could not post','bad'); }); };
   window.likePost = function(id){ api('POST','/api/posts/'+id+'/like').then(function(r){ if(r.ok) renderFeed(); }); };
   window.focusComment = function(id){ var i=el('ci-'+id); if(i) i.focus(); };
@@ -2626,6 +2620,27 @@
     }, {enableHighAccuracy:true, timeout:10000, maximumAge:60000});
   };
 
+  // Reusable "use my location" for any location input (food, services, market…)
+  window.useMyLocation = function(inputId, btn){
+    var inp = el(inputId); if(!inp) return;
+    if(!navigator.geolocation){ toast('Location not supported on this device','bad'); return; }
+    var old = btn ? btn.innerHTML : '';
+    if(btn){ btn.disabled=true; btn.innerHTML='…'; }
+    navigator.geolocation.getCurrentPosition(function(pos){
+      var la=pos.coords.latitude, ln=pos.coords.longitude;
+      fetch('/api/geocode?lat='+la+'&lng='+ln).then(function(r){return r.json();}).then(function(d){
+        inp.value = (d&&d.label) ? d.label : (la.toFixed(3)+', '+ln.toFixed(3));
+        toast('Location set ✓');
+        if(btn){ btn.disabled=false; btn.innerHTML=old; }
+        // re-run the relevant search if present
+        try{ if(inputId==='food-loc'&&window.foodSearch) foodSearch(); else if(inputId==='svc-loc'&&window.svcSearch) svcSearch(); else if(inputId==='mk-loc'&&window.mkSearch) mkSearch(); }catch(e){}
+      }).catch(function(){ inp.value=la.toFixed(3)+', '+ln.toFixed(3); if(btn){ btn.disabled=false; btn.innerHTML=old; } });
+    }, function(err){
+      if(btn){ btn.disabled=false; btn.innerHTML=old; }
+      toast(err && err.code===1 ? 'Allow location access for this site' : 'Could not get your location','bad');
+    }, {enableHighAccuracy:true, timeout:10000, maximumAge:60000});
+  };
+
   window.saveProfile = function(){
     var body = {
       name: (el('pe-name')&&el('pe-name').value||'').trim(),
@@ -2830,6 +2845,17 @@
       var all=(res[0]&&res[0].products)||[]; var shops=(res[1]&&res[1].shops)||[];
       var areaMap={}, nameMap={}; shops.forEach(function(s){ areaMap[s.id]=(s.area||'').toLowerCase(); nameMap[s.id]=(s.name||'').toLowerCase(); });
       var q=window.__foodQ||'', loc=window.__foodLoc||'';
+      // Restaurants section: food shops matching name + location
+      var foodShopIds={}; all.forEach(function(p){ if(/meal|food|dish/i.test(p.category||'')) foodShopIds[p.ownerId]=true; });
+      var restaurants=shops.filter(function(s){ if(!(/meal|food|dish|kitchen|restaurant/i.test(s.kind||'')||foodShopIds[s.id])) return false;
+        if(q && ((s.name||'')+' '+(s.kind||'')).toLowerCase().indexOf(q)<0) return false;
+        if(loc && (s.area||'').toLowerCase().indexOf(loc)<0 && (s.name||'').toLowerCase().indexOf(loc)<0) return false;
+        return true;
+      });
+      var rail=el('food-restaurants');
+      if(rail){ rail.innerHTML = restaurants.length ? restaurants.map(function(s){ var nmJ=esc(s.name).replace(/'/g,''); var cov=(window.HP&&HP.shopCover)?HP.shopCover(s.id,s.kind):'';
+        return '<div class="shoptile" onclick="openShop(\''+s.id+'\',\''+nmJ+'\')"><div class="cov" style="background-image:url('+cov+');background-color:var(--'+(s.color||'a4')+')"></div><span class="pill">★ '+(s.rating||5)+'</span><div class="ov"><div class="nm">'+esc(s.name)+'</div><div class="sub">'+esc(s.kind||'Kitchen')+(s.area?' · '+esc(s.area):'')+'</div></div></div>';
+      }).join('') : '<div style="padding:8px;color:var(--muted);font-size:.85rem">No restaurants'+(q?' matching “'+esc(q)+'”':'')+(loc?' in “'+esc(loc)+'”':'')+' yet.</div>'; }
       var food=all.filter(function(p){ if(!/meal|food|dish/i.test(p.category||'')) return false;
         if(q){ var hay=((p.name||'')+' '+(p.shop||'')+' '+(p.description||'')).toLowerCase(); if(hay.indexOf(q)<0) return false; }
         if(loc){ var ar=areaMap[p.ownerId]||''; var snm=nameMap[p.ownerId]||''; if(ar.indexOf(loc)<0 && snm.indexOf(loc)<0) return false; }
