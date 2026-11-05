@@ -10,8 +10,11 @@ export const dynamic = "force-dynamic";
 // it) and records the payment. The browser sends the reference after the popup
 // succeeds; we confirm it with Paystack using the SECRET key.
 export const POST = withDb(async (req) => {
-  // Trim any stray whitespace/newlines a key may have picked up when pasted.
-  const secret = (process.env.PAYSTACK_SECRET_KEY || "").trim();
+  // Extract the real key even if the value picked up a label like "Key " or
+  // stray spaces/quotes when it was pasted into the dashboard.
+  const rawSecret = process.env.PAYSTACK_SECRET_KEY || "";
+  const secMatch = rawSecret.match(/sk_(?:test|live)_[A-Za-z0-9]+/);
+  const secret = secMatch ? secMatch[0] : rawSecret.trim();
   if (!secret) return NextResponse.json({ error: "Payments are not switched on yet." }, { status: 503 });
 
   const session = sessionFromRequest(req);

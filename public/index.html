@@ -122,7 +122,7 @@
   .svc{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
   .svc a{display:flex;flex-direction:column;align-items:center;gap:9px;padding:16px 8px;border-radius:16px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:.82rem;font-weight:600}
   .svc a:hover{box-shadow:var(--shadow-sm);transform:translateY(-2px);transition:.15s}
-  .svc .i{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;color:#fff}
+  .svc .i{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:#fff}
   :root[data-theme="bw"] .svc .i{background:#111 !important}
 
   .vcards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -138,7 +138,26 @@
 
   .prods{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
   .prod{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;position:relative}
-  .prod .img{height:150px} .prod .add{position:absolute;top:120px;right:12px;width:34px;height:34px;border-radius:50%;background:var(--surface);color:var(--brand);border:1px solid var(--line);display:grid;place-items:center;box-shadow:var(--shadow-sm)}
+  .prod .img{height:150px;background-size:cover;background-position:center} .prod .add{position:absolute;top:120px;right:12px;width:34px;height:34px;border-radius:50%;background:var(--surface);color:var(--brand);border:1px solid var(--line);display:grid;place-items:center;box-shadow:var(--shadow-sm)}
+  /* horizontal shop rail */
+  .shoprail{display:flex;gap:14px;overflow-x:auto;padding:2px 2px 14px;margin-bottom:6px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+  .shoprail::-webkit-scrollbar{height:0}
+  .shoptile{flex:0 0 auto;width:180px;scroll-snap-align:start;cursor:pointer;border-radius:16px;overflow:hidden;position:relative;border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+  .shoptile .cov{height:120px;background-size:cover;background-position:center}
+  .shoptile .ov{position:absolute;left:0;right:0;bottom:0;padding:22px 11px 10px;color:#fff;background:linear-gradient(to top,rgba(0,0,0,.8),transparent)}
+  .shoptile .ov .nm{font-weight:800;font-size:.9rem;line-height:1.15}
+  .shoptile .ov .sub{font-size:.72rem;opacity:.9;margin-top:1px}
+  .shoptile .pill{position:absolute;top:9px;right:9px;background:rgba(0,0,0,.55);color:#fff;font-size:.72rem;font-weight:700;padding:3px 8px;border-radius:999px}
+  /* shop catalog cards (photo-first, scrollable) */
+  .shopcards{display:flex;flex-direction:column;gap:16px;max-width:760px}
+  .shopcard{position:relative;border-radius:18px;overflow:hidden;cursor:pointer;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-sm);transition:transform .15s ease,box-shadow .15s ease}
+  .shopcard:active{transform:scale(.99)}
+  .shopcard .cov{height:170px;background-size:cover;background-position:center}
+  .shopcard .ov{position:absolute;left:0;right:0;bottom:0;padding:34px 16px 14px;color:#fff;background:linear-gradient(to top,rgba(0,0,0,.78),rgba(0,0,0,.25) 55%,transparent)}
+  .shopcard .ov .nm{font-weight:800;font-size:1.05rem;line-height:1.2}
+  .shopcard .ov .sub{font-size:.82rem;opacity:.92;margin-top:3px}
+  .shopcard .pill{position:absolute;top:12px;right:12px;background:rgba(0,0,0,.55);color:#fff;font-size:.78rem;font-weight:700;padding:5px 10px;border-radius:999px;backdrop-filter:blur(4px)}
+  .shopcard .vbtn{position:absolute;top:12px;left:12px;background:var(--brand,#111);color:#fff;font-size:.74rem;font-weight:700;padding:5px 12px;border-radius:999px}
   :root[data-theme="bw"].dark .prod .add{color:var(--ink)}
   .prod .bd{padding:13px} .prod .nm{font-weight:700;font-size:.9rem} .prod .pr{color:var(--pos);font-weight:800;margin-top:4px}
 
@@ -198,7 +217,16 @@
   .post .acts{display:flex;gap:22px;margin-top:14px;color:var(--muted);font-weight:700;font-size:.88rem} .post .acts button{border:0;background:transparent;color:inherit;display:inline-flex;align-items:center;gap:6px;font:inherit;font-weight:700}
   .people{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px;max-width:760px}
   .pcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;text-align:center}
-  .pcard .cov{height:72px;background:var(--g-a)} .pcard .pa{width:60px;height:60px;border-radius:50%;margin:-30px auto 0;border:3px solid var(--surface)}
+  .pcard .cov{height:72px;background:var(--g-a);background-size:cover;background-position:center} .pcard .pa{width:60px;height:60px;border-radius:50%;margin:-30px auto 0;border:3px solid var(--surface);background-size:cover;background-position:center}
+  .post .ph{background-size:cover;background-position:center}
+  .stories .s .in{background-size:cover;background-position:center}
+  .vbadge{display:inline-grid;place-items:center;width:15px;height:15px;border-radius:50%;background:#1d9bf0;color:#fff;vertical-align:middle;margin-left:4px}
+  .vbadge svg{width:10px;height:10px;stroke:#fff;stroke-width:3;fill:none}
+  .fhandle{font-size:.76rem;color:var(--muted)}
+  .pcard .pa.photo-av{display:block}
+  .likeon{color:#e0245e !important;font-weight:800}
+  .connect-acts{display:flex;gap:8px;margin-top:10px;padding:0 12px 14px}
+  .connect-acts .btn{flex:1;padding:9px 0}
   .cover{height:150px;border-radius:var(--r-lg);background:var(--g-a);position:relative}
   .pg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:640px}
   .pg div{aspect-ratio:1/1;border-radius:12px;position:relative;overflow:hidden}
@@ -476,7 +504,7 @@
       <section class="page on" id="p-home">
         <div class="grid2">
           <div>
-            <div class="hero"><img src="img/hero_scooter.jpg" alt="" class="hero-bg"><div class="hero-ov"></div><div class="k">HINEED AI · YOUR CONCIERGE</div><div class="q">What do you need<br>today<span id="hero-name">, Miles</span>?</div>
+            <div class="hero"><img src="img/hero_scooter.jpg" alt="" class="hero-bg" onerror="this.onerror=null;this.src='https://cdn.pixabay.com/photo/2018/07/31/14/09/young-people-3575167_640.jpg'"><div class="hero-ov"></div><div class="k">HINEED AI · YOUR CONCIERGE</div><div class="q">What do you need<br>today<span id="hero-name">, Miles</span>?</div>
               <div class="bar"><svg onclick="doSearch(document.getElementById('homeSearch').value)" style="cursor:pointer;stroke:#9AA6A0" width="19" height="19" viewBox="0 0 24 24" class="ic"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input id="homeSearch" placeholder="Search a product, shop or service…" onkeydown="if(event.key==='Enter')doSearch(this.value)"><button type="button" onclick="doSearch(document.getElementById('homeSearch').value)" style="background:var(--brand);color:var(--on-brand);border:0;border-radius:10px;padding:8px 14px;font-weight:700;font-size:.84rem;cursor:pointer;margin-right:4px">Search</button><button class="go" onclick="talk()" aria-label="Talk to Hineed AI" title="Talk to Hineed AI"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3"/></svg></button></div>
               <div class="chips"><span>2-bed in GRA under ₦1.5m</span><span>Plumber in D-Line today</span><span>Jollof for 6 tonight</span></div>
             </div>
@@ -493,9 +521,9 @@
             </div>
             <div class="sect-t"><h3>Trending near you</h3><a href="#" onclick="go('market');return false">See all</a></div>
             <div class="vcards">
-              <a href="#" onclick="go('realestate');return false" class="vcard" style="background:var(--g-food)"><div class="ov"></div><span class="price">₦1.45m/yr</span><div class="b"><div class="nm">2-bed serviced flat</div><div class="ds">GRA Phase 2 · verified agent</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.9</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
-              <a href="#" onclick="go('food');return false" class="vcard" style="background:var(--g-c)"><div class="ov"></div><span class="price">₦2,900</span><div class="b"><div class="nm">Jollof platter</div><div class="ds">Mama Nkem&rsquo;s · 25 min</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.8</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
-              <a href="#" onclick="go('market');return false" class="vcard" style="background:var(--g-b)"><div class="ov"></div><span class="price">₦42,000</span><div class="b"><div class="nm">Rechargeable fan</div><div class="ds">KanoTech · pay on delivery</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.7</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+              <a href="#" onclick="go('realestate');return false" class="vcard" style="background-image:url(https://cdn.pixabay.com/photo/2016/11/21/15/09/apartments-1845884_640.jpg);background-size:cover;background-position:center"><div class="ov"></div><span class="price">₦1.45m/yr</span><div class="b"><div class="nm">2-bed serviced flat</div><div class="ds">GRA Phase 2 · verified agent</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.9</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+              <a href="#" onclick="go('food');return false" class="vcard" style="background-image:url(https://cdn.pixabay.com/photo/2019/11/28/18/15/jollof-4659747_640.jpg);background-size:cover;background-position:center"><div class="ov"></div><span class="price">₦2,900</span><div class="b"><div class="nm">Jollof platter</div><div class="ds">Mama Nkem&rsquo;s · 25 min</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.8</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+              <a href="#" onclick="go('market');return false" class="vcard" style="background-image:url(https://cdn.pixabay.com/photo/2013/01/17/02/29/electric-fans-75143_640.jpg);background-size:cover;background-position:center"><div class="ov"></div><span class="price">₦42,000</span><div class="b"><div class="nm">Rechargeable fan</div><div class="ds">KanoTech · pay on delivery</div><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/></svg> 4.7</span></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
             </div>
           </div>
           <aside class="rail">
@@ -534,6 +562,9 @@
         <div class="pills" id="cats" style="margin-bottom:18px">
           <button class="pill on" onclick="catSelect(this)">All</button><button class="pill" onclick="catSelect(this)">Meals & dishes</button><button class="pill" onclick="catSelect(this)">Hair & beauty</button><button class="pill" onclick="catSelect(this)">Groceries</button><button class="pill" onclick="catSelect(this)">Electronics</button><button class="pill" onclick="catSelect(this)">Pharmacy</button>
         </div>
+        <div class="sect-t" style="margin-top:0"><h3>Explore shops</h3><a href="#" onclick="mkTab('shops');return false" style="font-size:.82rem;color:var(--brand);font-weight:700">See all</a></div>
+        <div class="shoprail" id="mk-shop-rail"><div style="padding:8px;color:var(--muted);font-size:.85rem">Loading shops…</div></div>
+        <div class="sect-t"><h3>Products</h3></div>
         <div class="sub-v on" id="mk-products">
           <div class="prods" id="mk-prod-grid"><div style="padding:22px;color:var(--muted);font-size:.88rem">Loading products…</div></div>
         </div>
@@ -1224,6 +1255,73 @@
 </nav>
 
 <script>
+/* ===== Hineed shared photo library (permanent Pixabay CDN, verified) ===== */
+(function(){
+  var B='https://cdn.pixabay.com/photo/';
+  var SHOP={
+    'shop-kanotech': B+'2017/11/08/02/34/electronics-2929042_640.jpg',
+    'shop-mamankem': B+'2019/11/28/18/15/jollof-4659747_640.jpg',
+    'shop-glow':     B+'2015/11/18/01/58/wig-1048540_640.jpg',
+    'shop-homemart': B+'2015/09/21/14/24/supermarket-949913_640.jpg',
+    'shop-riverpharm':B+'2013/11/26/17/23/pharmacy-218692_640.jpg',
+    'shop-chop':     B+'2023/11/21/19/47/burger-8404116_640.jpg'
+  };
+  var CAT={
+    'electronics': B+'2017/11/08/02/34/electronics-2929042_640.jpg',
+    'meals & dishes': B+'2019/11/28/18/15/jollof-4659747_640.jpg',
+    'hair & beauty': B+'2015/11/18/01/58/wig-1048540_640.jpg',
+    'groceries & home': B+'2015/09/21/14/24/supermarket-949913_640.jpg',
+    'pharmacy': B+'2013/11/26/17/23/pharmacy-218692_640.jpg'
+  };
+  var PROD={
+    'sp-fan': B+'2013/01/17/02/29/electric-fans-75143_640.jpg',
+    'sp-powerbank': B+'2016/12/19/08/39/mobile-phone-1917737_640.jpg',
+    'sp-blender': B+'2017/11/08/02/34/electronics-2929042_640.jpg',
+    'sp-jollof': B+'2019/11/28/18/15/jollof-4659747_640.jpg',
+    'sp-friedrice': B+'2023/11/21/19/47/burger-8404116_640.jpg',
+    'sp-wig': B+'2015/11/18/01/58/wig-1048540_640.jpg',
+    'sp-bundle': B+'2017/04/25/00/42/hair-2258292_640.jpg',
+    'sp-cooker': B+'2015/09/21/14/24/supermarket-949913_640.jpg',
+    'sp-chair': B+'2015/09/21/14/24/supermarket-949913_640.jpg',
+    'sp-rice': B+'2020/05/26/17/06/rice-5223893_640.jpg',
+    'sp-gas': B+'2015/09/21/14/24/supermarket-949913_640.jpg',
+    'sp-para': B+'2018/09/13/02/17/pills-3673645_640.jpg',
+    'sp-vitc': B+'2018/09/13/02/17/pills-3673645_640.jpg',
+    'fp-poundedyam': B+'2019/11/28/18/15/jollof-4659747_640.jpg',
+    'fp-peppersoup': B+'2019/11/28/18/15/jollof-4659747_640.jpg',
+    'fp-shawarma': B+'2023/11/21/19/47/burger-8404116_640.jpg',
+    'fp-smallchops': B+'2023/11/21/19/47/burger-8404116_640.jpg',
+    'fp-meatpie': B+'2023/11/21/19/47/burger-8404116_640.jpg',
+    'fp-smoothie': B+'2023/11/21/19/47/burger-8404116_640.jpg'
+  };
+  var FACES=[
+    B+'2019/12/10/13/31/woman-4685862_640.jpg',
+    B+'2019/11/15/13/22/lady-4628418_640.jpg',
+    B+'2024/10/29/02/47/african-woman-9157860_640.jpg',
+    B+'2024/05/04/02/30/african-woman-8738173_640.jpg',
+    B+'2023/11/11/08/23/woman-8380758_640.jpg',
+    B+'2023/02/08/06/29/fashion-7775824_640.jpg',
+    B+'2024/08/16/20/42/ai-generated-8974603_640.jpg',
+    B+'2024/10/10/19/55/ai-generated-9111598_640.jpg',
+    B+'2024/09/06/16/08/ai-generated-9027790_640.jpg'
+  ];
+  var SCENES=[
+    B+'2018/07/31/14/09/young-people-3575167_640.jpg',
+    B+'2020/07/03/06/12/people-5365324_640.jpg',
+    B+'2019/06/14/15/34/friendship-4273865_640.jpg'
+  ];
+  function hashNum(s){ s=String(s||''); var h=0; for(var i=0;i<s.length;i++){ h=(h*31+s.charCodeAt(i))>>>0; } return h; }
+  window.HP={
+    shopCover:function(id,kind){ return SHOP[id] || CAT[(kind||'').toLowerCase()] || SHOP['shop-homemart']; },
+    prodPhoto:function(p){ if(!p) return CAT['groceries & home']; if(p.image) return p.image; return PROD[p.id] || CAT[(p.category||'').toLowerCase()] || SHOP['shop-homemart']; },
+    face:function(seed){ return FACES[ hashNum(seed) % FACES.length ]; },
+    faceAt:function(i){ return FACES[ i % FACES.length ]; },
+    scene:function(seed){ return SCENES[ hashNum(seed) % SCENES.length ]; },
+    faces:FACES, scenes:SCENES
+  };
+})();
+</script>
+<script>
   var navHist=[];
   function curPage(){ var el=document.querySelector('.page.on'); return el? el.id.replace('p-',''):'home'; }
   function go(p, noPush){
@@ -1296,7 +1394,7 @@
   function payPerson(n){ go('pay'); payView('send'); try{window.scrollTo(0,0);}catch(e){} }
   function svcFilter(cat, el){ document.querySelectorAll('#p-services .catrow .catcard').forEach(function(b){ b.classList.remove('on'); }); if(el) el.classList.add('on'); document.querySelectorAll('#svc-grid .vcard').forEach(function(c){ c.style.display=(cat==='all'||c.getAttribute('data-cat')===cat)?'':'none'; }); }
   try{ fillProvider('brightclean'); }catch(e){}
-  function sv(v){ document.querySelectorAll('#p-social .sview').forEach(e=>e.classList.toggle('on', e.id==='s-'+v)); document.querySelectorAll('.s-tab').forEach(t=>t.classList.remove('on')); var tab=document.getElementById('sv-'+v); if(tab) tab.classList.add('on'); try{window.scrollTo(0,0);}catch(e){} }
+  function sv(v){ document.querySelectorAll('#p-social .sview').forEach(e=>e.classList.toggle('on', e.id==='s-'+v)); document.querySelectorAll('.s-tab').forEach(t=>t.classList.remove('on')); var tab=document.getElementById('sv-'+v); if(tab) tab.classList.add('on'); try{window.scrollTo(0,0);}catch(e){} if(v==='connect'){ try{ renderConnect(); }catch(e){} } else if(v==='feed'){ try{ renderFeed(); }catch(e){} } }
   function socialOpen(v){ go('social'); sv(v); }
   var IN_VIEWS=['in-main','in-scan','in-result','in-chat'];
   function inView(v){ IN_VIEWS.forEach(id=>{ var e=document.getElementById(id); if(e) e.classList.toggle('on', id===v); }); }
@@ -1366,8 +1464,7 @@
       im.src=isLocal(id)?id:U(id,w); el.insertBefore(im, el.firstChild);
     }
     function fill(sel,cat,w,off){ document.querySelectorAll(sel).forEach(function(el,i){ put(el,cat,i+(off||0),w); }); }
-    // Home trending
-    var ht=document.querySelectorAll('#p-home .vcards .vcard'); put(ht[0],'home',0,700); put(ht[1],'food',0,700); put(ht[2],'goods',0,700);
+    // Home trending cards use baked-in photos (see markup)
     put(document.querySelector('#p-home .rail .card div[style*="height:120px"]'),'life',1,500);
     // Food
     fill('#p-food .vcards .vcard','food',700);
@@ -1388,13 +1485,7 @@
     put(document.querySelector('#p-provider .detail-hero'),'work',0,900);
     document.querySelectorAll('#p-provider .pg div').forEach(function(el,i){ put(el,'work',i+1,400); });
     put(document.querySelector('#p-provider .av'),'people',1,200);
-    // Social feed
-    put(document.querySelector('#s-feed .post .ph'),'life',0,700);
-    put(document.querySelector('#s-feed .post .av'),'people',1,100);
-    document.querySelectorAll('#s-feed .stories .s .in').forEach(function(el,i){ put(el,'people',i+2,120); });
-    // Social connect
-    document.querySelectorAll('#s-connect .pcard .cov').forEach(function(el,i){ put(el,'life',i,400); });
-    document.querySelectorAll('#s-connect .pcard .pa').forEach(function(el,i){ put(el,'people',i,160); });
+    // Social feed + connect are rendered with photos by renderFeed()/renderConnect()
     // Social chats (first avatar = Amaka)
     var ca=document.querySelectorAll('#s-chats .row .av'); put(ca[0],'people',0,100);
     // Social profile
@@ -1829,6 +1920,7 @@
   /* ================= shop (customer) ================= */
   var MK_GRAD=['g-a','g-b','g-c','g-food'];
   function renderShop(){
+    try{ renderShopRail(); }catch(e){}
     var grid=el('mk-prod-grid'); if(!grid) return;
     api('GET','/api/products').then(function(r){
       var products=(r.data&&r.data.products)||[];
@@ -1839,7 +1931,8 @@
       if(!list.length){ grid.innerHTML='<div style="padding:22px;color:var(--muted);font-size:.88rem">No products in “'+E(cat)+'” yet.</div>'; return; }
       var h=''; list.forEach(function(p,i){
         var nm=E(p.name).replace(/'/g,"’"), shop=E(p.shop||p.seller||'Shop').replace(/'/g,"’");
-        h+='<div class="prod">'+(p.image?'<div class="img" style="background-image:url('+p.image+');background-size:cover;background-position:center"></div>':'<div class="img" style="background:var(--'+MK_GRAD[i%MK_GRAD.length]+')"></div>')
+        var _ph=(window.HP&&HP.prodPhoto)?HP.prodPhoto(p):(p.image||'');
+        h+='<div class="prod"><div class="img" style="background-image:url('+_ph+');background-color:var(--'+MK_GRAD[i%MK_GRAD.length]+')"></div>'
           +'<button class="add" aria-label="Order" onclick="orderProduct(\''+p.id+'\',\''+nm+'\')"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke-width:2.1"><path d="M12 5v14M5 12h14"/></svg></button>'
           +'<div class="bd"><div class="nm">'+E(p.name)+'</div><div class="pr">'+E(p.price)+'</div><div style="font-size:.72rem;color:var(--muted);margin-top:2px">'+shop+'</div>'
           +'<button class="btn btn-ghost" style="width:100%;padding:6px;margin-top:8px;font-size:.78rem" onclick="openChat(\''+p.ownerId+'\',\''+shop+'\')">Message shop</button></div></div>';
@@ -1847,34 +1940,99 @@
       grid.innerHTML=h;
     }).catch(function(){ grid.innerHTML='<div style="padding:22px;color:var(--muted)">Could not load products.</div>'; });
   }
-  function renderShops(){
-    var box=el('mk-shop-list'); if(!box) return;
+  function renderShopRail(){
+    var rail=el('mk-shop-rail'); if(!rail) return;
     api('GET','/api/shops').then(function(r){
       var shops=(r.data&&r.data.shops)||[];
-      if(!shops.length){ box.innerHTML=emptyRow('No shops yet.'); return; }
-      box.innerHTML=shops.map(function(s){ var nm=E(s.name).replace(/'/g,"’");
-        return '<a href="#" onclick="openShop(\''+s.id+'\',\''+nm+'\');return false" class="row"><span class="av" style="width:46px;height:46px;background:var(--'+(s.color||'a2')+')">'+E((s.avatar||s.name||'S').charAt(0))+'</span><div style="flex:1"><div style="font-weight:700">'+E(s.name)+'</div><div style="font-size:.8rem;color:var(--muted)">'+E(s.kind||'')+(s.area?' · '+E(s.area):'')+' · ★ '+(s.rating||5)+'</div></div><span class="badge">Visit</span></a>';
+      if(!shops.length){ rail.innerHTML=''; return; }
+      rail.innerHTML=shops.map(function(s){ var nm=E(s.name).replace(/'/g,"’");
+        var cov=(window.HP&&HP.shopCover)?HP.shopCover(s.id,s.kind):'';
+        return '<div class="shoptile" onclick="openShop(\''+s.id+'\',\''+nm+'\')">'
+          +'<div class="cov" style="background-image:url('+cov+');background-color:var(--'+(s.color||'a2')+')"></div>'
+          +'<span class="pill">★ '+(s.rating||5)+'</span>'
+          +'<div class="ov"><div class="nm">'+E(s.name)+'</div><div class="sub">'+E(s.kind||'')+'</div></div>'
+          +'</div>';
       }).join('');
-    }).catch(function(){ box.innerHTML=emptyRow('Could not load shops.'); });
+    }).catch(function(){ rail.innerHTML=''; });
+  }
+  window.renderShopRail=renderShopRail;
+  function renderShops(){
+    var box=el('mk-shop-list'); if(!box) return;
+    box.classList.remove('list','card'); box.classList.add('shopcards'); box.style.padding='0';
+    api('GET','/api/shops').then(function(r){
+      var shops=(r.data&&r.data.shops)||[];
+      if(!shops.length){ box.innerHTML='<div style="padding:16px;color:var(--muted);font-size:.88rem">No shops yet.</div>'; return; }
+      box.innerHTML=shops.map(function(s){ var nm=E(s.name).replace(/'/g,"’");
+        var cov=(window.HP&&HP.shopCover)?HP.shopCover(s.id,s.kind):'';
+        return '<div class="shopcard" onclick="openShop(\''+s.id+'\',\''+nm+'\')">'
+          +'<div class="cov" style="background-image:url('+cov+');background-color:var(--'+(s.color||'a2')+')"></div>'
+          +'<span class="vbtn">Visit shop</span>'
+          +'<span class="pill">★ '+(s.rating||5)+'</span>'
+          +'<div class="ov"><div class="nm">'+E(s.name)+'</div><div class="sub">'+E(s.kind||'')+(s.area?' · '+E(s.area):'')+'</div></div>'
+          +'</div>';
+      }).join('');
+    }).catch(function(){ box.innerHTML='<div style="padding:16px;color:var(--muted)">Could not load shops.</div>'; });
   }
   window.renderShops=renderShops; window.renderShop=renderShop;
-  window.openShop=function(id,name){ mkTab('products'); window.__mkShopFilter=id; var grid=el('mk-prod-grid'); if(!grid) return; var all=window.__mkProducts||[]; var list=all.filter(function(p){return p.ownerId===id;}); if(!list.length){ T('Opening '+name); renderShop(); return; } window.__mkCat='All'; var h=''; list.forEach(function(p,i){ var nm=E(p.name).replace(/'/g,"’"), shop=E(p.shop||name).replace(/'/g,"’"); h+='<div class="prod"><div class="img" style="background:var(--'+MK_GRAD[i%MK_GRAD.length]+')"></div><button class="add" aria-label="Order" onclick="orderProduct(\''+p.id+'\',\''+nm+'\')"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke-width:2.1"><path d="M12 5v14M5 12h14"/></svg></button><div class="bd"><div class="nm">'+E(p.name)+'</div><div class="pr">'+E(p.price)+'</div><div style="font-size:.72rem;color:var(--muted);margin-top:2px">'+shop+'</div></div></div>'; }); grid.innerHTML=h; };
+  window.openShop=function(id,name){ mkTab('products'); window.__mkShopFilter=id; var grid=el('mk-prod-grid'); if(!grid) return; var all=window.__mkProducts||[]; var list=all.filter(function(p){return p.ownerId===id;}); if(!list.length){ T('Opening '+name); renderShop(); return; } window.__mkCat='All'; var h=''; list.forEach(function(p,i){ var nm=E(p.name).replace(/'/g,"’"), shop=E(p.shop||name).replace(/'/g,"’"); var _ph=(window.HP&&HP.prodPhoto)?HP.prodPhoto(p):(p.image||''); h+='<div class="prod"><div class="img" style="background-image:url('+_ph+');background-color:var(--'+MK_GRAD[i%MK_GRAD.length]+')"></div><button class="add" aria-label="Order" onclick="orderProduct(\''+p.id+'\',\''+nm+'\')"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke-width:2.1"><path d="M12 5v14M5 12h14"/></svg></button><div class="bd"><div class="nm">'+E(p.name)+'</div><div class="pr">'+E(p.price)+'</div><div style="font-size:.72rem;color:var(--muted);margin-top:2px">'+shop+'</div></div></div>'; }); grid.innerHTML=h; };
   window.orderProduct = function(id,name){ api('POST','/api/orders',{productId:id,qty:1}).then(function(r){ if(r.ok){ T('Order placed for '+name+' ✓ — the seller has been notified'); } else T(r.data.error||'Could not order','bad'); }); };
 
   /* ================= social feed ================= */
+  var VBADGE='<span class="vbadge"><svg viewBox="0 0 24 24"><path d="M5 12.5 10 17 19 7"/></svg></span>';
+  var SOCIAL=[
+    {name:'Amaka O.',handle:'amaka_o',age:24,loc:'GRA, Port Harcourt',v:true,text:'New to GRA and looking to meet people who love hiking and good food 🌿 Say hi!',scene:true},
+    {name:'Tunde A.',handle:'tunde.a',age:29,loc:'D-Line',v:true,text:'Weekend vibes. Who’s up for live music at the waterfront this Saturday? 🎶'},
+    {name:'Ngozi E.',handle:'ngozi.e',age:27,loc:'Rumuola',v:false,text:'Just opened my small bakery 🧁 Swipe through and tell me what to bake next!',scene:true},
+    {name:'Emeka K.',handle:'emeka_k',age:31,loc:'GRA Phase 2',v:true,text:'Looking to connect with other founders in PH. Let’s build something 🚀'},
+    {name:'Zainab A.',handle:'zainab',age:26,loc:'Old GRA',v:true,text:'Sunset runs hit different here. Tag your running buddy 🏃🏾‍♀️',scene:true}
+  ];
+  var _slike={};
+  window.sLike=function(i,btn){ _slike[i]=!_slike[i]; var n=2400+(i*137); n=_slike[i]?n+1:n; btn.classList.toggle('likeon',_slike[i]); btn.querySelector('b').textContent=(_slike[i]?'❤ ':'♡ ')+kfmt(n); };
+  window.sConnect=function(name){ try{ T('Connection request sent to '+name+' ✓'); }catch(e){} };
+  function kfmt(n){ return n>=1000?(n/1000).toFixed(1).replace(/\.0$/,'')+'k':String(n); }
+  function socialCard(p,i){
+    var face=HP.face(p.handle||p.name);
+    var photo = p.scene ? HP.scene(p.handle||p.name) : '';
+    var h='<div class="post" style="margin-top:0;margin-bottom:16px">'
+      +'<div style="display:flex;align-items:center;gap:11px">'
+      +'<span class="av photo-av" style="width:44px;height:44px;border-radius:50%;background-image:url('+face+')"></span>'
+      +'<div style="flex:1;min-width:0"><div style="font-weight:800">'+E(p.name)+(p.v?VBADGE:'')+' <span style="font-weight:500;color:var(--muted);font-size:.8rem">· '+p.age+'</span></div>'
+      +'<div class="fhandle">@'+E(p.handle)+' · '+E(p.loc)+'</div></div>'
+      +'<button class="badge" style="border:0;padding:7px 15px;cursor:pointer" onclick="sConnect(\''+E(p.name).replace(/'/g,'')+'\')">Connect</button></div>'
+      +'<p style="margin:12px 0 0;font-size:.95rem">'+E(p.text)+'</p>';
+    if(photo) h+='<div class="ph" style="height:300px;border-radius:16px;margin-top:12px;background-image:url('+photo+')"></div>';
+    h+='<div class="acts">'
+      +'<button onclick="sLike('+i+',this)"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M12 20s-7.5-4.6-7.5-9.4A4.1 4.1 0 0 1 12 8a4.1 4.1 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20Z"/></svg><b>♡ '+kfmt(2400+i*137)+'</b></button>'
+      +'<button onclick="sv(\'room\')"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M4 5.5h16v10H9l-4 3.5v-3.5H4v-10Z"/></svg>'+(80+i*17)+'</button>'
+      +'<button onclick="T(\'Shared ✓\')"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><circle cx="6" cy="12" r="2.3"/><circle cx="17.5" cy="6.3" r="2.3"/><circle cx="17.5" cy="17.7" r="2.3"/><path d="M8.2 10.8l7.6-3.6M8.2 13.2l7.6 3.6"/></svg>'+(12+i*4)+'</button>'
+      +'<span style="flex:1"></span>'
+      +'<button onclick="sv(\'room\')" style="color:var(--brand)"><svg width="18" height="18" viewBox="0 0 24 24" class="ic"><path d="M4 5.5h16v10H9l-4 3.5v-3.5H4v-10Z"/></svg>Chat</button></div>'
+      +'</div>';
+    return h;
+  }
+  function storiesBar(){
+    var h='<div class="stories" style="margin-bottom:4px">'
+      +'<span class="s" style="border-style:dashed;display:grid;place-items:center;color:var(--brand)" onclick="go(\'ineed\')"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M12 5v14M5 12h14"/></svg></span>';
+    SOCIAL.forEach(function(p){ h+='<span class="s" onclick="sv(\'room\')"><span class="in" style="background-image:url('+HP.face(p.handle)+')"></span></span>'; });
+    h+='</div>';
+    return h;
+  }
   function renderFeed(){
-    var feed=el('s-feed'); if(!feed) return; var host=el('hn-feed'); if(!host){ host=document.createElement('div'); host.id='hn-feed'; feed.insertBefore(host,feed.firstChild); }
+    var feed=el('s-feed'); if(!feed) return;
+    var oldStatic=feed.querySelector('.feed'); if(oldStatic) oldStatic.style.display='none';
+    var host=el('hn-feed'); if(!host){ host=document.createElement('div'); host.id='hn-feed'; host.className='feed'; feed.insertBefore(host,feed.firstChild); }
     Promise.all([api('GET','/api/posts'),api('GET','/api/works')]).then(function(res){
       var posts=(res[0].data.posts||[]).map(function(p){p._t='post';return p;});
       var works=(res[1].data.works||[]).map(function(w){w._t='work';return w;});
       var items=posts.concat(works).sort(function(a,b){return a.createdAt<b.createdAt?1:-1;});
-      var h='<div class="card" style="padding:14px;margin-bottom:14px"><textarea id="po-text" class="hn-in" style="min-height:52px" placeholder="Share something with the Hineed community…"></textarea><div style="display:flex;justify-content:flex-end;margin-top:8px"><button class="btn btn-brand" style="padding:8px 18px" onclick="submitPost()">Post</button></div></div>';
-      if(!items.length) h+=emptyRow('No posts yet — be the first to share!');
+      var h=storiesBar();
+      h+='<div class="card" style="padding:14px;margin-bottom:14px"><textarea id="po-text" class="hn-in" style="min-height:52px" placeholder="Share something with the Hineed community…"></textarea><div style="display:flex;justify-content:flex-end;margin-top:8px"><button class="btn btn-brand" style="padding:8px 18px" onclick="submitPost()">Post</button></div></div>';
+      SOCIAL.forEach(function(p,i){ h+=socialCard(p,i); });
       items.forEach(function(it){
         if(it._t==='work'){
-          h+='<div class="card" style="padding:16px;margin-bottom:12px"><div style="display:flex;align-items:center;gap:10px"><span class="av" style="width:40px;height:40px">'+E((it.ownerName||'P').charAt(0))+'</span><div style="flex:1"><div style="font-weight:700">'+E(it.ownerName)+' <span class="badge" style="margin-left:4px">'+E(it.category||'work')+'</span></div><div style="font-size:.76rem;color:var(--muted)">shared a completed job · '+timeAgo(it.createdAt)+'</div></div></div><div style="font-weight:700;margin-top:10px">'+E(it.title)+'</div><div style="font-size:.88rem;color:var(--muted);margin-top:3px">'+E(it.description||'')+'</div><div style="display:flex;gap:8px;margin-top:12px"><button class="btn btn-brand" style="padding:8px 14px" onclick="bookProvider(\''+it.ownerId+'\',\''+E(it.ownerName).replace(/\x27/g,"")+'\')">Book</button><button class="btn btn-ghost" style="padding:8px 14px" onclick="openChat(\''+it.ownerId+'\',\''+E(it.ownerName).replace(/\x27/g,"")+'\')">Message</button><button class="btn btn-ghost" style="padding:8px 14px" onclick="requestCall(\''+it.ownerId+'\')">Request call</button></div></div>';
+          h+='<div class="card" style="padding:16px;margin-bottom:12px"><div style="display:flex;align-items:center;gap:10px"><span class="av photo-av" style="width:40px;height:40px;border-radius:50%;background-image:url('+HP.face(it.ownerId||it.ownerName)+')"></span><div style="flex:1"><div style="font-weight:700">'+E(it.ownerName)+' <span class="badge" style="margin-left:4px">'+E(it.category||'work')+'</span></div><div style="font-size:.76rem;color:var(--muted)">shared a completed job · '+timeAgo(it.createdAt)+'</div></div></div><div style="font-weight:700;margin-top:10px">'+E(it.title)+'</div><div style="font-size:.88rem;color:var(--muted);margin-top:3px">'+E(it.description||'')+'</div><div style="display:flex;gap:8px;margin-top:12px"><button class="btn btn-brand" style="padding:8px 14px" onclick="bookProvider(\''+it.ownerId+'\',\''+E(it.ownerName).replace(/\x27/g,"")+'\')">Book</button><button class="btn btn-ghost" style="padding:8px 14px" onclick="openChat(\''+it.ownerId+'\',\''+E(it.ownerName).replace(/\x27/g,"")+'\')">Message</button><button class="btn btn-ghost" style="padding:8px 14px" onclick="requestCall(\''+it.ownerId+'\')">Request call</button></div></div>';
         } else {
-          h+='<div class="card" style="padding:16px;margin-bottom:12px"><div style="display:flex;align-items:center;gap:10px"><span class="av" style="width:40px;height:40px">'+E((it.author||'U').charAt(0))+'</span><div style="flex:1"><div style="font-weight:700">'+E(it.author)+'</div><div style="font-size:.76rem;color:var(--muted)">'+timeAgo(it.createdAt)+'</div></div></div><div style="margin-top:10px">'+E(it.text)+'</div><div style="display:flex;gap:16px;margin-top:12px;color:var(--muted);font-size:.86rem"><span style="cursor:pointer;'+(it.liked?'color:var(--brand);font-weight:700':'')+'" onclick="likePost(\''+it.id+'\',this)">♥ <b>'+it.likes+'</b></span><span style="cursor:pointer" onclick="focusComment(\''+it.id+'\')">💬 '+it.comments.length+'</span></div>';
+          h+='<div class="card" style="padding:16px;margin-bottom:12px"><div style="display:flex;align-items:center;gap:10px"><span class="av photo-av" style="width:40px;height:40px;border-radius:50%;background-image:url('+HP.face(it.author)+')"></span><div style="flex:1"><div style="font-weight:700">'+E(it.author)+'</div><div style="font-size:.76rem;color:var(--muted)">'+timeAgo(it.createdAt)+'</div></div></div><div style="margin-top:10px">'+E(it.text)+'</div><div style="display:flex;gap:16px;margin-top:12px;color:var(--muted);font-size:.86rem"><span style="cursor:pointer;'+(it.liked?'color:var(--brand);font-weight:700':'')+'" onclick="likePost(\''+it.id+'\',this)">♥ <b>'+it.likes+'</b></span><span style="cursor:pointer" onclick="focusComment(\''+it.id+'\')">💬 '+it.comments.length+'</span></div>';
           h+='<div id="cm-'+it.id+'" style="margin-top:10px;border-top:1px solid var(--line);padding-top:10px">';
           it.comments.forEach(function(c){ h+='<div style="font-size:.84rem;margin-bottom:6px"><b>'+E(c.author)+'</b> '+E(c.text)+'</div>'; });
           h+='<div style="display:flex;gap:8px;margin-top:6px"><input id="ci-'+it.id+'" class="hn-in" style="padding:8px 11px" placeholder="Write a comment…" onkeydown="if(event.key===\'Enter\')sendComment(\''+it.id+'\')"><button class="btn btn-ghost" style="padding:8px 12px" onclick="sendComment(\''+it.id+'\')">Send</button></div></div>';
@@ -1884,6 +2042,31 @@
       host.innerHTML=h;
     });
   }
+  var CONNECT=[
+    {name:'Amaka O.',handle:'amaka_o',age:24,loc:'GRA',v:true,bio:'Hiking · good food · new in town'},
+    {name:'Tunde A.',handle:'tunde.a',age:29,loc:'D-Line',v:true,bio:'Live music lover 🎶'},
+    {name:'Ngozi E.',handle:'ngozi.e',age:27,loc:'Rumuola',v:false,bio:'Baker & foodie 🧁'},
+    {name:'Emeka K.',handle:'emeka_k',age:31,loc:'GRA Phase 2',v:true,bio:'Founder · building in PH 🚀'},
+    {name:'Zainab A.',handle:'zainab',age:26,loc:'Old GRA',v:true,bio:'Runner · sunsets 🏃🏾‍♀️'},
+    {name:'Chidi N.',handle:'chidi.n',age:28,loc:'Woji',v:false,bio:'Designer · coffee · dogs ☕'},
+    {name:'Blessing I.',handle:'blessing',age:25,loc:'Eliozu',v:true,bio:'Nurse · kind soul 💚'},
+    {name:'Sam O.',handle:'sam_o',age:30,loc:'Trans-Amadi',v:false,bio:'Photographer 📸 lets shoot'}
+  ];
+  function renderConnect(){
+    var box=document.querySelector('#s-connect .people'); if(!box) return;
+    box.innerHTML=CONNECT.map(function(p,i){
+      var face=HP.faceAt(i);
+      return '<div class="pcard">'
+        +'<div class="cov" style="background-image:url('+HP.scene(p.handle)+')"></div>'
+        +'<span class="pa av photo-av" style="background-image:url('+face+')"></span>'
+        +'<div style="padding:8px 12px 4px"><div style="font-weight:800">'+E(p.name)+(p.v?VBADGE:'')+'</div>'
+        +'<div style="font-size:.76rem;color:var(--muted)">'+p.age+' · '+E(p.loc)+'</div>'
+        +'<div style="font-size:.74rem;color:var(--muted);margin-top:4px;min-height:30px">'+E(p.bio)+'</div></div>'
+        +'<div class="connect-acts"><button class="btn btn-ghost" onclick="sv(\'room\')">Message</button><button class="btn btn-brand" onclick="sConnect(\''+E(p.name).replace(/'/g,'')+'\')">Connect</button></div>'
+        +'</div>';
+    }).join('');
+  }
+  window.renderConnect=renderConnect; window.renderFeed=renderFeed;
   window.submitPost = function(){ var t=(el('po-text').value||'').trim(); if(!t){ T('Write something first','bad'); return; } api('POST','/api/posts',{text:t}).then(function(r){ if(r.ok){ renderFeed(); } else T(r.data.error||'Could not post','bad'); }); };
   window.likePost = function(id){ api('POST','/api/posts/'+id+'/like').then(function(r){ if(r.ok) renderFeed(); }); };
   window.focusComment = function(id){ var i=el('ci-'+id); if(i) i.focus(); };
@@ -2019,7 +2202,7 @@
       var drivers=(res[1].data&&res[1].data.drivers)||[];
       var h='<h1 class="h1">Rides &amp; Move</h1><p class="sub">Get a ride or a dispatch rider — drivers near you right now.</p>';
       // map banner (upgrades to a live Google map once the Maps key is added)
-      h+='<div style="position:relative;height:150px;border-radius:18px;overflow:hidden;margin-bottom:14px;background:linear-gradient(135deg,var(--a2),var(--brand));display:grid;place-items:center"><div style="position:absolute;inset:0;opacity:.18;background-image:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 26px),repeating-linear-gradient(90deg,#fff 0 1px,transparent 1px 26px)"></div><div style="position:relative;color:#fff;text-align:center"><svg width="30" height="30" viewBox="0 0 24 24" class="ic" style="stroke:#fff"><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg><div style="font-size:.8rem;margin-top:4px;font-weight:600">Live map activates with your Google Maps key</div></div></div>';
+      h+='<div id="ride-map" style="position:relative;height:170px;border-radius:18px;overflow:hidden;margin-bottom:14px;background:linear-gradient(135deg,var(--a2),var(--brand));display:grid;place-items:center"><div style="position:absolute;inset:0;opacity:.18;background-image:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 26px),repeating-linear-gradient(90deg,#fff 0 1px,transparent 1px 26px)"></div><div style="position:relative;color:#fff;text-align:center"><svg width="30" height="30" viewBox="0 0 24 24" class="ic" style="stroke:#fff"><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg><div style="font-size:.8rem;margin-top:4px;font-weight:600">Loading live map…</div></div></div>';
       // ride type chips
       h+='<div class="pills" id="rd-types" style="margin-bottom:12px"><button class="pill on" onclick="rideType(this,\'car\')">🚗 Car</button><button class="pill" onclick="rideType(this,\'keke\')">🛺 Keke</button><button class="pill" onclick="rideType(this,\'bike\')">🏍️ Bike</button><button class="pill" onclick="rideType(this,\'delivery\')">📦 Delivery</button></div>';
       h+='<div class="card" style="padding:16px"><label class="ain" style="margin-bottom:10px"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke:var(--brand)"><circle cx="12" cy="12" r="4"/></svg><input id="rd-pickup" placeholder="Pickup location"><button type="button" onclick="detectLocation&&(function(){var b=document.getElementById(\'rd-pickup\');if(navigator.geolocation){navigator.geolocation.getCurrentPosition(function(p){fetch(\'/api/geocode?lat=\'+p.coords.latitude+\'&lng=\'+p.coords.longitude).then(function(r){return r.json();}).then(function(d){if(d&&d.label)b.value=d.label;});});}})()" style="background:none;border:0;color:var(--brand);font-size:.74rem;font-weight:700;cursor:pointer;white-space:nowrap">Use GPS</button></label><label class="ain"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke:var(--neg)"><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z"/></svg><input id="rd-drop" placeholder="Where to?"></label><button class="btn btn-brand" style="width:100%;margin-top:12px" onclick="requestRide()">Request ride</button></div>';
@@ -2030,8 +2213,49 @@
         return '<div class="row"><span class="av" style="width:44px;height:44px;background:var(--g-c);font-size:1.1rem">'+tp+'</span><div style="flex:1;min-width:0"><div style="font-weight:700;font-size:.92rem">'+E(d.name)+' <span style="color:var(--star);font-size:.8rem">★ '+d.rating+'</span></div><div style="font-size:.76rem;color:var(--muted)">'+E(d.vehicle)+' · '+E(d.plate||'')+' · '+(d.trips||0)+' trips</div></div><div style="text-align:right"><div style="font-weight:800;font-size:.9rem">'+E(d.price||'')+'</div><div style="font-size:.72rem;color:var(--muted)">'+E(d.eta||'')+' away</div></div></div>';
       }).join('')+'</div>';
       host.innerHTML=h;
+      try{ initRideMap(drivers); }catch(e){}
     });
   }
+  // ---- Google Maps loader (activates automatically once the key is set) ----
+  var _mapsCfg=null, _mapsLoading=false, _mapsCbs=[];
+  function ensureMaps(cb){
+    if(window.google&&window.google.maps){ cb(true); return; }
+    _mapsCbs.push(cb);
+    if(_mapsLoading) return;
+    _mapsLoading=true;
+    var start=function(key){
+      if(!key){ _mapsCbs.forEach(function(f){f(false);}); _mapsCbs=[]; return; }
+      window.__hnMapsReady=function(){ _mapsCbs.forEach(function(f){f(true);}); _mapsCbs=[]; };
+      var s=document.createElement('script');
+      s.src='https://maps.googleapis.com/maps/api/js?key='+encodeURIComponent(key)+'&callback=__hnMapsReady&loading=async';
+      s.async=true; s.defer=true;
+      s.onerror=function(){ _mapsCbs.forEach(function(f){f(false);}); _mapsCbs=[]; };
+      document.head.appendChild(s);
+    };
+    if(_mapsCfg){ start(_mapsCfg.googleMapsKey); return; }
+    api('GET','/api/config').then(function(r){ _mapsCfg=(r&&r.data)||{}; start(_mapsCfg.googleMapsKey); })
+      .catch(function(){ _mapsCbs.forEach(function(f){f(false);}); _mapsCbs=[]; });
+  }
+  window.ensureMaps=ensureMaps;
+  function initRideMap(drivers){
+    var box=el('ride-map'); if(!box) return;
+    ensureMaps(function(ok){
+      if(!ok){ var m=box.querySelector('div:last-child'); if(m){ var t=m.querySelector('div'); if(t) t.textContent='Live map activates once your Google Maps key is added'; } return; }
+      var PH={lat:4.8156,lng:7.0498};
+      box.innerHTML=''; box.style.background='none';
+      var map=new google.maps.Map(box,{center:PH,zoom:13,disableDefaultUI:true,gestureHandling:'greedy',
+        styles:[{featureType:'poi',stylers:[{visibility:'off'}]}]});
+      new google.maps.Marker({position:PH,map:map,title:'You',icon:{path:google.maps.SymbolPath.CIRCLE,scale:7,fillColor:'#0a7',fillOpacity:1,strokeColor:'#fff',strokeWeight:2}});
+      (drivers||[]).forEach(function(d,i){
+        var ang=(i*73)%360*Math.PI/180, r=0.012+((i*7)%9)/900;
+        var pos={lat:PH.lat+Math.sin(ang)*r, lng:PH.lng+Math.cos(ang)*r};
+        new google.maps.Marker({position:pos,map:map,title:(d.name||'Driver')+' · '+(d.eta||''),
+          label:{text:({car:'🚗',keke:'🛺',bike:'🏍️'}[d.type]||'🚗'),fontSize:'16px'},
+          icon:{path:google.maps.SymbolPath.CIRCLE,scale:12,fillColor:'#fff',fillOpacity:1,strokeColor:'#0a7',strokeWeight:1}});
+      });
+    });
+  }
+  window.initRideMap=initRideMap;
   window.rideType=function(btn,t){ var ps=document.querySelectorAll('#rd-types .pill'); for(var i=0;i<ps.length;i++) ps[i].classList.remove('on'); if(btn) btn.classList.add('on'); window.__rideType=t; };
   window.requestRide=function(){ var p=iv('rd-pickup'),d=iv('rd-drop'); if(!p||!d){ T('Enter pickup and drop-off','bad'); return; } api('POST','/api/rides',{pickup:p,dropoff:d}).then(function(r){ if(r.ok){ T('Ride requested — finding a rider…'); renderRide(); } else T((r.data&&r.data.error)||'Failed','bad'); }); };
   window.cancelRide=function(id){ api('PATCH','/api/rides/'+id,{action:'cancel'}).then(function(){ T('Ride cancelled'); renderRide(); }); };
