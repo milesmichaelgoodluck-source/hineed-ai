@@ -150,7 +150,27 @@
   .pick .pbot{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
   .pick .ppr{font-weight:900;font-size:1.02rem}
   .pick .padd{width:34px;height:34px;border-radius:50%;background:var(--brand);color:var(--on-brand);border:0;display:grid;place-items:center;cursor:pointer;flex:0 0 auto;box-shadow:var(--shadow-sm)}
-  /* bold image hero */
+  /* ===== appbrainy-style clean home ===== */
+  .hgreet{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+  .hgreet-av{width:44px;height:44px;border-radius:50%;background-size:cover;background-position:center;background:var(--brand);color:var(--on-brand);display:grid;place-items:center;font-weight:800;flex:0 0 auto}
+  .hgreet-hi{font-size:.82rem;color:var(--muted)}
+  .hgreet-nm{font-weight:800;font-size:1rem;line-height:1.1}
+  .hbig{font-size:1.95rem;font-weight:900;line-height:1.06;letter-spacing:-.025em;margin:14px 0 16px}
+  .hsearch{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:13px 15px;max-width:640px;box-shadow:var(--shadow-sm)}
+  .hsearch input{border:0;outline:0;flex:1;font:inherit;font-size:1rem;color:var(--ink);background:transparent}
+  .hsearch .mic{width:40px;height:40px;border-radius:12px;background:var(--brand);color:var(--on-brand);display:grid;place-items:center;border:0;flex:0 0 auto;cursor:pointer}
+  .hpromo{display:flex;align-items:stretch;border-radius:20px;overflow:hidden;margin:16px 0;max-width:640px;min-height:128px;background:linear-gradient(120deg,#0b2b1e,#124a33);color:#fff;cursor:pointer}
+  .hpromo-txt{padding:18px 16px;flex:1;display:flex;flex-direction:column;justify-content:center}
+  .hpromo-k{font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#7fe0b0}
+  .hpromo-t{font-size:1.1rem;font-weight:800;line-height:1.15;margin:6px 0 12px}
+  .hpromo-btn{align-self:flex-start;background:#fff;color:#0b2b1e;border:0;border-radius:999px;padding:8px 16px;font-weight:800;font-size:.82rem;cursor:pointer}
+  .hpromo-img{width:42%;background-size:cover;background-position:center;flex:0 0 auto}
+  .hcats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .hcat{display:flex;flex-direction:column;align-items:center;gap:8px;padding:15px 6px;border-radius:18px;background:var(--soft);border:1px solid var(--line);color:var(--ink);font-size:.76rem;font-weight:600;text-align:center;cursor:pointer;transition:transform .12s ease}
+  .hcat:active{transform:scale(.96)}
+  .hcat .c{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;color:#fff}
+  @media (max-width:420px){ .hcats{grid-template-columns:repeat(3,1fr)} }
+  /* bold image hero (kept for other uses) */
   .bhero{position:relative;border-radius:var(--r-xl);overflow:hidden;min-height:260px;display:flex;flex-direction:column;justify-content:flex-end;padding:26px;color:#fff;margin-bottom:6px}
   .bhero .bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
   .bhero .sh{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.55) 45%,rgba(0,0,0,.15));z-index:1}
@@ -547,29 +567,28 @@
       <section class="page on" id="p-home">
         <div class="grid2">
           <div>
-            <div class="bhero">
-              <div class="bg" style="background-image:url(https://cdn.pixabay.com/photo/2021/08/25/09/49/woman-6572974_1280.jpg)"></div>
-              <div class="sh"></div>
-              <div class="kick">Hineed · everything you need</div>
-              <div class="ttl">One app for<br><span class="hl">your whole city</span><span id="hero-name"></span></div>
-              <div class="sub">Homes, food, rides, services, shopping, jobs &amp; payments — found, booked and paid in one place.</div>
-              <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap">
-                <button class="btn btn-brand" onclick="go('explore')">Explore now</button>
-                <button class="btn" style="background:rgba(255,255,255,.2);color:#fff;border:0;backdrop-filter:blur(4px)" onclick="talk()"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke:#fff;vertical-align:-3px;margin-right:5px"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3"/></svg>Ask Hineed AI</button>
-              </div>
+            <div class="hgreet">
+              <span class="hgreet-av" id="home-av">M</span>
+              <div style="flex:1;min-width:0"><div class="hgreet-hi" id="home-hi">Good day 👋</div><div class="hgreet-nm" id="home-name">Welcome to Hineed</div></div>
+              <button class="iconbtn" onclick="openNotifs()" aria-label="Notifications"><span class="dot"></span><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M18 16V11a6 6 0 1 0-12 0v5l-1.5 2.5h15L18 16ZM10 20.5a2.2 2.2 0 0 0 4 0"/></svg></button>
             </div>
-            <div class="bar" style="margin-top:14px"><svg onclick="doSearch(document.getElementById('homeSearch').value)" style="cursor:pointer;stroke:#9AA6A0" width="19" height="19" viewBox="0 0 24 24" class="ic"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input id="homeSearch" placeholder="Search a product, shop or service…" onkeydown="if(event.key==='Enter')doSearch(this.value)"><button type="button" onclick="doSearch(document.getElementById('homeSearch').value)" style="background:var(--brand);color:var(--on-brand);border:0;border-radius:10px;padding:8px 14px;font-weight:700;font-size:.84rem;cursor:pointer;margin-right:4px">Search</button><button class="go" onclick="talk()" aria-label="Talk to Hineed AI" title="Talk to Hineed AI"><svg width="19" height="19" viewBox="0 0 24 24" class="ic"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3"/></svg></button></div>
-            <div class="chips" style="margin-top:12px"><span onclick="go('realestate')">2-bed in GRA under ₦1.5m</span><span onclick="go('services')">Plumber in D-Line today</span><span onclick="go('food')">Jollof for 6 tonight</span></div>
-            <div class="sect-t"><h3>Explore the ecosystem</h3><a href="#" onclick="go('explore');return false">All</a></div>
-            <div class="svc">
-              <a href="#" onclick="go('realestate');return false"><span class="i" style="background:var(--a1)"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M3.5 10.5 12 4l8.5 6.5V20h-6v-5h-5v5h-6v-9.5Z"/></svg></span>Real Estate</a>
-              <a href="#" onclick="go('services');return false"><span class="i" style="background:var(--brand)"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M14.5 5.5a3.8 3.8 0 0 0 5 5L15 15l-2 5.5-3-3 5.5-2 4.5-4.5"/></svg></span>Services</a>
-              <a href="#" onclick="go('market');return false"><span class="i" style="background:var(--a2)"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M3 4h2l2.2 11h10l2-7H6"/><circle cx="9" cy="19" r="1.4"/><circle cx="17" cy="19" r="1.4"/></svg></span>Market</a>
-              <a href="#" onclick="go('food');return false"><span class="i" style="background:var(--a4)"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M4 11h16a8 8 0 0 1-16 0ZM12 11V6"/></svg></span>Food</a>
-              <a href="#" onclick="go('move');return false"><span class="i" style="background:var(--a6)"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M3 7h11v9H3zM14 10.5h4l3 3.2V16h-7Z"/></svg></span>Move</a>
-              <a href="#" onclick="go('jobs');return false"><span class="i" style="background:var(--a3)"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M3.5 8.5h17v11h-17zM9 8.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2.5"/></svg></span>Jobs</a>
-              <a href="#" onclick="go('pay');return false"><span class="i" style="background:#062D20"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M4 7.5h13a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H4v-12ZM16.5 13.5h1.5"/></svg></span>Pay</a>
-              <a href="#" onclick="go('social');return false"><span class="i" style="background:var(--a7)"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M12 20s-7.5-4.6-7.5-9.4A4.1 4.1 0 0 1 12 8a4.1 4.1 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20Z"/></svg></span>Hineed You</a>
+            <h1 class="hbig">What do you<br>need today?</h1>
+            <div class="hsearch"><svg onclick="doSearch(document.getElementById('homeSearch').value)" style="cursor:pointer;stroke:#9AA6A0" width="19" height="19" viewBox="0 0 24 24" class="ic"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input id="homeSearch" placeholder="Search products, shops, services…" onkeydown="if(event.key==='Enter')doSearch(this.value)"><button class="mic" onclick="talk()" aria-label="Ask Hineed AI" title="Ask Hineed AI"><svg width="18" height="18" viewBox="0 0 24 24" class="ic" style="stroke:var(--on-brand)"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3"/></svg></button></div>
+            <div class="hpromo" onclick="go('explore')">
+              <div class="hpromo-txt"><div class="hpromo-k">Launch offer</div><div class="hpromo-t">0% fees on your first booking</div><button class="hpromo-btn" onclick="event.stopPropagation();go('explore')">Explore now</button></div>
+              <div class="hpromo-img" style="background-image:url(https://cdn.pixabay.com/photo/2023/10/15/05/56/woman-8316237_640.jpg)"></div>
+            </div>
+            <div class="sect-t"><h3>Explore Hineed</h3><a href="#" onclick="go('explore');return false">See all</a></div>
+            <div class="hcats">
+              <div class="hcat" onclick="go('realestate')"><span class="c" style="background:var(--a1)"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M3.5 10.5 12 4l8.5 6.5V20h-6v-5h-5v5h-6v-9.5Z"/></svg></span>Real Estate</div>
+              <div class="hcat" onclick="go('services')"><span class="c" style="background:var(--brand)"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M14.5 5.5a3.8 3.8 0 0 0 5 5L15 15l-2 5.5-3-3 5.5-2 4.5-4.5"/></svg></span>Services</div>
+              <div class="hcat" onclick="go('market')"><span class="c" style="background:var(--a2)"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M3 4h2l2.2 11h10l2-7H6"/><circle cx="9" cy="19" r="1.4"/><circle cx="17" cy="19" r="1.4"/></svg></span>Market</div>
+              <div class="hcat" onclick="go('food')"><span class="c" style="background:var(--a4)"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M4 11h16a8 8 0 0 1-16 0ZM12 11V6"/></svg></span>Food</div>
+              <div class="hcat" onclick="go('move')"><span class="c" style="background:var(--a6)"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M3 7h11v9H3zM14 10.5h4l3 3.2V16h-7Z"/></svg></span>Move</div>
+              <div class="hcat" onclick="go('jobs')"><span class="c" style="background:var(--a3)"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M3.5 8.5h17v11h-17zM9 8.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2.5"/></svg></span>Jobs</div>
+              <div class="hcat" onclick="go('pay')"><span class="c" style="background:#0a7a52"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M4 7.5h13a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H4v-12ZM16.5 13.5h1.5"/></svg></span>Pay</div>
+              <div class="hcat" onclick="go('social')"><span class="c" style="background:var(--a7)"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M12 20s-7.5-4.6-7.5-9.4A4.1 4.1 0 0 1 12 8a4.1 4.1 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20Z"/></svg></span>Social</div>
+              <div class="hcat" onclick="scanJump()"><span class="c" style="background:var(--a5)"><svg width="22" height="22" viewBox="0 0 24 24" class="ic"><path d="M4 8V5.5a1.5 1.5 0 0 1 1.5-1.5H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16M4 12h16"/></svg></span>Scan</div>
             </div>
             <div class="sect-t"><h3>Popular picks</h3><a href="#" onclick="go('explore');return false">View all</a></div>
             <div class="picks">
@@ -1718,6 +1737,7 @@
       var hn=document.getElementById('hero-name'); if(hn) hn.textContent=', '+first;
       var dg=document.getElementById('dash-greet-name'); if(dg) dg.textContent=', '+first;
     }
+    try{ if(typeof renderHomeGreeting==='function') renderHomeGreeting(); }catch(e){}
     if(r==='customer'){ if(typeof go==='function') go('home'); } else { if(typeof openDash==='function') openDash(); }
   };
 
@@ -1907,7 +1927,21 @@
   /* ================= route persistence ================= */
   var _go = window.go;
   window.go = function(p){ if(_go) _go(p); try{ localStorage.setItem('hineed-route', p); }catch(e){} afterPage(p); };
-  function afterPage(p){ if(p==='social') renderFeed(); else if(p==='market') renderShop(); else if(p==='admin-login'){} }
+  window.renderHomeGreeting=function(){
+    try{
+      var u=(window.HINEED&&window.HINEED.user)||null;
+      var h=new Date().getHours();
+      var hi=h<12?'Good morning':(h<17?'Good afternoon':'Good evening');
+      var hiEl=document.getElementById('home-hi'); if(hiEl) hiEl.textContent=hi+' 👋';
+      var nmEl=document.getElementById('home-name');
+      var avEl=document.getElementById('home-av');
+      if(u&&u.name){ var first=(''+u.name).trim().split(/\s+/)[0];
+        if(nmEl) nmEl.textContent=first;
+        if(avEl){ if(u.photo){ avEl.style.backgroundImage='url('+u.photo+')'; avEl.textContent=''; } else { avEl.style.backgroundImage=''; avEl.textContent=u.name.charAt(0).toUpperCase(); } }
+      } else { if(nmEl) nmEl.textContent='Welcome to Hineed'; }
+    }catch(e){}
+  };
+  function afterPage(p){ if(p==='social') renderFeed(); else if(p==='market') renderShop(); else if(p==='home'){ try{renderHomeGreeting();}catch(e){} } else if(p==='admin-login'){} }
 
   /* ================= OAuth ================= */
   window.oauthStart = function(provider){
