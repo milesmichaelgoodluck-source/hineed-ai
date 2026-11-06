@@ -2423,43 +2423,41 @@
       try{ initRideMap(drivers); }catch(e){}
     });
   }
-  // ---- Google Maps loader (activates automatically once the key is set) ----
-  var _mapsCfg=null, _mapsLoading=false, _mapsCbs=[];
-  function ensureMaps(cb){
-    if(window.google&&window.google.maps){ cb(true); return; }
-    _mapsCbs.push(cb);
-    if(_mapsLoading) return;
-    _mapsLoading=true;
-    var start=function(key){
-      if(!key){ _mapsCbs.forEach(function(f){f(false);}); _mapsCbs=[]; return; }
-      window.__hnMapsReady=function(){ _mapsCbs.forEach(function(f){f(true);}); _mapsCbs=[]; };
-      var s=document.createElement('script');
-      s.src='https://maps.googleapis.com/maps/api/js?key='+encodeURIComponent(key)+'&callback=__hnMapsReady&loading=async';
-      s.async=true; s.defer=true;
-      s.onerror=function(){ _mapsCbs.forEach(function(f){f(false);}); _mapsCbs=[]; };
-      document.head.appendChild(s);
-    };
-    if(_mapsCfg){ start(_mapsCfg.googleMapsKey); return; }
-    api('GET','/api/config').then(function(r){ _mapsCfg=(r&&r.data)||{}; start(_mapsCfg.googleMapsKey); })
-      .catch(function(){ _mapsCbs.forEach(function(f){f(false);}); _mapsCbs=[]; });
+  // ---- Free live map (OpenStreetMap + Leaflet) — no API key, no card needed ----
+  var _lfLoading=false, _lfCbs=[];
+  function ensureLeaflet(cb){
+    if(window.L){ cb(true); return; }
+    _lfCbs.push(cb);
+    if(_lfLoading) return;
+    _lfLoading=true;
+    var css=document.createElement('link'); css.rel='stylesheet'; css.href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css';
+    document.head.appendChild(css);
+    var s=document.createElement('script'); s.src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';
+    s.onload=function(){ _lfCbs.forEach(function(f){f(true);}); _lfCbs=[]; };
+    s.onerror=function(){ _lfCbs.forEach(function(f){f(false);}); _lfCbs=[]; };
+    document.head.appendChild(s);
   }
-  window.ensureMaps=ensureMaps;
-  function initRideMap(drivers){
-    var box=el('ride-map'); if(!box) return;
-    ensureMaps(function(ok){
-      if(!ok){ var m=box.querySelector('div:last-child'); if(m){ var t=m.querySelector('div'); if(t) t.textContent='Live map activates once your Google Maps key is added'; } return; }
-      var PH={lat:4.8156,lng:7.0498};
-      box.innerHTML=''; box.style.background='none';
-      var map=new google.maps.Map(box,{center:PH,zoom:13,disableDefaultUI:true,gestureHandling:'greedy',
-        styles:[{featureType:'poi',stylers:[{visibility:'off'}]}]});
-      new google.maps.Marker({position:PH,map:map,title:'You',icon:{path:google.maps.SymbolPath.CIRCLE,scale:7,fillColor:'#0a7',fillOpacity:1,strokeColor:'#fff',strokeWeight:2}});
+  window.ensureLeaflet=ensureLeaflet;
+  var _mapObjs={};
+  function initRideMap(drivers, containerId){
+    var id=containerId||'ride-map';
+    var box=el(id); if(!box) return;
+    ensureLeaflet(function(ok){
+      if(!ok){ var m=box.querySelector('div:last-child'); if(m){ var t=m.querySelector('div'); if(t) t.textContent='Map could not load — check your connection'; } return; }
+      var PH=[4.8156,7.0498];
+      box.innerHTML=''; box.style.background='#dfe7e3';
+      if(_mapObjs[id]){ try{_mapObjs[id].remove();}catch(e){} _mapObjs[id]=null; }
+      var map=L.map(box,{zoomControl:true,attributionControl:false}).setView(PH,13);
+      _mapObjs[id]=map;
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19}).addTo(map);
+      L.marker(PH,{icon:L.divIcon({className:'',html:'<div style="width:16px;height:16px;border-radius:50%;background:#0a7a52;border:3px solid #fff;box-shadow:0 0 0 2px rgba(10,122,82,.4)"></div>',iconSize:[16,16],iconAnchor:[8,8]})}).addTo(map).bindPopup('You are here');
       (drivers||[]).forEach(function(d,i){
-        var ang=(i*73)%360*Math.PI/180, r=0.012+((i*7)%9)/900;
-        var pos={lat:PH.lat+Math.sin(ang)*r, lng:PH.lng+Math.cos(ang)*r};
-        new google.maps.Marker({position:pos,map:map,title:(d.name||'Driver')+' · '+(d.eta||''),
-          label:{text:({car:'🚗',keke:'🛺',bike:'🏍️'}[d.type]||'🚗'),fontSize:'16px'},
-          icon:{path:google.maps.SymbolPath.CIRCLE,scale:12,fillColor:'#fff',fillOpacity:1,strokeColor:'#0a7',strokeWeight:1}});
+        var ang=((i*73)%360)*Math.PI/180, r=0.012+((i*7)%9)/900;
+        var pos=[PH[0]+Math.sin(ang)*r, PH[1]+Math.cos(ang)*r];
+        var emo={car:'🚗',keke:'🛺',bike:'🏍️'}[d.type]||'🚗';
+        L.marker(pos,{icon:L.divIcon({className:'',html:'<div style="width:30px;height:30px;border-radius:50%;background:#fff;border:2px solid #0a7a52;display:grid;place-items:center;font-size:15px;box-shadow:0 1px 4px rgba(0,0,0,.3)">'+emo+'</div>',iconSize:[30,30],iconAnchor:[15,15]})}).addTo(map).bindPopup((d.name||'Driver')+' · '+(d.eta||''));
       });
+      setTimeout(function(){ try{ map.invalidateSize(); }catch(e){} }, 250);
     });
   }
   window.initRideMap=initRideMap;
@@ -2517,6 +2515,7 @@
       var disp=drivers.slice().sort(function(a,b){ var r={bike:0,keke:1,car:2}; return (r[a.type]||3)-(r[b.type]||3); });
       var onlineN=disp.filter(function(d){return d.online&&!d.booked;}).length;
       var h='<p class="sub" style="margin-top:4px">Send a parcel across town. Pick a dispatch rider — chat, call, then send.</p>';
+      h+='<div id="dispatch-map" style="height:170px;border-radius:18px;overflow:hidden;margin-bottom:14px;background:#dfe7e3;display:grid;place-items:center"><div style="color:var(--muted);font-size:.8rem">Loading map…</div></div>';
       h+='<div class="card" style="padding:16px"><label class="ain" style="margin-bottom:10px"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke:var(--brand)"><circle cx="12" cy="12" r="4"/></svg><input id="dp-pickup" placeholder="Pickup address"></label><label class="ain"><svg width="16" height="16" viewBox="0 0 24 24" class="ic" style="stroke:var(--neg)"><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z"/></svg><input id="dp-drop" placeholder="Delivery address"></label><div style="font-size:.74rem;color:var(--muted);margin-top:8px">Tap a rider below to send your request.</div></div>';
       if(active){ h+='<div class="card" style="padding:16px;margin-top:14px;border:1px solid var(--brand)"><div style="font-weight:800;margin-bottom:6px">Your delivery</div><div style="font-size:.9rem">'+E(active.pickup)+' → '+E(active.dropoff)+'</div><div style="margin-top:8px">'+rideBadge(active.status)+(active.driverName?' · '+E(active.driverName):'')+'</div>'+(active.status!=='delivered'?'<button class="btn btn-ghost" style="margin-top:10px;padding:8px 14px" onclick="cancelDispatch(\''+active.id+'\')">Cancel</button>':'')+'</div>'; }
       h+='<div class="sect-t" style="margin-top:22px"><h3>Dispatch riders near you</h3><span style="font-size:.76rem;color:var(--pos);font-weight:700">● '+onlineN+' online</span></div>';
@@ -2525,6 +2524,7 @@
         return '<a href="#" onclick="openDriver(\''+d.id+'\');return false" class="row" style="text-decoration:none;color:inherit"><span style="position:relative"><span class="av" style="width:44px;height:44px;background:var(--g-c);font-size:1.1rem">'+tp+'</span><span style="position:absolute;right:-1px;bottom:-1px;width:13px;height:13px;border-radius:50%;background:'+dot+';border:2px solid var(--surface)"></span></span><div style="flex:1;min-width:0"><div style="font-weight:700;font-size:.92rem">'+E(d.name)+' <span style="color:var(--star);font-size:.8rem">★ '+d.rating+'</span></div><div style="font-size:.76rem;color:var(--muted)">'+E(d.vehicle)+' · '+st+'</div></div><div style="text-align:right"><div style="font-weight:800;font-size:.9rem">'+E(d.price||'')+'</div><div style="font-size:.72rem;color:var(--muted)">'+E(d.eta||'')+'</div></div></a>';
       }).join('')+'</div>';
       host.innerHTML=h;
+      try{ initRideMap(disp, 'dispatch-map'); }catch(e){}
     });
   };
   window.cancelDispatch=function(id){ api('PATCH','/api/rides/'+id,{action:'cancel'}).then(function(){ T('Dispatch cancelled'); renderDispatch(); }); };
