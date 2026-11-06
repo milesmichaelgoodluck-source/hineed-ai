@@ -37,6 +37,12 @@ export const PATCH = withDb(async (req) => {
   if (body.driver && typeof body.driver === "object") patch.driver = { ...(user.driver || {}), ...body.driver };
   if (typeof body.photo === "string") patch.photo = body.photo.slice(0, 2_000_000) || null;
 
+  // Trust & safety: a rider may only go online once their identity is verified.
+  if (patch.driver && patch.driver.online === true) {
+    const verified = user.kyc && user.kyc.status === "verified";
+    if (!verified) return NextResponse.json({ error: "Verify your identity before going online. Upload your ID from your dashboard — once approved you can accept rides.", needsKyc: true }, { status: 403 });
+  }
+
   const updated = updateUser(session.uid, patch);
   return NextResponse.json({ user: publicUser(updated) });
 });

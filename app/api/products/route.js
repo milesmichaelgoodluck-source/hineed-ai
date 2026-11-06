@@ -22,6 +22,10 @@ export const POST = withDb(async (req) => {
   if (!session?.uid) return NextResponse.json({ error: "Sign in required." }, { status: 401 });
   const user = findUserById(session.uid);
   if (!user) return NextResponse.json({ error: "Not found." }, { status: 404 });
+  // Trust & safety: a seller must be identity-verified before listing products.
+  if (!(user.kyc && user.kyc.status === "verified")) {
+    return NextResponse.json({ error: "Please verify your identity (KYC) before listing products. Upload your ID from your dashboard — once approved you can sell.", needsKyc: true }, { status: 403 });
+  }
   let body; try { body = await req.json(); } catch { body = {}; }
   const name = (body.name || "").trim();
   if (!name) return NextResponse.json({ error: "Product name is required." }, { status: 400 });

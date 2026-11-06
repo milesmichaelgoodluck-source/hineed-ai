@@ -1837,8 +1837,12 @@
     var name=val('os-shop'); if(!name){ showErr('os-err','Enter your shop name.'); return; }
     API.patch('/api/auth/me',{shop:{name:name,kind:val('os-kind'),bio:val('os-bio')}}).then(function(res){
       if(res.ok){ window.HINEED.user=res.data.user; var pn=val('os-prod');
-        if(pn){ API.post('/api/products',{name:pn,price:val('os-price'),description:''}).then(function(){ toast('Your shop is live ✓'); enterApp('business'); }); }
-        else { toast('Your shop is live ✓'); enterApp('business'); }
+        if(pn){ API.post('/api/products',{name:pn,price:val('os-price'),description:''}).then(function(pr){
+          if(pr&&pr.data&&pr.data.needsKyc){ try{ window.__pendingProduct={name:pn,price:val('os-price')}; }catch(e){} toast('Shop created — verify your ID to start selling'); }
+          else { toast('Your shop is live ✓'); }
+          enterApp('business');
+        }); }
+        else { toast('Shop created — verify your ID to start selling'); enterApp('business'); }
       } else showErr('os-err', res.data.error||'Could not save.');
     });
   };
@@ -2035,7 +2039,7 @@
   }
 
   window.saveShop = function(){ api('PATCH','/api/auth/me',{shop:{name:(el('sh-name').value||'').trim(),kind:(el('sh-kind').value||'').trim(),bio:(el('sh-bio').value||'').trim()}}).then(function(res){ if(res.ok){ H.user=res.data.user; T('Shop saved ✓'); renderBusinessDash(); } }); };
-  window.addProduct = function(){ var name=(el('pr-name').value||'').trim(); if(!name){ T('Product name needed','bad'); return; } api('POST','/api/products',{name:name,price:(el('pr-price').value||'').trim(),description:(el('pr-desc').value||'').trim(),category:(el('pr-cat').value||'goods').trim(),image:H.newProductImg||null}).then(function(r){ if(r.ok){ T('Product added ✓'); H.newProductImg=null; renderBusinessDash(); } else T(r.data.error||'Failed','bad'); }); };
+  window.addProduct = function(){ var name=(el('pr-name').value||'').trim(); if(!name){ T('Product name needed','bad'); return; } api('POST','/api/products',{name:name,price:(el('pr-price').value||'').trim(),description:(el('pr-desc').value||'').trim(),category:(el('pr-cat').value||'goods').trim(),image:H.newProductImg||null}).then(function(r){ if(r.ok){ T('Product added ✓'); H.newProductImg=null; renderBusinessDash(); } else { T((r.data&&r.data.error)||'Failed','bad'); if(r.data&&r.data.needsKyc&&window.submitKyc){ setTimeout(window.submitKyc,900); } } }); };
   window.pickProductImg = function(){ pickImage(function(d){ H.newProductImg=d; var pv=el('pr-prev'); if(pv) pv.innerHTML='<img src="'+d+'" style="width:56px;height:56px;object-fit:cover;border-radius:10px">'; }); };
   window.deleteProductUI = function(id){ api('DELETE','/api/products/'+id).then(function(r){ if(r.ok){ T('Removed'); renderBusinessDash(); } }); };
   window.acceptOrder = function(id){ api('PATCH','/api/orders/'+id,{action:'accept'}).then(function(r){ if(r.ok){ T('Order accepted'); renderBusinessDash(); } }); };
@@ -2322,10 +2326,11 @@
   };
   function renderAdmin(){
     var box=el('p-admin'); if(!box) return; var c=box.querySelector('.content')||box;
-    Promise.all([api('GET','/api/admin/overview'),api('GET','/api/admin/kyc')]).then(function(res){
+    Promise.all([api('GET','/api/admin/overview'),api('GET','/api/admin/kyc'),api('GET','/api/admin/password')]).then(function(res){
       var r=res[0];
       if(!r.ok){ c.innerHTML='<div class="content" style="padding:26px"><div class="card" style="padding:20px;color:var(--neg)">Admin access required.</div></div>'; return; }
       var s=r.data.stats||{}, users=r.data.users||[]; var pending=(res[1].data&&res[1].data.pending)||[];
+      var customPass=!!(res[2]&&res[2].data&&res[2].data.customSet);
       var h='<div class="content" style="padding:26px 28px 40px"><div style="display:flex;align-items:center;gap:12px"><h1 class="h1" style="margin:0">Admin console</h1><button class="btn btn-ghost" style="padding:7px 14px" onclick="adminLogout()">Log out</button></div><p class="sub">Platform overview and user management.</p>';
       h+='<div class="stats">'+stat('Users',s.users,'')+stat('Providers',s.providers,'')+stat('Businesses',s.businesses,'')+stat('Orders',s.orders,'')+'</div>';
       h+='<div class="sect-t" style="margin-top:22px"><h3>KYC verification'+(pending.length?' ('+pending.length+' pending)':'')+'</h3></div><div class="list card" style="padding:4px 18px">';
@@ -2333,11 +2338,30 @@
       h+='</div>';
       h+='<div class="sect-t" style="margin-top:22px"><h3>All users</h3></div><div class="list card" style="padding:4px 18px">';
       if(!users.length) h+=emptyRow('No users yet.'); else users.forEach(function(u){ h+='<div class="row"><div style="flex:1"><div style="font-weight:700;font-size:.9rem">'+E(u.name)+' <span class="badge">'+E(u.role)+'</span>'+(u.blocked?' <span class="badge" style="background:var(--soft);color:var(--neg)">blocked</span>':'')+'</div><div style="font-size:.76rem;color:var(--muted)">'+E(u.email)+(u.location?' · '+E(u.location):'')+'</div></div><button class="btn btn-ghost" style="padding:6px 11px" onclick="adminBlock(\''+u.id+'\','+(u.blocked?'false':'true')+')">'+(u.blocked?'Unblock':'Block')+'</button><button class="btn btn-ghost" style="padding:6px 11px;margin-left:6px;color:var(--neg)" onclick="adminDelete(\''+u.id+'\')">Delete</button></div>'; });
+      h+='</div>';
+      // Security — change admin password
+      h+='<div class="sect-t" style="margin-top:22px"><h3>Admin security</h3></div>';
+      h+='<div class="card" style="padding:18px;max-width:460px">';
+      h+= customPass ? '<div style="font-size:.84rem;color:var(--pos);font-weight:700;margin-bottom:12px">● Custom admin password is set ✓</div>'
+                     : '<div style="font-size:.84rem;color:var(--neg);font-weight:700;margin-bottom:4px">⚠ Still using the default password</div><div style="font-size:.8rem;color:var(--muted);margin-bottom:12px">Change it before going public.</div>';
+      h+='<label class="ain" style="margin-bottom:10px"><input id="adm-new-user" placeholder="New admin username" autocomplete="off"></label>';
+      h+='<label class="ain" style="margin-bottom:10px"><input id="adm-new-pass" type="password" placeholder="New password (min 8 characters)" autocomplete="new-password"></label>';
+      h+='<label class="ain" style="margin-bottom:12px"><input id="adm-new-pass2" type="password" placeholder="Confirm new password" autocomplete="new-password"></label>';
+      h+='<button class="btn btn-brand" style="width:100%" onclick="changeAdminPass()">Update admin password</button>';
       h+='</div></div>';
       c.innerHTML=h;
     });
   }
   window.adminKyc = function(id,action){ api('POST','/api/admin/kyc',{userId:id,action:action}).then(function(r){ if(r.ok){ T(action==='verify'?'User verified ✓':'Verification rejected'); renderAdmin(); } else T('Admin only','bad'); }); };
+  window.changeAdminPass = function(){
+    var u=(el('adm-new-user')&&el('adm-new-user').value||'').trim();
+    var p=(el('adm-new-pass')&&el('adm-new-pass').value)||'';
+    var p2=(el('adm-new-pass2')&&el('adm-new-pass2').value)||'';
+    if(!u){ T('Enter a new admin username','bad'); return; }
+    if(p.length<8){ T('Password must be at least 8 characters','bad'); return; }
+    if(p!==p2){ T('Passwords do not match','bad'); return; }
+    api('POST','/api/admin/password',{username:u,password:p}).then(function(r){ if(r.ok){ T('Admin password updated ✓ — use it next time you sign in'); renderAdmin(); } else T((r.data&&r.data.error)||'Could not update','bad'); });
+  };
   window.adminBlock = function(id,block){ api('PATCH','/api/admin/users/'+id,{action:block?'block':'unblock'}).then(function(r){ if(r.ok){ T(block?'User blocked':'User unblocked'); renderAdmin(); } else T('Admin only','bad'); }); };
   window.adminDelete = function(id){ api('DELETE','/api/admin/users/'+id).then(function(r){ if(r.ok){ T('User deleted'); renderAdmin(); } }); };
   window.adminLogout = function(){ api('POST','/api/admin/logout').then(function(){ T('Signed out of admin'); go('home'); }); };
@@ -2634,7 +2658,7 @@
       box.innerHTML=h;
     });
   };
-  window.toggleOnline=function(){ var u=me()||{}; var on=!(u.driver&&u.driver.online); api('PATCH','/api/auth/me',{driver:{online:on}}).then(function(r){ if(r.ok){ H.user=r.data.user; T(on?'You are online':'You are offline'); renderRiderDash(); } }); };
+  window.toggleOnline=function(){ var u=me()||{}; var on=!(u.driver&&u.driver.online); api('PATCH','/api/auth/me',{driver:{online:on}}).then(function(r){ if(r.ok){ H.user=r.data.user; T(on?'You are online':'You are offline'); renderRiderDash(); } else { T((r.data&&r.data.error)||'Could not update','bad'); if(r.data&&r.data.needsKyc&&window.submitKyc){ setTimeout(window.submitKyc,900); } } }); };
   window.rideAction=function(id,action){ api('PATCH','/api/rides/'+id,{action:action}).then(function(r){ if(r.ok){ T('Updated'); renderRiderDash(); } else T((r.data&&r.data.error)||'Failed','bad'); }); };
 
   /* ================= hooks: move page, rider dash, notif polling ================= */
