@@ -6,7 +6,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Hineed.AI — Everything you need, in one place</title>
 <link rel="icon" href="/mark.png" type="image/png">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <meta name="description" content="Hineed.AI — homes, services, products, food, jobs and payments, all in one place. Port Harcourt.">
+<!-- PWA / installable mobile app -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#07140F">
+<meta name="color-scheme" content="dark light">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Hineed">
 <meta property="og:title" content="Hineed.AI — Everything you need, in one place">
 <meta property="og:description" content="Homes, services, products, food, jobs and payments, all in one place.">
 <meta property="og:type" content="website">
@@ -3259,6 +3269,87 @@
   // hook pay-page open
   var _g=window.go;
   window.go=function(p){ if(_g) _g(p); if(p==='pay'){ try{ refreshPayMode(); }catch(e){} try{ renderEscrow(); }catch(e){} } };
+})();
+</script>
+<script>
+/* ===== PWA: service worker, install prompt, home-screen shortcuts ===== */
+(function(){
+  // 1) Register the service worker (installable + fast offline shell)
+  if('serviceWorker' in navigator){
+    window.addEventListener('load', function(){
+      navigator.serviceWorker.register('/sw.js').then(function(reg){
+        // Pick up a new deploy without a hard refresh
+        if(reg.waiting) reg.waiting.postMessage('skipWaiting');
+        reg.addEventListener('updatefound', function(){
+          var nw=reg.installing; if(!nw) return;
+          nw.addEventListener('statechange', function(){
+            if(nw.state==='installed' && navigator.serviceWorker.controller){ nw.postMessage('skipWaiting'); }
+          });
+        });
+      }).catch(function(){});
+      var reloaded=false;
+      navigator.serviceWorker.addEventListener('controllerchange', function(){
+        if(reloaded) return; reloaded=true; location.reload();
+      });
+    });
+  }
+
+  // 2) Manifest shortcuts: /?go=market|food|move|services
+  try{
+    var qp=new URLSearchParams(location.search); var dest=qp.get('go');
+    if(dest){ var tries=0; var iv=setInterval(function(){
+      tries++; if(typeof window.go==='function'){ try{ window.go(dest); }catch(e){} clearInterval(iv); }
+      if(tries>40) clearInterval(iv);
+    },150); }
+  }catch(e){}
+
+  // 3) Install prompt (Android/desktop Chrome) + iOS hint
+  var deferred=null;
+  var isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone===true;
+  function dismissed(){ try{ return localStorage.getItem('hn_install_x')==='1'; }catch(e){ return false; } }
+  function markDismissed(){ try{ localStorage.setItem('hn_install_x','1'); }catch(e){} }
+
+  function banner(html){
+    if(document.getElementById('hn-install-bar')) return;
+    var b=document.createElement('div'); b.id='hn-install-bar';
+    b.style.cssText='position:fixed;left:12px;right:12px;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:9999;background:var(--surface,#0F1E18);color:var(--ink,#EAF6EF);border:1px solid var(--line,#1E3228);border-radius:18px;box-shadow:0 24px 48px -20px rgba(0,0,0,.7);padding:12px 12px 12px 14px;display:flex;align-items:center;gap:12px;font-family:var(--font,sans-serif);animation:hnslide .35s ease';
+    b.innerHTML=html; document.body.appendChild(b);
+    var st=document.createElement('style'); st.textContent='@keyframes hnslide{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}'; document.head.appendChild(st);
+    return b;
+  }
+  function closeBar(){ var b=document.getElementById('hn-install-bar'); if(b) b.remove(); }
+
+  window.addEventListener('beforeinstallprompt', function(e){
+    e.preventDefault(); deferred=e;
+    if(isStandalone || dismissed()) return;
+    setTimeout(function(){
+      var b=banner('<img src="/icon-192.png" alt="" style="width:40px;height:40px;border-radius:11px;flex:0 0 auto">'+
+        '<div style="flex:1;min-width:0"><div style="font-weight:800;font-size:.95rem">Install Hineed</div>'+
+        '<div style="font-size:.78rem;color:var(--muted,#8DA89A)">Add it to your home screen — opens like an app.</div></div>'+
+        '<button id="hn-inst-go" style="flex:0 0 auto;background:var(--action,#2FD98A);color:var(--on-brand,#05140D);border:0;font-weight:800;padding:10px 16px;border-radius:12px;font-size:.85rem">Install</button>'+
+        '<button id="hn-inst-x" aria-label="Close" style="flex:0 0 auto;background:transparent;border:0;color:var(--muted,#8DA89A);font-size:1.3rem;line-height:1;padding:4px 8px">×</button>');
+      if(!b) return;
+      b.querySelector('#hn-inst-go').onclick=function(){
+        closeBar(); if(!deferred) return; deferred.prompt();
+        deferred.userChoice.finally(function(){ deferred=null; });
+      };
+      b.querySelector('#hn-inst-x').onclick=function(){ markDismissed(); closeBar(); };
+    }, 2600);
+  });
+
+  window.addEventListener('appinstalled', function(){ markDismissed(); closeBar(); });
+
+  // iOS Safari has no beforeinstallprompt — show a one-time "Add to Home Screen" tip
+  var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
+  if(isIOS && !isStandalone && !dismissed()){
+    window.addEventListener('load', function(){ setTimeout(function(){
+      var b=banner('<img src="/icon-192.png" alt="" style="width:40px;height:40px;border-radius:11px;flex:0 0 auto">'+
+        '<div style="flex:1;min-width:0"><div style="font-weight:800;font-size:.95rem">Add Hineed to Home Screen</div>'+
+        '<div style="font-size:.78rem;color:var(--muted,#8DA89A)">Tap the Share icon, then “Add to Home Screen”.</div></div>'+
+        '<button id="hn-inst-x" aria-label="Close" style="flex:0 0 auto;background:transparent;border:0;color:var(--muted,#8DA89A);font-size:1.3rem;line-height:1;padding:4px 8px">×</button>');
+      if(b) b.querySelector('#hn-inst-x').onclick=function(){ markDismissed(); closeBar(); };
+    }, 3200); });
+  }
 })();
 </script>
 </body>

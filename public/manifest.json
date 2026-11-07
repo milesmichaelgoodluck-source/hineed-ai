@@ -1,0 +1,28 @@
+{
+  "name": "Hineed.AI — Everything you need, in one place",
+  "short_name": "Hineed",
+  "description": "Homes, services, products, food, rides, logistics, jobs and payments — all in one app.",
+  "id": "/",
+  "start_url": "/?src=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait",
+  "background_color": "#07140F",
+  "theme_color": "#07140F",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["shopping", "food", "business", "lifestyle", "travel"],
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Marketplace", "short_name": "Shop", "url": "/?src=pwa&go=market", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Food", "short_name": "Food", "url": "/?src=pwa&go=food", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Move & Rides", "short_name": "Move", "url": "/?src=pwa&go=move", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Services", "short_name": "Services", "url": "/?src=pwa&go=services", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] }
+  ]
+}
